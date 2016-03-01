@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/TGhGakfxkMfjM7pIoWIsuk5tn4w\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/6yG91K3ndkj2a6mofPvfBqIWOFA\"",
+   "id": "X2jqATYBSx4",
+   "snippet": {
+    "publishedAt": "2016-01-07T08:50:10.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "TP.HCM sẽ thanh tra giá cước taxi từ 9/1",
+    "description": "Website: http://xemtin.xyz\n Bắt đầu từ ngày 9/1, Thanh tra Sở Tài chính thành phố Hồ Chí Minh sẽ tiến hành thanh tra các doanh nghiệp taxi.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/X2jqATYBSx4/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/X2jqATYBSx4/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/X2jqATYBSx4/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "trong-nuoc",
+     "giảm giá cước",
+     "cước taxi"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "TP.HCM sẽ thanh tra giá cước taxi từ 9/1",
+     "description": "Website: http://xemtin.xyz\n Bắt đầu từ ngày 9/1, Thanh tra Sở Tài chính thành phố Hồ Chí Minh sẽ tiến hành thanh tra các doanh nghiệp taxi."
+    }
+   }
+  }
+ ]
+}

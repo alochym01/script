@@ -1,0 +1,64 @@
+#!/bin/sh
+
+[% 
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out;
+    argv.host=hostname; argv.type='sip_int'; 
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_int_ips = out;
+    IF !sip_int_ips.size;
+        PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_int_ips = out;
+    END;
+-%]
+
+LOCAL_IP="[% sip_int_ips.0 %]"
+
+LOGGER="/usr/bin/logger -i -t check-sync"
+FILE_DEBUG="0"
+CONSOLE_DEBUG="1"
+LOGFILE="/tmp/check-sync.log"
+VERBOSE="-vvvvvvv"
+SIPSAK=`which sipsak`
+UUIDGEN=`which uuidgen`
+SIPFILE="/etc/ngcp-panel/check-sync/check-sync.sip"
+
+debug()
+{
+    LOG_ARGS="-p daemon.debug"
+    if [ "x$CONSOLE_DEBUG" = "x1" ]; then
+        LOG_ARGS="$LOG_ARGS -s"
+    fi
+    echo "$@" | $LOGGER $LOG_ARGS
+}
+
+error()
+{
+    LOG_ARGS="-p daemon.err"
+    if [ "x$CONSOLE_DEBUG" = "x1" ]; then
+        LOG_ARGS="$LOG_ARGS -s"
+    fi
+    echo "$@" | $LOGGER $LOG_ARGS
+    exit 1
+}
+
+USER=$1
+DOMAIN=$2
+PASS=$3
+PROXY=$4
+
+if [ -z "$USER" ] || [ -z "$USER" ] || [ -z "$USER" ] || [ -z "$PROXY" ]; then
+    error "Usage: $0 <user> <domain> <password> <proxy:port>"
+fi
+
+test -f $SIPSAK || error "sipsak command not found"
+test -f $UUIDGEN || error "uuidgen command not found"
+
+debug "Arguments: $@"
+
+URI="sip:$USER@$PROXY"
+CALL_ID=$($UUIDGEN)@voip.sipwise.local
+
+$SIPSAK -S -l 5082 -f $SIPFILE -u $USER -a $PASS \
+    -g "!CALL_ID!$CALL_ID!USER!$USER!DOMAIN!$DOMAIN!" \
+    $VERBOSE -H $LOCAL_IP -E udp -s $URI 2>&1
+
+
+

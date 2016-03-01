@@ -1,0 +1,14 @@
+
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.role='proxy'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_proxy = out -%]
+[% argv.host=hostname; PROCESS '/usr/lib/ngcp-ngcpcfg/get_peername'; peername = out -%]
+[% argv.host=hostname; argv.role='lb'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_lb = out -%]
+[% argv.host=hostname; argv.role='mgmt'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_mgmt = out -%]
+[% argv.host=hostname; argv.role='db'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_db = out -%]
+[% argv.host=hostname; argv.role='rtp'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_rtp = out -%]
+NGCP_IS_PROXY="[% IF is_proxy -%]yes[% ELSE -%]no[% END -%]"
+NGCP_IS_LB="[% IF is_lb -%]yes[% ELSE -%]no[% END -%]"
+NGCP_IS_MGMT="[% IF is_mgmt -%]yes[% ELSE -%]no[% END -%]"
+NGCP_IS_DB="[% IF is_db -%]yes[% ELSE -%]no[% END -%]"
+NGCP_IS_RTP="[% IF is_rtp -%]yes[% ELSE -%]no[% END -%]"
+

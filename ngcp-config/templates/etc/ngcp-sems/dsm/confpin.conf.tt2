@@ -1,0 +1,25 @@
+
+# configuration for confpin app
+
+# DSM configuration
+diag_path=/etc/ngcp-sems/dsm/
+mod_path=/usr/lib/ngcp-sems/dsm/
+load_diags=confpin
+register_apps=confpin
+run_invite_event=yes
+set_param_variables=yes
+audio_cache=/var/cache/ngcp-sems
+
+# database connection:
+db_url="mysql://[% sems.dbuser %]:[% sems.dbpassword %]@[% database.local.dbhost %]:[% database.local.dbport %]/provisioning"
+
+# application configuration:
+max_participants=[% sems.conference.max_participants %]
+
+digits_right=yes
+
+# timeout for digit collection - after this amount of digits the destination number is assumed to be completed
+digit_collection_timeout=5
+
+# maximum number of retries to enter the callingcard number (after this, the app hangs up)
+pin_max_retries=5

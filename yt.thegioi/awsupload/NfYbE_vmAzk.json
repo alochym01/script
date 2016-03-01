@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/nId8Nu-3drNtk4H4dbQKTtp0-Ek\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/Zrww0YUHmfL5IBq8_XBsgLl2MU0\"",
+   "id": "NfYbE_vmAzk",
+   "snippet": {
+    "publishedAt": "2016-01-07T03:25:20.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Malaysia không neo tỷ giá đồng Ringgit",
+    "description": "Website: http://xemtin.xyz\n Đồng Ringgit Malaysia biến động mạnh trong 2015 với tỷ lệ mất giá so với USD đến cuối năm là 18%. Tuy nhiên Malaysia quyết định không neo giữ tỷ giá đồng Ringgit với USD.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/NfYbE_vmAzk/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/NfYbE_vmAzk/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/NfYbE_vmAzk/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "chính phủ Malaysia",
+     "đồng Ringgit"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Malaysia không neo tỷ giá đồng Ringgit",
+     "description": "Website: http://xemtin.xyz\n Đồng Ringgit Malaysia biến động mạnh trong 2015 với tỷ lệ mất giá so với USD đến cuối năm là 18%. Tuy nhiên Malaysia quyết định không neo giữ tỷ giá đồng Ringgit với USD."
+    }
+   }
+  }
+ ]
+}

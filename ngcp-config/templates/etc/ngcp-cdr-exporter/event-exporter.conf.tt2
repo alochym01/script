@@ -1,0 +1,44 @@
+
+DBHOST=[% database.central.dbhost %]
+DBUSER=[% cdrexport.dbuser %]
+DBPASS=[% cdrexport.dbpassword %]
+DBDB=[% cdrexport.dbname %]
+
+DESTDIR=[% cdrexport.exportpath %]
+
+# remove comment to limit rows per file; in that case,
+# rows are split across multiple files if they exceed
+# the number of rows per file.
+#MAX_ROWS_PER_FILE=5000
+
+# if 1, don't export events which are switched on and off again
+# during an export interval
+FILTER_FLAPPING=0
+# if 1 and FILTER_FLAPPING=1, merge subsequent start/update events
+# during an export interval into one start event
+MERGE_UPDATE=0
+
+PREFIX=sipwise
+VERSION=001
+SUFFIX=edr
+
+QUOTES="'"
+
+# none if no remote transfer should be done
+# other options are sftp (requiring TRANSFER_PASS)
+# or sftp-sh (requiring TRANSFER_KEY)
+TRANSFER_TYPE=none
+TRANSFER_HOST=remotehost.invalid
+TRANSFER_PORT=22
+TRANSFER_USER=youruser
+TRANSFER_PASS=yourpassword
+TRANSFER_KEY=/path/to/priv-key
+TRANSFER_REMOTE=/remote/target/directory
+
+ADMIN_EXPORT_FIELDS = 'accounting.events.id', 'accounting.events.type', 'billing.contracts.external_id', 'billing.contacts.company', 'billing.voip_subscribers.external_id', '(select username from provisioning.voip_dbaliases tmp where tmp.subscriber_id = provisioning.voip_subscribers.id order by is_primary, id limit 1)', #'accounting.events.old_status', 'old_profile.name', #'accounting.events.new_status', 'new_profile.name', 'from_unixtime(accounting.events.timestamp)', 'accounting.events.reseller_id'
+
+RESELLER_EXPORT_FIELDS = 'accounting.events.id', 'accounting.events.type', 'billing.contracts.external_id', 'billing.contacts.company', 'billing.voip_subscribers.external_id', '(select username from provisioning.voip_dbaliases tmp where tmp.subscriber_id = provisioning.voip_subscribers.id order by is_primary, id limit 1)', #'accounting.events.old_status', 'old_profile.name', #'accounting.events.new_status', 'new_profile.name', 'from_unixtime(accounting.events.timestamp)'
+
+EXPORT_JOINS = { 'billing.voip_subscribers' => { 'billing.voip_subscribers.id' => 'accounting.events.subscriber_id' } }, { 'billing.contracts' => { 'billing.contracts.id' => 'billing.voip_subscribers.contract_id' } }, { 'billing.contacts' => { 'billing.contacts.id' => 'billing.contracts.contact_id' } }, { 'provisioning.voip_subscribers' => { 'provisioning.voip_subscribers.uuid' => 'billing.voip_subscribers.uuid' } }, { 'provisioning.voip_subscriber_profiles as old_profile' => { 'old_profile.id' => 'accounting.events.old_status' } }, { 'provisioning.voip_subscriber_profiles as new_profile' => { 'new_profile.id' => 'accounting.events.new_status' } }
+
+EXPORT_CONDITIONS = { 'accounting.events.export_status' => { '=' => '"unexported"' } },

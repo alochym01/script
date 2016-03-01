@@ -1,0 +1,77 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.role='mgmt';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+   is_mgmt = out
+-%]
+[% IF is_mgmt && www_csc.enable == 'yes' -%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   web_ext_ips = out;
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_v6ips_for_host';
+   web_ext_v6ips = out
+-%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_ext_ips = out.merge(web_ext_ips);
+-%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_v6ips_for_host';
+   web_ext_v6ips = out.merge(web_ext_v6ips);
+-%]
+[% IF www_csc.apache.port != 80 && www_admin.apache.port != 80 && ossbss.apache.port != 80 -%]
+server {
+    listen   [::]:80 ipv6only=off;
+
+    location /handbook {
+        return 301 http://$host:[% www_admin.apache.port %]$request_uri;
+    }
+
+    location / {
+        return 301 https://$host:[% www_csc.apache.port %]$request_uri;
+    }
+}
+[% END -%]
+
+server {
+[% FOREACH ip IN web_ext_ips -%]
+[% IF ip -%]
+    listen [% ip %]:[% www_csc.apache.port %];
+[% END -%]
+[% END -%]
+[% FOREACH ip IN web_ext_v6ips -%]
+[% IF ip -%]
+    listen [[% ip %]]:[% www_csc.apache.port %];
+[% END -%]
+[% END -%]
+    [% IF www_csc.apache.ssl_enable == "yes" -%]
+    ssl_certificate      [% www_csc.apache.sslcertfile %];
+    ssl_certificate_key  [% www_csc.apache.sslcertkeyfile %];
+    include /etc/nginx/ssl_params;
+    [% END -%]
+    server_name [% www_csc.apache.servername %];
+
+    location /favicon.ico {
+        alias  /usr/share/ngcp-www-csc/lib/csc/root/favicon.ico;
+    }
+
+    location /(css|grafik|js) {
+        root  /usr/share/ngcp-www-csc/lib/csc/root;
+    }
+
+    location / {
+        include /etc/nginx/fastcgi_params;
+        # Catalyst requires setting PATH_INFO (instead of SCRIPT_NAME) to $fastcgi_script_name
+        fastcgi_param  SCRIPT_NAME '';
+        fastcgi_param  PATH_INFO $fastcgi_script_name;
+        fastcgi_param   HTTPS on;
+        # TODO: configs for fastcgi process
+        fastcgi_pass  unix:/var/run/fastcgi/ngcp-www-csc.sock;
+    }
+[% IF www_csc.apache.port == 80 -%]
+
+    location /handbook {
+        return 301 http://$host:[% www_admin.apache.port %]$request_uri;
+    }
+[% END -%]
+}
+[% END -%]

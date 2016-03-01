@@ -1,0 +1,15 @@
+########################################################################
+# Handler for XMLRPC requests
+########################################################################
+route[ROUTE_XMLRPC]
+{
+	xlog("L_INFO", "New XMLRPC request - M=$rm IP=$si:$sp\n");
+
+	# close connection only for xmlrpclib (python) user agents
+	if(search("^User-Agent:.*xmlrpclib"))
+	{
+		set_reply_close();
+	}
+	set_reply_no_connect();
+	dispatch_rpc();
+}

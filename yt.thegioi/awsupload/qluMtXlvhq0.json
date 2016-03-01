@@ -1,0 +1,52 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/Zc2sB09PDFLSFD06VF8e_aKcaeM\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/kO9ZyyDuPsl14YFFTlq4Yuyl-qs\"",
+   "id": "qluMtXlvhq0",
+   "snippet": {
+    "publishedAt": "2016-01-06T07:50:18.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "TP.HCM hướng dẫn 7 lộ trình về quê đón Tết tránh kẹt xe",
+    "description": "Website: http://xemtin.xyz\nVTV.vn- Để hạn chế tình trạng kẹt xe tại các tuyến đường cửa ngõ dịp tết Nguyên Đán, Sở GTVT TP.HCM vừa công bố 7 lộ trình hướng dẫn các loại xe lưu thông từ Thành phố đi các tỉnh.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/qluMtXlvhq0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/qluMtXlvhq0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/qluMtXlvhq0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "tết nguyên đán",
+     "Lịch nghỉ Tết âm",
+     "Bính Thân 2016",
+     "trạm thu phí BOT",
+     "chuyen-dong-24h"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "TP.HCM hướng dẫn 7 lộ trình về quê đón Tết tránh kẹt xe",
+     "description": "Website: http://xemtin.xyz\nVTV.vn- Để hạn chế tình trạng kẹt xe tại các tuyến đường cửa ngõ dịp tết Nguyên Đán, Sở GTVT TP.HCM vừa công bố 7 lộ trình hướng dẫn các loại xe lưu thông từ Thành phố đi các tỉnh."
+    }
+   }
+  }
+ ]
+}

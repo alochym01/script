@@ -1,0 +1,72 @@
+
+RURI=$r
+From=$f
+To=$H(P-Called-Party-ID)
+[% IF kamailio.proxy.allow_refer_method == "yes" %]
+Call-ID=$ci
+[% ELSE %]
+Call-ID=$ci_b2b-1
+[% END %]
+
+outbound_proxy=$H(P-D-Uri)
+force_outbound_proxy=no
+#next_hop_ip=
+#next_hop_port=
+
+header_filter=whitelist
+header_list=P-R-Uri,P-D-Uri,P-Preferred-Identity,P-Asserted-Identity,Diversion,Privacy,Allow,Supported,Require,RAck,RSeq,Rseq,User-Agent,History-Info,Call-Info[% IF kamailio.proxy.presence.enable == "yes" %],Event,Expires,Subscription-State,Accept[% END %][% IF kamailio.proxy.allow_refer_method == "yes" %],Referred-By,Refer-To,Replaces[% END %]
+message_filter=transparent
+#message_list=
+
+#auth for callee
+enable_auth=yes
+auth_user=$P(u)
+auth_pwd=$P(p)
+
+#auth for caller
+enable_aleg_auth=yes
+auth_aleg_user=$P(au)
+auth_aleg_pwd=$P(ap)
+
+[% IF kamailio.proxy.authenticate_bye == "yes" -%]
+# UAS authentication for B leg
+enable_bleg_uas_auth=yes
+uas_auth_bleg_realm=$P(sr)
+uas_auth_bleg_user=$P(su)
+uas_auth_bleg_pwd=$P(sp)
+[% END -%]
+
+
+enable_call_timer=[% sems.sbc.calltimer_enable %]
+call_timer=[% sems.sbc.calltimer_max %]
+
+
+
+[% IF kamailio.proxy.allow_refer_method == "yes" %]
+fix_replaces_inv=yes
+fix_replaces_ref=no
+[% END %]
+
+enable_prepaid=no
+
+enable_session_timer=$P(sst_enable)
+session_expires=$P(sst_expires)
+minimum_timer=$P(sst_min_timer)
+maximum_timer=$P(sst_max_timer)
+session_refresh_method=$P(sst_refresh_method)
+
+enable_aleg_session_timer=$P(aleg_sst_enable)
+aleg_session_expires=$P(aleg_sst_expires)
+aleg_minimum_timer=$P(aleg_sst_min_timer)
+aleg_maximum_timer=$P(aleg_sst_max_timer)
+aleg_session_refresh_method=$P(aleg_sst_refresh_method)
+accept_501_reply=yes
+
+#reply_translations="606=>488 Not acceptable here"
+
+[% IF sems.sbc.sdp_filter.enable == "yes" %]
+sdp_filter=[% sems.sbc.sdp_filter.mode %]
+sdpfilter_list=[% sems.sbc.sdp_filter.codecs %]
+[% END %]
+
+

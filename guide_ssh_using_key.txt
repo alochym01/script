@@ -1,0 +1,32 @@
+Network topology
+1.	server with IP: 172.30.41.38, client is any computer
+
+Set to setup
+1.	on server: 
+	- run cli: ssh-keygen
+	- the result is in ~/.ssh/
+drwx------  2 inf inf 4096 Oct 21 00:11 ./
+drwxr-xr-x 14 inf inf 4096 Oct 21 00:10 ../
+-rw-rw-r--  1 inf inf  392 Oct 21 00:11 authorized_keys
+-rw-------  1 inf inf 1679 Oct 21 00:10 id_rsa
+-rw-r--r--  1 inf inf  392 Oct 21 00:10 id_rsa.pub
+
+	- run cli: cd ~/.ssh
+	- run cli: cat id_rsa.pub > authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuIqXqVxmrGVhSXfUeXbItQWhO/HlhieDTH6pJDYxmVcl+/Yb6LxKtEfywbpQ51W0CUaKbc9Ir8w2lglt8Un2IB1JcekO87BwxhMuQtbwXvXdHnLTSxx79KVpKr/7ZBfdpOyIX9VYmc7hIx0a8mZOzFqRUOzXzv+SgJrUR3dn8BnwUiOL0/j2cD5KqVipGHkFQYNrOtureLoIIYIiXNnsQ/qfiuRq65SwewDUH11y5J3YkNSAuXCXYNQ81hJLs8uefKB0+nhkW7qVbUtNls3GNoQpql1Z6Lj44B0vfrDnrOa/Aqz2XuusZ8thK+hTQs445GGKw0Rrx4UZSwyapM6R5 inf@ubuntu
+
+2.	on client
+	- copy the content id_rsa of the server into its local storage - abc.txt
+	- chmod 600 abc.txt or you will get the error
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0664 for 'id_rsa_ubuntu' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+bad permissions: ignore key: id_rsa_ubuntu
+inf@172.30.41.38's password: 
+		
+	- run cli: ssh -i abc.txt username@server_ip_address
+	- example: ssh -i abc.txt inf@172.30.41.38
+

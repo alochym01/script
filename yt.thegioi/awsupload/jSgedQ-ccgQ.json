@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/uygo-Cjy92Ai2vSLHMgvwKu23yc\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/-rOxvE3sd7KMJXeFKFDdUUtAQmM\"",
+   "id": "jSgedQ-ccgQ",
+   "snippet": {
+    "publishedAt": "2016-01-06T16:05:08.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Ngày đầu kiểm tra trang bị bình cứu hỏa: Hầu hết chủ xe chưa nắm rõ quy định",
+    "description": "Website: http://xemtin.xyz\n Trong ngày đầu tiên kiểm tra việc trang bị bình chữa cháy, hầu hết chủ xe du lịch dưới 9 chỗ ngồi chưa biết hoặc chưa trang bị.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/jSgedQ-ccgQ/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/jSgedQ-ccgQ/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/jSgedQ-ccgQ/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "xa-hoi",
+     "bình chữa cháy",
+     "Bộ Công an"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Ngày đầu kiểm tra trang bị bình cứu hỏa: Hầu hết chủ xe chưa nắm rõ quy định",
+     "description": "Website: http://xemtin.xyz\n Trong ngày đầu tiên kiểm tra việc trang bị bình chữa cháy, hầu hết chủ xe du lịch dưới 9 chỗ ngồi chưa biết hoặc chưa trang bị."
+    }
+   }
+  }
+ ]
+}

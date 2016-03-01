@@ -1,0 +1,25 @@
+server {
+	listen 80;
+	listen [::]:80;
+#
+	server_name www.abc.com;
+#
+	root /home/hadn/web/basic/web;
+	#index index.php;
+
+	location / {
+		index index.php;
+		#try_files $uri $uri/ =404 ;
+		try_files $uri $uri/ /index.php?$args;
+		#try_files $uri $uri/;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+	
+	#	# With php5-cgi alone:
+	#	fastcgi_pass 127.0.0.1:9000;
+	#	# With php5-fpm:
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+	}
+}

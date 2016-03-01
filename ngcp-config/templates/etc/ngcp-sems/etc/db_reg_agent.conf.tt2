@@ -1,0 +1,107 @@
+
+[% argv.role='lb'; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_ext_ips = out -%]
+[% IF !sip_ext_ips.size -%]
+[% argv.role='lb'; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_ext_ips = out -%]
+[% END -%]
+[% argv.role='lb'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_lb_ips = out -%]
+[% IF !sip_lb_ips.size -%]
+[% argv.role='lb'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_lb_ips = out -%]
+[% END -%]
+# Database connection
+mysql_user=[% sems.dbuser %]
+mysql_passwd=[% sems.dbpassword %]
+
+# mysql_server, default: localhost
+mysql_server=[% database.central.dbhost %]
+mysql_port=[% database.central.dbport %]
+
+#mysql_db, default: sems
+mysql_db=kamailio
+
+# table for registration status 
+# default: registrations
+registrations_table="sems_registrations"
+
+# query joining subscriber info with registration table
+# (without trailing ';' such that where clause can appended)
+joined_query="select a.subscriber_id as subscriber_id, a.value as user, b.value as pass, c.value as realm, concat('sip:', a.value, '@[% sip_ext_ips.0 %]:[% kamailio.lb.port %];uuid=', vs.uuid) as contact, r.registration_status as registration_status, r.expiry as expiry, r.last_registration as last_registration from provisioning.voip_usr_preferences a left join provisioning.voip_usr_preferences b on a.subscriber_id = b.subscriber_id left join provisioning.voip_usr_preferences c on a.subscriber_id = c.subscriber_id left join provisioning.voip_preferences vpa on vpa.id = a.attribute_id  left join provisioning.voip_preferences vpb on vpb.id = b.attribute_id left join provisioning.voip_preferences vpc on vpc.id = c.attribute_id left join kamailio.sems_registrations r on r.subscriber_id = a.subscriber_id left join provisioning.voip_subscribers vs on a.subscriber_id = vs.id where vpa.attribute = 'peer_auth_user' and vpb.attribute = 'peer_auth_pass' and vpc.attribute = 'peer_auth_realm'"
+
+#example with contact:
+# joined_query="select subscribers.subscriber_id as subscriber_id, subscribers.user as user, subscribers.pass as pass, subscribers.realm as realm, subscribers.contact as contact, registrations.registration_status as registration_status, registrations.expiry as expiry, registrations.last_registration as last_registration from subscribers left join registrations on subscribers.subscriber_id=registrations.subscriber_id"
+
+# contact_hostport=<host:port> - overriding contact host:port
+# sets the contact host:port portion that is registered
+# default: empty
+#contact_hostport=[% sip_ext_ips.0 %]:[% kamailio.lb.port %]
+
+# outbound_proxy=<sip_uri>
+# set the outbound proxy to send registrations through
+#
+outbound_proxy=sip:[% sip_lb_ips.0 %]:[% kamailio.lb.port %]
+
+# db_read_contact=[yes, no] : read individual contact to register from DB?
+# note: joined_query must select the contact, too
+# default: no
+db_read_contact=yes
+
+#save_contacts=[yes, no] : save contacts?
+# for monitoring and troubleshooting, all contacts returned with a positive reply
+# may be saved to DB in the registrations.contacts colums
+# default: yes
+save_contacts=yes
+
+#save_auth_replies=[yes, no] : update status on 401 replies (auth)?
+# usually, 401 replies which are resent with auth are not saved. if save_auth_replies=yes,
+# last_code and last_reason in DB is updated with the 401
+save_auth_replies=no
+
+# expires: desired expires, i.e. expires value that is requested
+# default: 7200
+expires=21600
+
+# error_retry_interval
+#
+# default: 300
+error_retry_interval=600
+
+# reregister_interval: fraction of actual expires after which register is refreshed
+# default: reregister_interval=0.5
+reregister_interval=0.9
+
+# minimum_reregister_interval: if set, re-register is scheduled in least loaded time
+#  in minimum_reregister_interval .. reregister_interval i order to smooth load spikes
+#  must be smaller than reregister_interval
+#  default: off
+#
+#  example: 
+#    reregister_interval=0.5
+#    minimum_reregister_interval=0.4
+#   on a registration expiring in 3600s, the least loaded spot between 1440s and 1800s
+#   is chosen
+#  
+minimum_reregister_interval=0.7
+
+# enable_ratelimiting=yes : Enable ratelimiting?
+# default: no
+# if enabled, the amount of initial REGISTER requests is limited (not counting re-trans-
+# missions and requests re-sent for authentication)
+enable_ratelimiting=yes
+
+# ratelimit_rate=300 : rate of initial REGISTER requests to send as maximum
+ratelimit_rate=300
+
+# ratelimit_per=1 : per time unit (in seconds, e.g. 300 REGISTER in 1 second)
+ratelimit_per=1
+
+# delete_removed_registrations=yes : delete removed registrations from registrations
+#  table in DB? (otherwise they will stay with STATUS_REMOVED)
+# default: yes
+#
+delete_removed_registrations=yes
+
+# delete_failed_deregistrations=yes : delete failed de-registrations from registrations
+#  table in DB? (otherwise they will stay with STATUS_TO_BE_REMOVED)
+# only applicable if delete_removed_registrations=yes
+# default: no
+#
+delete_failed_deregistrations=yes

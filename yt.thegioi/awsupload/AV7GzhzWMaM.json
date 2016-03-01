@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"oqbvhYxBE6fAbRk6m7aLlHf5s1I/b7W4xaXwZPF_yodPcu4enjUGuus\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"oqbvhYxBE6fAbRk6m7aLlHf5s1I/kLzA6PL1ZUWTLHvJaVSed_wFbe8\"",
+   "id": "AV7GzhzWMaM",
+   "snippet": {
+    "publishedAt": "2016-01-08T03:20:05.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Xuất khẩu tiểu ngạch tiềm ẩn nhiều rủi ro",
+    "description": "Website: http://xemtin.xyz\n Nếu nhiều doanh nghiệp nông sản trong nước vẫn tiếp tục bỏ đường lớn để xuất khẩu theo đường tiểu ngạch thì sẽ chịu nhiều thiệt hại khi luôn ở thế bị động và bị ép giá.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/AV7GzhzWMaM/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/AV7GzhzWMaM/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/AV7GzhzWMaM/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "trong-nuoc",
+     "đường tiểu ngạch",
+     "mặt hàng nông sản"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Xuất khẩu tiểu ngạch tiềm ẩn nhiều rủi ro",
+     "description": "Website: http://xemtin.xyz\n Nếu nhiều doanh nghiệp nông sản trong nước vẫn tiếp tục bỏ đường lớn để xuất khẩu theo đường tiểu ngạch thì sẽ chịu nhiều thiệt hại khi luôn ở thế bị động và bị ép giá."
+    }
+   }
+  }
+ ]
+}

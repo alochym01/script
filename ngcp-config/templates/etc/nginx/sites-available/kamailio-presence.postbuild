@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ ! -e /etc/nginx/sites-enabled/kamailio-presence ]; then
+  ln -s /etc/nginx/sites-available/kamailio-presence /etc/nginx/sites-enabled/kamailio-presence
+fi

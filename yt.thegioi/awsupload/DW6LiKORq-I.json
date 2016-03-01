@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/_liezFRf0kMnKvAhmyQd2XIIlY8\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/RfGQE0Fq7psZNRZzsKXvZs9Ytww\"",
+   "id": "DW6LiKORq-I",
+   "snippet": {
+    "publishedAt": "2016-01-07T08:50:05.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Ngành đường sắt Bỉ đình công gây thiệt hại 40 triệu Euro/ngày",
+    "description": "Website: http://xemtin.xyz\n Nhân viên ngành đường sắt trên toàn nước Bỉ đang có một cuộc đình công lớn, gây tê liệt giao thông và thiệt hại 40 triệu Euro/ngày cho nước này.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/DW6LiKORq-I/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/DW6LiKORq-I/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/DW6LiKORq-I/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "the-gioi",
+     "ngành đường sắt",
+     "ngành đường sắt Bỉ",
+     "ngành đường sắt Bỉ đình công"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Ngành đường sắt Bỉ đình công gây thiệt hại 40 triệu Euro/ngày",
+     "description": "Website: http://xemtin.xyz\n Nhân viên ngành đường sắt trên toàn nước Bỉ đang có một cuộc đình công lớn, gây tê liệt giao thông và thiệt hại 40 triệu Euro/ngày cho nước này."
+    }
+   }
+  }
+ ]
+}

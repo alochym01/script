@@ -1,0 +1,11 @@
+
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_int_ips = out -%]
+[% IF !sip_int_ips.size -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_int_ips = out -%]
+[% END -%]
+# IP of the monitoring interface:
+monit_udp_ip=[% sip_int_ips.0 %]
+
+# port the statistics server should listen to:
+monit_udp_port=5040

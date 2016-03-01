@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/sL6b1FwVMQpZh0D5byIjJFzKRew\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/oVEio5hDYuK5-Lme2mS-DSyumkY\"",
+   "id": "1FwEL3xHXNo",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:35:04.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Doanh nghiệp Việt thống lĩnh M&A bất động sản năm 2015",
+    "description": "Website: http://xemtin.xyz\n Doanh nghiệp Việt Nam đang chiếm vị trí thống lĩnh trong lĩnh vực mua bán - sáp nhập (M&A) bất động sản năm 2015 với quy mô ngày càng lớn mạnh.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/1FwEL3xHXNo/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/1FwEL3xHXNo/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/1FwEL3xHXNo/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "doanh nghiệp việt",
+     "bất động sản",
+     "thị trường bất động sản"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Doanh nghiệp Việt thống lĩnh M&A bất động sản năm 2015",
+     "description": "Website: http://xemtin.xyz\n Doanh nghiệp Việt Nam đang chiếm vị trí thống lĩnh trong lĩnh vực mua bán - sáp nhập (M&A) bất động sản năm 2015 với quy mô ngày càng lớn mạnh."
+    }
+   }
+  }
+ ]
+}

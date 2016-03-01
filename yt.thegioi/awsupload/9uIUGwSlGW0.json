@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/-vR-tXuzj5GefNoRa8lTtBC6cLg\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/7jP9lBMyi9tpcPbcJq-uLK4EiTI\"",
+   "id": "9uIUGwSlGW0",
+   "snippet": {
+    "publishedAt": "2016-01-06T07:30:04.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Bank of America dự đoán rất xấu về chứng khoán Trung Quốc",
+    "description": "Website: http://xemtin.xyz\n Ngân hàng Bank of America đã đưa ra những dự đoán rất xấu về tương lai của Shanghai Composite, chỉ số chứng khoán chính của Trung Quốc trong năm 2016.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/9uIUGwSlGW0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/9uIUGwSlGW0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/9uIUGwSlGW0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "Bank of America",
+     "Shanghai Composite",
+     "kinh tế Trung Quốc",
+     "kinh-te"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Bank of America dự đoán rất xấu về chứng khoán Trung Quốc",
+     "description": "Website: http://xemtin.xyz\n Ngân hàng Bank of America đã đưa ra những dự đoán rất xấu về tương lai của Shanghai Composite, chỉ số chứng khoán chính của Trung Quốc trong năm 2016."
+    }
+   }
+  }
+ ]
+}

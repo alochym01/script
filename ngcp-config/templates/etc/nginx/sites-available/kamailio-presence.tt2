@@ -1,0 +1,26 @@
+[% argv.role='proxy'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_int_ips = out -%]
+[% IF !sip_int_ips.size -%]
+[% argv.role='proxy'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_int_ips = out -%]
+[% END -%]
+[% argv.role='proxy'; argv.type='web_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; web_int_ips = out -%]
+[% IF !web_int_ips.size -%]
+[% argv.role='proxy'; argv.type='web_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; web_int_ips = out -%]
+[% END -%]
+
+[% IF kamailio.proxy.presence.enable == "yes" -%]
+	server {
+		listen [::]:[% nginx.xcap_port %] ipv6only=off default;
+		ssl_certificate      [% ossbss.apache.sslcertfile %];
+   		ssl_certificate_key  [% ossbss.apache.sslcertkeyfile %];
+   		include /etc/nginx/ssl_params;
+
+		location ~ ^/xcap {
+			proxy_pass http://[% sip_int_ips.0 %]:[% kamailio.proxy.port %];
+			proxy_set_header  P-NGCP-Src-Ip   $remote_addr;
+			proxy_set_header  P-NGCP-Src-Port $remote_port;
+			proxy_set_header  P-NGCP-XCAP-Host $host;
+			proxy_send_timeout 10s;
+			proxy_read_timeout 10s;
+		}
+	}
+[% END -%]

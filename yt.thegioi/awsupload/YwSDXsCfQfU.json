@@ -1,0 +1,53 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/iWMpziWGD1pMpJBCZC1o5XInwks\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/uOQYxetHzJh7fV8lUdZqHoX4fyw\"",
+   "id": "YwSDXsCfQfU",
+   "snippet": {
+    "publishedAt": "2016-01-07T03:40:07.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "“Việt Nam cần đầu tư vào những nghề có yêu cầu kĩ thuật cao”",
+    "description": "Website: http://xemtin.xyz\nBộ trưởng Bộ LĐ-TB&XH Phạm Thị Hải Chuyền cho biết, để cạnh tranh trong thị trường lao động ASEAN, Việt Nam cần đầu tư vào những nghề có yêu cầu kĩ thuật cao.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/YwSDXsCfQfU/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/YwSDXsCfQfU/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/YwSDXsCfQfU/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "xa-hoi",
+     "Cộng đồng kinh tế Asean",
+     "lao động kỹ thuật cao",
+     "Phạm Thị Hải Chuyền",
+     "xuất khẩu lao động",
+     "chất lượng nguồn lao động"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "“Việt Nam cần đầu tư vào những nghề có yêu cầu kĩ thuật cao”",
+     "description": "Website: http://xemtin.xyz\nBộ trưởng Bộ LĐ-TB&XH Phạm Thị Hải Chuyền cho biết, để cạnh tranh trong thị trường lao động ASEAN, Việt Nam cần đầu tư vào những nghề có yêu cầu kĩ thuật cao."
+    }
+   }
+  }
+ ]
+}

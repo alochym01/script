@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/Ws5UesnkoOkRfUufGRV2G-MrI2o\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/rK94OhYCZnWeZ3B0tkj1TzPZtpg\"",
+   "id": "jK0u9e8OQQc",
+   "snippet": {
+    "publishedAt": "2016-01-06T07:50:08.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Hầu hết xe dưới 9 chỗ ngồi chưa trang bị bình cứu hỏa",
+    "description": "Website: http://xemtin.xyz\n Kết quả kiểm tra của lực lượng chức năng chỉ rõ, hầu hết xe du lịch loại dưới 9 chỗ ngồi còn chưa trang bị bình cứu hỏa trên xe.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/jK0u9e8OQQc/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/jK0u9e8OQQc/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/jK0u9e8OQQc/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "bình chữa cháy theo xe",
+     "trang bị bình cứu hỏa trên xe",
+     "đăng kiểm kỹ thuật xe",
+     "xa-hoi"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Hầu hết xe dưới 9 chỗ ngồi chưa trang bị bình cứu hỏa",
+     "description": "Website: http://xemtin.xyz\n Kết quả kiểm tra của lực lượng chức năng chỉ rõ, hầu hết xe du lịch loại dưới 9 chỗ ngồi còn chưa trang bị bình cứu hỏa trên xe."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/zbZ2AwXE4_SNTyIP9rD5_Qp_yMk\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/rKddP1qabPsYOl4z17ZddPhkrcQ\"",
+   "id": "yj9Ls_aK8fA",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:10:14.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Dư nợ tín dụng tại TP.HCM tăng 13% trong năm 2015",
+    "description": "Website: http://xemtin.xyz\n Dư nợ tín dụng tại TP.HCM năm 2015 đã tăng 13% so với năm 2014, tiếp tục tập trung vào lĩnh vực sản xuất kinh doanh và hỗ trợ doanh nghiệp.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/yj9Ls_aK8fA/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/yj9Ls_aK8fA/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/yj9Ls_aK8fA/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "dư nợ tín dụng",
+     "tỷ lệ nợ xấu",
+     "Dư nợ tín dụng tại TP.HCM"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Dư nợ tín dụng tại TP.HCM tăng 13% trong năm 2015",
+     "description": "Website: http://xemtin.xyz\n Dư nợ tín dụng tại TP.HCM năm 2015 đã tăng 13% so với năm 2014, tiếp tục tập trung vào lĩnh vực sản xuất kinh doanh và hỗ trợ doanh nghiệp."
+    }
+   }
+  }
+ ]
+}

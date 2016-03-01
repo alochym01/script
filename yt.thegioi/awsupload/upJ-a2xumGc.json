@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/PdmuhCm9lc01D5Xfty4w24t-oPM\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/5D-9Y-IdHPUpuXcOpnG-lDK1uTs\"",
+   "id": "upJ-a2xumGc",
+   "snippet": {
+    "publishedAt": "2016-01-07T05:45:09.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Đại học Huế tăng cường liên kết đào tạo quốc tế",
+    "description": "Website: http://xemtin.xyz\n ĐH Huế đang tăng cường thực hiện những chương trình giao lưu, hợp tác với các trường ĐH uy tín, mở rộng các chương trình liên kết đào tạo quốc tế dưới nhiều hình thức.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/upJ-a2xumGc/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/upJ-a2xumGc/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/upJ-a2xumGc/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "giao-duc",
+     "đào tạo trình độ Đại học",
+     "Đại học Huế",
+     "phương pháp học quốc tế"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Đại học Huế tăng cường liên kết đào tạo quốc tế",
+     "description": "Website: http://xemtin.xyz\n ĐH Huế đang tăng cường thực hiện những chương trình giao lưu, hợp tác với các trường ĐH uy tín, mở rộng các chương trình liên kết đào tạo quốc tế dưới nhiều hình thức."
+    }
+   }
+  }
+ ]
+}

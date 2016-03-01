@@ -1,0 +1,293 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.role='db'; argv.type='ha_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; db_ha_int_ips = out -%]
+[% ES_regex_const = 'regex.type="ERE" regex.submatch="1" regex.nomatchmode="BLANK"'-%]
+[% MACRO ES_regex(value) GET "regex.expression=\"$value\" $ES_regex_const" -%]
+[% MACRO ES_msg_json     GET 'name="msg" format="json"' -%]
+[% MACRO ES_omelasticsearch(type) BLOCK -%]
+[% IF rsyslog.elasticsearch.enable == 'yes' && db_ha_int_ips.0 -%]
+  action(
+    type="omelasticsearch"
+    server="[% db_ha_int_ips.0 -%]"
+    template="[% type -%]"
+    searchIndex="sipwise-index"
+    dynSearchIndex="[% rsyslog.elasticsearch.dynSearchIndex -%]"
+    bulkmode="[% rsyslog.elasticsearch.bulkmode -%]"
+    queue.workerthreads="5"
+    queue.type="[% rsyslog.elasticsearch.queue.type -%]"
+    queue.size="[% rsyslog.elasticsearch.queue.size -%]"
+    queue.dequeuebatchsize="[% rsyslog.elasticsearch.queue.dequeuebatchsize -%]"
+    action.resumeretrycount="[% rsyslog.elasticsearch.action.resumeretrycount -%]"
+  )
+[% END -%]
+[% END -%]
+#  /etc/rsyslog.conf	Configuration file for rsyslog v3.
+
+#################
+#### MODULES ####
+#################
+
+# Local system logging support
+$ModLoad imuxsock
+
+# Kenel logging support
+$ModLoad imklog
+
+# udp listening support
+#$ModLoad imudp
+#$UDPServerRun 514
+
+#mysql logging support
+#$ModLoad ommysql
+
+[% IF rsyslog.elasticsearch.enable == 'yes' -%]
+# elasticsearch logging support
+$ModLoad omelasticsearch
+[% END -%]
+
+###########################
+#### GLOBAL DIRECTIVES ####
+###########################
+
+# agranig: make sure to log server-time instead of client-time
+$template SipwiseTraditionalFormat,"%timegenerated% %HOSTNAME% %syslogtag%%msg:::drop-last-lf%\n"
+$ActionFileDefaultTemplate SipwiseTraditionalFormat
+#$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+
+# Set the default permissions for all log files.
+$FileOwner root
+$FileGroup adm
+$FileCreateMode 0640
+$DirCreateMode 0755
+
+#DONT uncomment this!
+#$IncludeConfig /etc/rsyslog.d/*.conf
+
+
+# Memory and disk Queuing support
+$WorkDirectory /var/log/queue
+$ActionQueueType LinkedList
+$ActionQueueFileName SL
+$ActionQueueMaxDiskSpace 4g
+$ActionQueueSaveOnShutdown on
+$ActionResumeRetryCount -1
+
+[% IF kamailio.proxy.debug == 'yes' -%]
+# accept 64k messages for kamailio json dumps not to be truncated
+$MaxMessageSize 64k
+[% ELSE -%]
+# accept 4k messages so ossbss xml dumps will be logged completely
+$MaxMessageSize 4k
+[% END -%]
+
+# Rate Limiting
+$SystemLogRateLimitInterval 0
+$SystemLogRateLimitBurst 0
+
+[% IF rsyslog.elasticsearch.enable == 'yes' -%]
+# Increase amount of main/reader threads for the main queue
+# in case of elasticsearch output
+$MainMsgQueueWorkerThreads 2
+[% END -%]
+
+###################
+#### TEMPLATES ####
+###################
+[% IF rsyslog.elasticsearch.enable == 'yes' -%]
+# this is for index names to be like: sipwise-YYYY.MM.DD
+template(name="sipwise-index" type="list") {
+    constant(value="sipwise-") property(name="$year") constant(value=".") property(name="$month") constant(value=".") property(name="$day")
+}
+
+template(name="plain-syslog" type="list") {
+    constant(value="{")
+      constant(value="\"@version\":\"1")
+      constant(value="\",\"host\":\"[% hostname %]")
+      constant(value="\",\"@timestamp\":\"")	property(name="timereported" dateFormat="rfc3339")
+      constant(value="\",\"program\":\"")	property(name="programname")
+      constant(value="\",\"severity\":\"")	property(name="syslogseverity-text")
+      constant(value="\",\"pid\":\"")		property(name="procid")
+      constant(value="\",\"message\":\"")	property([% ES_msg_json -%])
+    constant(value="\"}")
+}
+
+template(name="kamailio-syslog" type="list") {
+    constant(value="{")
+      constant(value="\"@version\":\"1")
+      constant(value="\",\"host\":\"[% hostname %]")
+      constant(value="\",\"@timestamp\":\"")	property(name="timereported" dateFormat="rfc3339")
+      constant(value="\",\"@unixtime\":\"")	property(name="timereported" dateFormat="unixtimestamp")
+      constant(value=".")			property(name="timereported" dateFormat="subseconds" position.to="6")
+      constant(value="\",\"program\":\"")	property(name="programname")
+      constant(value="\",\"severity\":\"")	property(name="syslogseverity-text")
+      constant(value="\",\"pid\":\"")		property(name="procid")
+      constant(value="\",\"message\":\"")	property([% ES_msg_json -%])
+      constant(value="\",\"sip-call-id\":\"")	property([% ES_msg_json -%] [% ES_regex("ID=([^ ]+) ") -%])
+      constant(value="\",\"sip-user-agent\":\"") property([% ES_msg_json -%] [% ES_regex("UA='([^']+)' ") -%])
+      constant(value="\",\"source-ip\":\"")	property([% ES_msg_json -%] [% ES_regex("UAIP=([^ ]+) ") -%])
+      constant(value="\",\"sip-ua-ip\":\"")	property([% ES_msg_json -%] [% ES_regex("IP=([^ ]+) ") -%])
+      constant(value="\",\"sip-to\":\"")	property([% ES_msg_json -%] [% ES_regex("T=([^ ]+) ") -%])
+      constant(value="\",\"sip-from\":\"")	property([% ES_msg_json -%] [% ES_regex("F=([^ ]+) ") -%])
+      constant(value="\",\"sip-request-uri\":\"") property([% ES_msg_json -%] [% ES_regex("R=([^ ]+) ") -%])
+      constant(value="\",\"sip-method\":\"")	property([% ES_msg_json -%] [% ES_regex("M=([^ ]+) ") -%])
+      constant(value="\",\"sip-reply-reason\":\"") property([% ES_msg_json -%] [% ES_regex("SS='([^']+)' ") -%])
+      constant(value="\",\"sip-reply-code\":\"") property([% ES_msg_json -%] [% ES_regex("S=([^ ]+) ") -%])
+      constant(value="\",\"sip-comment\":\"")	property([% ES_msg_json -%] [% ES_regex("<script>: (.*) -") -%])
+      constant(value="\",\"sip-from-user\":\"") property([% ES_msg_json -%] [% ES_regex("F=sip:([^@]+)@") -%])
+      constant(value="\",\"sip-to-user\":\"")	property([% ES_msg_json -%] [% ES_regex("T=sip:([^@]+)@") -%])
+    constant(value="\"}")
+}
+[% END -%]
+
+###############
+#### RULES ####
+###############
+
+[% IF rsyslog.external_log == 1 %]
+# Log to external syslog system
+  [% IF rsyslog.external_proto == "udp" %]
+*.[% rsyslog.external_loglevel %] @[% rsyslog.external_address %]:[% rsyslog.external_port %]
+  [% ELSIF rsyslog.external_proto == "tcp" %]
+*.[% rsyslog.external_loglevel %] @@[% rsyslog.external_address %]:[% rsyslog.external_port %]
+  [% END %]
+[% END %]
+
+
+#Syslogtag filter rules for ngcp services
+# Kamailio LB
+if $syslogfacility-text == 'local6' and $msg contains 'M=OPTIONS'  then {
+  -/var/log/ngcp/kamailio-options-lb.log
+  stop
+}
+
+:programname, isequal, "lb" {
+  -/var/log/ngcp/kamailio-lb.log[% IF kamailio.lb.debug == "yes" -%];RSYSLOG_FileFormat[% END %]
+[% ES_omelasticsearch('kamailio-syslog') -%]
+  stop
+}
+
+# Kamailio Proxy
+if $syslogfacility-text == 'local7' and $msg contains 'M=OPTIONS'  then {
+  -/var/log/ngcp/kamailio-options-proxy.log
+  stop
+}
+
+:programname, isequal, "proxy" {
+  -/var/log/ngcp/kamailio-proxy.log[% IF kamailio.proxy.debug == "yes" -%];RSYSLOG_FileFormat[% END %]
+[% ES_omelasticsearch('kamailio-syslog') -%]
+  stop
+}
+
+:programname, isequal, "prosody" {
+  -/var/log/ngcp/xmpp.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+:programname, isequal, "asterisk" {
+  -/var/log/ngcp/voicemail.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+:programname, isequal, "ntpd" {
+  -/var/log/ngcp/ntp.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+if $programname == ["oss","csc","provisioning",
+                    "apache2","/usr/sbin/apache2"] then {
+  -/var/log/ngcp/oss.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+:syslogtag, isequal, "/usr/share/ngcp-panel/ngcp_panel_fastcgi.pl:" {
+  -/var/log/ngcp/panel-fcgi.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+if $programname == 'ngcp-panel' and $msg startswith ' DEBUG'  then {
+  -/var/log/ngcp/panel-debug.log
+  stop
+}
+
+if $programname == 'ngcp-panel' and $msg contains 'CALLED=API'  then {
+  -/var/log/ngcp/api.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+:programname, isequal, "ngcp-panel" {
+  -/var/log/ngcp/panel.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+if $programname == ["rtpproxy","rtpengine"] then {
+  -/var/log/ngcp/rtp.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+:syslogtag, contains, "collectd" {
+  -/var/log/ngcp/collectd.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+# MT#7349 ngcp-sems 1.4 do not use the proper programname
+if $programname == ["ngcp-sems","sems"] then {
+  -/var/log/ngcp/sems.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+:programname, isequal, "mediator" {
+  -/var/log/ngcp/cdr.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+:programname, isequal, "rate-o-mat" {
+  -/var/log/ngcp/rate-o-mat.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+:syslogtag, isequal, "ngcpcfg:" {
+  -/var/log/ngcp/ngcpcfg.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+:syslogtag, contains, "redis" {
+  -/var/log/ngcp/redis.log
+[% ES_omelasticsearch('plain-syslog') -%]
+  stop
+}
+
+
+
+#Log by facility.
+auth,authpriv.*			/var/log/auth.log
+*.*;auth,authpriv.none,cron.none,mail.none		-/var/log/syslog
+cron.*				/var/log/cron.log
+daemon.*			-/var/log/daemon.log
+kern.*				-/var/log/kern.log
+mail.*				-/var/log/mail.log
+user.*				-/var/log/user.log
+
+
+# More logging for the mail system.
+mail.info			-/var/log/mail.info
+mail.warn			-/var/log/mail.warn
+mail.err			/var/log/mail.err
+
+
+
+# Emergencies are sent to everybody logged in. This does not match services' emergencies
+# since the logs are discarded before. It is unlikely to happen so I leave this in the end
+*.emerg				:omusrmsg:*
+

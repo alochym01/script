@@ -1,0 +1,15 @@
+
+/var/log/ngcp/*.log
+{
+        rotate [% rsyslog.ngcp_logs_preserve_days %]
+        daily
+        missingok
+        ifempty
+        compress
+	olddir old
+	dateext
+        sharedscripts
+        postrotate
+                invoke-rc.d rsyslog rotate > /dev/null
+        endscript
+}

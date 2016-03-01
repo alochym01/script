@@ -1,0 +1,166 @@
+#!/bin/bash
+
+debug () {
+  [ $DEBUG ] && echo "$*"
+}
+
+mysql_call () {
+  [ $DEBUG ] && echo "mysql_call: $*"
+  $MYCOM "$*"
+}
+
+
+if ! [ -f /etc/mysql/sipwise.cnf ] || ! [ -f /etc/ngcp-ossbss/mysql_values.cfg ]; then
+  echo "Missed configuration file(s): /etc/mysql/sipwise.cnf /etc/ngcp-ossbss/mysql_values.cfg" >&2
+  exit 1
+else
+  . /etc/mysql/sipwise.cnf
+  . /etc/ngcp-ossbss/mysql_values.cfg
+  debug "loaded configs"
+fi
+
+if [ -x /usr/share/ngcp-ngcpcfg/helper/check-for-mysql ] ; then
+  /usr/share/ngcp-ngcpcfg/helper/check-for-mysql
+fi
+
+#dispatcher values reloaded
+MYSQL="mysql -u$MYSQL_USER -p$SIPWISE_DB_PASSWORD -h ${MYSQL_HOST} -P ${MYSQL_PORT}"
+MYCOM="${MYSQL} kamailio -s -e"
+mysql_call "truncate table dispatcher;"
+for ip in $SIPADDRESS ; do
+  mysql_call "insert into dispatcher (setid,destination,description) values (2,'sip:$ip:$ASTERISK_PORT', 'Voicemail servers')"
+  mysql_call "insert into dispatcher (setid,destination,description) values (3,'sip:$ip:$SEMS_PORT','Application servers')"
+  done
+# populate dispatcher with kamailio lb internal ips
+OLD_IFS="$IFS"
+for i in $DISPATCHER_IPS; do
+        IFS=";"; DID="";
+        for j in $i; do
+          if [ -z "$DID" ]; then
+            DID=$j
+          else
+            IFS="$OLD_IFS"
+            mysql_call "insert into dispatcher values(NULL, $DID, \"sip:$j:$KAMAILIO_LB_PORT\", 0, 0, \"\", \"SIP loadbalancer\")"
+            IFS=";"
+          fi
+        done
+done
+IFS="$OLD_IFS"
+
+# populate voip_preferences_enum with dispatcher ids
+MYCOM="${MYSQL} provisioning -s -e"
+PREF_ID=$($MYCOM "select id from voip_preferences where attribute='lbrtp_set'")
+declare -A OLD_IDS;
+OLD_SETS=$($MYCOM "select label, value from voip_preferences_enum where preference_id=\"$PREF_ID\"");
+
+OLD_IFS="$IFS";
+IFS=$'\n'
+for i in $OLD_SETS; do
+  IFS=$'\t'
+  k="";
+  for j in $i; do
+    if [ -z "$k" ]; then
+      k="$j";
+    else
+      OLD_IDS["$k"]="$j"
+    fi;
+  done
+done
+IFS="$OLD_IFS"
+
+for set in ${!DISPATCHER_IDS[@]}; do
+  id=${DISPATCHER_IDS["$set"]}
+  oldid=${OLD_IDS["$set"]}
+  if [ "$id" == "$oldid" ]; then
+    echo "nothing to do" >/dev/null
+  elif [ -z "$oldid" ]; then
+    mysql_call "insert into voip_preferences_enum values (NULL, \"$PREF_ID\", \"$set\", \"$id\", 0, 1, 1, 1, 0, NULL)"
+  else
+    mysql_call "update voip_preferences_enum set value=\"$id\" where preference_id=\"$PREF_ID\" and label=\"$set\";"
+  fi
+  unset OLD_IDS["$set"]
+done
+
+# clear orphaned entries
+for set in "${!OLD_IDS[@]}"; do
+  id="${OLD_IDS["$set"]}"
+  if [ "$set" == "None" ]; then
+    echo "ignore default set" > /dev/null
+  else
+    mysql_call "delete from voip_preferences_enum where preference_id=\"$PREF_ID\" and label=\"$set\";"
+  fi
+done
+
+# declare the schema of xmlgroups, xmlhosts and xmlhostgroups tables
+declare -A xmlgroups=(
+  [1]="proxy"
+  [2]="registrar"
+  [3]="presence"
+  [4]="loadbalancer"
+  [5]="appserver"
+  [6]="proxy-ng"
+  [7]="xmpp"
+  )
+
+declare -A xmlhosts=(
+  [1]="Kamailio"
+  [2]="Sems"
+  [3]="Kamailio-SR"
+  [4]="Loadbalancer"
+  [5]="Prosody"
+  )
+
+declare -A xmlhosts_params=(
+  [Kamailio-port]="8000"
+  [Kamailio-path]="/RPC2"
+  [Kamailio-sip_port]=$KAMAILIO_PROXY_PORT
+  [Sems-port]=$SEMS_XMLRPCPORT
+  [Kamailio-SR-port]=$KAMAILIO_PROXY_PORT
+  [Loadbalancer-port]=$KAMAILIO_LB_PORT
+  [Prosody-port]=$PROSODY_CTRLPORT
+  [Kamailio-xmlgroups]=1
+  [Sems-xmlgroups]=5
+  [Kamailio-SR-xmlgroups]=6
+  [Loadbalancer-xmlgroups]=4
+  [Prosody-xmlgroups]=7
+  )
+
+# recreate table xmlgroups
+MYCOM="${MYSQL} provisioning -e"
+mysql_call "delete from xmlgroups;"
+for id in "${!xmlgroups[@]}"; do
+  mysql_call "INSERT INTO xmlgroups VALUES ( $id, '${xmlgroups[$id]}')"
+done
+
+# recreate table provisioning.xmlhosts and kamailio.address
+mysql_call "delete from provisioning.voip_allowed_ip_groups where group_id=1"
+for ip in $MGMT_SIP_IPS; do
+  mysql_call "insert into provisioning.voip_allowed_ip_groups (group_id, ipnet) values (1, '$ip');"
+done
+
+i=1
+mysql_call "delete from xmlhostgroups;"
+mysql_call "delete from xmlhosts;"
+for ip in $PRXRPCADDR; do
+  for id in "${!xmlhosts[@]}"; do
+    port=${xmlhosts_params[${xmlhosts[$id]}-port]:-0}
+    path=${xmlhosts_params[${xmlhosts[$id]}-path]:-/}
+    sip_port=${xmlhosts_params[${xmlhosts[$id]}-sip_port]:-NULL}
+    description=${xmlhosts[$id]}
+    xmlhostgroup=${xmlhosts_params[${xmlhosts[$id]}-xmlgroups]}
+    mysql_call "INSERT INTO xmlhosts VALUES ( $i, '$ip', '$port', '$path', $sip_port, '$description')"
+    mysql_call "INSERT INTO xmlhostgroups VALUES ( $i, $xmlhostgroup, $i )"
+    i="$((i+1))"
+  done
+done
+
+
+if [ -n "$NGCP_INSTALLER" ]; then
+  echo "Detected NGCP installer, do not reload kamailio configs (kamailio is stopped)"
+  exit 0
+fi
+
+if /usr/sbin/ngcp-check_active -q; then
+  /usr/sbin/ngcp-sercmd proxy dispatcher.reload
+  /usr/sbin/ngcp-sercmd proxy permissions.addressReload
+fi

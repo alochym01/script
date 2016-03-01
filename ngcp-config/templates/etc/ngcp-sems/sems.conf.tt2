@@ -1,0 +1,60 @@
+
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_int_ips = out -%]
+[% IF !sip_int_ips.size -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_int_ips = out -%]
+[% END -%]
+[% argv.host=hostname; argv.type='rtp_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; rtp_ext_ips = out -%]
+[% IF !rtp_ext_ips.size -%]
+[% argv.host=hostname; argv.type='rtp_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; rtp_ext_ips = out -%]
+[% END -%]
+fork=yes
+stderr=no
+[% IF sems.debug == "yes" -%]
+loglevel=3
+[% ELSE -%]
+loglevel=2
+[% END -%]
+
+sip_ip=[% sip_int_ips.0 %]
+media_ip=[% rtp_ext_ips.0 %]
+sip_port=[% sems.bindport %]
+rtp_low_port=[% sems.lowport %]
+rtp_high_port=[% sems.highport %]
+
+plugin_path=/usr/lib/ngcp-sems/plug-in/
+plugin_config_path=/etc/ngcp-sems/etc/
+# the order is important - load xmlrpc2di as the last one (mantis:8181)
+
+load_plugins=wav;gsm;di_dial;stats;uac_auth;session_timer;click2dial;sbc[% IF sems.vsc.enable == "yes" %];sw_vsc[% END %];registrar_client;reg_agent;db_reg_agent;dsm;xmlrpc2di
+
+
+application=$(apphdr)
+
+media_processor_threads=[% sems.media_processor_threads %]
+session_processor_threads=[% sems.session_processor_threads %]
+
+use_default_signature=no
+signature="Sipwise NGCP Application Server 3.X"
+single_codec_in_ok=no
+codec_order=PCMA;PCMU
+
+unhandled_reply_loglevel=info
+accept_fr_without_totag=yes
+wait_for_bye_transaction=yes
+sip_timer_b=[% sems.sbc.outbound_timeout %]
+sip_timer_f=[% sems.sbc.outbound_timeout %]
+[% IF sems.debug == "yes" -%]
+# This is for kamailio-config-tests scenarios
+sip_timer_e=8000
+sip_timer_g=8000
+sip_timer_k=8000
+[% END -%]
+
+
+
+#disable rtp timeout
+dead_rtp_time=0
+
+# disable transaction-based blacklist
+default_bl_ttl=0

@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"oqbvhYxBE6fAbRk6m7aLlHf5s1I/3SumDdMkYU6xUPJUikXpDK0rOX8\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"oqbvhYxBE6fAbRk6m7aLlHf5s1I/0xaTd-23gvTBM0cIrSGm-osCWNc\"",
+   "id": "K7TmenNsKDA",
+   "snippet": {
+    "publishedAt": "2016-01-08T03:10:05.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Cục trưởng Cục Chống tham nhũng: Sẵn sàng nghe điện thoại ngày đêm",
+    "description": "Website: http://xemtin.xyz\n Sẵn sàng nghe điện thoại suốt ngày đêm để tiếp nhận thông tin tham nhũng... là khẳng định của Cục trưởng Cục Chống tham nhũng được báo Tuổi Trẻ trích đăng tải sáng 08/1.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/K7TmenNsKDA/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/K7TmenNsKDA/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/K7TmenNsKDA/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "trong-nuoc",
+     "đường dây nóng",
+     "chống tham nhũng",
+     "thịt trâu thành thịt bò"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Cục trưởng Cục Chống tham nhũng: Sẵn sàng nghe điện thoại ngày đêm",
+     "description": "Website: http://xemtin.xyz\n Sẵn sàng nghe điện thoại suốt ngày đêm để tiếp nhận thông tin tham nhũng... là khẳng định của Cục trưởng Cục Chống tham nhũng được báo Tuổi Trẻ trích đăng tải sáng 08/1."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+[%
+  argv.role='proxy';
+  argv.type='sip_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; 
+  sip_int_ips = out;
+  IF !sip_int_ips.size;
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips';
+    sip_int_ips = out;
+  END;
+-%]
+NOTIFY sip:$user$@$dsthost$;transport=UDP SIP/2.0
+Via: SIP/2.0/UDP [% sip_int_ips.0 %]:5081;branch=$BRANCH$;rport;alias'
+To: <sip:$MBID$@$dsthost$>
+From: <sip:voicebox@[% reminder.sip_fromdomain %]>;tag=4711
+CSeq: 1 NOTIFY
+Call-Id: $CALL_ID$
+Contact: <sip:voicebox@[% sip_int_ips.0 %]:[% asterisk.sip.bindport %]>
+Event: message-summary
+User-Agent: Sipwise NGCP Application Server 3.X
+Content-Type: application/simple-message-summary
+Content-Length: $BODYLEN$
+
+$BODY_MW$
+$BODY_VM$

@@ -1,0 +1,9 @@
+
+log4perl.logger.Sipwise = [% ossbss.logging.ossbss.level %], ProvSyslogApp
+
+log4perl.appender.ProvSyslogApp = Log::Dispatch::Syslog
+log4perl.appender.ProvSyslogApp.facility = [% ossbss.logging.ossbss.facility %]
+log4perl.appender.ProvSyslogApp.ident = [% ossbss.logging.ossbss.identity %]
+log4perl.appender.ProvSyslogApp.layout = PatternLayout
+log4perl.appender.ProvSyslogApp.layout.ConversionPattern = %M: %m%n
+

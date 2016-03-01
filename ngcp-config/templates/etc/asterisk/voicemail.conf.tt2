@@ -1,0 +1,122 @@
+
+[general]
+format=wav49|wav
+serveremail=[% asterisk.voicemail.serveremail %]
+attach=yes
+maxmsg=[% asterisk.voicemail.maxmsg %]
+maxmessage=[% asterisk.voicemail.max_msg_length %]
+minmessage=[% asterisk.voicemail.min_msg_length %]
+maxgreet=[% asterisk.voicemail.maxgreet %]
+skipms=3000
+maxsilence=[% asterisk.voicemail.maxsilence %]
+silencethreshold=128
+maxlogins=3
+;userscontext=default
+externnotify=/usr/bin/vmnotify
+
+[% IF asterisk.voicemail.normalize_match.length > 0 -%]
+sw_normalize_user_match=[% asterisk.voicemail.normalize_match %]
+[% END -%]
+[% IF asterisk.voicemail.normalize_replace.defined -%]
+sw_normalize_user_replace=[% asterisk.voicemail.normalize_replace %]
+[% END -%]
+
+;externpass=/usr/bin/myapp
+;directoryintro=dir-intro
+;charset=ISO-8859-1
+charset=UTF8
+pbxskip=yes
+fromstring=[% asterisk.voicemail.fromstring %]
+usedirectory=yes
+
+odbcstorage=asterisk
+odbctable=voicemail_spool
+
+emailsubject=[% asterisk.voicemail.mailsubject %]
+; The following definition is very close to the default, but the default shows
+; just the CIDNAME, if it is not null, otherwise just the CIDNUM, or "an unknown
+; caller", if they are both null.
+emailbody=[% asterisk.voicemail.mailbody %]
+;
+
+pagerfromstring=Buzón de voz
+pagersubject=Nuevo mensaje de voz
+pagerbody=Nuevo mensaje de duración ${VM_DUR} recibido de ${VM_CALLERID}\n el ${VM_DATE} en su buzón ${VM_MAILBOX}
+emaildateformat=%A, %d %B %Y um %H:%M:%S
+mailcmd=/usr/sbin/sendmail -t
+
+; Supported values: 
+; 'filename'    filename of a soundfile (single ticks around the filename
+;               required)
+; ${VAR}        variable substitution 
+; A or a        Day of week (Saturday, Sunday, ...) 
+; B or b or h   Month name (January, February, ...) 
+; d or e        numeric day of month (first, second, ..., thirty-first) 
+; Y             Year 
+; I or l        Hour, 12 hour clock 
+; H             Hour, 24 hour clock (single digit hours preceded by "oh") 
+; k             Hour, 24 hour clock (single digit hours NOT preceded by "oh") 
+; M             Minute, with 00 pronounced as "o'clock" 
+; N             Minute, with 00 pronounced as "hundred" (US military time)
+; P or p        AM or PM 
+; Q             "today", "yesterday" or ABdY
+;               (*note: not standard strftime value) 
+; q             "" (for today), "yesterday", weekday, or ABdY
+;               (*note: not standard strftime value) 
+; R             24 hour time, including minute 
+; 
+
+; tz=central 		; Timezone from zonemessages below. Irrelevant if envelope=no.
+; attach=yes 		; Attach the voicemail to the notification email *NOT* the pager email
+; attachfmt=wav49	; Which format to attach to the email.  Normally this is the
+			; first format specified in the format parameter above, but this
+			; option lets you customize the format sent to particular mailboxes.
+			; Useful if Windows users want wav49, but Linux users want gsm.
+			; [per-mailbox only]
+; saycid=yes 		; Say the caller id information before the message. If not described, 
+			;     or set to no, it will be in the envelope
+; cidinternalcontexts=intern	; Internal Context for Name Playback instead of 
+			; extension digits when saying caller id.
+; sayduration=no 	; Turn on/off the duration information before the message. [ON by default]
+; saydurationm=2        ; Specify the minimum duration to say. Default is 2 minutes
+; dialout=fromvm ; Context to dial out from [option 4 from mailbox's advanced menu]. 
+                 ; If not specified, option 4 will not be listed and dialing out 
+                 ; from within VoiceMailMain() will not be permitted.
+sendvoicemail=yes ; Allow the user to compose and send a voicemail while inside 
+                  ; VoiceMailMain() [option 5 from mailbox's advanced menu].
+                  ; If set to 'no', option 5 will not be listed.
+; searchcontexts=yes	; Current default behavior is to search only the default context
+			; if one is not specified.  The older behavior was to search all contexts.
+			; This option restores the old behavior [DEFAULT=no]
+; callback=fromvm 	; Context to call back from  
+			;     if not listed, calling the sender back will not be permitted
+; review=yes 		; Allow sender to review/rerecord their message before saving it [OFF by default
+; operator=yes 		; Allow sender to hit 0 before/after/during  leaving a voicemail to 
+			;     reach an operator  [OFF by default]
+; envelope=no 		; Turn on/off envelope playback before message playback. [ON by default] 
+			;     This does NOT affect option 3,3 from the advanced options menu
+; delete=yes		; After notification, the voicemail is deleted from the server. [per-mailbox only]
+			;     This is intended for use with users who wish to receive their 
+			;     voicemail ONLY by email. Note:  "deletevoicemail" is provided as an
+			;     equivalent option for Realtime configuration.
+; volgain=0.0		; Emails bearing the voicemail may arrive in a volume too
+			;     quiet to be heard.  This parameter allows you to specify how
+			;     much gain to add to the message when sending a voicemail.
+			;     NOTE: sox must be installed for this option to work.
+; nextaftercmd=yes	; Skips to the next message after hitting 7 or 9 to delete/save current message.
+			;     [global option only at this time] 
+; forcename=yes		; Forces a new user to record their name.  A new user is
+			;     determined by the password being the same as
+			;     the mailbox number.  The default is "no".
+; forcegreetings=no	; This is the same as forcename, except for recording
+			;     greetings.  The default is "no".
+; hidefromdir=yes	; Hide this mailbox from the directory produced by app_directory
+			;     The default is "no".
+;tempgreetwarn=yes	; Remind the user that their temporary greeting is set
+
+[zonemessages]
+eastern=America/New_York|'vm-received' Q 'digits/at' IMp
+central=America/Chicago|'vm-received' Q 'digits/at' IMp
+central24=America/Chicago|'vm-received' q 'digits/at' H N 'hours'
+military=Zulu|'vm-received' q 'digits/at' H N 'hours' 'phonetic/z_p'
+european=Europe/Vienna|'vm-received' a d b 'digits/at' HM

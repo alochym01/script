@@ -1,0 +1,13 @@
+
+[% PERL -%]
+	my @s = (qw#/usr/lib/x86_64-linux-gnu /usr/lib#);
+	foreach my $p (@s) {
+		my $f = "$p/odbc/libmyodbc.so";
+		$stash->set(path => $p) and last if(-e $f);
+	}
+[% END -%]
+[MySQL]
+Description     = ODBC for MySQL
+Driver          = [% path %]/odbc/libmyodbc.so
+Setup           = [% path %]/odbc/libodbcmyS.so
+FileUsage       = 1

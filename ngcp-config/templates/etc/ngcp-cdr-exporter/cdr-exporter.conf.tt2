@@ -1,0 +1,33 @@
+
+DBHOST=[% database.central.dbhost %]
+DBUSER=[% cdrexport.dbuser %]
+DBPASS=[% cdrexport.dbpassword %]
+DBDB=[% cdrexport.dbname %]
+
+DESTDIR=[% cdrexport.exportpath %]
+
+MONTHLY_DIR=[% cdrexport.monthly_folder %]
+DAILY_DIR=[% cdrexport.daily_folder %]
+FULL_NAMES=[% cdrexport.full_names %]
+PREFIX=[% cdrexport.filepreffix %]
+VERSION=[% cdrexport.fileversion %]
+MAX_ROWS_PER_FILE=5000
+
+QUOTES="'"
+
+[% IF rateomat.enable == "no" %]
+EXPORT_UNRATED=yes
+[% ELSE %]
+EXPORT_UNRATED=no
+[% END %]
+
+EXPORT_INCOMING=[% cdrexport.export_incoming %]
+
+ADMIN_EXPORT_FIELDS = 'accounting.cdr.id', 'accounting.cdr.update_time', 'accounting.cdr.source_user_id', 'accounting.cdr.source_provider_id', 'accounting.cdr.source_external_subscriber_id', 'source_voip_subscribers.id', 'accounting.cdr.source_external_contract_id', 'accounting.cdr.source_account_id', 'accounting.cdr.source_user', 'accounting.cdr.source_domain', 'accounting.cdr.source_cli', 'accounting.cdr.source_clir', 'accounting.cdr.source_ip', 'accounting.cdr.destination_user_id', 'accounting.cdr.destination_provider_id', 'accounting.cdr.destination_external_subscriber_id', 'destination_voip_subscribers.id', 'accounting.cdr.destination_external_contract_id', 'accounting.cdr.destination_account_id', 'accounting.cdr.destination_user', 'accounting.cdr.destination_domain', 'accounting.cdr.destination_user_in', 'accounting.cdr.destination_domain_in', 'accounting.cdr.destination_user_dialed', 'accounting.cdr.peer_auth_user', 'accounting.cdr.peer_auth_realm', 'accounting.cdr.call_type', 'accounting.cdr.call_status', 'accounting.cdr.call_code', 'CONCAT(FROM_UNIXTIME(accounting.cdr.init_time), ".", SUBSTRING_INDEX(accounting.cdr.init_time, ".", -1))', 'CONCAT(FROM_UNIXTIME(accounting.cdr.start_time), ".", SUBSTRING_INDEX(accounting.cdr.start_time, ".", -1))', 'accounting.cdr.duration', 'accounting.cdr.call_id', 'accounting.cdr.rating_status', 'accounting.cdr.rated_at', 'accounting.cdr.source_carrier_cost', 'accounting.cdr.source_customer_cost', 'COALESCE(source_carrier_bbz.zone, "onnet")', 'source_customer_bbz.zone', 'COALESCE(source_carrier_bbz.detail, "platform internal")', 'source_customer_bbz.detail', 'accounting.cdr.source_carrier_free_time', 'accounting.cdr.source_customer_free_time', 'accounting.cdr.destination_carrier_cost', 'accounting.cdr.destination_customer_cost', 'destination_carrier_bbz.zone', 'destination_customer_bbz.zone', 'destination_carrier_bbz.detail', 'destination_customer_bbz.detail', 'accounting.cdr.destination_carrier_free_time', 'accounting.cdr.destination_customer_free_time', 'accounting.cdr.source_reseller_cost', 'source_reseller_bbz.zone', 'source_reseller_bbz.detail', 'accounting.cdr.source_reseller_free_time', 'accounting.cdr.destination_reseller_cost', 'destination_reseller_bbz.zone', 'destination_reseller_bbz.detail', 'accounting.cdr.destination_reseller_free_time'
+RESELLER_EXPORT_FIELDS = 'accounting.cdr.id', 'accounting.cdr.update_time', 'accounting.cdr.source_user_id', 'accounting.cdr.source_provider_id', 'accounting.cdr.source_external_subscriber_id', 'source_voip_subscribers.id', 'accounting.cdr.source_external_contract_id', 'accounting.cdr.source_account_id', 'accounting.cdr.source_user', 'accounting.cdr.source_domain', 'accounting.cdr.source_cli', 'accounting.cdr.source_clir', 'accounting.cdr.source_ip', 'accounting.cdr.destination_user_id', 'accounting.cdr.destination_provider_id', 'accounting.cdr.destination_external_subscriber_id', 'destination_voip_subscribers.id', 'accounting.cdr.destination_external_contract_id', 'accounting.cdr.destination_account_id', 'accounting.cdr.destination_user', 'accounting.cdr.destination_domain', 'accounting.cdr.destination_user_in', 'accounting.cdr.destination_domain_in', 'accounting.cdr.destination_user_dialed', 'accounting.cdr.peer_auth_user', 'accounting.cdr.peer_auth_realm', 'accounting.cdr.call_type', 'accounting.cdr.call_status', 'accounting.cdr.call_code', 'CONCAT(FROM_UNIXTIME(accounting.cdr.init_time), ".", SUBSTRING_INDEX(accounting.cdr.init_time, ".", -1))', 'CONCAT(FROM_UNIXTIME(accounting.cdr.start_time), ".", SUBSTRING_INDEX(accounting.cdr.start_time, ".", -1))', 'accounting.cdr.duration', 'accounting.cdr.call_id', 'accounting.cdr.rating_status', 'accounting.cdr.rated_at', 'accounting.cdr.source_customer_cost', 'source_customer_bbz.zone', 'source_customer_bbz.detail', 'accounting.cdr.source_customer_free_time', 'accounting.cdr.destination_customer_cost', 'destination_customer_bbz.zone', 'destination_customer_bbz.detail', 'accounting.cdr.destination_customer_free_time'
+
+EXPORT_JOINS = { 'billing.voip_subscribers source_voip_subscribers' => { 'source_voip_subscribers.uuid' => 'accounting.cdr.source_user_id' } }, { 'billing.voip_subscribers destination_voip_subscribers' => { 'destination_voip_subscribers.uuid' => 'accounting.cdr.destination_user_id' } }, { 'billing.billing_zones_history source_carrier_bbz' => { 'source_carrier_bbz.id' => 'accounting.cdr.source_carrier_billing_zone_id' } }, { 'billing.billing_zones_history source_reseller_bbz' => { 'source_reseller_bbz.id' => 'accounting.cdr.source_reseller_billing_zone_id' } }, { 'billing.billing_zones_history source_customer_bbz' => { 'source_customer_bbz.id' => 'accounting.cdr.source_customer_billing_zone_id' } }, { 'billing.billing_zones_history destination_carrier_bbz' => { 'destination_carrier_bbz.id' => 'accounting.cdr.destination_carrier_billing_zone_id' } }, { 'billing.billing_zones_history destination_reseller_bbz' => { 'destination_reseller_bbz.id' => 'accounting.cdr.destination_reseller_billing_zone_id' } }, { 'billing.billing_zones_history destination_customer_bbz' => { 'destination_customer_bbz.id' => 'accounting.cdr.destination_customer_billing_zone_id' } }
+
+# important last comma if there is just one
+EXPORT_CONDITIONS = { 'accounting.cdr.export_status' => { '=' => '"unexported"' } }, { 'accounting.cdr.rating_status' => { '=' => '"ok"' } }
+

@@ -1,0 +1,189 @@
+
+[modules]
+autoload=no
+
+preload => res_odbc.so
+preload => res_config_odbc.so
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; PBX Modules ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;load => pbx_ael.so
+load => pbx_config.so
+;load => pbx_dundi.so
+load => pbx_loopback.so
+load => pbx_realtime.so
+load => pbx_spool.so
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Resource Modules ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+load => res_adsi.so
+;load => res_agi.so
+load => res_clioriginate.so
+;load => res_config_mysql.so
+;load => res_convert.so
+;load => res_crypto.so
+load => res_features.so
+load => res_indications.so
+;load => res_monitor.so
+;load => res_musiconhold.so
+;load => res_smdi.so
+;load => res_speech.so
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Resource Modules ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;load => func_base64.so
+load => func_callerid.so
+;load => func_cdr.so
+load => func_channel.so
+;load => func_cut.so
+;load => func_db.so
+;load => func_devstate.so
+;load => func_enum.so
+;load => func_env.so
+;load => func_global.so
+;load => func_groupcount.so
+;load => func_language.so
+;load => func_logic.so
+;load => func_math.so
+;load => func_md5.so
+;load => func_moh.so
+load => func_rand.so
+;load => func_realtime.so
+;load => func_sha1.so
+;load => func_strings.so
+load => func_timeout.so
+;load => func_uri.so
+load => func_odbc.so
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Channel Modules;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;load => chan_agent.so
+;load => chan_alsa.so
+load => chan_iax2.so
+load => chan_local.so
+;load => chan_mgcp.so
+;load => chan_misdn.so
+;load => chan_ooh323.so
+;load => chan_oss.so
+;load => chan_phone.so
+load => chan_sip.so
+;load => chan_skinny.so
+;load => chan_zap.so
+;load => chan_dahdi.so
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; CDR Modules;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;load => cdr_addon_mysql.so
+;load => cdr_adaptive_odbc.so
+;load => cdr_odbc.so
+;load => cdr_csv.so
+;load => cdr_custom.so
+;load => cdr_manager.so
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Codec Modules;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+load => codec_adpcm.so
+load => codec_alaw.so
+load => codec_a_mu.so
+;load => codec_g726.so
+load => codec_gsm.so
+;load => codec_ilbc.so
+;load => codec_lpc10.so
+load => codec_ulaw.so
+;load => codec_zap.so
+;load => codec_dahdi.so
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Format Modules;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;load => format_g723.so
+;load => format_g726.so
+;load => format_g729.so
+;load => format_gsm.so
+;load => format_h263.so
+;load => format_h264.so
+;load => format_ilbc.so
+;load => format_jpeg.so
+;load => format_mp3.so
+load => format_pcm.so
+load => format_sln.so
+;load => format_vox.so
+load => format_wav_gsm.so
+load => format_wav.so
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Application Modules;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;load => app_addon_sql_mysql.so
+;load => app_adsiprog.so
+;load => app_alarmreceiver.so
+;load => app_amd.so
+;load => app_authenticate.so
+load => app_cdr.so
+;load => app_chanisavail.so
+;load => app_channelredirect.so
+;load => app_chanspy.so
+;load => app_controlplayback.so
+;load => app_db.so
+load => app_dial.so
+;load => app_dictate.so
+;load => app_directed_pickup.so
+;load => app_directory.so
+;load => app_disa.so
+;load => app_dumpchan.so
+;load => app_echo.so
+;load => app_exec.so
+;load => app_externalivr.so
+;load => app_festival.so
+;load => app_flash.so
+;load => app_followme.so
+;load => app_forkcdr.so
+;load => app_getcpeid.so
+;load => app_hasnewvoicemail.so
+;load => app_ices.so
+;load => app_image.so
+;load => app_lookupblacklist.so
+;load => app_lookupcidname.so
+load => app_macro.so
+;load => app_meetme.so
+;load => app_milliwatt.so
+;load => app_mixmonitor.so
+;load => app_morsecode.so
+;load => app_mp3.so
+;load => app_nbscat.so
+;load => app_page.so
+;load => app_parkandannounce.so
+;load => app_pickup2.so
+load => app_playback.so
+;load => app_privacy.so
+;load => app_queue.so
+;load => app_random.so
+;load => app_readfile.so
+;load => app_read.so
+;load => app_realtime.so
+;load => app_record.so
+;load => app_saycountpl.so
+;load => app_sayunixtime.so
+;load => app_senddtmf.so
+;load => app_sendtext.so
+;load => app_setcallerid.so
+;load => app_setcdruserfield.so
+;load => app_settransfercapability.so
+;load => app_sms.so
+;load => app_softhangup.so
+;load => app_speech_utils.so
+;load => app_stack.so
+;load => app_syslog.so
+;load => app_system.so
+;load => app_talkdetect.so
+;load => app_test.so
+;load => app_transfer.so
+;load => app_url.so
+;load => app_userevent.so
+;load => app_verbose.so
+[% IF asterisk.voicemail.enable == "yes" %]
+load => app_voicemail.so
+[% END %]
+;load => app_waitforring.so
+;load => app_waitforsilence.so
+;load => app_while.so
+;load => app_zapateller.so
+;load => app_zapbarge.so
+;load => app_zapras.so
+;load => app_zapscan.so

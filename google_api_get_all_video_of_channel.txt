@@ -1,0 +1,6 @@
+Step 1: https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=UCwYJloigdUY_flbIugG0QhA&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU
+Step 2: https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&playlistId=UUwYJloigdUY_flbIugG0QhA&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU
+
+Step 3: https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&playlistId=UUwYJloigdUY_flbIugG0QhA&pageToken=CAUQAA&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU
+
+Step 4: https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&playlistId=UUwYJloigdUY_flbIugG0QhA&pageToken=CAoQAA&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU

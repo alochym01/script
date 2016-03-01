@@ -1,0 +1,1 @@
+13 6 * * *  root  if /usr/sbin/ngcp-check_active -q; then /usr/sbin/ngcp-credit-warning; fi

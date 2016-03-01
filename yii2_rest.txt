@@ -1,0 +1,293 @@
+Who and why you need to REST API
+In today's world, a world where access to the Internet are hundreds of species of a wide variety of devices, Web-based applications have gone far beyond the usual browsers. And despite the fact that most of the devices have built-in browsers, more often as the client application uses an application tailored to the specific device. As a result, one application could be a dozen types of client applications. But the essence of the application itself does not change. REST API - a way to make a universal backend application, an application that does not have to redo when adding a new type of customer. REST - is a client-server distributed architecture with all the ensuing advantages. But what about the web? Web application - this is another client. And given how developed by leaps and bounds in popularity JS-MV * freimvorkov (Angular, Backbone, CanJS, Ember etc) Web will soon pass the final one-page application that communicates with the server through asynchronous HTTP-requests.
+RESTful API in Yii2 - could not be easier
+Yii2 allows you to write a full RESTful API for a couple of minutes. And write this API can even frontenschik little familiar with yii php and in principle (if REST API is used to control the resources and the logic of the entire application is contained in the JS-freimvorke).
+Install and configure the base application yii (for those who do not know how, read here)
+Create a table in the database and generate a model using the gii
+Create a controller class and inherit it from yii \ rest \ ActiveController
+Registers in the controller model
+All controller code:
+source code
+namespace app\controllers;
+
+use yii\rest\ActiveController;
+
+class UserController extends ActiveController
+{
+    public $modelClass = 'app\models\User';
+}
+
+Configuring routing
+source code
+'urlManager' => [
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
+            'showScriptName' => false,
+            'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+            ],
+        ],
+        'request' => [
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
+        ],
+
+RESTful API is ready :) Nothing more needs to be done.
+What happened?
+You now have the following url to access the API (an explanation of how it works, you can not read).
+GET-search / users - paged data model
+Note the name of the model is translated in the plural (this can be disabled in the settings class yii \ rest \ UrlRule pluralize in setting false).
+new ActiveDataProvider([
+            'query' => $modelClass::find(),
+        ]);
+
+POST-search / users - adding model.
+source code
+$model = new $this->modelClass([
+            'scenario' => $this->scenario,
+        ]);
+
+        $model->load(Yii::$app->getRequest()->getBodyParams(), '');
+if ($model->save()) {
+            $response = Yii::$app->getResponse();
+            $response->setStatusCode(201);
+            $id = implode(',', array_values($model->getPrimaryKey(true)));
+            $response->getHeaders()->set('Location', Url::toRoute([$this->viewAction, 'id' => $id], true));
+        } elseif (!$model->hasErrors()) {
+            throw new ServerErrorHttpException('Failed to create the object for unknown reason.');
+        }
+
+        return $model;
+
+GET-search / users / 1 - Select the data to one instance of the model.
+source code
+$model = $modelClass::findOne($id);
+
+PUT-request / users / 1 - 1 update for the model instance. Find the model that loads the data, saves and returns a model, if successful,
+source code
+$model = $modelClass::findOne($id);
+$model->load(Yii::$app->getRequest()->getBodyParams(), '');
+if ($model->save() === false && !$model->hasErrors()) {
+            throw new ServerErrorHttpException('Failed to update the object for unknown reason.');
+        }
+
+        return $model;
+
+DELETE-request / users / 1c - removal of the model
+source code
+$model = $this->findModel($id);
+if ($model->delete() === false) {
+           throw new ServerErrorHttpException('Failed to delete the object for unknown reason.');
+       }
+
+       Yii::$app->getResponse()->setStatusCode(204);
+
+How does the magic RESTful API, Yii 2
+Why so much action, we have not written anything?
+In ActiveController from which we otnasledovali our controller already have all of the above actions. So, for example, developers Yii, we have already written actionIndex
+source code
+'index' => [
+               'class' => 'yii\rest\IndexAction',
+               'modelClass' => $this->modelClass,
+               'checkAccess' => [$this, 'checkAccess'],
+           ],
+
+How is that REST controllers give the ActiveRecord model, or even ActiveDataProvider, and as a result gives xml or json-array?
+ActiveController inherited from yii \ rest \ Controller, which defines the method afterAction. The method serializes the result of default by a class yii \ rest \ Serializer
+source code
+public function serialize($data)
+    {
+        if ($data instanceof Model && $data->hasErrors()) {
+            return $this->serializeModelErrors($data);
+        } elseif ($data instanceof Arrayable) {
+            return $this->serializeModel($data);
+        } elseif ($data instanceof DataProviderInterface) {
+            return $this->serializeDataProvider($data);
+        } else {
+            return $data;
+        }
+    }
+
+Ie in a REST controller inherited from yii \ rest \ ActiveController or yii \ rest \ Controller can not think of converting the data. It is safe to return the ActiveRecord model, any class that implements the interface or DataProviderInterface Arrayable or ready array.
+For the response format (converting the array to JSON or XML) is responsible yii \ filters \ ContentNegotiator depending on what format the response has been requested, ie you as a developer to think about it, too, is not necessary.
+The small tuning REST API in Yii2
+Since this article is an introduction, here are just a small part of the ordinary "settings" for the newly created couple of minutes RESTful API:
+How to prevent removal of the model through the REST API?
+In the settings yii \ rest \ UrlRule can specify which methods support your API via only or exclude certain methods except through
+source code
+'urlManager' => [
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
+            'showScriptName' => false,
+            'rules' => [
+                ['class' => 'yii\rest\UrlRule',
+                 'controller' => 'user'
+                 'except' => ['delete'],
+                ],
+            ],
+        ],
+
+How to block access to certain fields of the model through a REST API?
+For this model you need to override the fields () and extraFields ()
+source code
+public function fields()
+    {
+        return ['id', 'email', 'username'];
+    }
+ public function extraFields()
+    {
+        return ['status'];
+    }
+
+Now, when you request GET / users will be given only the fields id, email and username. And at the request GET / users? Expand = status return data id, email, username and status.
+How to add calculated fields models REST API?
+Everything is the same in the method of determining their fields () in the form of an anonymous function
+source code
+public function fields()
+    {
+        return [
+'id',
+'email',
+'username' => function ($model) {
+            return $model->first_name . ' ' . $model->last_name;
+        }
+];
+    }
+ public function extraFields()
+    {
+        return ['status'];
+    }
+Of course the possibility of creating a REST API, Yii 2 is not limited to the examples in this article. Outside there were many interesting things - user authentication, authentication, scenarios when working with a model, limiting queries and more. Hopefully later I am able to write the second part and fill these gaps. In the meantime, if you have any questions - write in the comments and I'll try to answer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+With the basics of REST API, we figured out in the last article. This article will talk about how to authorization, authentication and permissions in applications to REST-Yii2.
+To begin with let's deal with terms:
+Authentication - Authentication is the source of the request. Ie way to make sure that the query is entered by the user. This includes verification of name / password.
+Identification - the user searches for the unique key identifier.
+Authorization - empowering users to perform certain actions.
+Ideology REST API is based on the fact that the service does not store temporary data, session, and similar intermediate data about the customer. The user ID must be transmitted with every request that requires authorization.
+Configuring authentication for REST API
+Firstly, because we do not need to store user data between requests, you should disable the settings enableSession user component
+source code
+'user' => [
+           'identityClass' => 'app\models\User',
+           'enableSession' => false
+       ],
+
+Next you need to configure the authentication method (more about them discussed below), through the conduct of the controller.
+source code
+use yii\rest\Controller;
+
+class RestController extends Controller {
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator']['class'] = HttpBearerAuth::className();
+        $behaviors['authenticator']['only'] = ['update'];
+        return $behaviors;
+    }
+
+The example above shows that the authenticator can use options only and except, as for any other ActionFilter, to define the need for authentication only for specific action, or eliminate authentication for some action.
+It now remains only to verify that the client sends the correct headers otherwise would receive UnauthorizedHttpException (code 401)
+source code
+header('Authorization: Bearer FFFF70it7tzNsHddEiq0BZ0i-OU8S3xV');
+
+Yii2 sold 3 class to authenticate a user:
+Http Basic Auth - Http implementation of basic authentication. Couple login password is transmitted as a string login: password encoded using the base64
+source code
+Authorization: Basic YWRtaW46c2VjcmV0
+
+Since this is not an encryption method and coding method, designed to ensure the reliability of data transfer over the network, use this type of authentication is only at a secure encrypted (https) connection.
+In Yii2 need to configure variable auth, prescribing to it the method that the pair of login and password will return an instance of User.
+source code
+$behaviors = parent::behaviors();
+  $behaviors['authenticator']['class'] = HttpBasicAuth::className();
+  $behaviors['authenticator']['auth'] = function ($username, $password) {
+    return \app\models\User::findOne([
+        'username' => $username,
+        'password' => $password,
+    ]);
+};
+
+Otherwise, field login will be perceived as a token and the user will be searched as follows:
+source code
+$class = $this->identityClass;
+$identity = $class::findIdentityByAccessToken($token, $type);
+
+Password parameter in this case is generally ignored.
+Http Bearer Auth - realization of authentication token (HTTP Bearer token). In order to authenticate using the token need to pass it in the http header
+source code
+header('Authorization: Bearer FFFF70it7tzNsHddEiq0BZ0i-OU8S3xV');
+
+Token - a more secure method of authentication, because you can set the lifetime of this token to generate it and encrypt secure cryptographic techniques, as well as generate a unique token for each access. Terms token validation and verification should be implemented in the method findIdentityByAccessToken Class User.
+QueryParamAuth - perhaps the easiest of the available methods of authentication. Operates on the same principle as HttpBearerAuth, i.e. It identifies the user on the token, but in this case the token is passed in the query string as GET parameter. The default setting is called «access-token», but this can be changed
+source code
+//  site?access-token=FFFF70it7tzNsHddEiq0BZ0i-OU8S3xV
+$behaviors = parent::behaviors();
+$behaviors['authenticator']['class'] = QueryParamAuth::className();
+$behaviors['authenticator']['tokenParam'] = 'hash';
+//  site?hash=FFFF70it7tzNsHddEiq0BZ0i-OU8S3xV
+
+CompositeAuth — a class that itself does not implement any of the methods of authentication, but allows the simultaneous use of multiple types of above.
+source code
+$behaviors = parent::behaviors();
+$behaviors['authenticator']['class'] = CompositeAuth::className();
+$behaviors['authenticator']['authMethods'] = [
+                  \yii\filters\auth\HttpBasicAuth::className(),
+                  [
+                      'class' => \yii\filters\auth\QueryParamAuth::className(),
+                      'tokenParam' => 'token'
+                  ]
+                 ];
+In this case, Yii tries to log off the user, and in turn each of the methods.
+If authentication is successful, then ID authorized user accessible via Yii :: $ app-> user-> getId ();
+
+Differentiation rights REST API to Yii 2
+Access rights for the REST API does not differ from permissions in a typical application. Since I have already described in detail RBAC on Yii2, I will not repeat.
+Example permissions in REST API to Yii2
+$behaviors[ 'access'] = [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => true,
+                    'roles' => ['@'],
+                ],
+            ],
+        ];

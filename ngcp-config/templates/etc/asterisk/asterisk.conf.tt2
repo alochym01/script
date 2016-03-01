@@ -1,0 +1,22 @@
+
+
+[directories]
+astetcdir => /etc/asterisk
+astmoddir => /usr/lib/asterisk/modules
+astvarlibdir => /var/lib/asterisk
+astdatadir => /var/lib/asterisk
+astagidir => /var/lib/asterisk/agi-bin
+astspooldir => /var/spool/asterisk
+astrundir => /var/run
+astlogdir => /var/log/asterisk
+
+[options]
+languageprefix=yes
+internal_timing = [% asterisk.asterisk.internal_timing %]
+;systemname = my_system_name ; prefix uniqueid with a system name for global uniqueness issues
+; Changing the following lines may compromise your security.
+;[files]
+;astctlpermissions = 0660
+;astctlowner = root
+;astctlgroup = apache
+;astctl = asterisk.ctl

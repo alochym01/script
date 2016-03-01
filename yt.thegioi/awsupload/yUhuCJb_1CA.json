@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/vbM-yNGZuAR4Cy6hEzvBKfO-Vgw\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/Ap-kvd9mK_S-kW9mSbGxeN9Ta5w\"",
+   "id": "yUhuCJb_1CA",
+   "snippet": {
+    "publishedAt": "2016-01-07T07:55:18.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Thu hút nguồn lực xã hội hóa để đầu tư các công trình hạ tầng giao thông Hà Nội",
+    "description": "Website: http://xemtin.xyz\n Đây là 1 trong 4 nhiệm vụ trọng tâm giảm ùn tắc và đảm bảo TTATGT giai đoạn 2016 -2020 của Thủ đô do ông Vũ Văn Viện, Giám đốc Sở GTVT TP Hà Nội thông báo.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/yUhuCJb_1CA/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/yUhuCJb_1CA/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/yUhuCJb_1CA/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "trong-nuoc",
+     "giảm ùn tắc giao thông",
+     "đảm bảo an toàn giao thông",
+     "dự án giao thông trọng điểm"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Thu hút nguồn lực xã hội hóa để đầu tư các công trình hạ tầng giao thông Hà Nội",
+     "description": "Website: http://xemtin.xyz\n Đây là 1 trong 4 nhiệm vụ trọng tâm giảm ùn tắc và đảm bảo TTATGT giai đoạn 2016 -2020 của Thủ đô do ông Vũ Văn Viện, Giám đốc Sở GTVT TP Hà Nội thông báo."
+    }
+   }
+  }
+ ]
+}

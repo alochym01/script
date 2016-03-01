@@ -1,0 +1,52 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/hHvF6BRMvPVWoDHFzY2R_UaqGCI\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/aENMG3Zir7DonNULrwVvzZfNu48\"",
+   "id": "JaMXJIhgxf4",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:30:06.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Hệ thống tài chính Mỹ trước nguy cơ 'đại phẫu'",
+    "description": "Website: http://xemtin.xyz\n Cục dự trữ liên bang Mỹ FED hay phố Wall sẽ phải trải qua một cuộc 'đại phẫu' nếu ứng viên đảng Dân chủ Bernie Sanders trở thành Tổng thống Mỹ.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/JaMXJIhgxf4/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/JaMXJIhgxf4/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/JaMXJIhgxf4/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "Phố Wall",
+     "FED",
+     "Cục Dự trữ Liên bang Mỹ Fed",
+     "Bernie Sanders"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Hệ thống tài chính Mỹ trước nguy cơ 'đại phẫu'",
+     "description": "Website: http://xemtin.xyz\n Cục dự trữ liên bang Mỹ FED hay phố Wall sẽ phải trải qua một cuộc 'đại phẫu' nếu ứng viên đảng Dân chủ Bernie Sanders trở thành Tổng thống Mỹ."
+    }
+   }
+  }
+ ]
+}

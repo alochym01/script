@@ -1,0 +1,91 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.role='mgmt';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+   is_mgmt = out
+-%]
+[% IF is_mgmt -%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   web_ext_ips = out;
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_v6ips_for_host';
+   web_ext_v6ips = out
+-%]
+[% IF !web_ext_ips.size -%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_ext_ips = out;
+-%]
+[% END -%]
+[% IF !web_ext_v6ips.size -%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_v6ips_for_host';
+   web_ext_v6ips = out
+-%]
+[% END -%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   web_int_ips = out;
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_v6ips_for_host';
+   web_int_v6ips = out
+-%]
+[% IF !web_int_ips.size -%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_int_ips = out;
+-%]
+[% END -%]
+[% IF !web_int_v6ips.size -%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_v6ips_for_host';
+   web_int_v6ips = out
+-%]
+[% END -%]
+[% IF ossbss.frontend == 'fcgi' -%]
+server {
+[% FOREACH ip IN web_ext_ips -%]
+[% IF ip -%]
+    listen [% ip %]:[% ossbss.apache.port %];
+[% END -%]
+[% END -%]
+[% FOREACH ip IN web_ext_v6ips -%]
+[% IF ip -%]
+    listen [[% ip %]]:[% ossbss.apache.port %];
+[% END -%]
+[% END -%]
+[% IF ossbss.apache.ssl_enable == "yes" %]
+    ssl_certificate             [% ossbss.apache.sslcertfile %];
+    ssl_certificate_key         [% ossbss.apache.sslcertkeyfile %];
+    include /etc/nginx/ssl_params;
+[% END %]
+
+    server_name [% ossbss.apache.servername %];
+    root /usr/share/perl5/Sipwise/Provisioning/backends;
+
+    auth_basic "Sipwise NGCP Provisioning";
+    auth_basic_user_file /etc/ngcp-ossbss/provisioning.htpasswd;
+
+    # location ordering is important
+    location ~ ^/SOAP/(.*\.xsl|.*\.wsdl|.*\.js)$ {
+        allow 127.0.0.1;
+        deny all;
+        satisfy any;
+        limit_except GET {
+           deny all;
+        }
+        include /etc/nginx/ngcp-ossbss_params;
+    }
+
+    location ~ ^/(SOAP|XMLRPC) {
+        satisfy all;
+        limit_except POST {
+           deny all;
+        }
+        include /etc/nginx/ngcp-ossbss_params;
+    }
+
+    location / {
+        return 404;
+    }
+}
+[% END -%]
+[% END -%]

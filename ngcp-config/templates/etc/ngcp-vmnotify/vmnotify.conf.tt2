@@ -1,0 +1,21 @@
+
+[% 
+  argv.role='proxy';
+  argv.type='sip_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; 
+  sip_int_ips = out;
+  IF !sip_int_ips.size;
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; 
+    sip_int_ips = out;
+  END;
+%]
+SERVER="[% sip_int_ips.0 %]:[% kamailio.proxy.port %]"
+FILE_DEBUG="0"
+CONSOLE_DEBUG="0"
+LOGFILE="/tmp/vmnotify.log"
+VERBOSE=""
+SIPSAK=`which sipsak`
+UUIDGEN=`which uuidgen`
+SIPFILE="/etc/ngcp-vmnotify/mwi.sip"
+
+

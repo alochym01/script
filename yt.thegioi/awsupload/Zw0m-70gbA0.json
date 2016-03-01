@@ -1,0 +1,52 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/Ks49zQYoHbSvF3tE5gUy-c_SucM\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/aX5xp0PRskB9ZNKd2C-F7T5SIKo\"",
+   "id": "Zw0m-70gbA0",
+   "snippet": {
+    "publishedAt": "2016-01-07T05:50:47.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Trường nội trú đầu tiên dành cho trẻ em cá biệt tại Việt Nam",
+    "description": "Website: http://xemtin.xyz\n Trường nội trú IVS chuyên giáo dục, đào tạo và chuyển hóa nhiều thế hệ học sinh nghiện game, hiếu động, cá tính mạnh trở nên thành công và có ích cho xã hội.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Zw0m-70gbA0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/Zw0m-70gbA0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/Zw0m-70gbA0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "doi-song",
+     "học sinh cá biệt",
+     "trường nội trú ivs",
+     "chơi thể thao",
+     "nghiện game"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Trường nội trú đầu tiên dành cho trẻ em cá biệt tại Việt Nam",
+     "description": "Website: http://xemtin.xyz\n Trường nội trú IVS chuyên giáo dục, đào tạo và chuyển hóa nhiều thế hệ học sinh nghiện game, hiếu động, cá tính mạnh trở nên thành công và có ích cho xã hội."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.role='mgmt'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_mgmt = out -%]
+[% IF is_mgmt -%]
+RUN_DAEMON="yes"
+[% ELSE -%]
+RUN_DAEMON="no"
+[% END -%]
+NPROC=[% www_admin.fastcgi_workers %]

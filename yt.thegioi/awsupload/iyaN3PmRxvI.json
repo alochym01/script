@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/VvhtY4KWnPYa81y1AlhtX3vvchc\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/ibVcQ5Vu60OasPMrMQCzxHDk610\"",
+   "id": "iyaN3PmRxvI",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:15:12.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Chỉ nhắc nhở xe chưa có bình cứu hỏa trong sáng 6/1",
+    "description": "Website: http://xemtin.xyz\n Bắt đầu từ hôm nay (6/1), quy định lắp bình cứu hoả trong xe ô tô dưới 9 chỗ đã chính thức có hiệu lực.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/iyaN3PmRxvI/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/iyaN3PmRxvI/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/iyaN3PmRxvI/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "chuyen-dong-24h",
+     "bình cứu hỏa cho xe ô tô",
+     "Công an Thành phố Hà Nội"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Chỉ nhắc nhở xe chưa có bình cứu hỏa trong sáng 6/1",
+     "description": "Website: http://xemtin.xyz\n Bắt đầu từ hôm nay (6/1), quy định lắp bình cứu hoả trong xe ô tô dưới 9 chỗ đã chính thức có hiệu lực."
+    }
+   }
+  }
+ ]
+}

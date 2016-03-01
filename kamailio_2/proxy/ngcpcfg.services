@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+
+/etc/init.d/kamailio-proxy restart
+sleep 3
+
+
+
+# vim: ft=sh

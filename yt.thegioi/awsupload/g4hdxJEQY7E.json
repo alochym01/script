@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/a07RLji7TDL7ARdo0vylyVTCLdw\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/oT2o49KmOc5TlxxnCEQNtZEFAnQ\"",
+   "id": "g4hdxJEQY7E",
+   "snippet": {
+    "publishedAt": "2016-01-07T05:50:06.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Cục ATTP lên tiếng về vụ dầu cá ăn mòn xốp",
+    "description": "Website: http://xemtin.xyz\n Sáng nay (07/1), đại diện Cục An toàn thực phẩm đã chính thức lên tiếng về việc xét nghiệm, kiểm tra mẫu dầu cá ăn mòn xốp đang khiến người tiêu dùng sợ hãi.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/g4hdxJEQY7E/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/g4hdxJEQY7E/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/g4hdxJEQY7E/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "chuyen-dong-24h",
+     "Dầu cá Omega",
+     "ăn mòn xốp"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Cục ATTP lên tiếng về vụ dầu cá ăn mòn xốp",
+     "description": "Website: http://xemtin.xyz\n Sáng nay (07/1), đại diện Cục An toàn thực phẩm đã chính thức lên tiếng về việc xét nghiệm, kiểm tra mẫu dầu cá ăn mòn xốp đang khiến người tiêu dùng sợ hãi."
+    }
+   }
+  }
+ ]
+}

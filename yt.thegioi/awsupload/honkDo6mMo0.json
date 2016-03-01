@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/xeafqs-1nGYub-pyXYg1_-0MzYU\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/Q8bi6k_E18hl62_JnCpb_WdwqDI\"",
+   "id": "honkDo6mMo0",
+   "snippet": {
+    "publishedAt": "2016-01-06T13:45:11.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Cơ bản khắc phục sự cố vỡ bể chứa thải nhà máy chì kẽm tại Cao Bằng",
+    "description": "Website: http://xemtin.xyz\n Đến thời điểm này, Công ty TNHH CKC đã cơ bản khắc phục sự cố vỡ bể chứa thải nhà máy chì kẽm tại Cao Bằng.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/honkDo6mMo0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/honkDo6mMo0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/honkDo6mMo0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "xa-hoi",
+     "khắc phục sự cố",
+     "huyện Bảo Lâm"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Cơ bản khắc phục sự cố vỡ bể chứa thải nhà máy chì kẽm tại Cao Bằng",
+     "description": "Website: http://xemtin.xyz\n Đến thời điểm này, Công ty TNHH CKC đã cơ bản khắc phục sự cố vỡ bể chứa thải nhà máy chì kẽm tại Cao Bằng."
+    }
+   }
+  }
+ ]
+}

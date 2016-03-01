@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/46Z0ox59zur4IobXpgCCFgdZ2mE\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/ZTtTPfObtsPSXqCk4OIzl0Xp2gc\"",
+   "id": "El7TuQfTwRw",
+   "snippet": {
+    "publishedAt": "2016-01-07T09:00:07.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Điều chỉnh tăng vốn cho VEC để phát triển hệ thống đường cao tốc",
+    "description": "Website: http://xemtin.xyz\n Thủ tướng Chính phủ đã đồng ý cho phép Tổng công ty đầu tư phát triển đường cao tốc Việt Nam, được điều chỉnh vốn điều lệ lên gấp hơn 70 lần đến năm 2019.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/El7TuQfTwRw/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/El7TuQfTwRw/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/El7TuQfTwRw/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "trong-nuoc",
+     "tăng vốn điều lệ",
+     "VEC"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Điều chỉnh tăng vốn cho VEC để phát triển hệ thống đường cao tốc",
+     "description": "Website: http://xemtin.xyz\n Thủ tướng Chính phủ đã đồng ý cho phép Tổng công ty đầu tư phát triển đường cao tốc Việt Nam, được điều chỉnh vốn điều lệ lên gấp hơn 70 lần đến năm 2019."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[%
+  argv.host=hostname; argv.role='proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out
+-%]
+RUN_DAEMON=[% is_proxy ? 'yes' : 'no' %]

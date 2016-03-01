@@ -1,0 +1,49 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/SqnqYbKH6GwAsZ7lfAGL62U-iac\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/ifGHKRquHDE6yTVcxocPZl3dcls\"",
+   "id": "XFi2akSP-dk",
+   "snippet": {
+    "publishedAt": "2016-01-07T03:50:13.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Gia Lai: Doanh nghiệp vận tải tự ý tăng giá vé đến 60%",
+    "description": "Website: http://xemtin.xyz\nMặc dù tỉnh Gia Lai vẫn chưa xác nhận phương án tăng giá vé cho các đơn vị vận tải hành khách đường dài trong dịp Tết, nhưng một số đơn vị đã tự ý nâng giá vé đến 60%.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/XFi2akSP-dk/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/XFi2akSP-dk/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/XFi2akSP-dk/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "xa-hoi",
+     "doanh nghiệp vận tải"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Gia Lai: Doanh nghiệp vận tải tự ý tăng giá vé đến 60%",
+     "description": "Website: http://xemtin.xyz\nMặc dù tỉnh Gia Lai vẫn chưa xác nhận phương án tăng giá vé cho các đơn vị vận tải hành khách đường dài trong dịp Tết, nhưng một số đơn vị đã tự ý nâng giá vé đến 60%."
+    }
+   }
+  }
+ ]
+}

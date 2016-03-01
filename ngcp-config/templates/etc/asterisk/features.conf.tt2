@@ -1,0 +1,1 @@
+; dummy file to suppress warning "res_features.c:2851 in load_config: Could not load features.conf"

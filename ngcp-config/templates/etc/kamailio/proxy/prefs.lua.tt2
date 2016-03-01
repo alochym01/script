@@ -1,0 +1,66 @@
+-- Kamailio Lua Config
+require 'ngcp.ngcp'
+
+function ngcp_init()
+    if not ngcp then
+    	sr.log("dbg", "creating ngcp object\n")
+        ngcp = NGCP:new()
+        loaded_keys = {caller={}, callee={}}
+        -- set config
+        ngcp.config.db_user = "[% kamailio.proxy.dbrwuser %]"
+        ngcp.config.db_pass = "[% kamailio.proxy.dbrwpw %]"
+        ngcp.config.db_host = "[% database.local.dbhost %]"
+        ngcp.config.db_port = "[% database.local.dbport %]"
+        ngcp.config.db_database = "[% kamailio.proxy.dbname %]"
+        -- default values
+        local temp_defaults = { "peer", "dom" }
+        local _,v
+        for _,v in ipairs(temp_defaults) do
+            ngcp.config.default[v].sst_enable = "[% sems.sbc.session_timer.enable %]"
+            ngcp.config.default[v].sst_expires = [% sems.sbc.session_timer.session_expires %]
+            ngcp.config.default[v].sst_min_timer = [% sems.sbc.session_timer.min_timer %]
+            ngcp.config.default[v].sst_max_timer = [% sems.sbc.session_timer.max_timer %]
+            ngcp.config.default[v].lbrtp_set = [% cluster_sets.${cluster_sets.default_set}.dispatcher_id %]
+        end
+    end
+end
+
+function ngcp_clean(vtype, group)
+    ngcp_init()
+    ngcp:clean(vtype, group)
+    if (group=='usr' or group=='dom') then
+        ngcp:clean(vtype, 'real')
+    end
+
+end
+
+function ngcp_caller_contract_load(contract)
+    ngcp_init()
+    ngcp:caller_contract_load(contract)
+end
+
+function ngcp_callee_contract_load(contract)
+    ngcp_init()
+    ngcp:callee_contract_load(contract)
+end
+
+function ngcp_caller_peer_load(peer)
+    ngcp_init()
+    ngcp:caller_peer_load(peer)
+end
+
+function ngcp_callee_peer_load(peer)
+    ngcp_init()
+    ngcp:callee_peer_load(peer)
+end
+
+function ngcp_caller_usr_load(uuid, dom)
+    ngcp_init()
+    ngcp:caller_usr_load(uuid, dom)
+end
+
+function ngcp_callee_usr_load(uuid, dom)
+    ngcp_init()
+    ngcp:callee_usr_load(uuid, dom)
+end
+--EOF

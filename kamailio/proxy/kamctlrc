@@ -1,0 +1,16 @@
+ETCDIR="/etc/kamailio/proxy"
+DBENGINE="MYSQL"
+DBTEXT_PATH=""
+DBHOST=""
+DBNAME="kamailio"
+DBRWUSER="kamailio"
+DBRWPW="Xjcgr3jyhwRjjfnUhkoN"
+DBROUSER="kamailioro"
+DBROPW="fwtnRgj3Jb3YdA9hU49x"
+DBROOTUSER="root"
+ALIASES_TYPE="DB"
+CTLENGINE="FIFO"
+OSER_FIFO="/var/run/kamailio/kamailio.proxy.fifo"
+OSER_UNIXSOCK="/var/run/kamailio/kamailio.proxy.sock"
+VERBOSE=0
+PID_FILE=/var/run/kamailio.proxy.pid

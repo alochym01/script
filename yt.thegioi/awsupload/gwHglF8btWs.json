@@ -1,0 +1,53 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/z7KqR535FJLv6WrQhx1ni40o-gw\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/gOHt9Itx24XF5sKpRdbQunhrsTI\"",
+   "id": "gwHglF8btWs",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:00:10.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "15.000 lao động Việt bỏ trốn - Nguy cơ mất thị trường việc làm Hàn Quốc",
+    "description": "Website: http://xemtin.xyz\n Theo thống kê, hiện nay có khoảng 15.000 người lao động Việt Nam hết hợp đồng lao động, cư trú bất hợp pháp tại Hàn Quốc.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/gwHglF8btWs/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/gwHglF8btWs/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/gwHglF8btWs/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "chuyen-dong-24h",
+     "lao động bỏ trốn",
+     "Lao động Việt Nam",
+     "xuất khẩu lao động",
+     "lao động cư trú bất hợp pháp",
+     "lao động tại Hàn Quốc"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "15.000 lao động Việt bỏ trốn - Nguy cơ mất thị trường việc làm Hàn Quốc",
+     "description": "Website: http://xemtin.xyz\n Theo thống kê, hiện nay có khoảng 15.000 người lao động Việt Nam hết hợp đồng lao động, cư trú bất hợp pháp tại Hàn Quốc."
+    }
+   }
+  }
+ ]
+}

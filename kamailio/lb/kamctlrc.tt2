@@ -1,0 +1,16 @@
+ETCDIR="/etc/kamailio/lb"
+DBENGINE="[% kamailio.lb.dbengine %]"
+DBTEXT_PATH="[% kamailio.lb.dbpath %]"
+DBHOST="[% kamailio.lb.dbhost %]"
+DBNAME="[% kamailio.lb.dbname %]"
+DBRWUSER="[% kamailio.lb.dbrwuser %]"
+DBRWPW="[% kamailio.lb.dbrwpw %]"
+DBROUSER="[% kamailio.lb.dbrouser %]"
+DBROPW="[% kamailio.lb.dbropw %]"
+DBROOTUSER="[% kamailio.lb.dbrootuser %]"
+ALIASES_TYPE="DB"
+CTLENGINE="FIFO"
+OSER_FIFO="/var/run/kamailio/kamailio.lb.fifo"
+OSER_UNIXSOCK="/var/run/kamailio/kamailio.lb.sock"
+VERBOSE=0
+PID_FILE=/var/run/kamailio.lb.pid

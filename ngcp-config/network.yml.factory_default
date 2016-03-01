@@ -1,0 +1,29 @@
+---
+hosts:
+  self:
+    dbnode: 1
+    interfaces:
+      - lo
+    lo:
+      cluster_sets:
+        - default
+      ip: 127.0.0.1
+      netmask: 255.255.255.0
+      shared_ip: []
+      shared_v6ip: []
+      type:
+        - sip_int
+        - ha_int
+        - web_ext
+        - sip_ext
+        - rtp_ext
+        - web_int
+        - aux_ext
+        - ssh_ext
+      v6ip: '::1'
+    role:
+      - proxy
+      - lb
+      - mgmt
+      - rtp
+      - db

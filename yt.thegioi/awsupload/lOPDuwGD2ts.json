@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/zTBx3g3oYE0T2KYmPblbHAx1CPo\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/B3BFTPRuXmuqVdt8OeA3HvBkTaI\"",
+   "id": "lOPDuwGD2ts",
+   "snippet": {
+    "publishedAt": "2016-01-07T04:29:19.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Từ bỏ nghề bác sỹ để trở thành 'Giám đốc của nông dân'",
+    "description": "Website: http://xemtin.xyz\n Với mong muốn mang lại sức khỏe cho cộng đồng, bác sĩ Nguyễn Công Suất đã quyết định bỏ chiếc áo blouse trắng để chuyển sang lĩnh vực sản xuất kinh doanh dầu gấc.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/lOPDuwGD2ts/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/lOPDuwGD2ts/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/lOPDuwGD2ts/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "doi-song",
+     "Thực phẩm chức năng",
+     "ông vua gấc",
+     "tinh dầu gấc"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Từ bỏ nghề bác sỹ để trở thành 'Giám đốc của nông dân'",
+     "description": "Website: http://xemtin.xyz\n Với mong muốn mang lại sức khỏe cho cộng đồng, bác sĩ Nguyễn Công Suất đã quyết định bỏ chiếc áo blouse trắng để chuyển sang lĩnh vực sản xuất kinh doanh dầu gấc."
+    }
+   }
+  }
+ ]
+}

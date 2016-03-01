@@ -1,0 +1,1392 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.role='proxy'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_proxy_ips = out -%]
+[% IF !sip_proxy_ips.size -%]
+[% argv.role='proxy'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_proxy_ips = out -%]
+[% END -%]
+[% IF rsyslog.elasticsearch.enable == "yes" -%]
+[% elasticsearch_template='S=$rs SS=\'$rr\' M=$rm R=$ru F=$fu T=$tu IP=$pr:$si:$sp UAIP=$si UA=\'$ua\' ID=$ci ' -%]
+[% logreq_init=elasticsearch_template -%]
+[% logreq=elasticsearch_template -%]
+[% logres_init=elasticsearch_template -%]
+[% logres=elasticsearch_template -%]
+[% ELSE -%]
+[% MACRO logreq_init GET kamailio.lb.log.request_init.join(' ') -%]
+[% MACRO logreq GET kamailio.lb.log.request.join(' ') -%]
+[% MACRO logres_init GET kamailio.lb.log.response_init.join(' ') -%]
+[% MACRO logres GET kamailio.lb.log.response.join(' ') -%]
+[% END -%]
+
+#!KAMAILIO
+
+[% IF kamailio.proxy.proxy_lookup == "yes" -%]
+#!define PROXY_LOOKUP
+[% END -%]
+
+[% IF kamailio.lb.tls.enable == "yes" -%]
+#!define ENABLE_TLS
+[% END -%]
+
+[% IF kamailio.lb.security.dos_ban_enable == "yes" -%]
+#!define ENABLE_PIKECHECK
+[% END -%]
+[% IF kamailio.lb.security.failed_auth_ban_enable == "yes" -%]
+#!define ENABLE_AUTHCHECK
+[% END -%]
+
+[% IF kamailio.lb.debug == "yes" -%]
+#!define WITH_DEBUG_TEST
+[% END -%]
+
+[% argv.host=hostname; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_adv_ips_for_host'; sip_adv_ips = out -%]
+[%  IF sip_adv_ips.size -%]
+# force multi-homing for AWS setups
+mhomed=1
+[% ELSE -%]
+mhomed=0
+[% END -%]
+# external interfaces
+[% argv.host=hostname; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_ext_ips = out -%]
+[% IF !sip_ext_ips.size -%]
+[% argv.host=hostname; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_ext_ips = out -%]
+[% END -%]
+[% FOREACH ip IN sip_ext_ips -%]
+listen=udp:[% ip %]:[% kamailio.lb.port %]
+listen=tcp:[% ip %]:[% kamailio.lb.port %]
+#!ifdef ENABLE_TLS
+listen=tls:[% ip %]:[% kamailio.lb.tls.port %]
+#!endif
+[% END -%]
+
+[% argv.host=hostname; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_v6ips_for_host'; sip_ext_v6ips = out -%]
+[% IF !sip_ext_v6ips.size -%]
+[% argv.host=hostname; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_v6ips_for_host'; sip_ext_v6ips = out -%]
+[% END -%]
+[% FOREACH ip IN sip_ext_v6ips -%]
+listen=udp:[[% ip %]]:[% kamailio.lb.port %]
+listen=tcp:[[% ip %]]:[% kamailio.lb.port %]
+#!ifdef ENABLE_TLS
+listen=tls:[[% ip %]]:[% kamailio.lb.tls.port %]
+#!endif
+[% END -%]
+
+# additional sockets to listen on, if any
+[% FOREACH sockname IN kamailio.lb.extra_sockets.keys -%]
+[% IF kamailio.lb.extra_sockets.$sockname.substr(0, 4) == 'tls:' -%]
+[% IF kamailio.lb.tls.enable != "yes" -%]
+# WARNING: skip TLS socket [% sockname %] ([% kamailio.lb.extra_sockets.$sockname %])
+# because TLS is disabled; to enable it, set kamailio.lb.tls.enable to 'yes'
+# in config.yml!
+[% ELSE -%]
+socket_workers=2
+listen=[% kamailio.lb.extra_sockets.$sockname %]
+[% END -%]
+[% ELSE -%]
+socket_workers=2
+listen=[% kamailio.lb.extra_sockets.$sockname %]
+[% END -%]
+[% END %]
+
+# internal interfaces
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_int_ips = out -%]
+[% IF !sip_int_ips.size -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_int_ips = out -%]
+[% END -%]
+[% FOREACH ip IN sip_int_ips -%]
+listen=udp:[% ip %]:[% kamailio.lb.port %]
+socket_workers=2
+listen=tcp:[% ip %]:[% kamailio.lb.port %]
+[% END -%]
+
+# advertised addresses
+[% FOREACH ip IN sip_adv_ips -%]
+alias=[% ip %]:[% kamailio.lb.port %]
+#!ifdef ENABLE_TLS
+alias=[% ip %]:[% kamailio.lb.tls.port %]
+#!endif
+[% END -%]
+
+[% IF kamailio.proxy.presence.enable == "yes" -%]
+#!define ENABLE_PRESENCE
+[% END -%]
+
+[% IF pbx.enable == "yes" -%]
+#!define ENABLE_PBX
+[% END -%]
+
+fork=yes
+children=[% kamailio.lb.udp_children %]
+
+sip_warning=no
+debug=1
+log_stderror=no
+memdbg=5
+memlog=5
+log_facility=LOG_LOCAL6
+log_name="lb"
+mem_join=1
+
+disable_tcp=no
+enable_tls=[% kamailio.lb.tls.enable %]
+tcp_children=[% kamailio.lb.tcp_children %]
+tcp_max_connections=[% kamailio.lb.tcp_max_connections %]
+tls_max_connections=[% kamailio.lb.tcp_max_connections %]
+tcp_rd_buf_size=65536
+tcp_conn_wq_max=131072
+tcp_keepalive=yes
+tcp_crlf_ping=yes
+tcp_keepcnt=3
+tcp_keepidle=30
+tcp_keepintvl=30
+tcp_connection_lifetime=3610
+tcp_accept_no_cl=yes
+auto_aliases=no
+mlock_pages=yes
+shm_force_alloc=yes
+
+user_agent_header="User-Agent: Sipwise NGCP LB 3.X"
+server_header="Server: Sipwise NGCP LB 3.X"
+
+[% IF sip_ext_v6ips.size -%]
+dns_try_ipv6=yes
+[% ELSE -%]
+dns_try_ipv6=no
+[% END -%]
+dns_retr_time=1
+dns_retr_no=1
+dns_use_search_list=no
+use_dns_cache=[% kamailio.lb.use_dns_cache %]
+use_dns_failover=on
+dns_srv_lb=on
+
+tos=[% qos.tos_sip %]
+
+flags  FLAG_OUTBOUND:1, FLAG_NATTEST_DISABLED:2, FLAG_UNMASK_CONTACT:3
+
+mpath="/usr/lib/x86_64-linux-gnu/kamailio/modules:/usr/lib/kamailio/modules"
+
+loadmodule "corex.so"
+loadmodule "sl.so"
+loadmodule "pv.so"
+loadmodule "rr.so"
+loadmodule "maxfwd.so"
+loadmodule "xlog.so"
+loadmodule "usrloc.so"
+loadmodule "textops.so"
+loadmodule "db_text.so"
+loadmodule "uri_db.so"
+loadmodule "nathelper.so"
+loadmodule "path.so"
+loadmodule "dispatcher.so"
+loadmodule "avpops.so"
+loadmodule "siputils.so"
+loadmodule "sanity.so"
+loadmodule "ctl.so"
+loadmodule "xmlrpc.so"
+loadmodule "cfg_rpc.so"
+loadmodule "mi_fifo.so"
+loadmodule "kex.so"
+loadmodule "textopsx.so"
+loadmodule "htable.so"
+#!ifdef ENABLE_TLS
+loadmodule "tls.so"
+#!endif
+loadmodule "ipops.so"
+
+loadmodule "xhttp.so"
+modparam("xhttp", "url_match", "^/ws")
+loadmodule "websocket.so"
+
+modparam("rr", "enable_full_lr", 1)
+
+modparam("uri_db", "db_url", "text://[% kamailio.lb.dbpath %]")
+
+modparam("maxfwd", "max_limit", [% kamailio.lb.max_forwards %])
+
+modparam("nathelper",  "natping_interval", 0)
+modparam("nathelper", "append_sdp_oldmediaip", 0)
+
+modparam("path", "use_received", 1)
+
+modparam("dispatcher", "db_url", "text://[% kamailio.lb.dbpath %]")
+modparam("dispatcher", "force_dst", 1)
+modparam("dispatcher", "flags", 0)
+modparam("dispatcher", "dst_avp", "$avp(i:100)")
+modparam("dispatcher", "grp_avp", "$avp(i:101)")
+modparam("dispatcher", "cnt_avp", "$avp(i:103)")
+
+modparam("mi_fifo", "fifo_name", "/var/run/kamailio/kamailio.lb.fifo")
+modparam("mi_fifo", "fifo_mode", 0666)
+modparam("mi_fifo", "fifo_user", "kamailio")
+modparam("mi_fifo", "fifo_group", "kamailio")
+
+modparam("ctl", "binrpc", "unix:/var/run/kamailio/ctl.lb.sock")
+modparam("ctl", "mode", 0666)
+modparam("ctl", "user", "kamailio")
+modparam("ctl", "group", "kamailio")
+
+modparam("sanity", "autodrop", 0)
+
+modparam("htable", "htable", "dstip=>size=8;autoexpire=10;")
+modparam("htable", "htable", "dstport=>size=8;autoexpire=10;")
+#!ifdef PROXY_LOOKUP
+modparam("htable", "htable", "prxcache=>size=14;autoexpire=7200;")
+#!endif
+#!ifdef ENABLE_PIKECHECK
+modparam("htable", "htable", "ipban=>size=8;autoexpire=[% kamailio.lb.security.dos_ban_time %];")
+
+loadmodule "pike.so"
+modparam("pike", "sampling_time_unit", [% kamailio.lb.security.dos_sampling_time_unit %])
+modparam("pike", "reqs_density_per_unit", [% kamailio.lb.security.dos_reqs_density_per_unit %])
+modparam("pike", "remove_latency", 4)
+modparam("pike", "pike_log_level", 4)
+#!endif
+
+#!ifdef ENABLE_AUTHCHECK
+modparam("htable", "htable", "auth=>size=8;autoexpire=[% kamailio.lb.security.failed_auth_ban_time %];")
+#!endif
+
+#!ifdef ENABLE_TLS
+modparam("tls", "certificate", "[% kamailio.lb.tls.sslcertfile %]")
+modparam("tls", "private_key", "[% kamailio.lb.tls.sslcertkeyfile %]")
+modparam("tls", "tls_method", "SSLv23")
+#!endif
+
+modparam("xmlrpc", "route", "ROUTE_XMLRPC")
+modparam("xmlrpc", "url_skip", "^/ws")
+
+#!ifdef WITH_DEBUG_TEST
+loadmodule "debugger.so"
+modparam("debugger", "mod_level_mode", 1)
+modparam("debugger", "mod_hash_size", 4)
+modparam("debugger", "mod_level", "debugger=4")
+modparam("debugger", "mod_level", "xlog=4")
+#!endif
+
+include_file "xmlrpc.cfg"
+
+route
+{
+	$var(outbound_reg) = 0;
+	$var(outbound_sock) = 0;
+	$var(received_route) = 0;
+	$var(routemarker) = "";
+	force_rport();
+
+	if (!mf_process_maxfwd_header("[% kamailio.lb.max_forwards %]")) 
+	{
+		xlog("L_WARN", "Too many hops detected - [% logreq_init -%]\n");
+		sl_send_reply("483","Too Many Hops");
+		exit;
+	}
+
+	# first param: check types
+	# http://kamailio.org/docs/modules/3.3.x/modules/sanity.html#uri_checks
+	# (everything except 8, 16, 512, 2048)
+	# second param: check ruri, from, to
+	if(!sanity_check("1511", "7"))
+	{
+		xlog("L_WARN", "Malformed SIP message detected - [% logreq_init -%]\n");
+		exit;
+	}
+
+	# request from b2bua or proxy
+	if(ds_is_from_list("8") || ds_is_from_list("9"))
+	{
+		xlog("L_NOTICE", "New request on lb - [% logreq_init -%]\n");
+		[% IF sip_adv_ips.size -%]
+		set_advertised_address("[% sip_adv_ips.0 %]");
+		[%- END %]
+		setflag(FLAG_OUTBOUND);
+	}
+
+	# request from b2bua
+	if(ds_is_from_list("8"))
+	{
+		# initial invites are directly handled here, in-dialog
+		# re-invites are covered in loose-route section.
+		if(is_method("INVITE") && !has_totag())
+		{
+			# consume local routes
+			loose_route();
+
+			if($hdr(P-D-Uri) != $null)
+			{
+				xlog("L_INFO", "Recovering D-URI - [% logreq -%]\n");
+				$var(received) = $(hdr(P-D-Uri){uri.param,received}{s.unescape.param});
+				if($var(received) != 0 && $var(received) != "0" && $var(received) != "")
+				{
+					$du = $var(received);
+					xlog("L_INFO", "Recovered rcv '$var(received)' from D-URI - [% logreq -%]\n");
+				}
+
+				$var(outbound_sock) = $(hdr(P-D-URI){uri.param,socket});
+				if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+				{
+					xlog("L_INFO", "Recovered socket '$var(outbound_sock)' from D-URI - [% logreq -%]\n");
+				}
+				# foooo
+				$var(peer_out_route) = $(hdr(P-D-URI){uri.param,peer_route});
+				if($var(peer_out_route) != 0 && $var(peer_out_route) != "0" && $var(peer_out_route) != "")
+				{
+					$var(dec_peer_out_route) = $(var(peer_out_route){s.decode.hexa});
+					xlog("L_NOTICE", "Add peer route '$var(dec_peer_out_route)' - [% logreq -%]\n");
+					append_hf("Route: $var(dec_peer_out_route)\r\n");
+					if($du != $null)
+					{
+						append_hf("Route: <$du>\r\n");
+						$var(tmproute) = $(var(dec_peer_out_route){s.select,0,,});
+						$var(tmproute) = $(var(tmproute){s.strip,1});
+						$var(tmproute) = $(var(tmproute){s.striptail,1});
+						xlog("L_NOTICE", "Add original D-URI '$du' to Route and replace by first peer route '$var(tmproute)' - [% logreq -%]\n");
+						$du = $var(tmproute);
+					}
+				}
+				remove_hf("P-D-Uri");
+			}
+			route(ROUTE_MASK_CONTACT);
+
+			[%  IF sip_adv_ips.size -%]
+			#!ifdef ENABLE_TLS
+			if (uri_param("transport","tls") || uri_param("transport","TLS"))
+			{
+				if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+				{
+					record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.tls.port %];transport=tls;ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+				}
+				else
+				{
+					record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.tls.port %];transport=tls;ngcplb=yes;r2=on", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on");
+				}
+			}
+			else
+			{
+				if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+				{
+					record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+				}
+				else
+				{
+					record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on");
+				}
+			}
+			#!else
+			if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+			{
+				record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+			}
+			else
+			{
+				record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on");
+			}
+			#!endif
+			[% ELSE %]
+			if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+			{
+				record_route(";ngcplb=yes;socket=$var(outbound_sock)");
+			}
+			else
+			{
+				record_route(";ngcplb=yes");
+			}
+			[% END %]
+			route(ROUTE_RELAY);
+			exit;
+		}
+		else if(method == "REGISTER")
+		{
+			xlog("L_NOTICE", "Outbound Register request from b2bua - [% logreq -%]\n");
+
+			# consume local routes
+			loose_route();
+
+			# reuse destination ip of previous attempt in case there
+			# are more then 1 ips behind an fqdn, resulting in un-
+			# necessary 401s when balancing via dns
+			if($sht(dstip=>$ci) != $null)
+			{
+				if($sht(dstport=>$ci) == $null)
+				{
+					$sht(dstport=>$ci) = 5060;
+				}
+				$du = "sip:" + $sht(dstip=>$ci) + ":" + $sht(dstport=>$ci);
+				xlog("L_INFO", "Forcing Outbound Register request for known call-id to '$du' - [% logreq -%]\n");
+			}
+			else
+			{
+				# mark to set to-ip in onsend-route
+				$var(outbound_reg) = 1;
+			}
+
+			route(ROUTE_MASK_CONTACT);
+			route(ROUTE_RELAY);
+			exit;
+		}
+	}
+	else if(!ds_is_from_list("9"))
+	{
+		[% whitelist = [] -%]
+		[%- FOREACH ips_array IN [sip_proxy_ips, kamailio.lb.security.dos_whitelisted_ips] -%]
+		[%- FOREACH ip IN ips_array -%]
+		[%- whitelist.push('$si != "' _ ip _ '"') -%]
+		[%- END -%]
+		[%- END %]
+		[% whitelisted_subnets = [] -%]
+		[%- FOREACH subnet IN kamailio.lb.security.dos_whitelisted_subnets -%]
+		[%- whitelisted_subnets.push('is_in_subnet($si, "' _ subnet _ '")') -%]
+		[%- END %]
+		if([% IF whitelist.size -%][% whitelist.join(' && ') %][% END -%] [% IF whitelisted_subnets.size -%] && !([% whitelisted_subnets.join(' || ') %])[% END -%])
+		{
+			route(ROUTE_DOS_ATTACK_CHECK);
+		}
+		if([% FOREACH ip IN sip_proxy_ips -%]$si != "[% ip %]"[% IF sip_proxy_ips.last != ip -%] && [% END -%][% END -%])
+		{
+			route(ROUTE_AUTH_ATTACK_CHECK);
+		}
+		if(!isflagset(FLAG_OUTBOUND)) #already logged in if(ds_is_from_list("8|9") above...
+		{
+			xlog("L_NOTICE", "New request on lb - [% logreq_init -%]\n");
+		}
+		if($si == "[% sip_int_ips.0 %]"[% FOREACH item IN kamailio.lb.nattest_exception_ips -%] || $si == "[% item %]"[% END -%])
+		{
+			xlog("L_INFO", "NAT check disabled by administrator for source IP '$si' - [% logreq -%]\n");
+			setflag(FLAG_NATTEST_DISABLED);
+		}
+	}
+
+	if(!isflagset(FLAG_OUTBOUND))
+	{
+		if(ds_is_from_list("7"))
+		{
+			xlog("L_INFO", "Re-use existing P-NGCP-SRC-* headers from external SBC - [% logreq -%]\n");
+			if(af==INET6)
+			{
+				$var(outbound_sock) = $pr + ":[" + $Ri + "]:" + $Rp;
+			}
+			else
+			{
+				$var(outbound_sock) = $pr + ":" + $Ri + ":" + $Rp;
+			}
+		}
+		else
+		{
+			if(is_present_hf("P-NGCP-Src-Ip"))
+				remove_hf("P-NGCP-Src-Ip");
+			if(is_present_hf("P-NGCP-Src-Port"))
+				remove_hf("P-NGCP-Src-Port");
+			if(is_present_hf("P-NGCP-Src-Proto"))
+				remove_hf("P-NGCP-Src-Proto");
+			if(is_present_hf("P-NGCP-Src-Af"))
+				remove_hf("P-NGCP-Src-Af");
+			append_hf("P-NGCP-Src-Ip: $si\r\n");
+			append_hf("P-NGCP-Src-Port: $sp\r\n");
+			append_hf("P-NGCP-Src-Proto: $pr\r\n");
+			if(af==INET6)
+			{
+				append_hf("P-NGCP-Src-Af: 6\r\n");
+				$var(outbound_sock) = $pr + ":[" + $Ri + "]:" + $Rp;
+			}
+			else
+			{
+				append_hf("P-NGCP-Src-Af: 4\r\n");
+				$var(outbound_sock) = $pr + ":" + $Ri + ":" + $Rp;
+			}
+		}
+		append_hf("P-Sock-Info: $var(outbound_sock)\r\n");
+		
+		if(nat_uac_test("17") && !isflagset(FLAG_NATTEST_DISABLED))
+		{
+			if(!is_method("REGISTER"))
+			{
+				[%  IF sip_adv_ips.size %]
+				#!ifdef ENABLE_TLS
+				if (proto==TLS)
+				{
+					record_route_preset("[% sip_int_ips.0 %]:[% kamailio.lb.port %];nat=yes;ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_adv_ips.0 %]:[% kamailio.lb.tls.port %];transport=tls;nat=yes;ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+				}
+				else
+				{
+					record_route_preset("[% sip_int_ips.0 %]:[% kamailio.lb.port %];nat=yes;ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_adv_ips.0 %]:[% kamailio.lb.port %];nat=yes;ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+				}
+				#!else
+				record_route_preset("[% sip_int_ips.0 %]:[% kamailio.lb.port %];nat=yes;ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_adv_ips.0 %]:[% kamailio.lb.port %];nat=yes;ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+				#!endif
+				[% ELSE %]
+				record_route(";nat=yes;ngcplb=yes;socket=$var(outbound_sock)");
+				[% END %]
+			}
+			if(!ds_is_from_list("7"))
+			{
+				if(is_present_hf("P-NGCP-Src-Nat"))
+					remove_hf("P-NGCP-Src-Nat");
+				append_hf("P-NGCP-Src-Nat: 1\r\n");
+			}
+		}
+		else
+		{
+			if(!is_method("REGISTER"))
+			{
+				[%  IF sip_adv_ips.size %]
+				#!ifdef ENABLE_TLS
+				if (proto==TLS)
+				{
+					record_route_preset("[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_adv_ips.0 %]:[% kamailio.lb.tls.port %];transport=tls;ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+				}
+				else
+				{
+					record_route_preset("[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+				}
+				#!else
+				record_route_preset("[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+				#!endif
+				[% ELSE %]
+				record_route(";ngcplb=yes;socket=$var(outbound_sock)");
+				[% END %]
+			}
+		}
+		if(has_totag() && !route(ROUTE_UNMASK_CONTACT))
+		{ # masked contact not found - could be a srict router, check again after loose_route()
+			setflag(FLAG_UNMASK_CONTACT);
+		}
+	}
+	else
+	{
+		if($(hdr(Route)[-1]{nameaddr.uri}{uri.param,socket}) != $null)
+		{
+			$var(outbound_sock) = $(hdr(Route)[-1]{nameaddr.uri}{uri.param,socket});
+		}
+		route(ROUTE_MASK_CONTACT);
+
+		if($(hdr(Route)[-1]{nameaddr.uri}{uri.param,received}) != $null)
+		{
+			$var(received_route) = $(hdr(Route)[-1]{nameaddr.uri}{uri.param,received}{s.unescape.param});
+		}
+		[%  IF sip_adv_ips.size %]
+		#!ifdef ENABLE_TLS
+		if (uri_param("transport","tls") || uri_param("transport","TLS"))
+		{
+			if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+			{
+				record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.tls.port %];transport=tls;ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+			}
+			else
+			{
+				record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.tls.port %];transport=tls;ngcplb=yes;r2=on", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on");
+			}
+		}
+		else
+		{
+			if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+			{
+				record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+			}
+			else
+			{
+				record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on");
+			}
+		}
+		#!else
+		if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+		{
+			record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on;socket=$var(outbound_sock)");
+		}
+		else
+		{
+			record_route_preset("[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on", "[% sip_int_ips.0 %]:[% kamailio.lb.port %];ngcplb=yes;r2=on");
+		}
+		#!endif
+		[% ELSE %]
+		if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+		{
+			record_route(";ngcplb=yes;socket=$var(outbound_sock)");
+		}
+		else
+		{
+			record_route(";ngcplb=yes");
+		}
+		[% END %]
+	}
+
+	if(!isflagset(FLAG_OUTBOUND) &&
+	   (is_method("CANCEL") ||
+	   (is_method("ACK") && has_totag() && uri==myself && !uri_param("ngcplb", "yes"))))
+	{
+		# e.g. hop-by-hop ACK from inbound after 407, 487
+		xlog("L_INFO", "Perform normal inbound routing - [% logreq -%]\n");
+		loose_route();
+
+		#!ifdef PROXY_LOOKUP
+		$var(cache_user) = $fU + "@" + $fd;
+		if($sht(prxcache=>$var(cache_user)) != $null)
+		{
+			$du = $sht(prxcache=>$var(cache_user));
+			xlog("L_INFO", "Using cached proxy '$du' - [% logreq -%]\n");
+		}
+		else
+		{
+		#!endif
+			$du = $null;
+		#!ifdef PROXY_LOOKUP
+		}
+		#!endif
+
+		$ru = $ou;
+	}
+	else if(loose_route())
+	{
+		if(isflagset(FLAG_UNMASK_CONTACT))
+		{ # previous hop was possibly a strict router (mantis:5701)
+			route(ROUTE_UNMASK_CONTACT);
+		}
+		if(!isflagset(FLAG_OUTBOUND) && (!has_totag() || !check_route_param("ngcplb=yes")))
+		{
+			# remove pre-loaded Route from inbound
+			# e.g. hop-by-hop ACK with FQDN pre-loaded Route after 407, 487
+			xlog("L_INFO", "Reset loose-routing, du='$du' - [% logreq -%]\n");
+			$du = $null;
+		}
+		else if(ds_is_from_list("8") && is_method("ACK") && has_totag())
+		{
+			# hop-by-hop ACK from b2bua
+			$var(peer_out_route) = $(hdr(Route)[-1]{nameaddr.uri}{uri.param,peer_route});
+			if($var(peer_out_route) != 0 && $var(peer_out_route) != "0" && $var(peer_out_route) != "")
+			{
+				$var(dec_peer_out_route) = $(var(peer_out_route){s.decode.hexa});
+				xlog("L_NOTICE", "Recovered peer route '$var(dec_peer_out_route)' - [% logreq -%]\n");
+				$var(tmproute) = $(var(dec_peer_out_route){s.select,0,,});
+				$var(tmproute) = $(var(tmproute){s.strip,1});
+				$var(tmproute) = $(var(tmproute){s.striptail,1});
+				xlog("L_NOTICE", "Replace D-URI '$du' by peer route '$var(tmproute)' - [% logreq -%]\n");
+				$du = $var(tmproute);
+			}
+			if($var(received_route) != 0 && $var(received_route) != "0" && $var(received_route) != "")
+			{
+				append_hf("Route: <$var(received_route)>\r\n");
+			}
+			route(ROUTE_RELAY);
+			exit;
+		}
+		else
+		{
+			xlog("L_INFO", "Perform loose-routing, du='$du' - [% logreq -%]\n");
+
+			if(isflagset(FLAG_OUTBOUND))
+			{
+				if(is_present_hf("P-Caller-UUID"))
+				{
+					remove_hf("P-Caller-UUID");
+				}
+				if(is_present_hf("P-To-Device"))
+				{
+					remove_hf("P-To-Device");
+				}
+			}
+
+			if(uri_param("prxroute", "1"))
+			{
+				xlog("L_INFO", "Request has routemarker set, check if next hop is proxy - [% logreq -%]\n");
+				$var(last_hop) = $(hdr(Route)[-1]{s.select,-1,,}{nameaddr.uri});
+				$var(last_ip) = $(var(last_hop){uri.host});
+				$var(last_port) = $(var(last_hop){uri.port});
+				xlog("L_INFO", "Last hop before R-URI is '$var(last_ip):$var(last_port)' - [% logreq -%]\n");
+				if($var(last_port) == "[% kamailio.proxy.port %]" && (
+					[% FOREACH ip IN sip_proxy_ips -%]$var(last_ip) == "[% ip %]"[% IF sip_proxy_ips.last != ip -%] || [% END -%][% END -%]))
+				{
+					xlog("L_INFO", "Last hop points to a proxy, ok - [% logreq -%]\n");
+				}
+				else
+				{
+					xlog("L_WARN", "Last hop of $rm points to '$var(last_ip):$var(last_port)' which is not a proxy, drop - [% logreq -%]\n");
+					drop;
+				}
+			}
+
+			if(!isflagset(FLAG_NATTEST_DISABLED) && !isflagset(FLAG_OUTBOUND))
+			{
+				if(nat_uac_test("17") || search("^Route:.*;nat=yes"))
+				{
+					xlog("L_INFO", "NATed in-dialog request detected - [% logreq -%]\n");
+					if (proto==TCP && $(ct{nameaddr.uri}{uri.transport}{s.len}) > 0 && $(ct{nameaddr.uri}{uri.transport}) == "udp")
+					{
+						xlog("L_INFO", "UAC at '$si' switched to TCP mid-call (Contact was '$ct'), force tcp:5060 as alias - [% logreq -%]\n");
+						add_contact_alias("$si", "5060", "tcp");
+					}
+					else
+					{
+						add_contact_alias();
+					}
+				}
+				if(has_body("application/sdp") && nat_uac_test("8"))
+				{
+					fix_nated_sdp("3");
+				}
+			}
+			route(ROUTE_RELAY);
+			exit;
+		}
+	}
+	else if(ds_is_from_list("8") && is_method("CANCEL"))
+	{
+		# hop-by-hop CANCEL from b2bua
+		$var(peer_out_route) = $(hdr(Route)[-1]{nameaddr.uri}{uri.param,peer_route});
+		if($var(peer_out_route) != 0 && $var(peer_out_route) != "0" && $var(peer_out_route) != "")
+		{
+			$var(dec_peer_out_route) = $(var(peer_out_route){s.decode.hexa});
+			xlog("L_NOTICE", "Recovered peer route '$var(dec_peer_out_route)' - [% logreq -%]\n");
+			$var(tmproute) = $(var(dec_peer_out_route){s.select,0,,});
+			$var(tmproute) = $(var(tmproute){s.strip,1});
+			$var(tmproute) = $(var(tmproute){s.striptail,1});
+			xlog("L_NOTICE", "Replace D-URI '$du' by peer route '$var(tmproute)' - [% logreq -%]\n");
+			$du = $var(tmproute);
+		}
+		if($var(received_route) != 0 && $var(received_route) != "0" && $var(received_route) != "")
+		{
+			append_hf("Route: <$var(received_route)>\r\n");
+		}
+	}
+
+	if(isflagset(FLAG_OUTBOUND))
+	{
+		if(is_present_hf("P-Caller-UUID"))
+		{
+			remove_hf("P-Caller-UUID");
+		}
+		if(is_present_hf("P-To-Device"))
+		{
+			remove_hf("P-To-Device");
+		}
+
+		# Recover send socket from Route header in OPTIONS ping
+		if(check_route_param("socket=.*"))
+		{
+			$var(outbound_sock) = $(route_uri{uri.param,socket});
+		}
+		route(ROUTE_RELAY);
+		exit;
+	}
+
+	route(ROUTE_REQUEST);
+	exit;
+}
+
+route[ROUTE_MASK_CONTACT]
+{
+	if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "" && ([% FOREACH ip IN sip_proxy_ips -%]$ct =~ "sip:(.+@)?[% ip %]:"[% IF sip_proxy_ips.last != ip -%] || [% END -%][% END -%]))
+	{
+		$var(ct) = "sip:" + @contact.uri.hostport + $var(routemarker);
+		$var(b64ct) = $(var(ct){s.encode.hexa});
+		[% IF sip_adv_ips.size -%]
+		xlog("L_INFO", "Mask local contact using advertised address - [% logres -%]\n");
+		[% IF kamailio.lb.strict_routing_safe == "yes" %]
+		$var(tmpcontact) = "<sip:ngcp-lb@[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcpct=" + $var(b64ct) + ">";
+		[% ELSE %]
+		$var(tmpcontact) = "<sip:ngcp-lb@[% sip_adv_ips.0 %]:[% sems.bindport %];ngcpct=" + $var(b64ct) + ">";
+		[% END %]
+		[% ELSE -%]
+		xlog("L_INFO", "Mask local contact using outbound sock '$var(outbound_sock)' - [% logres -%]\n");
+		if($var(outbound_sock) =~ "^ws:")
+		{
+			$var(sock_addr) = $(var(outbound_sock){s.substr,3,0});
+		}
+		else
+		{
+			$var(sock_addr) = $(var(outbound_sock){s.substr,4,0});
+		}
+		$var(tmpcontact) = "<sip:ngcp-lb@" + $var(sock_addr) + ";ngcpct=" + $var(b64ct) + ">";
+		[% END -%]
+		remove_hf("Contact");
+		append_hf("Contact: $var(tmpcontact)\r\n");
+	}
+	else if([% FOREACH ip IN sip_proxy_ips -%]$ct =~ "sip:(.+@)?[% ip %]:"[% IF sip_proxy_ips.last != ip -%] || [% END -%][% END -%])
+	{
+		$var(ct) = "sip:" + @contact.uri.hostport + $var(routemarker);
+		$var(b64ct) = $(var(ct){s.encode.hexa});
+		if([% FOREACH ip IN sip_proxy_ips -%]$ct =~ "sip:(.+@)?[% ip %]:[% asterisk.sip.bindport %]"[% IF sip_proxy_ips.last != ip -%] || [% END -%][% END -%])
+		{
+			xlog("L_INFO", "Mask local appserver contact - [% logres -%]\n");
+		}
+		else if([% FOREACH ip IN sip_proxy_ips -%]$ct =~ "sip:(.+@)?[% ip %]:[% sems.bindport %]"[% IF sip_proxy_ips.last != ip -%] || [% END -%][% END -%])
+		{
+			xlog("L_INFO", "Mask local B2BUA contact - [% logres -%]\n");
+		}
+		#!ifdef ENABLE_PBX
+		else if([% FOREACH ip IN sip_proxy_ips -%]$ct =~ "sip:(.+@)?[% ip %]:[% pbx.bindport %]"[% IF sip_proxy_ips.last != ip -%] || [% END -%][% END -%])
+		{
+			xlog("L_INFO", "Mask local PBX contact - [% logres -%]\n");
+		}
+		#!endif
+		else
+		{
+			xlog("L_NOTICE", "Mask other local contact - [% logres -%]\n");
+		}
+
+		remove_hf("Contact");
+		[% IF sip_adv_ips.size -%]
+		[% IF kamailio.lb.strict_routing_safe == "yes" %]
+		append_hf("Contact: <sip:ngcp-lb@[% sip_adv_ips.0 %]:[% sems.bindport %];ngcpct=$var(b64ct)>\r\n");
+		[% ELSE %]
+		append_hf("Contact: <sip:ngcp-lb@[% sip_adv_ips.0 %]:[% kamailio.lb.port %];ngcpct=$var(b64ct)>\r\n");
+		[% END %]
+		[% ELSIF sip_ext_v6ips.size -%]
+		if($dd =~ "^\[[a-fA-F0-9\:\.]+\]$" || ($du == $null && $rd =~ "^\[[a-fA-F0-9\:\.]+\]$"))
+		{
+			[% IF kamailio.lb.strict_routing_safe == "yes" %]
+			append_hf("Contact: <sip:ngcp-lb@[[% sip_ext_v6ips.0 %]]:[% sems.bindport %];ngcpct=$var(b64ct)>\r\n");
+			[% ELSE %]
+			append_hf("Contact: <sip:ngcp-lb@[[% sip_ext_v6ips.0 %]]:[% kamailio.lb.port %];ngcpct=$var(b64ct)>\r\n");
+			[% END %]
+		}
+		else
+		{
+			[% IF kamailio.lb.strict_routing_safe == "yes" %]
+			append_hf("Contact: <sip:ngcp-lb@[% sip_ext_ips.0 %]:[% sems.bindport %];ngcpct=$var(b64ct)>\r\n");
+			[% ELSE %]
+			append_hf("Contact: <sip:ngcp-lb@[% sip_ext_ips.0 %]:[% kamailio.lb.port %];ngcpct=$var(b64ct)>\r\n");
+			[% END %]
+		}
+		[% ELSE %]
+		[% IF kamailio.lb.strict_routing_safe == "yes" %]
+		append_hf("Contact: <sip:ngcp-lb@[% sip_ext_ips.0 %]:[% sems.bindport %];ngcpct=$var(b64ct)>\r\n");
+		[% ELSE %]
+		append_hf("Contact: <sip:ngcp-lb@[% sip_ext_ips.0 %]:[% kamailio.lb.port %];ngcpct=$var(b64ct)>\r\n");
+		[% END %]
+		[% END %]
+	}
+}
+
+########################################################################
+# returns 1 if internal contact is found and unmasked, 0 if not found
+########################################################################
+route[ROUTE_UNMASK_CONTACT]
+{
+	[% rd_list = [] -%]
+	[%- ipv6_ips = [] -%]
+	[%- FOREACH ip IN sip_ext_v6ips -%]
+	[%- ipv6_ips.push('[' _ ip _ ']') -%]
+	[%- END -%]
+	[%- FOREACH ips_array IN [sip_ext_ips, ipv6_ips, sip_adv_ips, sip_int_ips] -%]
+	[%- FOREACH ip IN ips_array -%]
+	[%- rd_list.push('$rd == "' _ ip _ '"') -%]
+	[%- END -%]
+	[%- FOREACH sockname IN kamailio.lb.extra_sockets.keys -%]
+	[%- sock_splits = kamailio.lb.extra_sockets.$sockname.split(':') -%]
+	[%- ip = sock_splits.1 -%]
+	[%- rd_list.push('$rd == "' _ ip _ '"') -%]
+	[%- END -%]
+	[%- END %]
+	if(has_totag() && $rU == "ngcp-lb"
+	  [%  IF rd_list.size -%] && ([% rd_list.unique.join(' || ') %]) [% END -%] )
+	{
+		$var(tmp_b64ct) = $(ru{uri.param,ngcpct});
+		if($var(tmp_b64ct) == '')
+		{
+			$var(tmpct) = "sip:sems@[% sip_int_ips.0 %]:[% sems.bindport %]";
+			xlog("L_WARN", "Masked contact parameter 'ngcpct' missing, trying fallback to '$var(tmpct)' - [% logreq -%]\n");
+		}
+		else
+		{
+			$var(tmpct) = $(var(tmp_b64ct){s.decode.hexa});
+		}
+		$ru = $var(tmpct);
+		xlog("L_INFO", "Unmasked internal contact - [% logreq -%]\n");
+		return(1);
+	}
+	else
+	{
+		return(0);
+	}
+}
+
+route[ROUTE_RELAY]
+{
+	if(isflagset(FLAG_OUTBOUND))
+	{
+		if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+		{
+			# transport not needed, should be chosen
+			# automatically according to transport params
+			if($var(outbound_sock) =~ "^ws:")
+			{
+				$var(sock_addr) = $(var(outbound_sock){s.substr,3,0});
+				#$var(sock_tran) = $(var(outbound_sock){s.substr,0,2});
+			}
+			else
+			{
+				$var(sock_addr) = $(var(outbound_sock){s.substr,4,0});
+				#$var(sock_tran) = $(var(outbound_sock){s.substr,0,3});
+			}
+			$fs = $var(sock_addr);
+		}
+		#!ifdef ENABLE_TLS
+		else if (uri_param("transport","tls") || uri_param("transport","TLS"))
+		{
+			[% IF sip_ext_v6ips.size -%]
+			if($dd =~ "^\[[a-fA-F0-9\:\.]+\]$" || ($du == $null && $rd =~ "^\[[a-fA-F0-9\:\.]+\]$"))
+				$fs = "[[% sip_ext_v6ips.0 %]]:[% kamailio.lb.tls.port %]";
+			else
+			[% END -%]
+				$fs = "[% sip_ext_ips.0 %]:[% kamailio.lb.tls.port %]";
+		}
+		else
+		{
+			[% IF sip_ext_v6ips.size -%]
+			if($dd =~ "^\[[a-fA-F0-9\:\.]+\]$" || ($du == $null && $rd =~ "^\[[a-fA-F0-9\:\.]+\]$"))
+				$fs = "[[% sip_ext_v6ips.0 %]]:[% kamailio.lb.port %]";
+			else
+			[% END -%]
+				$fs = "[% sip_ext_ips.0 %]:[% kamailio.lb.port %]";
+		}
+		#!else
+			[% IF sip_ext_v6ips.size -%]
+			else if($dd =~ "^\[[a-fA-F0-9\:\.]+\]$" || ($du == $null && $rd =~ "^\[[a-fA-F0-9\:\.]+\]$"))
+			{
+				$fs = "[[% sip_ext_v6ips.0 %]]:[% kamailio.lb.port %]";
+			}
+			[% END -%]
+			else
+			{
+				$fs = "[% sip_ext_ips.0 %]:[% kamailio.lb.port %]";
+			}
+		#!endif
+		handle_ruri_alias();
+		xlog("L_INFO", "Clean P-NGCP headers - [% logreq -%]\n");
+		remove_hf_re("^P-NGCP-");
+	}
+	else
+	{
+		$fs = "[% sip_int_ips.0 %]:[% kamailio.lb.port %]";
+	}
+
+	if($du != $null)
+	{
+		$du = $(du{s.unescape.param});
+	}
+	xlog("L_NOTICE", "Relaying request, du='$du', fs='$fs' - [% logreq -%]\n");
+	forward();
+}
+
+route[ROUTE_REQUEST]
+{
+	[%  IF sip_adv_ips.size %]
+	# for EC2 need to use internal as adv. address for registration from inbound, it's used to build Path URI in add_path()
+	if (is_method("REGISTER")) 
+	{
+		set_advertised_address("[% sip_int_ips.0 %]");
+	}
+	[% END %]
+	if(!isflagset(FLAG_NATTEST_DISABLED) && nat_uac_test("17") && !search("^Contact:[ ]*\*"))
+	{
+		if(!is_method("REGISTER"))
+		{
+			xlog("L_INFO", "NATed request detected - [% logreq -%]\n");
+			add_contact_alias();
+		}
+		if(is_method("REGISTER"))
+		{
+			if(af==INET6)
+			{
+				if(!add_path_received("lb", "socket=sip:[$Ri]:$Rp"))
+				{
+					xlog("L_ERR", "Internal Path Error - [% logreq -%]\n");
+					sl_send_reply("500", "Internal Path Error");
+				}
+			}
+			else
+			{
+				if(!add_path_received("lb", "socket=sip:$Ri:$Rp"))
+				{
+					xlog("L_ERR", "Internal Path Error - [% logreq -%]\n");
+					sl_send_reply("500", "Internal Path Error");
+				}
+			}
+		}
+	}
+	else
+	{
+		if(is_method("REGISTER"))
+		{
+			if(af==INET6) 
+			{
+				if(!add_path("lb", "socket=sip:[$Ri]:$Rp"))
+				{
+					xlog("L_ERR", "Internal Path Error - [% logreq -%]\n");
+					sl_send_reply("500", "Internal Path Error");
+				}
+			}
+			else
+			{
+				if(!add_path("lb", "socket=sip:$Ri:$Rp"))
+				{
+					xlog("L_ERR", "Internal Path Error - [% logreq -%]\n");
+					sl_send_reply("500", "Internal Path Error");
+				}
+			}
+		}
+	}
+	if(!isflagset(FLAG_NATTEST_DISABLED) && has_body("application/sdp") && nat_uac_test("8"))
+	{
+		fix_nated_sdp("3");
+	}
+
+	#!ifdef PROXY_LOOKUP
+	if(is_method("REGISTER"))
+	{
+		$var(cache_user) = $tU + "@" + $td;
+	}
+	else
+	{
+		$var(cache_user) = $fU + "@" + $fd;
+	}
+	if($sht(prxcache=>$var(cache_user)) != $null)
+	{
+		$du = $sht(prxcache=>$var(cache_user));
+		xlog("L_INFO", "Using cached proxy '$du' - [% logreq -%]\n");
+	}
+	else
+	{
+	#!endif
+		if(is_method("REGISTER"))
+		{
+			# "6" - random (using rand())
+			$var(select_mode) = 6;
+		}
+		else
+		{
+			$var(select_mode) = 0;
+		}
+		if(!ds_select_dst("9", "$var(select_mode)"))
+		{
+			xlog("L_ERR", "Failed to select proxy - [% logreq -%]\n");
+			sl_send_reply("503", "No proxy available, try again later");
+			exit;
+		}
+	#!ifdef PROXY_LOOKUP
+	}
+	#!endif
+
+	route(ROUTE_RELAY);
+}
+
+route[ROUTE_DOS_ATTACK_CHECK]
+{
+#!ifdef ENABLE_PIKECHECK
+	if($sht(ipban=>$si) != $null)
+	{
+		# ip is already blocked - keep the node warm
+		pike_check_req();
+		exit;
+	}
+#!endif
+
+#!ifdef ENABLE_PRESENCE
+	# special case for jitsi: pass all remote control in-dialog NOTIFY now
+	# remove it if Jitsi changed to use Psudo-TCP for remote control in the future
+	if (is_method("NOTIFY") && has_totag()) {
+		return;
+	}
+#!endif
+
+#!ifdef ENABLE_PIKECHECK
+	if(!pike_check_req())
+	{
+		append_hf("P-NGCP-CheckBan: 1\r\n");
+		xlog("L_INFO", "Mark request for pike trust check - [% logreq -%]\n");
+		# NGCP proxy will return "P-NGCP-Ban: <ip>" in reply if it's not from
+		# a trusted peer, which is checked below and added to ban list.
+		return;
+	}
+#!endif
+	return;
+}
+
+route[ROUTE_AUTH_ATTACK_CHECK]
+{
+#!ifdef ENABLE_AUTHCHECK
+	if(is_method("CANCEL|ACK")) {
+		return;
+	}
+	if(is_present_hf("Authorization") || is_present_hf("Proxy-Authorization"))
+	{
+		[%  IF kamailio.proxy.ignore_auth_realm == "yes" %]
+		$var(ddos_auth) = $au;
+		[% ELSE %]
+		$var(ddos_auth) = $au+"@"+$ar;
+		[% END %]
+		if($sht(auth=>$var(ddos_auth)::auth_count) >= [% kamailio.lb.security.failed_auth_attempts %])
+		{
+			$var(exp) = $Ts - 900;
+			if($sht(auth=>$var(ddos_auth)::last_auth) > $var(exp))
+			{
+				xlog("L_WARN", "Subscriber '$var(ddos_auth)' UA='$ua' from IP='$si' is temporarily banned, send 403 - [% logreq -%]\n");
+				sl_send_reply("403", "Try again later");
+				exit;
+			}
+			else
+			{
+				$sht(auth=>$var(ddos_auth)::auth_count) = 0;
+			}
+		}
+	}
+#!endif
+	return;
+}
+
+onreply_route
+{
+	$var(outbound_sock) = 0;
+	$var(routemarker) = "";
+	if(ds_is_from_list("8") || ds_is_from_list("9"))
+	{
+		xlog("L_NOTICE", "Reply from Inbound - [% logres_init -%]\n");
+
+		#!ifdef ENABLE_PBX
+		if($rs =~ "^[12][0-9][0-9]$" && is_present_hf("P-COLP-Identity"))
+		{
+			xlog("L_INFO", "Injecting COLP identity - [% logres -%]\n");
+			remove_hf("P-Asserted-Identity");
+			append_hf("P-Asserted-Identity: $hdr(P-COLP-Identity)\r\n");
+			remove_hf("P-COLP-Identity");
+		}
+		#!endif
+
+		#!ifdef PROXY_LOOKUP
+		if(status == "102" && is_present_hf("P-NGCP-Cache"))
+		{
+			$var(cache_user) = $hdr(P-NGCP-Cache-User);
+			$sht(prxcache=>$var(cache_user)) = $hdr(P-NGCP-Cache);
+			xlog("L_INFO", "Cache proxy '$hdr(P-NGCP-Cache)' for user '$var(cache_user)'- [% logres -%]\n");
+			drop;
+		}
+		#!endif
+
+		#!ifdef ENABLE_PIKECHECK
+			if(status == "423" && is_present_hf("P-NGCP-Ban"))
+			{
+				$var(banip) = $hdr(P-NGCP-Ban);
+				remove_hf("P-NGCP-Ban");
+				$sht(ipban=>$var(banip)) = 1;
+				xlog("L_WARN", "IP '$var(banip)' is blocked and banned - [% logreq -%]\n");
+				change_reply_status("403", "Blocked, banned and reported");
+			}
+		#!endif
+
+		#!ifdef ENABLE_AUTHCHECK
+			if((status == "401" || status == "407") && is_present_hf("P-NGCP-Authorization"))
+			{
+				$var(au) = $hdr(P-NGCP-Authorization);
+				remove_hf("P-NGCP-Authorization");
+				if($sht(auth=>$var(au)::auth_count) == $null)
+				{
+					$sht(auth=>$var(au)::auth_count) = 0;
+				}
+				$sht(auth=>$var(au)::auth_count) = $sht(auth=>$var(au)::auth_count) + 1;
+				if($sht(auth=>$var(au)::auth_count) >= [% kamailio.lb.security.failed_auth_attempts %])
+				{
+					xlog("L_WARN", "Consecutive Authentication Failure for '$var(au)' UA='$hdr(P-NGCP-Auth-UA)' IP='$hdr(P-NGCP-Auth-IP)' -  [% logreq -%]\n");
+				}
+				$sht(auth=>$var(au)::last_auth) = $Ts;
+			}
+			else if((status == "200" || status == "101") && is_present_hf("P-NGCP-Authorized"))
+			{
+				$var(au) = $hdr(P-NGCP-Authorization);
+				remove_hf("P-NGCP-Authorization");
+				remove_hf("P-NGCP-Authorized");
+				$sht(auth=>$var(au)::auth_count) = $null;
+				$sht(auth=>$var(au)::last_auth) = $null;
+				if(status == "101")
+				{
+					drop;
+				}
+			}
+			xlog("L_INFO", "Clean P-NGCP headers - [% logreq -%]\n");
+			remove_hf_re("^P-NGCP-");
+		#!endif
+		if(is_present_hf("P-Caller-UUID"))
+		{
+			remove_hf("P-Caller-UUID");
+		}
+		if(is_present_hf("P-Callee-UUID"))
+		{
+			remove_hf("P-Callee-UUID");
+		}
+
+		if($hdr(P-Out-Socket) != $null)
+		{
+			# force send socket for replies from proxy/sbc/callee
+			$var(outbound_sock) = $hdr(P-Out-Socket);
+			remove_hf("P-Out-Socket");
+		}
+		else if($(hdr(Record-Route)[-1]{nameaddr.uri}{uri.param,socket}) != $null)
+		{
+			$var(outbound_sock) = $(hdr(Record-Route)[-1]{nameaddr.uri}{uri.param,socket});
+		}
+
+		if(ds_is_from_list("9") && is_present_hf("Contact"))
+		{
+			xlog("L_INFO", "Reply from proxy, add route marker - [% logres -%]\n");
+			$var(routemarker) = ";prxroute=1";
+		}
+
+		route(ROUTE_MASK_CONTACT);
+
+		if($var(outbound_sock) != 0 && $var(outbound_sock) != "0" && $var(outbound_sock) != "")
+		{
+			xlog("L_INFO", "Forcing outbound socket '$var(outbound_sock)' - [% logreq -%]\n");
+			if($var(outbound_sock) =~ "^ws:")
+			{
+				$var(sock_addr) = $(var(outbound_sock){s.substr,3,0});
+				#$var(sock_tran) = $(var(outbound_sock){s.substr,0,2});
+			}
+			else
+			{
+				$var(sock_addr) = $(var(outbound_sock){s.substr,4,0});
+				#$var(sock_tran) = $(var(outbound_sock){s.substr,0,3});
+			}
+			$fs = $var(sock_addr);
+		}
+		#!ifdef ENABLE_TLS
+		else if(@via[2].transport == "tls" || @via[2].transport == "TLS")
+		{
+			[% IF sip_ext_v6ips.size -%]
+			if(@via[2].host =~ "^\[[a-fA-F0-9\:\.]+\]$")
+				$fs = "[[% sip_ext_v6ips.0 %]]:[% kamailio.lb.tls.port %]";
+			else
+			[% END -%]
+				$fs = "[% sip_ext_ips.0 %]:[% kamailio.lb.tls.port %]";
+		}
+		else
+		{
+			[% IF sip_ext_v6ips.size -%]
+			if(@via[2].host =~ "^\[[a-fA-F0-9\:\.]+\]$")
+				$fs = "[[% sip_ext_v6ips.0 %]]:[% kamailio.lb.port %]";
+			else
+			[% END -%]
+				$fs = "[% sip_ext_ips.0 %]:[% kamailio.lb.port %]";
+		}
+		#!else
+		[% IF sip_ext_v6ips.size -%]
+		else if(@via[2].host =~ "^\[[a-fA-F0-9\:\.]+\]$")
+		{
+			$fs = "[[% sip_ext_v6ips.0 %]]:[% kamailio.lb.port %]";
+		}
+		[% END -%]
+		else
+		{
+			$fs = "[% sip_ext_ips.0 %]:[% kamailio.lb.port %]";
+		}
+		#!endif
+		# check_sip_ngs script expects response to be sent from 127.0.0.1 as source address
+		# so force it if "received" contains localhost address
+		if(@via[2].received == "[% sip_int_ips.0 %]")
+		{
+			$fs = "[% sip_int_ips.0 %]:[% kamailio.lb.port %]";
+		}
+	}
+	else
+	{
+		xlog("L_NOTICE", "Reply from Outbound - [% logres_init -%]\n");
+		if(ds_is_from_list("7"))
+		{
+			xlog("L_INFO", "Re-use existing P-NGCP-SRC-* headers from external SBC - [% logres -%]\n");
+		}
+		else
+		{
+			if(is_present_hf("P-NGCP-Src-Ip"))
+				remove_hf("P-NGCP-Src-Ip");
+			if(is_present_hf("P-NGCP-Src-Port"))
+				remove_hf("P-NGCP-Src-Port");
+			if(is_present_hf("P-NGCP-Src-Proto"))
+				remove_hf("P-NGCP-Src-Proto");
+			if(is_present_hf("P-NGCP-Src-Af"))
+				remove_hf("P-NGCP-Src-Af");
+
+			append_hf("P-NGCP-Src-Ip: $si\r\n");
+			append_hf("P-NGCP-Src-Port: $sp\r\n");
+			append_hf("P-NGCP-Src-Proto: $pr\r\n");
+			if(af==INET6)
+			{
+				append_hf("P-NGCP-Src-Af: 6\r\n");
+			}
+			else
+			{
+				append_hf("P-NGCP-Src-Af: 4\r\n");
+			}
+		}
+
+		if($si == "[% sip_int_ips.0 %]"[% FOREACH item IN kamailio.lb.nattest_exception_ips -%] || $si == "[% item %]"[% END -%])
+		{
+			xlog("L_INFO", "NAT check disabled by administrator for source IP '$si' - [% logres -%]\n");
+			setflag(FLAG_NATTEST_DISABLED);
+		}
+		if(!isflagset(FLAG_NATTEST_DISABLED))
+		{
+			if(nat_uac_test("17"))
+			{
+				xlog("L_NOTICE", "NATed reply detected - [% logres -%]\n");
+				add_contact_alias();
+			}
+			if(has_body("application/sdp") && nat_uac_test("8"))
+			{
+				fix_nated_sdp("3");
+			}
+		}
+		$fs = "[% sip_int_ips.0 %]:[% kamailio.lb.port %]";
+	}
+	xlog("L_NOTICE", "Sending reply, fs='$fs' - [% logres -%]\n");
+}
+
+onsend_route 
+{
+	if($var(outbound_reg) == 1)
+	{
+		$sht(dstip=>$ci) = $sndto(ip);
+		$sht(dstport=>$ci) = $sndto(port);
+	}
+}
+
+event_route[xhttp:request]
+{
+	xlog("L_NOTICE ", "HTTP request received on $Rp\n");
+
+	set_reply_close();
+	set_reply_no_connect();
+
+	/*
+	if ($Rp != 80 && $Rp != 443)
+	{
+		xlog("L_WARN", "HTTP request received on $Rp\n");
+		xhttp_reply("403", "Forbidden", "", "");
+		exit;
+	}
+	*/
+
+	if($hdr(Upgrade)=~"websocket" && $hdr(Connection)=~"Upgrade" && $rm=~"GET")
+	{
+		/*
+		if($hdr(Host) == $null || !is_myself("sip:" + $hdr(Host))) 
+		{
+			xlog("L_WARN", "Bad host $hdr(Host)\n");
+			xhttp_reply("403", "Forbidden", "", "");
+			exit;
+		}
+		if($hdr(Origin) != "http://communicator.MY_DOMAIN" &&
+		   $hdr(Origin) != "https://communicator.MY_DOMAIN")
+		{
+			xlog("L_WARN", "Unauthorised client $hdr(Origin)\n");
+			xhttp_reply("403", "Forbidden", "", "");
+			exit;
+		}
+		*/
+
+		xlog("L_NOTICE", "Handle WS handshake\n");
+		if(ws_handle_handshake())
+		{
+			# Optional... cache some information about the
+			# successful connection
+			exit;
+		}
+	}
+
+	xhttp_reply("404", "Not found", "", "");
+}
+
+# vim: ft=cfg

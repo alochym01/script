@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/XOe-9U3j9hvr42ZwT1Q_BNHKtFI\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/BWY6jXWzSqDWT2-pF-AicoDOwCU\"",
+   "id": "vlbo0ye4nM0",
+   "snippet": {
+    "publishedAt": "2016-01-07T03:30:09.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Gia tăng xuất khẩu gạo theo đường tiểu ngạch sang Trung Quốc",
+    "description": "Website: http://xemtin.xyz\n Xuất khẩu gạo theo đường tiểu ngạch dù còn gặp nhiều khó khăn nhưng vẫn được nhiều doanh nghiệp xuất khẩu sang Trung Quốc lựa chọn.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/vlbo0ye4nM0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/vlbo0ye4nM0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/vlbo0ye4nM0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "xuất khẩu gạo",
+     "đường tiểu ngạch",
+     "xuất khẩu gạo sang Trung Quốc"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Gia tăng xuất khẩu gạo theo đường tiểu ngạch sang Trung Quốc",
+     "description": "Website: http://xemtin.xyz\n Xuất khẩu gạo theo đường tiểu ngạch dù còn gặp nhiều khó khăn nhưng vẫn được nhiều doanh nghiệp xuất khẩu sang Trung Quốc lựa chọn."
+    }
+   }
+  }
+ ]
+}

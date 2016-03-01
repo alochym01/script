@@ -1,0 +1,8 @@
+client_max_body_size 128m;
+include /etc/nginx/fastcgi_params;
+fastcgi_param  SCRIPT_NAME '';
+fastcgi_param  PATH_INFO $fastcgi_script_name;
+fastcgi_param  HTTPS on;
+fastcgi_param  PERL_LWP_SSL_VERIFY_HOSTNAME 0;
+fastcgi_param  PERL_LWP_SSL_VERIFY_HOSTNAME 0;
+fastcgi_pass   unix:/var/run/fastcgi/ngcp-ossbss.sock;

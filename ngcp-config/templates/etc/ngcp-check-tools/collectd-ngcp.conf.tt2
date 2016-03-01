@@ -1,0 +1,78 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.role='proxy'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_proxy = out -%]
+[% argv.host=hostname; argv.role='lb'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_lb = out -%]
+[% argv.host=hostname; argv.role='mgmt'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_mgmt = out -%]
+[% argv.host=hostname; argv.role='db'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_db = out -%]
+[% argv.host=hostname; argv.role='rtp'; PROCESS '/usr/lib/ngcp-ngcpcfg/has_role'; is_rtp = out -%]
+#Configuration file for collectd NGCP plugin
+#   Do not use "" for strings
+
+#General options
+CHECKPATH = /usr/sbin
+
+# perform checks even if not active in /etc/motd
+FORCE_CHECKS = [% checktools.force %]
+
+# SIP check plugin
+SIP_CHECK_ENABLE = [% checktools.sip_check_enable %]
+SIP_CHECK_IP = [% checktools.sip_check_ip %]
+SIP_CHECK_PORT = [% kamailio.lb.port %]
+
+# Mysql check plugin
+MYSQL_CHECK_ENABLE = [% checktools.mysql_check_enable %]
+MYSQL_CHECK_IP = [% database.pair.dbhost %]
+
+# MPT raid check plugin
+MPT_CHECK_ENABLE = [% checktools.mpt_check_enable %]
+
+# Exim queue check plugin
+EXIM_QUEUE_CHECK_ENABLE = [% checktools.exim_check_enable %]
+
+# Kamailio active dialog plugin
+KAM_DIALOG_ACTIVE_ENABLE = [% checktools.kamailio_check_dialog_active_enable %]
+
+# Kamailio early dialog plugin
+KAM_DIALOG_EARLY_ENABLE = [% checktools.kamailio_check_dialog_early_enable %]
+
+# Kamailio registered subscribers count plugin
+[% IF is_mgmt -%]
+KAM_USRLOC_REGISTERED_SUBSCRIBERS_ENABLE = [% checktools.kamailio_check_usrloc_regusers_enable %]
+[% ELSE -%]
+# KAM_USRLOC_REGISTERED_SUBSCRIBERS_ENABLE available on management node only (role 'mgmt'), forced disabling
+KAM_USRLOC_REGISTERED_SUBSCRIBERS_ENABLE = 0
+[% END -%]
+
+# Kamailio registered devices count plugin
+[% IF is_mgmt -%]
+KAM_USRLOC_REGISTERED_DEVICES_ENABLE = [% checktools.kamailio_check_usrloc_regdevices_enable %]
+[% ELSE -%]
+# KAM_USRLOC_REGISTERED_DEVICES_ENABLE available on management node only (role 'mgmt'), forced disabling
+KAM_USRLOC_REGISTERED_DEVICES_ENABLE = 0
+[% END -%]
+
+# OSS provisioned subscribers count plugin
+[% IF is_mgmt -%]
+OSS_PROVISIONED_SUBSCRIBERS_ENABLE = [% checktools.oss_check_provisioned_subscribers_enable %]
+[% ELSE -%]
+# OSS_PROVISIONED_SUBSCRIBERS_ENABLE available on management node only (role 'mgmt'), forced disabling
+OSS_PROVISIONED_SUBSCRIBERS_ENABLE = 0
+[% END -%]
+
+# sipstats number of packets
+SIPSTATS_NUM_PACKETS_ENABLED = [% checktools.sipstats_check_num_packets %]
+
+# sipstats number of packets
+SIPSTATS_NUM_PACKETS_PERDAY_ENABLED = [% checktools.sipstats_check_num_packets_perday %]
+
+# sipstats size of packets partition
+SIPSTATS_PARTITION_SIZE_ENABLED = [% checktools.sipstats_check_partition_size %]
+
+# ASR/NSR statistics
+ASR_NSR_STATISTICS = [% checktools.asr_nsr_statistics %]
+
+# RRD statistics consolidation settings
+RRD_AGGREGATE = 0
+RRD_FILES = kam_dialog_active.rrd kam_usrloc_regusers.rrd oss_provisioned_subscribers.rrd sipstats_num_packets.rrd sipstats_num_packets_perday.rrd
+RRD_DIR = /var/lib/collectd/rrd
+
+

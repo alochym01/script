@@ -1,0 +1,7 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[%
+  argv.host=hostname; argv.role='proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out
+-%]
+[% IF !is_proxy -%]#[% END -%]* * * * * root  if /usr/sbin/ngcp-check_active -q; then /usr/sbin/reminder 1>/dev/null; fi

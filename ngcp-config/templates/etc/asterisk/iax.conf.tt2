@@ -1,0 +1,29 @@
+
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_int_ips = out -%]
+[% IF !sip_int_ips.size -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_int_ips = out -%]
+[% END -%]
+[general]
+bindport = 4569           
+bindaddr = [% sip_int_ips.0 %]
+disallow = all
+allow = alaw
+allow = ulaw
+minregexpire = 1800
+maxregexpire = 1800
+
+[iax-options](!)
+type = friend
+secret = iaxmodem
+host = dynamic
+context = fax-out
+disallow = all
+allow = alaw
+
+[% idx = 0 -%]
+[% WHILE idx < 10 -%]
+[iax[% idx %]](iax-options)
+port = 457[% idx %]
+[% idx = idx + 1 -%]
+[% END %]

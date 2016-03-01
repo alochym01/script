@@ -1,0 +1,7 @@
+
+
+profiles=ngcp,ngcp_cf
+
+active_profile=$(paramhdr),ngcp
+
+

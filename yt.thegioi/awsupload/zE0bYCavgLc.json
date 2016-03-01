@@ -1,0 +1,52 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/p-iBWjerOp_yuZ9whD7yQar_rrg\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/zuF_GkO2jhWJwyB3SSU-XVaNrp8\"",
+   "id": "zE0bYCavgLc",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:45:05.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Vốn điều lệ của VEC sẽ tăng hơn 70 lần trong 3 năm tới",
+    "description": "Website: http://xemtin.xyz\n Thủ tướng Chính phủ vừa đồng ý cho phép Tổng Công ty Đầu tư phát triển đường cao tốc Việt Nam (VEC), đến năm 2019 được điều chỉnh vốn điều lệ lên gấp hơn 70 lần.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/zE0bYCavgLc/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/zE0bYCavgLc/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/zE0bYCavgLc/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "tăng vốn điều lệ",
+     "vốn xã hội hóa",
+     "huy động vốn",
+     "Vốn điều lệ của VEC"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Vốn điều lệ của VEC sẽ tăng hơn 70 lần trong 3 năm tới",
+     "description": "Website: http://xemtin.xyz\n Thủ tướng Chính phủ vừa đồng ý cho phép Tổng Công ty Đầu tư phát triển đường cao tốc Việt Nam (VEC), đến năm 2019 được điều chỉnh vốn điều lệ lên gấp hơn 70 lần."
+    }
+   }
+  }
+ ]
+}

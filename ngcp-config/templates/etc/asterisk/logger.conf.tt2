@@ -1,0 +1,5 @@
+
+[general]
+[logfiles]
+console => notice,warning,error
+syslog.[% asterisk.log.facility %] => notice,warning,error,debug,verbose

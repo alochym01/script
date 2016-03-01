@@ -1,0 +1,534 @@
+
+[% IF rsyslog.elasticsearch.enable == "yes" -%]
+[% elasticsearch_template='S=$rs SS=\'$rr\' M=$rm R=$ru F=$fu T=$tu IP=$avp(s:ip):$avp(s:port)($si:$sp) UAIP=$si UA=\'$ua\' ID=$ci ' -%]
+[% logreq_init=elasticsearch_template -%]
+[% logreq=elasticsearch_template -%]
+[% logres_init=elasticsearch_template -%]
+[% logres=elasticsearch_template -%]
+[% ELSE -%]
+[% MACRO logreq_init GET kamailio.proxy.log.request_init.join(' ') -%]
+[% MACRO logreq GET kamailio.proxy.log.request.join(' ') -%]
+[% MACRO logres_init GET kamailio.proxy.log.response_init.join(' ') -%]
+[% MACRO logres GET kamailio.proxy.log.response.join(' ') -%]
+[% END -%]
+[% MACRO debug_dump(type, name) BLOCK -%]
+#!ifdef WITH_DEBUG_TEST
+xdbg("[% type %] of route [% name %] - $mi $rm\n");
+dbg_pv_dump(30, "L_DBG");
+#!endif
+[% END -%]
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_int_ips_real = out -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_int_ips = out -%]
+[% sip_int_ips = sip_int_ips.merge(sip_int_ips_real) -%]
+[% sip_int_ips = sip_int_ips.unique -%]
+[% argv.role='lb'; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_ext_ips = out -%]
+[% IF !sip_ext_ips.size -%]
+[% argv.role='lb'; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_ext_ips = out -%]
+[% END -%]
+[% argv.role='lb'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_lb_ips = out -%]
+[% IF !sip_lb_ips.size -%]
+[% argv.role='lb'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_lb_ips = out -%]
+[% END -%]
+########################################################################
+# Main route for im/presence requests
+########################################################################
+route[ROUTE_IMP_REQUEST]
+{
+	[% debug_dump('start', 'ROUTE_IMP_REQUEST') %]
+
+	if(is_method("NOTIFY") && 
+		cmp_istr($cT, "application/simple-message-summary")  &&
+		(allow_address("1", "$avp(s:ip)", "0") || [% FOREACH ip IN sip_int_ips -%]$avp(s:ip) == "[% ip %]"[% IF sip_int_ips.last != ip -%] || [% END -%][% END -%]))
+	{
+		xlog("L_NOTICE", "Route MWI - [% logreq -%]\n");
+		route(ROUTE_IMP_NOTIFY_MWI);
+		[% debug_dump('exit', 'ROUTE_IMP_REQUEST') %]
+		exit;
+	}
+	if(is_method("NOTIFY") && $hdr(Event) == "check-sync" && allow_address("1", "$avp(s:ip)", "0"))
+	{
+		xlog("L_NOTICE", "Route sync request - [% logreq -%]\n");
+		route(ROUTE_IMP_NOTIFY_MWI);
+		[% debug_dump('exit', 'ROUTE_IMP_REQUEST') %]
+		exit;
+	}
+
+#!ifndef ENABLE_PRESENCE
+	route(ROUTE_COM_REJECT_UNSUPPORTED);
+#!else
+
+        # checking if a request is a retransmission, if so it will exit
+        t_check_trans();
+
+        # SUBSCRIBE/NOTIFY can create a dialog
+        # MESSAGE could associated with existing dialog/media session
+        # will exit if in dialog
+        route(ROUTE_IMP_WITHINDLG);
+
+        # not in dialog, loose_route: reset initial local route? 
+	if(loose_route())
+	{
+		if($du != $null && is_domain_local("$dd"))
+		{
+			xlog("L_INFO", "Reset initial local route - [% logreq -%]\n");
+			$du = $null;
+		}
+		else
+		{
+			xlog("L_NOTICE", "Initial loose-routing rejected - [% logreq -%]\n");
+			sl_send_reply("403", "Initial Loose-Routing Forbidden");
+			[% debug_dump('exit', 'ROUTE_IMP_REQUEST') %]
+			exit;
+		}
+		
+	}
+
+        # MESSAGE that did not associated with dialog, need AUTH
+        # SUBSCRIBE/NOTIFY/PUBLISH need AUTH
+        # unless it's a PUBLISH from PUA or SUBSCRIBE from sems reginfo-client / PUBLISH from sems-pbx
+        if(! (([% FOREACH ip IN sip_int_ips -%]$si == "[% ip %]"[% IF sip_int_ips.last != ip -%] || [% END -%][% END -%]) &&
+             ($sp == "[% kamailio.proxy.port %]" || $sp == "[% sems.bindport %]" || $sp == "[% pbx.bindport %]")) )
+	{
+		route(ROUTE_AUTH);
+	}
+
+	# record routing for dialog forming requests (in case they are routed)
+	# - remove preloaded route headers
+	remove_hf("Route");
+        # should we add NOTIFY as well?
+	if (is_method("SUBSCRIBE"))
+	{
+		record_route();
+	}
+
+        # If it will be a long operation, create a new t, to catch re-retrans? 
+	if (!t_newtran())
+	{
+		xlog("L_ERR", "Failed to create new transaction - [% logreq -%]\n");
+		sl_reply_error();
+		[% debug_dump('exit', 'ROUTE_IMP_REQUEST') %]
+		exit;
+	}
+
+        route(ROUTE_IMP_PRESENCE);
+#!endif
+	[% debug_dump('exit', 'ROUTE_IMP_REQUEST') %]
+	exit;
+}
+
+#!ifdef ENABLE_PRESENCE
+route[ROUTE_IMP_PRESENCE] {
+	[% debug_dump('start', 'ROUTE_IMP_PRESENCE') %]
+	if(is_method("PUBLISH"))
+	{
+		xlog("L_NOTICE", "Handling publish request - [% logreq -%]\n");
+		if(!handle_publish())
+		{
+			xlog("L_ERR", "Failed to handle publish request - [% logreq -%]\n");
+		}
+		t_release();
+		[% debug_dump('exit', 'ROUTE_IMP_PRESENCE') %]
+		exit;
+	}
+	else if(is_method("SUBSCRIBE"))
+	{
+		xlog("L_NOTICE", "Handling subscribe request for event '$hdr(Event)' - [% logreq -%]\n");
+		#!ifdef ENABLE_PBX
+		if ( $hdr(Event) == "call-info" || $hdr(Event) == "line-seize" )
+		{
+			sca_handle_subscribe();
+		}
+		else
+		{
+		#!endif
+			$var(ret_code) = rls_handle_subscribe();
+			if($var(ret_code) == 10)
+			{
+				xlog("L_INFO", "Not an RLS request, handle normal subscribe request - [% logreq -%]\n");
+				if(!handle_subscribe())
+				{
+					xlog("L_ERR", "Failed to handle subscribe request - [% logreq -%]\n");
+				}
+			}
+		#!ifdef ENABLE_PBX
+		}
+		#!endif
+		t_release();
+		[% debug_dump('exit', 'ROUTE_IMP_PRESENCE') %]
+		exit;
+	}
+	else if(is_method("NOTIFY")) 
+        {
+                route(ROUTE_IMP_NOTIFY_RLS);
+             
+        }
+	else if(is_method("MESSAGE"))
+	{
+		xlog("L_NOTICE", "Handling message request - [% logreq -%]\n");
+		# checks if watcher is authorized to subscribe event 'presence' of presentity
+                pres_auth_status("$fu", "$ru");
+                if ($retcode == 1) {
+	        	route(ROUTE_IMP_RELAY);
+		} else {
+		        xlog("L_NOTICE", "message request denied - $fu is not authorized to $ru, retcode is $retcode \n");
+			send_reply("403", "Forbidden");
+		}
+		[% debug_dump('exit', 'ROUTE_IMP_PRESENCE') %]
+	        exit;
+	}
+        else 
+        {
+		xlog("L_ERR", "Unimplemented impresence request - [% logreq -%]\n");
+		t_reply("403", "Not implemented");
+		t_release(); 
+		[% debug_dump('exit', 'ROUTE_IMP_PRESENCE') %]
+		exit;
+        } 
+
+
+	[% debug_dump('end', 'ROUTE_IMP_REQUEST') %]
+}
+
+
+# Handle requests within SIP dialogs
+route[ROUTE_IMP_WITHINDLG] {
+	[% debug_dump('start', 'ROUTE_IMP_WITHINDLG') %]
+	if (has_totag()) {
+		# sequential request withing a dialog should
+		# take the path determined by record-routing
+		if (loose_route() && ($fU != "sems_sub")) {
+			$var(loose_routed) = 1;
+			route(ROUTE_OUTBOUND);
+		} else {
+			# in-dialog subscribe/message, how about notify??
+			#if (is_method("SUBSCRIBE") && uri == myself) {
+			if (is_method("SUBSCRIBE") || is_method("MESSAGE") || is_method("NOTIFY") ) {
+				route(ROUTE_IMP_PRESENCE);
+				[% debug_dump('exit', 'ROUTE_IMP_WITHINDLG') %]
+				exit;
+			}
+			sl_send_reply("404","Not here");
+		}
+		[% debug_dump('exit', 'ROUTE_IMP_WITHINDLG') %]
+		exit;
+	}
+	[% debug_dump('end', 'ROUTE_IMP_WITHINDLG') %]
+}
+
+########################################################################
+# RLS-NOTIFY handling
+########################################################################
+route[ROUTE_IMP_NOTIFY_RLS]
+{
+	[% debug_dump('start', 'ROUTE_IMP_NOTIFY_RLS') %]
+	xlog("L_NOTICE", "Handling RLS notification  - [% logreq -%]\n");
+	if(!rls_handle_notify()) 
+	{
+		xlog("L_NOTICE", "Failed to handle RLS notification - [% logreq -%]\n");
+		sl_send_reply("404", "Failed");
+		[% debug_dump('exit', 'ROUTE_IMP_NOTIFY_RLS') %]
+		exit;
+	}
+	[% debug_dump('end', 'ROUTE_IMP_NOTIFY_RLS') %]
+}
+
+#!endif
+
+########################################################################
+# MWI-NOTIFY handling
+########################################################################
+route[ROUTE_IMP_NOTIFY_MWI]
+{
+	[% debug_dump('start', 'ROUTE_IMP_NOTIFY_MWI') %]
+	route(ROUTE_IMP_RELAY);
+	[% debug_dump('end', 'ROUTE_IMP_NOTIFY_MWI') %]
+}
+
+########################################################################
+# Lookup destination and relay message
+########################################################################
+route[ROUTE_IMP_RELAY]
+{
+	[% debug_dump('start', 'ROUTE_IMP_RELAY') %]
+	$avp(s:acc_callee_user_in) = $rU;
+	$avp(s:acc_callee_domain_in) = $rd;
+
+	avp_delete("$avp(s:has_extension)/g");
+	avp_delete("$avp(s:callee_user)/g");
+	avp_delete("$avp(s:callee_base_user)/g");
+	avp_delete("$avp(s:callee_domain)/g");
+	avp_db_query("select username,domain,alias_username from dbaliases where username='$(rU{s.escape.common})' limit 1", "$avp(s:callee_user);$avp(s:callee_domain);$avp(s:callee_base_user)");
+	if($avp(s:callee_user) == $null)
+	{
+		avp_db_query("select username,domain,alias_username from dbaliases where alias_username like concat(left('$rU', 7), '%') and instr('$rU', alias_username)=1 order by length(alias_username) desc limit 1", "$avp(s:callee_user);$avp(s:callee_domain);$avp(s:callee_base_user)");
+	}
+	if($avp(s:callee_user) != $null && $avp(s:callee_domain) != $null)
+	{
+		$rU = $avp(s:callee_user);
+		$rd = $avp(s:callee_domain);
+		if($avp(s:acc_callee_user_in) != $avp(s:callee_base_user))
+		{
+			$avp(s:has_extension) = 1;
+			xlog("L_INFO", "Callee was aliased with an extension, the base alias is '$avp(s:callee_base_user)' - [% logreq -%]\n");
+		}
+		else
+		{
+			xlog("L_INFO", "Callee was aliased with base alias '$avp(s:callee_base_user)' - [% logreq -%]\n");
+		}
+	}
+	else
+	{
+		$avp(s:callee_user) = $rU;
+		$avp(s:callee_domain) = $rd;
+	}
+
+	route(ROUTE_CLEAR_CALLEE_PREF);
+	if(!is_domain_local("$rd"))
+	{
+		xlog("L_ERR", "IM-Presne for this domain not served here - [% logreq -%]\n");
+		sl_send_reply("404", "Not found");
+		[% debug_dump('exit', 'ROUTE_IMP_RELAY') %]
+		exit;
+	}
+
+	avp_delete("$avp(s:callee_uuid)");
+	avp_db_query("select uuid from subscriber where username = '$rU'", "$avp(s:callee_uuid)");
+	if($avp(s:callee_uuid) != $null)
+	{
+		xlog("L_NOTICE", "Callee is local, uuid='$avp(s:callee_uuid)' - [% logreq -%]\n");
+	}
+	else
+	{
+		xlog("L_ERR", "User not found for MWI - [% logreq -%]\n");
+		sl_send_reply("404", "Not found");
+		[% debug_dump('exit', 'ROUTE_IMP_RELAY') %]
+		exit;
+	}
+
+	route(ROUTE_LOAD_CALLEE_PREF);
+	if($avp(s:callee_base_user) != $null)
+	{
+		$var(orig_ruri_user) = $rU;
+		#$rU = $avp(s:callee_base_user);
+		xlog("L_INFO", "Performing location lookup with main subscriber - [% logreq -%]\n");
+	}
+	if(!lookup("location")) 
+	{
+		xlog("L_NOTICE", "Local user offline - [% logreq -%]\n");
+		sl_send_reply("480", "User offline");
+		[% debug_dump('exit', 'ROUTE_IMP_RELAY') %]
+		exit;
+	}
+	route(ROUTE_SET_RUSER);
+
+	# Don't do accounting
+	$var(loose_routed) = 1;
+
+	t_on_failure("FAILURE_ROUTE_LOCAL");
+	route(ROUTE_OUTBOUND);
+	[% debug_dump('end', 'ROUTE_IMP_RELAY') %]
+}
+
+#!ifdef ENABLE_PBX
+########################################################################
+# Lookup destination and relay message
+########################################################################
+route[ROUTE_IMP_NOTIFY_SLA]
+{
+	[% debug_dump('start', 'ROUTE_IMP_NOTIFY_SLA') %]
+	xlog("L_NOTICE", "SLA notification - [% logreq -%]\n");
+
+	if (!lua_run("ngcp_clean", "callee", "usr"))
+	{
+		route(ROUTE_ADD_CALLINFO_REPLY);
+		sl_send_reply("500", "Internal Error");
+		exit;
+	}
+	#parse call-id from sems-pbx sla-notifier with account information
+	$var(tmp_contact) = $(ci{s.select,0,@}{s.replace,!40,@});
+	$var(user) = $(var(tmp_contact){uri.user});
+	$var(domain) = $(var(tmp_contact){uri.domain});
+	xlog("L_INFO", "Load caller preferences for SLA NOTIFY for '$var(user)@$var(domain)' - [% logreq -%]\n");
+	if (!lua_run("ngcp_callee_usr_load", "", "$var(domain)"))
+	{
+		route(ROUTE_ADD_CALLINFO_REPLY);
+		sl_send_reply("500", "Internal Error");
+		exit;
+	}
+	if(pv_isset("$xavp(callee_real_prefs[0]=>lbrtp_set)"))
+	{
+		$(avp(s:lbrtp_dispatcher_id_callee)[*]) = $xavp(callee_real_prefs[0]=>lbrtp_set);
+	}
+	else
+	{
+		$(avp(s:lbrtp_dispatcher_id_callee)[*]) = [% cluster_sets.${cluster_sets.default_set}.dispatcher_id %];
+	}
+	xlog("L_INFO", "Loading dispatcher entries for lb using did '$avp(s:lbrtp_dispatcher_id_callee)' - [% logreq -%]\n");
+	if(!ds_select_dst("$(avp(s:lbrtp_dispatcher_id_callee){s.int})", "4"))
+	{
+		xlog("L_WARN", "Failed to load dispatcher entries for lb using did '$avp(s:lbrtp_dispatcher_id_callee)', use first lb found in network.yml - [% logreq -%]\n");
+		$du = "sip:[% sip_lb_ips.0 %]:[% kamailio.lb.port %]";
+	}
+	else
+	{
+		xlog("L_INFO", "Successfully loaded lb '$du' from dispatcher using did '$avp(s:lbrtp_dispatcher_id_callee)' - [% logreq -%]\n");
+	}
+	# We receive aliased contact as R-URI
+#	if(!lookup("location")) 
+#	{
+#		xlog("L_NOTICE", "Local user offline - [% logreq -%]\n");
+#		sl_send_reply("480", "User offline");
+#		exit;
+#	}
+	# Don't do accounting
+	$var(loose_routed) = 1;
+
+	t_on_failure("FAILURE_ROUTE_LOCAL");
+	route(ROUTE_OUTBOUND);
+	[% debug_dump('end', 'ROUTE_IMP_NOTIFY_SLA') %]
+}
+#!endif
+
+#!ifdef ENABLE_PRESENCE
+########################################################################
+# XCAP Server handling
+########################################################################
+event_route[xhttp:request] 
+{
+	[% debug_dump('start', 'xhttp:request') %]
+	route(ROUTE_NET_INFO);
+
+	set_reply_close();
+       	set_reply_no_connect();
+
+	if(is_present_hf("P-NGCP-XCAP-Host"))
+	{
+		$var(orig_host) = $hdr(P-NGCP-XCAP-Host);
+	}
+	else
+	{
+		$var(orig_host) = "[% sip_ext_ips.0 %]";
+	}
+
+	xlog("L_INFO", "Got HTTP request for $var(orig_host)/$hu - M=$rm IP=$avp(s:ip):$avp(s:port) ($si:$sp)\n");
+
+	if(!www_authorize("$var(orig_host)", "subscriber"))
+	{
+		www_challenge("$var(orig_host)", "0");
+		[% debug_dump('exit', 'xhttp:request') %]
+		exit;
+	}
+	xlog("L_NOTICE", "Successfully authorized HTTP request - M=$rm IP=$avp(s:ip):$avp(s:port) ($si:$sp)\n");
+
+	if($hu=~"^/xcap/")
+	{
+		$xcapuri(u=>data) = $hu;
+
+		# /xcap/xcap-caps/global/index
+		if($rm=="GET" && $xcapuri(u=>auid)=="xcap-caps")
+		{
+			$var(xbody) =
+"<?xml version='1.0' encoding='UTF-8'?>
+<xcap-caps xmlns='urn:ietf:params:xml:ns:xcap-caps'>
+  <auids>
+    <auid>rls-services</auid>
+    <auid>pidf-manipulation</auid>
+    <auid>xcap-caps</auid>
+    <auid>resource-lists</auid>
+    <auid>pres-rules</auid>
+    <auid>org.openmobilealliance.pres-rules</auid>
+  </auids>
+  <extensions>
+  </extensions>
+  <namespaces>
+    <namespace>urn:ietf:params:xml:ns:rls-services</namespace>
+    <namespace>urn:ietf:params:xml:ns:pidf</namespace>
+    <namespace>urn:ietf:params:xml:ns:xcap-caps</namespace>
+    <namespace>urn:ietf:params:xml:ns:resource-lists</namespace>
+    <namespace>urn:ietf:params:xml:ns:pres-rules</namespace>
+  </namespaces>
+</xcap-caps>";
+			xhttp_reply("200", "ok", "application/xcap-caps+xml", "$var(xbody)");
+			[% debug_dump('exit', 'xhttp:request') %]
+			exit;
+		}
+
+		xlog("L_INFO", "Checking xcap xuid '$xcapuri(u=>xuid)' - M=$rm IP=$avp(s:ip):$avp(s:port) ($si:$sp)\n");
+		if($xcapuri(u=>xuid)=~"^sip:.+@.+")
+                # jitsi use: /xcap/resource-lists/users/sip:w102@192.168.51.20/index 
+		{
+			$var(uri) = $xcapuri(u=>xuid);
+			xlog("L_INFO", "Using user-passed xcapuri '$var(uri)' - M=$rm IP=$avp(s:ip):$avp(s:port) ($si:$sp)\n");
+		}
+		else
+		{
+                        # bria/eyebeam use: /xcap/org.openmobilealliance.pres-rules/users/w103@192.168.51.20/pres-rules 
+                        # kamailio xcap expect the uri starting with sip
+                        # otherwise ERROR: pv [pv_trans.c:522]: invalid uri [w103@192.168.51.20]
+		        if($xcapuri(u=>xuid)=~"^.+@.+") 
+                        {
+			      $var(uri) = "sip:"+ $xcapuri(u=>xuid); 
+                        }
+                        else { 
+			       # TODO: use a proper domain instead of $Ri
+			       $var(uri) = "sip:"+ $xcapuri(u=>xuid) + "@" + $Ri;
+                        }
+			xlog("L_INFO", "Using constructed xcapuri '$var(uri)' - M=$rm IP=$avp(s:ip):$avp(s:port) ($si:$sp)\n");
+		}
+
+		if ($au!=$(var(uri){uri.user})) 
+		{
+			xlog("L_NOTICE", "Reject XCAP access for user '$au' to resource '$(var(uri){uri.user})' -  M=$rm IP=$avp(s:ip):$avp(s:port) ($si:$sp)\n");
+			xhttp_reply("403", "Forbidden", "text/html", "operation not allowed");
+			[% debug_dump('exit', 'xhttp:request') %]
+			exit;
+		}
+
+		# xcap ops
+		xlog("L_NOTICE", "Handle XCAP service '$xcapuri(u=>auid)' for '$xcapuri(u=>xuid)' -  M=$rm IP=$avp(s:ip):$avp(s:port) ($si:$sp)\n");
+		switch($rm) {
+			case "PUT":
+				xcaps_put("$var(uri)", "$hu", "$rb");
+				if($xcapuri(u=>auid)=~"pres-rules")
+				{
+					pres_update_watchers("$var(uri)", "presence");
+					pres_refresh_watchers("$var(uri)", "presence", 1);
+				}
+                                else if ($xcapuri(u=>auid)=~"resource-lists"
+                                         || $xcapuri(u=>auid)=~"rls-services") {
+                                	rls_update_subs("$var(uri)", "presence");
+                                }
+				[% debug_dump('exit', 'xhttp:request') %]
+				exit;
+			case "GET":
+				xcaps_get("$var(uri)", "$hu");
+				[% debug_dump('exit', 'xhttp:request') %]
+				exit;
+			case "DELETE":
+				xcaps_del("$var(uri)", "$hu");
+				if($xcapuri(u=>auid)=~"pres-rules")
+				{
+					pres_update_watchers("$var(uri)", "presence");
+					pres_refresh_watchers("$var(uri)", "presence", 1);
+				}
+                                else if ($xcapuri(u=>auid)=~"resource-lists"
+                                         || $xcapuri(u=>auid)=~"rls-services") {
+                                	rls_update_subs("$var(uri)", "presence");
+                                }
+				[% debug_dump('exit', 'xhttp:request') %]
+				exit;
+		
+		}
+	}
+
+
+	xlog("L_NOTICE", "Send other HTTP reply - M=$rm IP=$avp(s:ip):$avp(s:port) ($si:$sp)\n");
+	xhttp_reply("200", "OK", "text/html", "<html><body>OK</body></html>");
+	[% debug_dump('exit', 'xhttp:request') %]
+	exit;
+}
+#!endif
+
+
+# vim: ft=cfg

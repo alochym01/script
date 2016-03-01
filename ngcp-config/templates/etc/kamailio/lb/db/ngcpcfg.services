@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ngcp-sercmd lb dispatcher.reload 2>/dev/null || true

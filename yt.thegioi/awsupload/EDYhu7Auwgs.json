@@ -1,0 +1,49 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/4NmWhM_IpXd2POPqoxEJk1zAl1k\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/2WvINu8ahVvttV7IFNnoMkxmDvE\"",
+   "id": "EDYhu7Auwgs",
+   "snippet": {
+    "publishedAt": "2016-01-06T11:30:14.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Không có căn cứ việc bình chữa cháy để trong ô tô phát nổ",
+    "description": "Website: http://xemtin.xyz\n Theo quan điểm của phóng viên VTV, những ý kiến cho rằng bình chữa cháy sẽ phát nổ nếu ô tô để ngoài trời nắng, là không có cơ sở.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/EDYhu7Auwgs/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/EDYhu7Auwgs/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/EDYhu7Auwgs/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "xa-hoi",
+     "bình chữa cháy"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Không có căn cứ việc bình chữa cháy để trong ô tô phát nổ",
+     "description": "Website: http://xemtin.xyz\n Theo quan điểm của phóng viên VTV, những ý kiến cho rằng bình chữa cháy sẽ phát nổ nếu ô tô để ngoài trời nắng, là không có cơ sở."
+    }
+   }
+  }
+ ]
+}

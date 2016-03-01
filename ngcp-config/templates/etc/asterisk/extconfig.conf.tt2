@@ -1,0 +1,4 @@
+
+[settings]
+voicemail => odbc,asterisk,voicemail_users
+voicemessages => odbc,asterisk,voicemail_spool

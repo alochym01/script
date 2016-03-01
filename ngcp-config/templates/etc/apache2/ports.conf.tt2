@@ -1,0 +1,32 @@
+# If you just change the port or add more ports here, you will likely also
+# have to change the VirtualHost statement in
+# /etc/apache2/sites-enabled/000-default
+# This is also true if you have upgraded from before 2.2.9-3 (i.e. from
+# Debian etch). See /usr/share/doc/apache2.2-common/NEWS.Debian.gz and
+# README.Debian.gz
+
+
+<IfModule mod_ssl.c>
+    # If you add NameVirtualHost *:443 here, you will also have to change
+    # the VirtualHost statement in /etc/apache2/sites-available/default-ssl
+    # to <VirtualHost *:443>
+    # Server Name Indication for SSL named virtual hosts is currently not
+    # supported by MSIE on Windows XP.
+    #Listen 443
+    SSLProtocol All -SSLv2 -SSLv3
+    SSLHonorCipherOrder On
+    SSLCompression off
+    <IfModule mod_headers.c>
+    # Add six earth month HSTS header for all users...
+    Header add Strict-Transport-Security "max-age=15768000"
+    </IfModule>
+    SSLCipherSuite 'EDH+CAMELLIA:EDH+aRSA:EECDH+aRSA+AESGCM:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH:+CAMELLIA256:+AES256:+CAMELLIA128:+AES128:+SSLv3:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!DSS:!RC4:!SEED:!ECDSA:CAMELLIA256-SHA:AES256-SHA:CAMELLIA128-SHA:AES128-SHA'
+</IfModule>
+
+<IfModule mod_gnutls.c>
+    #Listen 443
+</IfModule>
+
+
+#NameVirtualHost *:80
+#Listen 80

@@ -1,0 +1,53 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/iIOS6O7Mq1ibgh6jUimYFj9WYmE\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/zgVtF38dAUat21fY9d0jt88YQbg\"",
+   "id": "5zaW78GRrqQ",
+   "snippet": {
+    "publishedAt": "2016-01-07T03:15:07.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Điểm báo 7/1: Tăng gấp 3 lần giá vé xe Tết, bắt chẹt người lao động",
+    "description": "Website: http://xemtin.xyz\n Nhiều hãng xe nâng giá vé xe tết cao gấp 2 - 3 lần so với ngày thường, bắt chẹt người lao động là một trong những thông tin đáng chú ý trên các báo ra sáng nay.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/5zaW78GRrqQ/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/5zaW78GRrqQ/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/5zaW78GRrqQ/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "giá vé xe",
+     "vé xe Tết",
+     "Người lao động",
+     "vé máy bay",
+     "vé tàu tết"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Điểm báo 7/1: Tăng gấp 3 lần giá vé xe Tết, bắt chẹt người lao động",
+     "description": "Website: http://xemtin.xyz\n Nhiều hãng xe nâng giá vé xe tết cao gấp 2 - 3 lần so với ngày thường, bắt chẹt người lao động là một trong những thông tin đáng chú ý trên các báo ra sáng nay."
+    }
+   }
+  }
+ ]
+}

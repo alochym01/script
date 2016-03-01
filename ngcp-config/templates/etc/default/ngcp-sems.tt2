@@ -1,0 +1,33 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[%
+  argv.host=hostname; argv.role='proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out
+-%]
+# configuration for SEMS - SIP Express Media Server
+#
+# this file is sourced by SEMS init script /etc/init.d/ngcp-sems
+
+SEMS_RUN=[% is_proxy ? 'yes' : 'no' %]
+
+# ser configuration file
+SEMS_CFG_FILE="/etc/ngcp-sems/sems.conf"
+
+# user to run ser as
+SEMS_USER="sems"
+
+# group to run ser as
+SEMS_GROUP="sems"
+
+SEMS_RUNDIR="/var/run/ngcp-sems"
+
+# sems pidfile
+SEMS_PIDFILE="$SEMS_RUNDIR/ngcp-sems.pid"
+
+# set if you want to create core files
+SEMS_CREATE_CORE="yes"
+
+SEMS_COREDIR="/var/cores"
+
+SEMS_CACHEDIR="/var/cache/ngcp-sems"
+SEMS_CACHEDIR_EXTRADIRS="audio_cache callingcard"

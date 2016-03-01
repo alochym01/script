@@ -1,0 +1,79 @@
+
+[% IF ossbss.frontend == 'apache' -%]
+
+[% IF ossbss.apache.port != 443 && ossbss.apache.port != 80 %]
+LISTEN [% ossbss.apache.port %]
+[% END %]
+
+<VirtualHost *:[% ossbss.apache.port %]>
+        ServerAdmin [% ossbss.apache.serveradmin %]
+        ServerName [% ossbss.apache.servername %]
+	[% IF ossbss.apache.ssl_enable == "yes" %]
+        SSLEngine on
+        SSLCertificateFile [% ossbss.apache.sslcertfile %]
+        SSLCertificateKeyFile [% ossbss.apache.sslcertkeyfile %]
+	[% END %]
+
+        PerlModule Apache2::RequestUtil
+
+        SetEnv     PERL_LWP_SSL_VERIFY_HOSTNAME 0
+        PerlSetEnv PERL_LWP_SSL_VERIFY_HOSTNAME 0
+
+        <Location /SOAP>
+                AuthName "Sipwise NGCP Provisioning"
+                AuthType Basic
+                AuthUserFile /etc/ngcp-ossbss/provisioning.htpasswd
+                Require valid-user
+
+                <LimitExcept POST>
+                        Deny from all
+                </LimitExcept>
+
+                SetHandler perl-script
+                PerlHandler Sipwise::Provisioning::SOAP
+        </Location>
+
+        <Location /XMLRPC>
+                AuthName "Sipwise NGCP Provisioning"
+                AuthType Basic
+                AuthUserFile /etc/ngcp-ossbss/provisioning.htpasswd
+                Require valid-user
+
+                <LimitExcept POST>
+                        Deny from all
+                </LimitExcept>
+
+                SetHandler perl-script
+                PerlHandler Sipwise::Provisioning::XMLRPC
+        </Location>
+
+        AliasMatch "^/SOAP/(.*)\.wsdl" /usr/share/perl5/Sipwise/Provisioning/backends/SOAP/$1.wsdl
+        AliasMatch "^/SOAP/(.*)\.xsl" /usr/share/perl5/Sipwise/Provisioning/backends/SOAP/$1.xsl
+	AliasMatch "^/SOAP/(.*)\.js" /usr/share/perl5/Sipwise/Provisioning/backends/SOAP/$1.js
+        <LocationMatch "^/SOAP/(.*\.xsl|.*\.wsdl|.*\.js)">
+                AuthName "Sipwise NGCP Provisioning"
+                AuthType Basic
+                AuthUserFile /etc/ngcp-ossbss/provisioning.htpasswd
+                Require valid-user
+                Order allow,deny
+                Allow from 127.0.0.1
+                Satisfy Any
+
+                <LimitExcept GET>
+                        Deny from all
+                        Satisfy All
+                </LimitExcept>
+                SetHandler perl-script
+                PerlResponseHandler Sipwise::Provisioning::WSDL
+        </LocationMatch>
+
+        # requires module dumpio
+        # LogLevel debug
+        # DumpIOInput On
+        # DumpIOOutput On
+
+        LogLevel [% ossbss.logging.apache.err.level %]
+        ErrorLog syslog:[% ossbss.logging.apache.err.facility %]
+        CustomLog "|/usr/bin/logger -p [% ossbss.logging.apache.acc.facility %].[% ossbss.logging.apache.acc.level %] -t [% ossbss.logging.apache.acc.identity %]" combined
+</VirtualHost>
+[% END -%]

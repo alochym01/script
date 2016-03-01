@@ -1,0 +1,62 @@
+
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_adv_ips_for_host'; sip_adv_ips = out -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_int_ips = out -%]
+[% IF !sip_int_ips.size -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_int_ips = out -%]
+[% END -%]
+[% argv.role='proxy'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_proxy_ips = out -%]
+[% IF !sip_proxy_ips.size -%]
+[% argv.role='proxy'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_proxy_ips = out -%]
+[% END -%]
+[general]
+bindaddr = [% sip_int_ips.0 %]
+bindport=[% asterisk.sip.bindport %]
+srvlookup=no
+disallow=all
+allow=alaw
+allow=ulaw
+language=[% general.lang %]
+dtmfmode=[% asterisk.sip.dtmfmode %]
+pedantic=yes
+rtptimeout=60
+allowguest=no
+[% IF sip_adv_ips.size -%]
+; force NAT due to defined NGCP SIP advertised IP
+nat=yes
+[% ELSE -%]
+nat=no
+[% END -%]
+useragent=NGCP Voicebox Server
+
+;trustrpid = yes
+;sendrpid = yes
+
+[sip_proxy]
+type=peer
+canreinvite=no
+insecure=invite,port
+host=[% sip_int_ips.0 %]
+port=[% kamailio.proxy.port %]
+fromuser=[% reminder.sip_fromuser %]
+fromdomain=[% reminder.sip_fromdomain %]
+qualify=no
+context=sip_in
+
+[% IF sip_proxy_ips.size > 0 -%]
+[% FOREACH ip IN sip_proxy_ips.unique.sort -%]
+[% IF ip != '' -%]
+[sip_proxy_fax_[% loop.index -%]]
+type=peer
+canreinvite=no
+insecure=invite,port
+host=[% ip %]
+port=[% kamailio.proxy.port %]
+fromuser=faxserver
+fromdomain=sipwise.local
+qualify=no
+context=sip_in
+
+[% END -%]
+[% END -%]
+[% END -%]

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+COLOR=${COLOR:-true}
+
+MYSQL_PAIR_HOST=[% database.pair.dbhost ? database.pair.dbhost : "localhost" %]
+MYSQL_PAIR_PORT=[% database.pair.dbport ? database.pair.dbport : "3306" %]
+
+MYSQL_CENTRAL_HOST=[% database.central.dbhost ? database.central.dbhost : "db01" %]
+MYSQL_CENTRAL_PORT=[% database.central.dbport ? database.central.dbport : "3306" %]
+
+MYSQL_LOCAL_HOST=[% database.local.dbhost ? database.local.dbhost : "127.0.0.1" %]
+MYSQL_LOCAL_PORT=[% database.local.dbport ? database.local.dbport : "3308" %]
+
+MYSQL_QUERIES_WARN=500
+MYSQL_QUERIES_CRIT=1000
+
+MAX_MYSQL_LAG=600      # seconds
+MYSQL_SLOW_TIMEOUT=60  # seconds
+MYSQL_SLOW_CRIT=600    # seconds
+MYSQL_SLOW_WARN=3600   # seconds
+
+MYSQL_CONN_WARN=50     # %
+MYSQL_CONN_CRIT=85     # %
+RAM_USED_WARN=75       # %
+RAM_USED_CRIT=[% checktools.collcheck.memused ? checktools.collcheck.memused*100 : '75' -%]       # %
+DISK_USED_WARN=75      # %
+DISK_USED_CRIT=[% checktools.collcheck.dfused ? checktools.collcheck.dfused*100 : '85' -%]      # %
+DISK_INODES_WARN=75    # %
+DISK_INODES_CRIT=85    # %
+
+SWAP_USED_WARN=1       # kB
+SWAP_USED_CRIT=1000000 # kB
+
+COREDUMP_EXPIRATION=5  # days
+
+LOAD_AVERAGE_WARN=[% checktools.collcheck.loadshort ? checktools.collcheck.loadshort : '4' %]
+LOAD_AVERAGE_CRIT=[% checktools.collcheck.loadmedium ? checktools.collcheck.loadmedium : '2' %]

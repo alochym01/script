@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/KIwbwF5t2lPqTXfKUQhLgR9jjmk\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/GeihxS-6nWCZDZAbx7zzbDkiWEI\"",
+   "id": "BoegemznYY0",
+   "snippet": {
+    "publishedAt": "2016-01-06T10:35:06.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Nổ súng tranh chấp trang trại ở Bình Thuận",
+    "description": "Website: http://xemtin.xyz\n Công an tỉnh Bình Thuận đang phối hợp với công an huyện Bắc Bình điều tra vụ nổ súng tại công ty Hồng Ân xã Hải Ninh, huyện Bắc Bình (Bình Thuận) vào chiều tối ngày 5/1.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/BoegemznYY0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/BoegemznYY0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/BoegemznYY0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "xa-hoi",
+     "tranh chấp tài sản",
+     "tranh chấp trang trại",
+     "nổ súng ở Bình Thuận"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Nổ súng tranh chấp trang trại ở Bình Thuận",
+     "description": "Website: http://xemtin.xyz\n Công an tỉnh Bình Thuận đang phối hợp với công an huyện Bắc Bình điều tra vụ nổ súng tại công ty Hồng Ân xã Hải Ninh, huyện Bắc Bình (Bình Thuận) vào chiều tối ngày 5/1."
+    }
+   }
+  }
+ ]
+}

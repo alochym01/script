@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+/etc/init.d/ntp restart
+
+
+
+# vim: ft=sh

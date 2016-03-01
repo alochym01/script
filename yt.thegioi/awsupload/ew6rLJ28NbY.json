@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/KYg9J2hZftL50MwADK4LukI6hVw\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/WPQLZg6XZLFwOu0yOBR5D8pE3Ns\"",
+   "id": "ew6rLJ28NbY",
+   "snippet": {
+    "publishedAt": "2016-01-07T04:28:50.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Quy định trang bị bình chữa cháy trên xe ô tô: Đa số ý kiến đồng tình và đánh giá cao",
+    "description": "Website: http://xemtin.xyz\n Phần lớn ý kiến đều cho rằng việc trang bị bình chữa cháy trên ô tô là thiết thực và cần thiết để đảm bảo an toàn cho người và phương tiện khi tham gia giao thông.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/ew6rLJ28NbY/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/ew6rLJ28NbY/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/ew6rLJ28NbY/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "trong-nuoc",
+     "cơ giới đường bộ",
+     "xử phạt vi phạm hành chính"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Quy định trang bị bình chữa cháy trên xe ô tô: Đa số ý kiến đồng tình và đánh giá cao",
+     "description": "Website: http://xemtin.xyz\n Phần lớn ý kiến đều cho rằng việc trang bị bình chữa cháy trên ô tô là thiết thực và cần thiết để đảm bảo an toàn cho người và phương tiện khi tham gia giao thông."
+    }
+   }
+  }
+ ]
+}

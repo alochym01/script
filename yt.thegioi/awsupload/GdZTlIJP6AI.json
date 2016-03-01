@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/J9xGi1xlFkWIlffCd59Z9PouTQ0\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/7rzyNYP211BINj9qQ_H0DgmMfTQ\"",
+   "id": "GdZTlIJP6AI",
+   "snippet": {
+    "publishedAt": "2016-01-07T08:55:04.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "15% thông tin tố giác tham nhũng qua đường dây nóng là có cơ sở",
+    "description": "Website: http://xemtin.xyz\n Sau khi triển khai, đường dây nóng của Cục Chống tham nhũng đã tiếp nhận 329 nguồn tin trong đó có tới 15% thông tin được xác minh là có cơ sở liên quan đến tham nhũng.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/GdZTlIJP6AI/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/GdZTlIJP6AI/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/GdZTlIJP6AI/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "trong-nuoc",
+     "hành vi tham nhũng",
+     "đường dây nóng",
+     "Thanh tra Chính phủ"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "15% thông tin tố giác tham nhũng qua đường dây nóng là có cơ sở",
+     "description": "Website: http://xemtin.xyz\n Sau khi triển khai, đường dây nóng của Cục Chống tham nhũng đã tiếp nhận 329 nguồn tin trong đó có tới 15% thông tin được xác minh là có cơ sở liên quan đến tham nhũng."
+    }
+   }
+  }
+ ]
+}

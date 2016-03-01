@@ -1,0 +1,52 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/5mzg9usnWC2gWrk0DGnxbdPN_oQ\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/SbHwSa8PKRRhQQ7_wPeVO-mHKOQ\"",
+   "id": "quiji_O5Oac",
+   "snippet": {
+    "publishedAt": "2016-01-06T09:40:06.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Quảng Trị tìm hướng quy hoạch lại cây cao su",
+    "description": "Website: http://xemtin.xyz\n Đối với những diện tích nhỏ lẻ, tự phát và vùng thường phải đối mặt với thiên tai, địa phương sẽ không phát triển thêm cao su mà thay bằng các loại cây có lợi thế khác.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/quiji_O5Oac/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/quiji_O5Oac/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/quiji_O5Oac/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "trồng hồ tiêu",
+     "giá cao su",
+     "vùng chuyên canh",
+     "cây công nghiệp"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Quảng Trị tìm hướng quy hoạch lại cây cao su",
+     "description": "Website: http://xemtin.xyz\n Đối với những diện tích nhỏ lẻ, tự phát và vùng thường phải đối mặt với thiên tai, địa phương sẽ không phát triển thêm cao su mà thay bằng các loại cây có lợi thế khác."
+    }
+   }
+  }
+ ]
+}

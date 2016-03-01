@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+. /etc/default/ngcp-roles
+ngcp-check_active > /dev/null
+exit_code=$?
+if [ "$exit_code" == "0" ] && [ "$NGCP_IS_PROXY" == "yes" ]; then
+        monit restart asterisk
+elif [ "$exit_code" != "0" ]; then
+        echo "Asterisk restart skipped, node is not active."
+elif [ "$NGCP_IS_PROXY" != "yes" ]; then
+        echo "Asterisk restart skipped, no role 'proxy' assigned to node."
+fi
+
+
+
+# vim: ft=sh

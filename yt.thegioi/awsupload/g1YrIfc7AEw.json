@@ -1,0 +1,53 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/b5xfHf2VoeLEMfGk48QcEwQQYWY\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/oZfHY2jtFlfxIe6fC1iWQpF8qDY\"",
+   "id": "g1YrIfc7AEw",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:10:09.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Vỡ bể chứa chất thải, Sông Gâm lãnh trọn hậu quả ô nhiễm",
+    "description": "Website: http://xemtin.xyz\n Trưa hôm qua, sự cố vỡ bể chứa chất thải của công ty TNHH CKC đã khiến hàng trăm nghìn mét khối bùn và nước thải chì, kẽm trôi ra sông Gâm, Cao Bằng.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/g1YrIfc7AEw/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/g1YrIfc7AEw/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/g1YrIfc7AEw/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "chuyen-dong-24h",
+     "Sông Gâm",
+     "chất thải độc hại",
+     "Cao Bằng",
+     "huyện Bảo Lâm",
+     "ô nhiễm môi trường"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Vỡ bể chứa chất thải, Sông Gâm lãnh trọn hậu quả ô nhiễm",
+     "description": "Website: http://xemtin.xyz\n Trưa hôm qua, sự cố vỡ bể chứa chất thải của công ty TNHH CKC đã khiến hàng trăm nghìn mét khối bùn và nước thải chì, kẽm trôi ra sông Gâm, Cao Bằng."
+    }
+   }
+  }
+ ]
+}

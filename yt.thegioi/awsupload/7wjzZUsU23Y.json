@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/XBJiGhdV6wlSR4AhJ65bAkdTgvU\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/Up87kceLtcLka4dmEhoPSkrWSzE\"",
+   "id": "7wjzZUsU23Y",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:15:07.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Nhộn nhịp thị trường mua bán chui nhà tái định cư tại TP.HCM",
+    "description": "Website: http://xemtin.xyz\nVTV.vn-Dù không được phép mua đi bán lại nhà tái định cư song tại TP.HCM, thị trường mua bán nhà tái định cư chưa được bàn giao vẫn diễn ra hàng ngày, thông qua các giao dịch ngầm.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/7wjzZUsU23Y/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/7wjzZUsU23Y/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/7wjzZUsU23Y/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "trong-nuoc",
+     "nhà tái định cư",
+     "mua bán nhà tái định cư",
+     "Trung tâm Tin tức VTV24"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Nhộn nhịp thị trường mua bán chui nhà tái định cư tại TP.HCM",
+     "description": "Website: http://xemtin.xyz\nVTV.vn-Dù không được phép mua đi bán lại nhà tái định cư song tại TP.HCM, thị trường mua bán nhà tái định cư chưa được bàn giao vẫn diễn ra hàng ngày, thông qua các giao dịch ngầm."
+    }
+   }
+  }
+ ]
+}

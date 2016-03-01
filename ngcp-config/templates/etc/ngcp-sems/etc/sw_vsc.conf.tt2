@@ -1,0 +1,40 @@
+
+mysql_host = [% database.central.dbhost %]
+mysql_port = [% database.central.dbport %]
+mysql_user = [% sems.dbuser %]
+mysql_pass = [% sems.dbpassword %]
+
+announce_path = /usr/lib/ngcp-sems/audio/
+
+error_announcement = vsc_error.wav
+unknown_announcement = vsc_invalid.wav
+
+voicemail_number = [% sems.vsc.voicemail_number %]
+
+cfu_on_pattern = ^\*[% sems.vsc.cfu_code %]\*[0-9]+$
+cfu_on_announcement = vsc_cfu_on.wav
+cfu_off_pattern = ^(\%23)[% sems.vsc.cfu_code %](\%23)?.*$
+cfu_off_announcement = vsc_cfu_off.wav
+
+cfb_on_pattern = ^\*[% sems.vsc.cfb_code %]\*[0-9]+$
+cfb_on_announcement = vsc_cfb_on.wav
+cfb_off_pattern = ^(\%23)[% sems.vsc.cfb_code %](\%23)?.*$
+cfb_off_announcement = vsc_cfb_off.wav
+
+cft_on_pattern = ^\*[% sems.vsc.cft_code %]\*[0-9]+\*[0-9]+$
+cft_on_announcement = vsc_cft_on.wav
+cft_off_pattern = ^(\%23)[% sems.vsc.cft_code %](\%23)?.*$
+cft_off_announcement = vsc_cft_off.wav
+
+cfna_on_pattern = ^\*[% sems.vsc.cfna_code %]\*[0-9]+$
+cfna_on_announcement = vsc_cfna_on.wav
+cfna_off_pattern = ^(\%23)[% sems.vsc.cfna_code %](\%23)?.*$
+cfna_off_announcement = vsc_cfna_off.wav
+
+speed_dial_pattern = ^\*[% sems.vsc.speedial_code %]\*[0-9]+$
+speed_dial_announcement = vsc_speeddial.wav
+
+reminder_on_pattern = ^\*[% sems.vsc.reminder_code %]\*[0-9]+$
+reminder_on_announcement = vsc_reminder_on.wav
+reminder_off_pattern = ^(\%23)[% sems.vsc.reminder_code %](\%23)?.*$
+reminder_off_announcement = vsc_reminder_off.wav

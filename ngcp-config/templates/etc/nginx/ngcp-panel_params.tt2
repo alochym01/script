@@ -1,0 +1,7 @@
+client_max_body_size 128m;
+include /etc/nginx/fastcgi_params;
+# Catalyst requires setting PATH_INFO (instead of SCRIPT_NAME) to $fastcgi_script_name
+fastcgi_param  SCRIPT_NAME '';
+fastcgi_param  PATH_INFO $fastcgi_script_name;
+fastcgi_param  HTTPS on;
+fastcgi_pass   unix:/var/run/fastcgi/ngcp-panel.sock;

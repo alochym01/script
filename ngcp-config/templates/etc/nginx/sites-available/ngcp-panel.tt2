@@ -1,0 +1,214 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='sip_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   sip_ext_ips = out
+-%]
+[% IF !sip_ext_ips.size -%]
+[% argv.host=hostname; argv.type='sip_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   sip_ext_ips = out
+-%]
+[% END -%]
+[% ext_ip = sip_ext_ips.0 -%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   web_ext_ips = out;
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_v6ips_for_host';
+   web_ext_v6ips = out
+-%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_ext_ips = out.merge(web_ext_ips);
+-%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_v6ips_for_host';
+   web_ext_v6ips = out.merge(web_ext_v6ips);
+-%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   web_int_ips = out;
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_v6ips_for_host';
+   web_int_v6ips = out
+-%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_int_ips = out.merge(web_int_ips);
+-%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_v6ips_for_host';
+   web_int_v6ips = out.merge(web_int_v6ips);
+-%]
+
+[% IF www_csc.enable != 'yes' && www_admin.http_admin.port != 80 && www_admin.http_csc.port != 80 -%]
+server {
+	listen   [::]:80 ipv6only=off;
+
+	location /handbook {
+		return 301 http://$host:[% www_admin.http_admin.port %]$request_uri;
+	}
+
+	location /login/subscriber {
+		return 301 https://$host:[% www_admin.http_csc.port %]$request_uri;
+	}
+
+	location /login/admin {
+		return 301 https://$host:[% www_admin.http_admin.port %]$request_uri;
+	}
+
+	location / {
+		return 301 https://$host:[% www_admin.http_csc.port %]$request_uri;
+	}
+}
+[% END -%]
+
+server {
+[% FOREACH ip IN web_ext_ips -%]
+[% IF ip -%]
+	listen [% ip %]:[% www_admin.http_csc.port %];
+[% END -%]
+[% END -%]
+[% FOREACH ip IN web_ext_v6ips -%]
+[% IF ip -%]
+	listen [[% ip %]]:[% www_admin.http_csc.port %];
+[% END -%]
+[% END -%]
+	ssl_certificate             [% www_admin.http_csc.sslcertfile %];
+	ssl_certificate_key         [% www_admin.http_csc.sslcertkeyfile %];
+	ssl_client_certificate      [% ossbss.apache.restapi.sslcertfile %];
+	ssl_verify_client           optional;
+	ssl_verify_depth            3;
+	include /etc/nginx/ssl_params;
+
+	location ~* /login(/)?$ {
+		return 301 /login/subscriber;
+	}
+
+	location /login/admin {
+		return 301 https://$host:[% www_admin.http_admin.port %]$request_uri;
+	}
+
+	location /favicon.ico {
+		alias  /usr/share/ngcp-panel/static/favicon.ico;
+	}
+
+	location /static {
+		root  /usr/share/ngcp-panel;
+	}
+
+	location / {
+		include /etc/nginx/ngcp-panel_params;
+	}
+
+	location ~ ^/wss/xmpp/(.*)$ {
+		proxy_pass        https://127.0.0.1:5281/xmpp-websocket/$1;
+		proxy_set_header Host $host;
+		proxy_buffering off;
+		tcp_nodelay on;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+	}
+
+	location ~ ^/wss/sip/(.*)$ {
+		proxy_pass        https://[% ext_ip %]:[% kamailio.lb.tls.port %]/ws/$1;
+		proxy_set_header Host $host;
+		proxy_buffering off;
+		tcp_nodelay on;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+	}
+}
+
+server {
+[% FOREACH ip IN web_int_ips -%]
+[% IF ip -%]
+	listen [% ip %]:[% www_admin.http_admin.port %];
+[% END -%]
+[% END -%]
+[% FOREACH ip IN web_int_v6ips -%]
+[% IF ip -%]
+	listen [[% ip %]]:[% www_admin.http_admin.port %];
+[% END -%]
+[% END -%]
+	ssl_certificate             [% www_admin.http_admin.sslcertfile %];
+	ssl_certificate_key         [% www_admin.http_admin.sslcertkeyfile %];
+	ssl_client_certificate      [% ossbss.apache.restapi.sslcertfile %];
+	ssl_verify_client           optional;
+	ssl_verify_depth            3;
+	include /etc/nginx/ssl_params;
+
+	location ~* /login(/)?$ {
+		return 301 /login/admin;
+	}
+
+	location /login/subscriber {
+		return 301 https://$host:[% www_admin.http_csc.port %]$request_uri;
+	}
+
+	location /favicon.ico {
+		alias  /usr/share/ngcp-panel/static/favicon.ico;
+	}
+
+	location /static {
+		root  /usr/share/ngcp-panel;
+	}
+
+	location ~* ^/log/(.+\.(png|gif|ico|ttf|woff|css)(\?.*)?)$ {
+		alias  /usr/share/ngcp-panel/static/kibana/$1;
+	}
+
+	location ~* ^/billing/.+/fees/upload$ {
+		# long process
+		fastcgi_read_timeout  300s;
+		include /etc/nginx/ngcp-panel_params;
+	}
+
+	location ~* ^/peering/.+/servers/.+/flash/dialogic$ {
+		# long process
+		fastcgi_read_timeout  300s;
+		include /etc/nginx/ngcp-panel_params;
+	}
+
+	location / {
+		include /etc/nginx/ngcp-panel_params;
+	}
+
+	location ~ ^/api {
+		include /etc/nginx/ngcp-panel_params;
+		fastcgi_param  SSL_CLIENT_CERT  $ssl_client_raw_cert;
+		fastcgi_param  SSL_CLIENT_M_SERIAL $ssl_client_serial;
+		fastcgi_param  SSL_CLIENT_M_DN $ssl_client_s_dn;
+		proxy_buffers 8 1024k;
+		proxy_buffer_size 1024k;
+		proxy_busy_buffers_size 1024k;
+		fastcgi_buffers 8 16k;
+		fastcgi_buffer_size 32k;
+
+	}
+
+	location ~ ^/wss/xmpp/(.*)$ {
+		proxy_pass        https://127.0.0.1:5281/xmpp-websocket/$1;
+		proxy_set_header Host $host;
+		proxy_buffering off;
+		tcp_nodelay on;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+	}
+
+	location ~ ^/wss/sip/(.*)$ {
+		proxy_pass        https://[% ext_ip %]:[% kamailio.lb.tls.port %]/ws/$1;
+		proxy_set_header Host $host;
+		proxy_buffering off;
+		tcp_nodelay on;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+	}
+
+	location /handbook/ {
+		root /usr/share/ngcp-handbook;
+	}
+}
+

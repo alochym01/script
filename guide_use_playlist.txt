@@ -1,0 +1,19 @@
+mysql> select * from videoCats;
++----+-----------+-----------+----------+-----------------+
+| id | code      | title     | parentId | thumbnails_json |
++----+-----------+-----------+----------+-----------------+
+|  1 | hoat hinh | Cartoon   |        0 | NULL            |
+|  2 | giao duc  | Education |     NULL |                 |
+|  3 | TV Show   | TV Show   |        0 | NULL            |
+|  4 | Kham Pha  | Adventure |        0 | NULL            |
+|  5 | Nhac      | Music     |        0 | Enterment       |
++----+-----------+-----------+----------+-----------------+
+1. Crawler Playlist
+python crawler_yt_playlist_rest.py playlistId catId
+example: crawler playlistId=PLdhrcCVXurgLS8ASgsUER40qeEU-1l95x va catId=5
+    python crawler_yt_playlist_rest.py PLdhrcCVXurgLS8ASgsUER40qeEU-1l95x 5
+
+2. Crawler Channel
+python crawler_yt_channel_rest.py playlistId catId
+example crawler channelId=UCkyrwWdnBPixlzQADYQJ8ow va catId=5
+python crawler_yt_channel_rest.py UCkyrwWdnBPixlzQADYQJ8ow 5

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# restart daemon
+
+/etc/init.d/nginx reload
+sleep 2
+

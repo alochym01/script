@@ -1,0 +1,26 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='ha_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   ha_ip = out
+-%]
+[% argv.host=hostname; argv.type='sip_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   share_sip_int = out.0;
+-%]
+# Configuration file for check scripts.
+
+REDISCENTRAL="[% database.central.dbhost == 'localhost' ? ha_ip.0 : database.central.dbhost %]:[% database.central.redis_port %]"
+REDISCENTRALDB="[% kamailio.proxy.dlgcnt.central_redis_db %]"
+DBUSER="[% checktools.dbuser %]"
+DBPASS="[% checktools.dbpassword %]"
+DBCENTRALHOST="[% database.central.dbhost %]"
+DBCENTRALPORT="[% database.central.dbport %]"
+DBLOCALHOST="[% database.local.dbhost %]"
+DBLOCALPORT="[% database.local.dbport %]"
+DBPAIRHOST="[% database.pair.dbhost %]"
+DBPAIRPORT="[% database.pair.dbport %]"
+CHECKPATH="/usr/sbin"
+SIPURI='sip:[% checktools.sipuser %]@[% checktools.sipdomain %]'
+SIP_INT_IP="[% share_sip_int ? share_sip_int : '' %]"
+DEBUG=""
+SIPPORT="[% kamailio.lb.port %]"

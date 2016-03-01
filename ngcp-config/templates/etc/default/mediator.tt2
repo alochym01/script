@@ -1,0 +1,42 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[%
+  argv.host=hostname; argv.role='proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out
+-%]
+[% IF is_proxy -%]
+RUN_MEDIATOR="yes"
+[% ELSE -%]
+# no proxy role
+RUN_MEDIATOR="no"
+[% END -%]
+
+PIDFILE="/var/run/mediator.pid"
+FORK="yes"
+INTERVAL="[% mediator.interval %]"
+SOURCE_HOST="[% database.pair.dbhost %]"
+SOURCE_PORT="[% database.pair.dbport %]"
+SOURCE_USER="[% kamailio.proxy.dbrwuser %]"
+SOURCE_PASS='[% kamailio.proxy.dbrwpw %]'
+SOURCE_DB="[% mediator.srcdbname %]"
+[% IF rateomat.enable == "no" -%]
+DEST_HOST="[% database.central.dbhost %]"
+DEST_PORT="[% database.central.dbport %]"
+[% ELSE -%]
+DEST_HOST="[% database.pair.dbhost %]"
+DEST_PORT="[% database.pair.dbport %]"
+[% END -%]
+DEST_USER="[% mediator.dbuser %]"
+DEST_PASS='[% mediator.dbpassword %]'
+DEST_DB="[% mediator.destdbname %]"
+PROV_HOST="[% database.local.dbhost %]"
+PROV_PORT="[% database.local.dbport %]"
+PROV_USER="[% mediator.dbuser %]"
+PROV_PASS='[% mediator.dbpassword %]'
+PROV_DB="[% mediator.provdbname %]"
+STATS_DB="[% mediator.stats.dbname %]"
+STATS_HOST="[% database.central.dbhost %]"
+STATS_PORT="[% database.central.dbport %]"
+STATS_USER="[% mediator.dbuser %]"
+STATS_PASS="[% mediator.dbpassword %]"
+STATS_PERIOD="[% mediator.stats.period %]"

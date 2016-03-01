@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/bnsU0U5TT4AqdAvpTPne96nn790\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/QLbLDmhn5YdFGp4e7YApgEAi3gc\"",
+   "id": "ZoHiGqyxOUU",
+   "snippet": {
+    "publishedAt": "2016-01-06T09:00:21.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Giá mủ cao su thấp, nông dân khốn đốn",
+    "description": "Website: http://xemtin.xyz\n Từng là loại cây trồng giúp hàng vạn hộ gia đình thoát nghèo, đến nay, thu nhập của người trồng cao su bấp bênh, thậm chí là nợ nần vì đầu tư cho loại cây này.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/ZoHiGqyxOUU/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/ZoHiGqyxOUU/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/ZoHiGqyxOUU/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "xa-hoi",
+     "trồng cao su",
+     "vườn cao su",
+     "nguồn thu ngân sách"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Giá mủ cao su thấp, nông dân khốn đốn",
+     "description": "Website: http://xemtin.xyz\n Từng là loại cây trồng giúp hàng vạn hộ gia đình thoát nghèo, đến nay, thu nhập của người trồng cao su bấp bênh, thậm chí là nợ nần vì đầu tư cho loại cây này."
+    }
+   }
+  }
+ ]
+}

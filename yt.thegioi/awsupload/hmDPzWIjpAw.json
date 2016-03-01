@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/SNS-9xvZ8aN26Q3ElFGtCKGxuS0\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/CPgaDKtmBCIXwC4H8-7d57ynFp4\"",
+   "id": "hmDPzWIjpAw",
+   "snippet": {
+    "publishedAt": "2016-01-06T07:40:04.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Trung Quốc tiếp tục hạ tỷ giá NDT, dấy lên lo ngại về khó khăn kinh tế",
+    "description": "Website: http://xemtin.xyz\n Trong sáng nay (6/1), Trung Quốc lại tiếp tục hạ tỷ giá tham chiếu đồng Nhân dân tệ, qua đó làm trầm trọng thêm nỗi lo về những khó khăn mà nước này phải đối mặt.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/hmDPzWIjpAw/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/hmDPzWIjpAw/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/hmDPzWIjpAw/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "tỷ giá tham chiếu",
+     "tỷ giá nhân dân tệ/VNĐ",
+     "Chỉ số Nikkei",
+     "kinh-te"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Trung Quốc tiếp tục hạ tỷ giá NDT, dấy lên lo ngại về khó khăn kinh tế",
+     "description": "Website: http://xemtin.xyz\n Trong sáng nay (6/1), Trung Quốc lại tiếp tục hạ tỷ giá tham chiếu đồng Nhân dân tệ, qua đó làm trầm trọng thêm nỗi lo về những khó khăn mà nước này phải đối mặt."
+    }
+   }
+  }
+ ]
+}

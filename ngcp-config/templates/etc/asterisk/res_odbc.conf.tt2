@@ -1,0 +1,10 @@
+
+[ENV]
+
+[asterisk]
+enabled => yes
+dsn => asterisk
+username => [% asterisk.odbc.dbuser %]
+password => [% asterisk.odbc.dbpassword %]
+pre-connect => yes
+

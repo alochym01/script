@@ -1,0 +1,29 @@
+
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_ext_ips = out -%]
+[% IF !sip_ext_ips.size -%]
+[% argv.host=hostname; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_ext_ips = out -%]
+[% END -%]
+########################################################################
+# Handler for XMLRPC requests
+########################################################################
+route[ROUTE_XMLRPC]
+{
+	xlog("L_INFO", "New XMLRPC request - M=$rm IP=$si:$sp\n");
+
+	if([% FOREACH ip IN sip_ext_ips -%]$Ri == "[% ip %]"[% IF sip_ext_ips.last != ip -%] || [% END -%][% END -%])
+	{
+		xlog("L_WARN", "Reject XMLRPC request on external interface - M=$rm IP=$si:$sp\n");
+		xmlrpc_reply("400", "XMLRPC not allowed");
+		return;
+	}
+
+
+	# close connection only for xmlrpclib (python) user agents
+	if(search("^User-Agent:.*xmlrpclib"))
+	{
+		set_reply_close();
+	}
+	set_reply_no_connect();
+	dispatch_rpc();
+}

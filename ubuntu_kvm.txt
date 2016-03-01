@@ -1,0 +1,10 @@
+link: http://www.naturalborncoder.com/virtualization/2014/10/23/installing-and-running-kvm-on-ubuntu-14-04-part-1/
+1.  enable CPU virtualization
+2.  create network for virtual network
+3.  install all packages
+4.  create VM:
+    -   sudo ubuntu-vm-builder kvm trusty --user alochym --name ubuntu --pass 123456 --addpkg acpid --addpkg openssh-server --addpkg linux-image-generic --arch amd64 --hostname demo2 --libvirt qemu:///system --bridge virtbr0 --mem 1024 --cpus 1 ;
+5.  check IP of VM
+    5.1 run cli in virsh enviroment: dumpxml name_of_vm
+    5.2 get MAC of vm and then run cli: "arp -an | grep MAC_of_VM" to get IP of VM
+    5.3 ssh alochym@IP_of_VM

@@ -1,0 +1,32 @@
+user www-data;
+worker_processes  4;
+
+error_log  /var/log/ngcp/nginx/error.log;
+pid        /var/run/nginx.pid;
+
+events {
+	worker_connections  2048;
+}
+
+http {
+	access_log	  off;
+	server_tokens off;
+	sendfile      on;
+	tcp_nopush    on;
+	tcp_nodelay   on;
+
+	keepalive_timeout  10;
+
+	# fix for promox VM
+	# http://trac.nginx.org/nginx/ticket/352
+	types_hash_max_size 2048;
+	include /etc/nginx/mime.types;
+	default_type application/octet-stream;
+
+	gzip  off;
+
+	include /etc/nginx/conf.d/*.conf;
+	include /etc/nginx/sites-enabled/*;
+
+	error_page 497 https://$host:$server_port$request_uri;
+}

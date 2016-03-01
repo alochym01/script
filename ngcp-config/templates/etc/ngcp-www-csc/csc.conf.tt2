@@ -1,0 +1,93 @@
+
+[% argv.role='lb'; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_ext_ips = out -%]
+[% IF !sip_ext_ips.size -%]
+[% argv.role='lb'; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_ext_ips = out -%]
+[% END -%]
+<config debugging="0"
+        prov_user="[% www_csc.prov_user %]"
+        prov_pass="[% www_csc.prov_pass %]"
+        log4perlconf="/etc/ngcp-ossbss/logging.conf"
+        site_domain="[% www_csc.site_domain %]"
+        display_account_info="[% www_csc.display_account_info %]"
+        sip_server="[% www_csc.sip_server %]"
+        tftp_server="[% www_csc.tftp_server %]"
+        payment_features="[% www_csc.payment_features %]"
+	[% IF asterisk.voicemail.enable == "yes" %]
+        voicemail_features="[% www_admin.voicemail_features %]"
+	[% ELSE %]
+        voicemail_features="0"
+	[% END %]
+        fax_features="[% www_admin.fax_features %]"
+	[% IF sems.conference.enable == "yes" %]
+        conference_features="[% www_admin.conference_features %]"
+	[% ELSE %]
+        conference_features="0"
+	[% END %]
+        cc_dial_prefix="[% www_csc.cc_dial_prefix %]"
+        ac_dial_prefix="[% www_csc.ac_dial_prefix %]"
+        voicebox_domain="[% ossbss.provisioning.routing.voicebox_domain %]"
+        fax2mail_domain="[% ossbss.provisioning.routing.fax2mail_domain %]"
+        conference_domain="[% ossbss.provisioning.routing.conference_domain %]"
+        reminder_user="[% reminder.sip_fromuser %]"
+        reminder_domain="[% reminder.sip_fromdomain %]"
+        
+        ngcp_flavor="spce"
+        
+>
+    <site_config title="[% www_csc.site_config.title %]"
+                 default_language="[% www_csc.site_config.default_language %]"
+                 default_uri="[% www_csc.site_config.default_uri %]"
+    >
+        [% FOREACH site_language = www_csc.site_config.languages %]
+        <languages>[% site_language %]</languages>
+        [% END %]
+        <css>/css/style.css</css>
+        <css>/css/sipwise.css</css>
+        <company name="[% www_csc.site_config.company.name %]"
+                 logo="[% www_csc.site_config.company.logo %]"
+                 hotline="[% www_csc.site_config.company.hotline %]"
+                 city="[% www_csc.site_config.company.city %]"
+                 street="[% www_csc.site_config.company.street %]"
+                 phone="[% www_csc.site_config.company.phone %]"
+                 fax="[% www_csc.site_config.company.fax %]"
+                 email="[% www_csc.site_config.company.email %]"
+                 webserver="[% www_csc.site_config.company.webserver %]"
+        />
+    </site_config>
+    <main_menu desktop="[% www_csc.main_menu.desktop %]"
+               calllist="[% www_csc.main_menu.calllist %]"
+               [% IF asterisk.voicemail.enable == "yes" %]
+               voicebox="[% www_csc.main_menu.voicebox %]"
+               [% ELSE %]
+               voicebox="0"
+               [% END %]
+               addressbook="[% www_csc.main_menu.addressbook %]"
+               callforward="[% www_csc.main_menu.callforward %]"
+               callblock="[% www_csc.main_menu.callblock %]"
+               reminder="[% www_csc.main_menu.reminder %]"
+               device="[% www_csc.main_menu.device %]"
+               account="[% www_csc.main_menu.account %]"
+               
+    />
+    <uaprovisioning>
+      <xcap 
+        host="[% sip_ext_ips.0 %]" 
+	port="[% nginx.xcap_port %]"
+	proto="https"
+      />
+      <sip 
+        host="[% sip_ext_ips.0 %]"
+        plain_port="[% kamailio.lb.port %]"
+	tls_port="[% kamailio.lb.tls.port %]"
+	tls_enabled="[% kamailio.lb.tls.enable %]"
+      />
+    </uaprovisioning>
+    <security
+        password_min_length="[% www_admin.security.password_min_length -%]"
+        password_max_length="[% www_admin.security.password_max_length -%]"
+        password_musthave_lowercase="[% www_admin.security.password_musthave_lowercase -%]"
+        password_musthave_uppercase="[% www_admin.security.password_musthave_uppercase -%]"
+        password_musthave_digit="[% www_admin.security.password_musthave_digit -%]"
+        password_musthave_specialchar="[% www_admin.security.password_musthave_specialchar -%]"
+    />
+</config>

@@ -1,0 +1,7 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[%
+  argv.host=hostname; argv.role='db';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_db = out
+-%]
+[% IF !is_db -%]#[% END -%]*/30 * * * *  root  if /usr/sbin/ngcp-check_active -q; then /usr/sbin/ngcp-fraud-daily-lock; fi

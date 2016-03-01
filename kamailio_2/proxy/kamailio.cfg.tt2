@@ -1,0 +1,1036 @@
+[% MACRO debug_dump(type, name) BLOCK -%]
+#!ifdef WITH_DEBUG_TEST
+[% var = "\$rm" -%]
+[% IF (name == "MAIN" && type == "start") -%]
+[% var = "\$mb" %]
+[% END -%]
+xdbg("[% type %] of route [% name %] - $mi [% var -%]\n");
+dbg_pv_dump(30, "L_DBG");
+#!endif
+[% END -%]
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_int_ips = out -%]
+[% IF !sip_int_ips.size -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_int_ips = out -%]
+[% END -%]
+[% argv.role='lb'; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_ext_ips = out -%]
+[% IF !sip_ext_ips.size -%]
+[% argv.role='lb'; argv.type='sip_ext'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_ext_ips = out -%]
+[% END -%]
+[% argv.role='lb'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_lb_ips = out -%]
+[% IF !sip_lb_ips.size -%]
+[% argv.role='lb'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_lb_ips = out -%]
+[% END -%]
+[% argv.role='proxy'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; sip_proxy_ips = out -%]
+[% IF !sip_proxy_ips.size -%]
+[% argv.role='proxy'; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; sip_proxy_ips = out -%]
+[% END -%]
+[% argv.role='mgmt'; argv.type='web_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; web_mgmt_ips = out -%]
+[% IF !web_mgmt_ips.size -%]
+[% argv.role='mgmt'; argv.type='web_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; web_mgmt_ips = out -%]
+[% END -%]
+[% IF rsyslog.elasticsearch.enable == "yes" -%]
+[% elasticsearch_template='S=$rs SS=\'$rr\' M=$rm R=$ru F=$fu T=$tu IP=$avp(s:ip):$avp(s:port)($si:$sp) UAIP=$si UA=\'$ua\' ID=$ci ' -%]
+[% logreq_init=elasticsearch_template -%]
+[% logreq=elasticsearch_template -%]
+[% logres_init=elasticsearch_template -%]
+[% logres=elasticsearch_template -%]
+[% ELSE -%]
+[% MACRO logreq_init GET kamailio.proxy.log.request_init.join(' ') -%]
+[% MACRO logreq GET kamailio.proxy.log.request.join(' ') -%]
+[% MACRO logres_init GET kamailio.proxy.log.response_init.join(' ') -%]
+[% MACRO logres GET kamailio.proxy.log.response.join(' ') -%]
+[% END -%]
+#!KAMAILIO
+
+#!define CENTRAL_URL "mysql://[% kamailio.proxy.dbrwuser %]:[% kamailio.proxy.dbrwpw %]@[% database.central.dbhost %]:[% database.central.dbport %]/[% kamailio.proxy.dbname %]"
+#!define LOCAL_URL "mysql://[% kamailio.proxy.dbrouser %]:[% kamailio.proxy.dbropw %]@[% database.local.dbhost %]:[% database.local.dbport %]/[% kamailio.proxy.dbname %]"
+#!define PAIR_URL "mysql://[% kamailio.proxy.dbrwuser %]:[% kamailio.proxy.dbrwpw %]@[% database.pair.dbhost %]:[% database.pair.dbport %]/[% kamailio.proxy.dbname %]"
+[% IF kamailio.proxy.proxy_lookup == "yes" -%]
+#!define PROXY_LOOKUP
+[% END -%]
+[% IF kamailio.proxy.authenticate_bye == "yes" -%]
+#!define AUTH_BYE
+[% END -%]
+[% IF kamailio.proxy.use_enum == "yes" -%]
+#!define USE_ENUM
+[% END -%]
+[% IF kamailio.proxy.foreign_domain_via_peer == "yes" -%]
+#!define FOREIGN_DOMAIN_VIA_PEER
+[% END -%]
+[% IF kamailio.lb.security.dos_ban_enable == "yes" -%]
+#!define ENABLE_PIKECHECK
+[% END -%]
+[% IF kamailio.lb.security.failed_auth_ban_enable == "yes" -%]
+#!define ENABLE_AUTHCHECK
+[% END -%]
+[% IF asterisk.voicemail.enable == "yes" -%]
+#!define ENABLE_VOICEMAIL
+[% END -%]
+[% IF sems.vsc.enable == "yes" -%]
+#!define ENABLE_VSC
+[% END -%]
+[% IF sems.conference.enable == "yes" -%]
+#!define ENABLE_CONFERENCE
+[% END -%]
+[% IF sems.prepaid.enable == "yes" -%]
+#!define ENABLE_PREPAID
+[% END -%]
+[% IF sems.sbc.session_timer.enable_per_leg_timers == "yes" -%]
+#!define LEG_SESSION_TIMERS
+[% END -%]
+[% IF kamailio.proxy.ignore_auth_realm == "yes" -%]
+#!define USE_DOMAIN 0
+[% ELSE -%]
+#!define USE_DOMAIN 1
+[% END -%]
+[% IF kamailio.proxy.allow_peer_relay == "yes" -%]
+#!define PEER_RELAY
+[% END -%]
+[% IF kamailio.proxy.presence.enable == "yes" -%]
+#!define ENABLE_PRESENCE
+[% END -%]
+[% IF kamailio.proxy.perform_peer_lcr == "yes" -%]
+#!define ENABLE_PEER_LCR
+[% END -%]
+[% IF pbx.enable == "yes" -%]
+#!define ENABLE_PBX 
+[% END -%]
+[% IF kamailio.proxy.fritzbox.enable == "yes" -%]
+#!define ENABLE_FRITZBOX_NUMBERS
+[% END -%]
+[% IF kamailio.proxy.debug == "yes" -%]
+#!define WITH_DEBUG_TEST
+[% END -%]
+
+# internal interfaces
+[% FOREACH ip IN sip_int_ips -%]
+listen=udp:[% ip %]:[% kamailio.proxy.port %]
+listen=tcp:[% ip %]:[% kamailio.proxy.port %]
+[% END -%]
+
+fork=yes
+children=[% kamailio.proxy.children %]
+
+sip_warning=no
+debug=1
+log_stderror=no
+memdbg=5
+memlog=5
+log_facility=LOG_LOCAL7
+log_name="proxy"
+mem_join=1
+
+disable_tcp=no
+tcp_children=[% kamailio.proxy.tcp_children %]
+tcp_rd_buf_size=65536
+#!ifdef ENABLE_PRESENCE
+tcp_accept_no_cl=yes
+#!endif
+auto_aliases=no
+#enable_sctp=0
+mlock_pages=yes
+shm_force_alloc=yes
+
+user_agent_header="User-Agent: Sipwise NGCP Proxy 3.X"
+server_header="Server: Sipwise NGCP Proxy 3.X"
+
+dns_try_ipv6=no
+dns_retr_time=1
+dns_retr_no=1
+dns_use_search_list=no
+
+# this is needed to shortcut the originating proxy if we
+# are the destination of a caller's home proxy lookup
+reply_to_via=1
+
+flags  FLAG_ACC_DB:1, FLAG_ACC_MISSED:2, FLAG_ACC_FAILED:3, FLAG_CLIR, FLAG_IN_FALLBACK, FLAG_SET_RUSER, FLAG_DLG:9, FLAG_DOWNSTREAM:15, FLAG_UPSTREAM:16
+
+#!define FLB_RTPPROXY_LOOKUP 1
+#!define FLB_PEERAUTH 2
+# using 3 produces a warnign see MT#7131
+#!define FLB_CALLEE_IPV6 4
+#!define FLB_CALLER_IPV6 5
+#!define FLB_NATB 6
+#!define FLB_NATSIPPING 7
+#!define FLB_NATPING_DISABLE 8
+#!define FLB_ICE_CALLER_REPLACE 9
+#!define FLB_ICE_CALLER_STRIP 10
+#!define FLB_ICE_CALLER_ADD 11
+#!define FLB_ICE_CALLEE_REPLACE 12
+#!define FLB_ICE_CALLEE_STRIP 13
+#!define FLB_ICE_CALLEE_ADD 14
+#!define FLB_RTPPROXY 15
+
+mpath="/usr/lib/x86_64-linux-gnu/kamailio/modules:/usr/lib/kamailio/modules"
+
+loadmodule "db_mysql.so"
+loadmodule "auth.so"
+loadmodule "auth_db.so"
+loadmodule "tm.so"
+loadmodule "tmx.so"
+loadmodule "sl.so"
+loadmodule "rr.so"
+loadmodule "pv.so"
+loadmodule "maxfwd.so"
+loadmodule "usrloc.so"
+loadmodule "registrar.so"
+loadmodule "textops.so"
+loadmodule "uri_db.so"
+loadmodule "siputils.so"
+loadmodule "utils.so"
+loadmodule "xlog.so"
+loadmodule "sanity.so"
+loadmodule "acc.so"
+loadmodule "nathelper.so"
+loadmodule "rtpengine.so"
+loadmodule "domain.so"
+loadmodule "ctl.so"
+loadmodule "xmlrpc.so"
+loadmodule "cfg_rpc.so"
+loadmodule "avpops.so"
+loadmodule "uac.so"
+loadmodule "kex.so"
+loadmodule "lcr.so"
+#!ifdef ENABLE_PEER_LCR
+loadmodule "lcr_rate.so"
+#!endif
+loadmodule "dispatcher.so"
+loadmodule "permissions.so"
+loadmodule "uac_redirect.so"
+loadmodule "dialplan.so"
+loadmodule "speeddial.so"
+loadmodule "dialog.so"
+loadmodule "tmrec.so"
+loadmodule "diversion.so"
+loadmodule "corex.so"
+loadmodule "textopsx.so"
+loadmodule "sdpops.so"
+
+#!ifdef USE_ENUM
+loadmodule "enum.so"
+#!endif
+
+modparam("tm", "auto_inv_100", 0)
+modparam("tm", "reparse_on_dns_failover", 0)
+modparam("tm", "fr_timer", 9000)
+modparam("tm", "fr_inv_timer", [% kamailio.proxy.fr_inv_timer ? kamailio.proxy.fr_inv_timer : '180000' %])
+modparam("tm", "restart_fr_on_each_reply", 0)
+modparam("tm", "failure_reply_mode", 3)
+modparam("tm", "contacts_avp", "tm_contacts")
+modparam("tm", "contact_flows_avp", "tm_contact_flows")
+#modparam("tm", "fr_inv_timer_avp", "$avp(s:callee_fr_inv_timer)")
+#modparam("tm", "fr_inv_timer_avp", "callee_fr_inv_timer")
+
+modparam("rr", "enable_full_lr", 1)
+modparam("rr", "append_fromtag", 1)
+
+modparam("registrar", "default_expires", [% kamailio.proxy.default_expires %])
+modparam("registrar", "min_expires", [% kamailio.proxy.min_expires %])
+modparam("registrar", "max_expires", [% kamailio.proxy.max_expires %])
+modparam("registrar", "method_filtering", 0)
+modparam("registrar", "append_branches", 1)
+modparam("registrar", "max_contacts", [% kamailio.proxy.max_registrations_per_subscriber %])
+modparam("registrar", "received_avp", "$avp(s:received)")
+modparam("registrar", "use_path", 1)
+modparam("registrar", "path_mode", 0)
+modparam("registrar", "path_use_received", 1)
+modparam("registrar", "gruu_enabled", 0)
+
+modparam("uri_db", "use_uri_table", 0)
+modparam("uri_db", "db_url", "")
+
+modparam("acc", "early_media", 0)
+modparam("acc", "report_ack", 0)
+modparam("acc", "report_cancels", 1)
+modparam("acc", "detect_direction", 1)
+modparam("acc", "db_flag", 1)
+modparam("acc", "db_missed_flag", 2)
+modparam("acc", "failed_transaction_flag", 3)
+modparam("acc", "db_url", PAIR_URL)
+modparam("acc", "db_extra", "src_user=$fU;src_domain=$fd;dst_ouser=$tU;dst_user=$rU;dst_domain=$rd")
+modparam("acc", "multi_leg_info", "src_leg=$avp(i:901);dst_leg=$avp(i:902)")
+modparam("acc", "time_mode", 2)
+modparam("acc", "time_attr", "time_hires")
+modparam("acc", "cdr_log_enable", 0)
+
+modparam("usrloc", "use_domain", USE_DOMAIN)
+modparam("usrloc", "db_mode", [% kamailio.proxy.usrloc_dbmode %])
+modparam("usrloc", "db_url", CENTRAL_URL)
+# switching db_check_update to 1 has previously caused duplication of location entries;
+# needs further investigation so switch it off for now...
+modparam("usrloc", "db_check_update", 0)
+
+modparam("maxfwd", "max_limit", [% kamailio.lb.max_forwards %])
+
+# TODO: use dedicated password for shared nonce generation
+modparam("auth", "secret", "[% kamailio.proxy.uaccryptpw %]")
+modparam("auth", "nonce_expire", [% kamailio.proxy.nonce_expire %])
+
+modparam("auth_db", "use_domain", USE_DOMAIN)
+modparam("auth_db", "calculate_ha1", 1)
+modparam("auth_db", "password_column", "password")
+modparam("auth_db", "db_url", LOCAL_URL)
+modparam("auth_db", "load_credentials", "$avp(s:caller_uuid)=uuid;$avp(s:caller_domain)=domain")
+
+modparam("domain", "db_url", LOCAL_URL)
+
+modparam("uac", "rr_from_store_param", "vsf")
+modparam("uac", "restore_mode", "auto")
+modparam("uac", "restore_passwd", "[% kamailio.proxy.uaccryptpw %]")
+
+[%
+  argv.type='sip_int'; argv.role='rtp'; argv.host=hostname;
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_cluster_set_shared_ip_maps_for_host';
+  UNLESS out.size;
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_cluster_set_ip_maps_for_host';
+  END;
+  rtp_cluster_set = out;
+-%]
+[% FOREACH rtp IN rtp_cluster_set -%]
+modparam("rtpengine", "rtpengine_sock", "[% rtp.dispatcher_id %] == [% FOREACH ip IN rtp.ips %]udp:[% ip %]:[% rtpengine.control_port %][% UNLESS loop.last %] [% END %][% END %]")
+[% END -%]
+modparam("rtpengine", "rtpengine_disable_tout", -1)
+
+modparam("nathelper", "natping_interval", [% kamailio.proxy.natping_interval %])
+modparam("nathelper", "ping_nated_only", 1)
+modparam("nathelper", "contact_only", 1)
+[% IF kamailio.proxy.nathelper_dbro == "yes" -%]
+modparam("nathelper", "filter_socket", 1)
+modparam("usrloc", "db_url_ro", LOCAL_URL)
+[% END -%]
+modparam("nathelper", "sipping_bflag", FLB_NATSIPPING)
+modparam("nathelper", "natping_disable_bflag", FLB_NATPING_DISABLE)
+modparam("nathelper", "sipping_from", "sip:pinger@sipwise.local")
+modparam("nathelper", "received_avp", "$avp(s:received)")
+modparam("nathelper", "natping_processes", [% kamailio.proxy.natping_processes %])
+modparam("usrloc", "nat_bflag", FLB_NATB)
+
+modparam("ctl", "binrpc", "unix:/var/run/kamailio/ctl.proxy.sock")
+modparam("ctl", "mode", 0666)
+modparam("ctl", "user", "kamailio")
+modparam("ctl", "group", "kamailio")
+
+modparam("avpops", "db_url", LOCAL_URL)
+modparam("avpops", "avp_table", "usr_preferences")
+modparam("avpops", "use_domain", USE_DOMAIN)
+
+modparam("lcr", "db_url", LOCAL_URL)
+modparam("lcr", "ruri_user_avp", "$avp(s:lcr_ruri_user)")
+modparam("lcr", "gw_uri_avp", "$avp(s:lcr_uri_list)")
+modparam("lcr", "flags_avp", "$avp(s:lcr_flags)")
+modparam("lcr", "defunct_capability", 0)
+modparam("lcr", "lcr_id_avp", "$avp(s:lcr_id_avp)")
+modparam("lcr", "defunct_gw_avp", "$avp(s:defunct_gw_avp)")
+[% IF kamailio.proxy.max_gw_lcr.defined -%]
+modparam("lcr", "lcr_gw_count", [% kamailio.proxy.max_gw_lcr %])
+[% END -%]
+
+#!ifdef ENABLE_PEER_LCR
+modparam("lcr_rate", "db_host", "[% database.local.dbhost %]")
+modparam("lcr_rate", "db_port", [% database.local.dbport %])
+modparam("lcr_rate", "db_user", "[% sems.prepaid_dbuser %]")
+modparam("lcr_rate", "db_pass", "[% sems.prepaid_dbpassword %]")
+modparam("lcr_rate", "db_db",   "billing")
+modparam("lcr_rate", "gw_uri_avp", "$avp(s:lcr_uri_list)")
+#!endif
+
+modparam("dispatcher", "db_url", LOCAL_URL)
+modparam("dispatcher", "force_dst", 1)
+modparam("dispatcher", "flags", 3)
+modparam("dispatcher", "dst_avp", "$avp(s:dsp_uri_list)")
+modparam("dispatcher", "cnt_avp", "$avp(s:dsp_uri_count)")
+modparam("dispatcher", "grp_avp", "$avp(s:dsp_uri_grp)")
+
+modparam("permissions", "check_all_branches", 1)
+modparam("permissions", "db_url", LOCAL_URL)
+modparam("permissions", "db_mode", 0)
+modparam("permissions", "peer_tag_avp", "$avp(s:peer_uuid)")
+#modparam("permissions", "address_table", "address_not_used")
+
+#!ifdef USE_ENUM
+modparam("enum", "domain_suffix", "e164.arpa.")
+#!endif
+
+modparam("uac_redirect", "default_filter", "accept")
+modparam("uac_redirect", "acc_function", "acc_log_request")
+modparam("uac_redirect", "acc_db_table", "acc")
+
+modparam("dialplan", "db_url", LOCAL_URL)
+modparam("dialplan", "attrs_pvar", "$avp(s:dp_attrs)")
+
+modparam("speeddial", "db_url", LOCAL_URL)
+
+modparam("dialog","db_url", PAIR_URL)
+modparam("dialog","db_mode", 1)
+modparam("dialog","dlg_flag", 9)
+modparam("dialog","dlg_match_mode", 1)
+modparam("dialog","profiles_no_value","total ;emergency")
+modparam("dialog","profiles_with_value","peer ; user ; type ; peerout ; userout ; account ; accountout; totaluser; totaluserout; totalaccount; totalaccountout")
+
+#!ifdef ENABLE_PRESENCE
+modparam("xmlrpc", "url_skip", "^/xcap/")
+#!endif
+modparam("xmlrpc", "route", "ROUTE_XMLRPC")
+
+
+# TODO: to be deprecated once domain.so is migrated to SR flavor
+loadmodule "mi_fifo.so"
+modparam("mi_fifo", "fifo_name", "/var/run/kamailio/kamailio.proxy.fifo")
+modparam("mi_fifo", "fifo_mode", 0666)
+modparam("mi_fifo", "fifo_user", "kamailio")
+modparam("mi_fifo", "fifo_group", "kamailio")
+
+modparam("utils", "http_query_timeout", 1)
+
+#!ifdef ENABLE_PRESENCE
+loadmodule "xhttp.so"
+modparam("xhttp", "url_match", "^/xcap/")
+
+loadmodule "xcap_server.so"
+modparam("xcap_server", "db_url", CENTRAL_URL)
+modparam("xcap_server", "xcap_table", "xcap")
+modparam("xcap_server", "xcap_root", "/xcap/")
+
+loadmodule "presence.so"
+modparam("presence", "db_url", CENTRAL_URL)
+modparam("presence", "subs_db_mode", [% kamailio.proxy.usrloc_dbmode == 3 ? '3' : '2' %])
+modparam("presence", "notifier_processes", 3)
+
+
+loadmodule "presence_xml.so"
+modparam("presence_xml", "db_url", CENTRAL_URL)
+modparam("presence_xml", "force_active", 0)
+modparam("presence_xml", "integrated_xcap_server", 1)
+# retry-after 5 minutes
+modparam("presence_xml", "xcapauth_userdel_reason", "probation;retry-after=300")
+
+loadmodule "presence_mwi.so"
+#!ifdef ENABLE_PBX
+loadmodule "presence_dialoginfo.so"
+# make sure to only return one dialog for xpath
+modparam("presence_dialoginfo", "force_single_dialog", 1)
+modparam("presence_dialoginfo", "force_dummy_dialog", 1)
+
+loadmodule "xmlops.so"
+modparam("xmlops", "xml_ns", "dlginfo=urn:ietf:params:xml:ns:dialog-info")
+
+loadmodule "sca.so"
+modparam("sca", "db_url", CENTRAL_URL)
+modparam("sca", "db_update_interval", 120 )
+#!endif
+
+loadmodule "pua.so"
+modparam("pua", "hash_size", 9)
+modparam("pua", "db_url", CENTRAL_URL)
+modparam("pua", "db_table", "pua")
+modparam("pua", "db_mode", [% kamailio.proxy.usrloc_dbmode == 3 ? '2' : '0' %])
+modparam("pua", "min_expires", 0)
+modparam("pua", "default_expires", 3600)
+modparam("pua", "update_period", 60)
+modparam("pua", "outbound_proxy", "sip:[% sip_int_ips.0 %]:[% kamailio.proxy.port %]")
+modparam("pua", "dlginfo_increase_version", 0)
+
+[% IF pushd.enable == "yes" -%]
+modparam("presence", "db_table_lock_type", [% kamailio.proxy.usrloc_dbmode == 3 ? '0' : '1' %])
+modparam("presence", "send_fast_notify", 0)
+modparam("presence", "publ_cache", [% kamailio.proxy.usrloc_dbmode == 3 ? '0' : '1' %])
+loadmodule "presence_reginfo.so"
+loadmodule "pua_reginfo.so"
+modparam("pua_reginfo", "publish_reginfo", 1)
+modparam("pua_reginfo", "default_domain", "[% sip_ext_ips.0 %]")
+modparam("pua_reginfo", "server_address", "sip:[% sip_int_ips.0 %]:[% kamailio.proxy.port %]")
+[% END -%]
+
+loadmodule "rls.so"
+modparam("rls", "db_url", CENTRAL_URL)
+modparam("rls", "xcap_table", "xcap")
+modparam("rls", "rlsubs_table", "rls_watchers")
+modparam("rls", "rlpres_table", "rls_presentity")
+modparam("rls", "clean_period", 60)
+modparam("rls", "waitn_time", 10)
+modparam("rls", "max_expires", 7200)
+modparam("rls", "hash_size", 9)
+modparam("rls", "integrated_xcap_server", 1)
+modparam("rls", "to_presence_code", 10)
+modparam("rls", "rls_event", "presence")
+#modparam("rls", "outbound_proxy", "sip:presence.sipwise.local")
+modparam("rls", "server_address", "sip:rls@[% sip_ext_ips.0 %]:[% kamailio.lb.port %]")
+#!endif
+
+loadmodule "app_lua.so"
+modparam("app_lua", "reload", 1)
+modparam("app_lua", "load", "/etc/kamailio/proxy/prefs.lua")
+modparam("app_lua", "load", "/etc/kamailio/proxy/dlgcnt.lua")
+#!ifdef ENABLE_PBX
+modparam("app_lua", "load", "/etc/kamailio/proxy/pbx.lua")
+modparam("app_lua", "load", "/etc/kamailio/proxy/dlglist.lua")
+#!endif
+
+#!ifdef WITH_DEBUG_TEST
+children=1
+tcp_children=1
+loadmodule "debugger.so"
+modparam("debugger", "mod_level_mode", 1)
+modparam("debugger", "mod_hash_size", 4)
+modparam("debugger", "mod_level", "debugger=4")
+modparam("debugger", "mod_level", "xlog=4")
+modparam("debugger", "trace_out_msg", 1)
+modparam("debugger", "reset_msgid", 1)
+#!endif
+
+include_file "/etc/kamailio/proxy/registrar.cfg"
+include_file "/etc/kamailio/proxy/proxy.cfg"
+include_file "/etc/kamailio/proxy/impresence.cfg"
+include_file "/etc/kamailio/proxy/xmlrpc.cfg"
+
+route
+{
+	[% debug_dump('start', 'MAIN') %]
+	$var(caller_info_added) = 0;
+	$var(callee_info_added) = 0;
+	route(ROUTE_NET_INFO);
+	sl_send_reply("100", "Trying");
+
+	if(uri =~ ";sw_domain=.+")
+	{
+		# a click2dial call, fix request uri
+
+		$var(swdom) = $(ru{uri.param,sw_domain});
+		$ru = "sip:" + $rU + "@" + $var(swdom);
+	}
+
+	xlog("L_NOTICE", "New request on proxy - [% logreq_init -%]\n");
+
+	if (!mf_process_maxfwd_header("[% kamailio.lb.max_forwards %]")) 
+	{
+		xlog("L_WARN", "Too many hops detected - [% logreq -%]\n");
+		sl_send_reply("483","Too Many Hops");
+		[% debug_dump('exit', 'MAIN') %]
+		exit;
+	}
+
+	if(!sanity_check("1511", "7"))
+	{
+		xlog("L_WARN", "Malformed SIP message detected - [% logreq -%]\n");
+		sl_send_reply("483","Malformed SIP Message");
+		[% debug_dump('exit', 'MAIN') %]
+		exit;
+	}
+	
+	if(((is_method("NOTIFY") && $hdr(Event) =~ "keep-alive") || is_method("OPTIONS")) && 
+		(is_domain_local("$rd") [% FOREACH extip IN sip_ext_ips -%] || $rd == "[% extip %]" [% END %]))
+	{
+		sl_send_reply("200", "Alive");
+		[% debug_dump('exit', 'MAIN') %]
+		exit;
+	}
+
+	if($fd == "voip.sipwise.local"[% FOREACH ip IN sip_int_ips -%] && $avp(s:ip) != "[% ip %]"[% END -%])
+	{
+		xlog("L_WARN", "Internal subscriber attempt - [% logreq -%]");
+		sl_send_reply("403", "Invalid subscriber");
+		[% debug_dump('exit', 'MAIN') %]
+		exit;
+	}
+	#!ifdef ENABLE_PBX
+	if(is_method("NOTIFY") && $hdr(Event) =~ "dialog")
+	# SLA NOTIFY
+	{
+		record_route();
+		if(ds_is_from_list("5"))
+		{
+			loose_route();
+			route(ROUTE_IMP_NOTIFY_SLA);
+		}
+		else
+		{
+			if(!ds_select_dst("5", "3"))
+			{
+				xlog("L_ERR", "Error loading PBX Server - [% logreq -%]\n");
+				t_reply("503", "Application Server Currently Unavailable");
+				[% debug_dump('exit', 'MAIN') %]
+				exit;
+			}
+			xlog("L_INFO", "Forwarding SLA NOTIFY to hosted PBX, $$du='$du' - [% logreq -%]\n");
+			append_hf("P-App-Name: call_registry\r\n");
+			# FIXME: arm onreply_route
+			if(!t_relay_to("0x01"))
+			{
+				sl_reply_error();
+			}
+		}
+		[% debug_dump('exit', 'MAIN') %]
+		exit;
+	}
+	if(is_method("INFO") && uri =~ "^sip:callpark@.+;orbit=")
+	{
+		$(avp(s:parking_account_id)[*]) = $null;
+		$var(fU) = $(fU{s.escape.common});
+		$var(fd) = $(fd{s.escape.common});
+		avp_db_query("select p.account_id from provisioning.voip_subscribers p, kamailio.subscriber s where p.uuid=s.uuid and s.username='$var(fU)' and s.domain='$var(fd)'", "$avp(s:parking_account_id)");
+		xlog("L_NOTICE", ">>>>>> PBX call-park from subscriber '$var(fU)@$var(fd)' and account='$avp(s:parking_account_id)' - [% logreq -%]\n");
+
+		if(pv_isset("$avp(s:parking_account_id)") && $avp(s:parking_account_id) != $null)
+		{
+			$(avp(s:app_server_params)[*]) = $null;
+			$(avp(s:app_server_params)[*]) = ";park_domain=" + $avp(s:parking_account_id);
+			#Write sbc params
+			xlog("L_NOTICE", "Writing pbx parameters $avp(s:app_server_params) - [% logreq -%]\n");
+			if(is_present_hf("P-App-Param"))
+			{
+				remove_hf("P-App-Param");
+			}
+			append_hf("P-App-Param: $avp(s:app_server_params)\r\n");
+		}
+		if(!ds_select_dst("5", "3"))
+		{
+			xlog("L_ERR", "Error loading PBX Server - [% logreq -%]\n");
+			t_reply("503", "Application Server Currently Unavailable");
+			[% debug_dump('exit', 'MAIN') %]
+			exit;
+		}
+		xlog("L_INFO", "Forwarding park INFO to hosted PBX, $$du='$du' - [% logreq -%]\n");
+		append_hf("P-App-Name: cc_park\r\n");
+		if(!t_relay_to("0x01"))
+		{
+			sl_reply_error();
+		}
+		[% debug_dump('exit', 'MAIN') %]
+		exit;
+	}
+	#!endif
+	if(is_method("INVITE|ACK|CANCEL|BYE|OPTIONS|PRACK|UPDATE[% IF kamailio.proxy.allow_refer_method == "yes" %]|REFER[% END %][% IF kamailio.proxy.allow_info_method == "yes" %]|INFO[% END %]"))
+	{
+		route(ROUTE_PRX_REQUEST);
+	}
+	else if(is_method("REGISTER"))
+	{
+		route(ROUTE_REG_REQUEST);
+	}
+	else if(is_method("SUBSCRIBE|PUBLISH|NOTIFY|MESSAGE"))
+	{
+		route(ROUTE_IMP_REQUEST);
+	}
+	else
+	{
+		route(ROUTE_COM_REJECT_UNSUPPORTED);
+	}
+	[% debug_dump('end', 'MAIN') %]
+}
+
+route[ROUTE_NET_INFO]
+{
+	[% debug_dump('start', 'ROUTE_NET_INFO') %]
+	$avp(s:reply_sock) = 0;
+	if(is_present_hf("P-NGCP-Src-Ip"))
+	{
+		$avp(s:ip) = $hdr(P-NGCP-Src-Ip);
+		remove_hf("P-NGCP-Src-Ip");
+	}
+	else
+	{
+		$avp(s:ip) = $si;
+	}
+	
+	if(is_present_hf("P-NGCP-Src-Port"))
+	{
+		$avp(s:port) = $hdr(P-NGCP-Src-Port);
+		remove_hf("P-NGCP-Src-Port");
+	}
+	else
+	{
+		$avp(s:port) = $sp;
+	}
+
+	if(is_present_hf("P-NGCP-Src-Proto"))
+	{
+		$avp(s:proto) = $hdr(P-NGCP-Src-Proto);
+		remove_hf("P-NGCP-Src-Proto");
+	}
+	else
+	{
+		$avp(s:proto) = $pr;
+	}
+	$(avp(s:protoid)[*]) = 0;
+	switch($avp(s:proto))
+	{
+		case "udp":
+			$(avp(s:protoid)[*]) = 1;
+			break;
+		case "tcp":
+			$(avp(s:protoid)[*]) = 2;
+			break;
+		case "tls":
+			$(avp(s:protoid)[*]) = 3;
+			break;
+	}
+
+	if(is_present_hf("P-NGCP-Src-Nat"))
+	{
+		$avp(s:nat) = $hdr(P-NGCP-Src-Nat);
+		remove_hf("P-NGCP-Src-Nat");
+	}
+	else
+	{
+		$avp(s:nat) = 0;
+	}
+	if(is_present_hf("P-NGCP-Src-Af"))
+	{
+		$avp(s:af) = $hdr(P-NGCP-Src-Af);
+		remove_hf("P-NGCP-Src-Af");
+	}
+	else
+	{
+		$avp(s:af) = 4;
+	}
+	if(is_present_hf("P-Sock-Info"))
+	{
+		# append to locally-generated replies
+		$avp(s:reply_sock) = $hdr(P-Sock-Info);
+		append_to_reply("P-Out-Socket: $avp(s:reply_sock)\r\n");
+		remove_hf("P-Sock-Info");
+		# info for fail2ban
+		append_to_reply("P-NGCP-Auth-IP: $avp(s:ip)\r\n");
+		append_to_reply("P-NGCP-Auth-UA: $ua\r\n");
+	}
+
+	#!ifdef ENABLE_PIKECHECK
+	if(is_present_hf("P-NGCP-CheckBan"))
+	{
+		if(!from_any_gw($avp(s:ip), $avp(s:protoid)))
+		{
+			xlog("L_WARN", "Mark host as banned - [% logreq -%]\n");
+			append_to_reply("P-NGCP-Ban: $avp(s:ip)\r\n");
+			sl_send_reply("423", "Mark host as banned");
+			[% debug_dump('exit', 'ROUTE_NET_INFO') %]
+			exit;
+		}
+	}
+	#!endif
+	[% debug_dump('end', 'ROUTE_NET_INFO') %]
+}
+
+
+route[ROUTE_COM_REJECT_UNSUPPORTED]
+{
+	[% debug_dump('start', 'ROUTE_COM_REJECT_UNSUPPORTED') %]
+	#!ifdef ENABLE_PRESENCE
+	append_to_reply("Allow: INVITE,ACK,CANCEL,BYE,OPTIONS,PRACK,UPDATE,REGISTER,SUBSCRIBE,PUBLISH,NOTIFY,MESSAGE[% IF kamailio.proxy.allow_refer_method == "yes" %],REFER[% END %][% IF kamailio.proxy.allow_info_method == "yes" %],INFO[% END %]\r\n");
+	#!else
+	append_to_reply("Allow: INVITE,ACK,CANCEL,BYE,OPTIONS,PRACK,UPDATE,REGISTER[% IF kamailio.proxy.allow_refer_method == "yes" %],REFER[% END %][% IF kamailio.proxy.allow_info_method == "yes" %],INFO[% END %]\r\n");
+	#!endif
+	sl_send_reply("405", "Method not allowed here");
+	[% debug_dump('exit', 'ROUTE_COM_REJECT_UNSUPPORTED') %]
+	exit;
+}
+
+########################################################################
+# Perform authentication
+########################################################################
+route[ROUTE_AUTH]
+{
+	[% debug_dump('start', 'ROUTE_AUTH') %]
+	if(!auth_check("$fd", "subscriber", "0")) 
+	{
+		switch($retcode)
+		{
+			case -1:
+				xlog("L_NOTICE", "Authentication failed, generic error - [% logreq -%]\n");
+				break;
+			case -2:
+				xlog("L_NOTICE", "Authentication failed, invalid password - [% logreq -%]\n");
+				break;
+			case -3:
+				xlog("L_NOTICE", "Authentication failed, invalid user - [% logreq -%]\n");
+				#!ifdef PROXY_LOOKUP
+				$var(proxylu_target) = "caller";
+				if(is_method("REGISTER")) 
+				{
+					$var(proxylu_cache_user) = $(tU{s.escape.common});
+					$var(proxylu_cache_domain) = $(td{s.escape.common});
+				}
+				else
+				{
+					$var(proxylu_cache_user) = $(fU{s.escape.common});
+					$var(proxylu_cache_domain) = $(fd{s.escape.common});
+				}
+				$var(proxylu_user) = $(au{s.escape.common});
+				$var(proxylu_domain) = $(ar{s.escape.common});
+				route(ROUTE_PERFORM_PROXYLU);
+				#!endif
+				break;
+			case -4:
+				xlog("L_NOTICE", "Authentication failed, stale nonce - [% logreq -%]\n");
+				break;
+			case -5:
+				xlog("L_NOTICE", "Authentication failed, no credentials - [% logreq -%]\n");
+				break;
+			case -6:
+				xlog("L_NOTICE", "Authentication failed, nonce reused - [% logreq -%]\n");
+				break;
+			case -8:
+				xlog("L_NOTICE", "Authentication failed, user mismatch - [% logreq -%]\n");
+				break;
+			default:
+				xlog("L_NOTICE", "Authentication failed, unknown error (rc=$retcode) - [% logreq -%]\n");
+				break;
+		}
+		if(is_method("INVITE|BYE") && $avp(s:callee_dom_unauth_in) == 1 && $fd != $rd)
+		{
+			xlog("L_NOTICE", "Allow unauthenticated request from domain '$fd' to local domain '$rd' - [% logreq -%]\n");
+			$avp(s:caller_uuid) = "0";
+			$var(no_auth) = 1;
+			$(avp(s:orig_acc_caller_user)[*]) = $fU;
+			$(avp(s:orig_acc_caller_domain)[*]) = $fd;
+			route(ROUTE_ADD_CALLINFO_REPLY);
+		}
+		else
+		{
+			if(is_present_hf("Authorization") || is_present_hf("Proxy-Authorization"))
+			{
+				#!ifdef ENABLE_AUTHCHECK
+				[%  IF kamailio.proxy.ignore_auth_realm == "yes" %]
+				append_to_reply("P-NGCP-Authorization: $au\r\n");
+				[% ELSE %]
+				append_to_reply("P-NGCP-Authorization: $au@$ar\r\n");
+				[% END %]
+				#!endif
+
+				[%  IF kamailio.proxy.ignore_auth_realm == "yes" %]
+				$(avp(s:orig_acc_caller_user)[*]) = $au;
+				$(avp(s:orig_acc_caller_domain)[*]) = $fd;
+				[% ELSE %]
+				$(avp(s:orig_acc_caller_user)[*]) = $au;
+				$(avp(s:orig_acc_caller_domain)[*]) = $ar;
+				[% END %]
+				route(ROUTE_ADD_CALLINFO_REPLY);
+
+				$(avp(s:caller_uuid)[*]) = $null;
+				avp_db_query("select uuid, domain from subscriber where username='$(au{s.escape.common})' and domain='$(ar{s.escape.common})'", "$avp(s:caller_uuid), $avp(s:caller_domain)");
+
+				#Needed for voisniffer
+				if($avp(s:caller_uuid) != $null)
+				{
+					append_to_reply("P-Caller-UUID: $avp(s:caller_uuid)\r\n");
+				}
+			}
+			auth_challenge("$fd", "0");
+			[% debug_dump('exit', 'ROUTE_AUTH') %]
+			exit;
+		}
+	}
+	#!ifdef ENABLE_AUTHCHECK
+	#authentication successful
+	if(is_present_hf("Authorization") || is_present_hf("Proxy-Authorization"))
+	{
+		[%  IF kamailio.proxy.ignore_auth_realm == "yes" %]
+		append_to_reply("P-NGCP-Authorization: $au\r\n");
+		[% ELSE %]
+		append_to_reply("P-NGCP-Authorization: $au@$ar\r\n");
+		[% END %]
+		append_to_reply("P-NGCP-Authorized: 1\r\n");
+
+		[% IF kamailio.proxy.ignore_auth_realm == "yes" %]
+		$(avp(s:orig_acc_caller_user)[*]) = $au;
+		$(avp(s:orig_acc_caller_domain)[*]) = $fd;
+		[% ELSE %]
+		$(avp(s:orig_acc_caller_user)[*]) = $au;
+		$(avp(s:orig_acc_caller_domain)[*]) = $ar;
+		[% END %]
+		route(ROUTE_ADD_CALLINFO_REPLY);
+	}
+	#!endif
+	#Needed for voisniffer
+	append_to_reply("P-Caller-UUID: $avp(s:caller_uuid)\r\n");
+	[% debug_dump('end', 'ROUTE_AUTH') %]
+}
+
+########################################################################
+# If request is from another proxy and R-URI user is 
+# "proxylu_[caller|callee]", restore original R-URI.
+########################################################################
+route[ROUTE_FIX_PROXYLU_URI]
+{
+	[% debug_dump('start', 'ROUTE_FIX_PROXYLU_URI') %]
+	if($ru =~ "^sip:proxylu_caller@" && $hdr(P-R-Uri) != $null && ([% FOREACH ip IN sip_proxy_ips -%]$si == "[% ip %]"[% IF sip_proxy_ips.last != ip -%] || [% END -%][% END -%]))
+	{
+		$ru = $hdr(P-R-Uri);
+		remove_hf("P-R-Uri");
+		$var(proxylu_dst_caller) = 1;
+		xlog("L_INFO", "Fixed redirected source lookup request - [% logreq -%]\n");
+	}
+	else if($ru =~ "^sip:proxylu_callee@" && $hdr(P-R-Uri) != $null && ([% FOREACH ip IN sip_proxy_ips -%]$si == "[% ip %]"[% IF sip_proxy_ips.last != ip -%] || [% END -%][% END -%]))
+	{
+		$ru = $hdr(P-R-Uri);
+		remove_hf("P-R-Uri");
+		$var(proxylu_dst_callee) = 1;
+		xlog("L_INFO", "Fixed redirected destination lookup request - [% logreq -%]\n");
+	}
+	[% debug_dump('end', 'ROUTE_FIX_PROXYLU_URI') %]
+}
+
+########################################################################
+# Lookup user at mgmt API and forward to specific proxy.
+# in:  {$var(proxylu_user), $var(proxylu_domain)} or $var(proxylu_uuid)
+#      $var(proxylu_cache_user), $var(proxylu_cache_domain),
+#      $var(proxylu_target) (one of "caller", "callee")
+# out: nothing if user not found, or never returns if found
+########################################################################
+route[ROUTE_PERFORM_PROXYLU]
+{
+	[% debug_dump('start', 'ROUTE_PERFORM_PROXYLU') %]
+	$(avp(s:sid)[*]) = $null;
+	if($var(proxylu_uuid) != 0)
+	{
+		http_query("http://[% web_mgmt_ips.0 %]:[% ossbss.apache.proxyluport %]/proxylu?uuid=$var(proxylu_uuid)", "$var(res)");
+	}
+	else
+	{
+		http_query("http://[% web_mgmt_ips.0 %]:[% ossbss.apache.proxyluport %]/proxylu?user=$var(proxylu_user)&domain=$var(proxylu_domain)", "$var(res)");
+	}
+	$var(ret) = $retcode;
+	switch($var(ret))
+	{
+		case 200:
+			if([% FOREACH ip IN sip_int_ips -%]$var(res) == "[% ip %]:[% kamailio.proxy.port %]"[% IF sip_int_ips.last != ip -%] || [% END -%][% END -%])
+			{
+				xlog("L_INFO", "Looked up proxy '$var(res)' is local - [% logreq -%]\n");
+				[% debug_dump('return', 'ROUTE_PERFORM_PROXYLU') %]
+				return 0;
+			}
+
+			xlog("L_INFO", "Found proxy '$var(res)' - [% logreq -%]\n");
+
+			append_to_reply("P-NGCP-Cache: sip:$var(res)\r\n");
+			append_to_reply("P-NGCP-Cache-User: $var(proxylu_cache_user)@$var(proxylu_cache_domain)\r\n");
+			sl_send_reply("102", "Cache");
+			append_hf("P-R-Uri: $ru\r\n");
+			$ru = "sip:proxylu_" + $var(proxylu_target) + "@" + $var(res);
+			xlog("L_INFO", "Forwarding to proxy '$var(res)' - [% logreq -%]\n");
+
+			append_hf("P-NGCP-Src-Ip: $avp(s:ip)\r\n");
+			append_hf("P-NGCP-Src-Port: $avp(s:port)\r\n");
+			append_hf("P-NGCP-Src-Proto: $avp(s:proto)\r\n");
+			append_hf("P-NGCP-Src-Af: $avp(s:af)\r\n");
+
+			if($var(proxylu_target) == "callee")
+			{
+				$var(proxylu_src) = 1;
+				$du = "sip:" + $var(res);
+				if($avp(s:from_pstn) != 1)
+				{
+					xlog("L_INFO", "Setting sbcprofile to lu - [% logreq -%]\n");
+					$avp(s:app_server_params) = $avp(s:app_server_params) + ";profile=ngcp_lu";
+					xlog("L_INFO", "Writing sbc parameters  $avp(s:app_server_params) - [% logreq -%]\n");
+					append_hf("P-App-Param: $avp(s:app_server_params)\r\n");
+				}
+				else
+				{
+					xlog("L_INFO", "Skip SBC for proxylu call from peer - [% logreq -%]\n");
+					$var(no_sbc) = 1;
+				}
+				route(ROUTE_OUTBOUND);
+				[% debug_dump('exit', 'ROUTE_PERFORM_PROXYLU') %]
+				exit;
+			}
+			msg_apply_changes();
+			xlog("L_NOTICE", "Request leaving server to '$var(res)' - [% logreq -%]\n");
+			send("$var(res)");
+			[% debug_dump('exit', 'ROUTE_PERFORM_PROXYLU') %]
+			exit;
+	}
+	xlog("L_INFO", "Proxy lookup returned '$var(ret)' - [% logreq -%]\n");
+	[% debug_dump('end', 'ROUTE_PERFORM_PROXYLU') %]
+}
+
+########################################################################
+# Add P-NGCP-Caller-Info and P-NGCP-Callee-Info to outbound request
+########################################################################
+route[ROUTE_ADD_CALLINFO]
+{
+    [% debug_dump('start', 'ROUTE_ADD_CALLINFO') %]
+    if(is_present_hf("P-NGCP-Caller-Info"))
+    {
+        remove_hf("P-NGCP-Caller-Info");
+    }
+    xlog("L_INFO", "Adding P-NGCP-Caller-Info '<sip:$avp(s:orig_acc_caller_user)@$avp(s:orig_acc_caller_domain)>;ip=$avp(s:ip);port=$avp(s:port)' - [% logreq -%]\n");
+    append_hf("P-NGCP-Caller-Info: <sip:$avp(s:orig_acc_caller_user)@$avp(s:orig_acc_caller_domain)>;ip=$avp(s:ip);port=$avp(s:port)\r\n");
+    if(is_present_hf("P-NGCP-Callee-Info"))
+    {
+        remove_hf("P-NGCP-Callee-Info");
+    }
+
+    if($du != $null)
+    {
+        if($(du{uri.param,received}) != $null && $(du{uri.param,received}) != '')
+        {
+            $var(rcvuri) = $(du{uri.param,received}{s.unescape.param});
+            $var(dstip) = $(var(rcvuri){uri.host});
+            $var(dstport) = $(var(rcvuri){uri.port});
+        }
+        else
+        {
+            $var(dstip) = $dd; $var(dstport) = $dp;
+        }
+    }
+    else
+    {
+        $var(dstip) = $rd; $var(dstport) = $rp;
+    }
+    xlog("L_INFO", "Adding P-NGCP-Callee-Info '<sip:$avp(s:acc_callee_user)@$avp(s:acc_callee_domain)>;ip=$var(dstip);port=$var(dstport)' - [% logreq -%]\n");
+    append_hf("P-NGCP-Callee-Info: <sip:$avp(s:acc_callee_user)@$avp(s:acc_callee_domain)>;ip=$var(dstip);port=$var(dstport)\r\n");
+    [% debug_dump('end', 'ROUTE_ADD_CALLINFO') %]
+}
+
+########################################################################
+# Add P-NGCP-Caller-Info and P-NGCP-Callee-Info to local replies
+########################################################################
+route[ROUTE_ADD_CALLINFO_REPLY]
+{
+    [% debug_dump('start', 'ROUTE_ADD_CALLINFO_REPLY') %]
+
+    if(!is_method("INVITE"))
+    {
+	[% debug_dump('return', 'ROUTE_ADD_CALLINFO_REPLY') %]
+        return;
+    }
+
+    if($avp(s:orig_acc_caller_user) == $null && $avp(s:acc_caller_user) != $null)
+    {
+        $(avp(s:orig_acc_caller_user)[*]) =  $avp(s:acc_caller_user);
+        $(avp(s:orig_acc_caller_domain)[*]) =  $avp(s:acc_caller_domain);
+    }
+    if($avp(s:orig_acc_caller_user) != $null && $var(caller_info_added) != 1)
+    {
+        xlog("L_INFO", "Adding reply P-NGCP-Caller-Info '<sip:$avp(s:orig_acc_caller_user)@$avp(s:orig_acc_caller_domain)>;ip=$avp(s:ip);port=$avp(s:port)' - [% logreq -%]\n");
+        append_to_reply("P-NGCP-Caller-Info: <sip:$avp(s:orig_acc_caller_user)@$avp(s:orig_acc_caller_domain)>;ip=$avp(s:ip);port=$avp(s:port)\r\n");
+        $var(caller_info_added) = 1;
+    }
+    if($avp(s:acc_callee_user) != $null && $var(callee_info_added) != 1)
+    {
+        if($du != $null)
+        {
+            if($(du{uri.param,received}) != $null)
+            {
+                $var(rcvuri) = $(du{uri.param,received}{s.unescape.param});
+                $var(dstip) = $(var(rcvuri){uri.host});
+                $var(dstport) = $(var(rcvuri){uri.port});
+            }
+            else
+            {
+                $var(dstip) = $dd; $var(dstport) = $dp;
+            }
+        }
+        else
+        {
+            $var(dstip) = $rd; $var(dstport) = $rp;
+        }
+        xlog("L_INFO", "Adding reply P-NGCP-Callee-Info '<sip:$avp(s:acc_callee_user)@$avp(s:acc_callee_domain)>;ip=$var(dstip);port=$var(dstport)' - [% logreq -%]\n");
+        append_to_reply("P-NGCP-Callee-Info: <sip:$avp(s:acc_callee_user)@$avp(s:acc_callee_domain)>;ip=$var(dstip);port=$var(dstport)\r\n");
+        $var(callee_info_added) = 1;
+    }
+    [% debug_dump('end', 'ROUTE_ADD_CALLINFO_REPLY') %]
+}
+
+# vim: ft=cfg

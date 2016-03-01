@@ -1,0 +1,17 @@
+
+# configuration for early_dbprompt app
+
+# DSM configuration
+diag_path=/etc/ngcp-sems/dsm/
+mod_path=/usr/lib/ngcp-sems/dsm/
+load_diags=early_dbprompt,sw_audio_api
+register_apps=early_dbprompt
+run_invite_event=yes
+set_param_variables=yes
+run_system_dsms=sw_audio_api
+
+# application configuration:
+audio_cache=/var/cache/ngcp-sems
+
+# database connection:
+db_url="mysql://[% sems.dbuser %]:[% sems.dbpassword %]@[% database.local.dbhost %]:[% database.local.dbport %]/provisioning"

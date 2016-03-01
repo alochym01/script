@@ -1,0 +1,49 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/lxhIPswq87dUjeOmx-08oLZZiNY\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/ZVk7EY2rERtNUvhWFxYxl2QNkjs\"",
+   "id": "mgxZwkE5jG0",
+   "snippet": {
+    "publishedAt": "2016-01-07T04:12:04.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Chứng khoán Mỹ ảm đạm ngay từ đầu năm",
+    "description": "Website: http://xemtin.xyz\n Mới đây, thị trường chứng khoán Mỹ đã có một phiên giao dịch khá ảm đạm.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/mgxZwkE5jG0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/mgxZwkE5jG0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/mgxZwkE5jG0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "chứng khoán Mỹ"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Chứng khoán Mỹ ảm đạm ngay từ đầu năm",
+     "description": "Website: http://xemtin.xyz\n Mới đây, thị trường chứng khoán Mỹ đã có một phiên giao dịch khá ảm đạm."
+    }
+   }
+  }
+ ]
+}

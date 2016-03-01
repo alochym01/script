@@ -1,0 +1,213 @@
+---
+asterisk:
+  asterisk:
+    internal_timing: 'no'
+  odbc:
+    dbname: kamailio
+    dbpassword: HfFRnydJhye3AuszmsKt
+    dbuser: asterisk
+cdrexport:
+  dbname: accounting
+  dbpassword: NWh73KrjipgzxUgsLdqe
+  dbuser: exporter
+  filepreffix: sipwise
+  fileversion: 007
+checktools:
+  dbpassword: 4pUoPvPahCbuCqmiPCYM
+  dbuser: nagios
+  sip_check_ip: 127.0.0.1
+  sipdomain: voip.sipwise.local
+  sipuser: nagios
+cleanuptools:
+  acc_db: kamailio
+  cdr_db: accounting
+  dbpassword: gYtsUfvgbC97ie3Vraex
+  dbuser: dbcleaner
+  trash_db: kamailio
+database:
+  central:
+    dbhost: localhost
+    dbmaster: db01a
+    dbport: 3306
+    redis_port: 6379
+  debian:
+    dbhost: localhost
+    dbpassword: Wbym70l0yvPlf0mT
+    dbuser: debian-sys-maint
+  local:
+    dbhost: localhost
+    dbport: 3306
+  pair:
+    dbhost: localhost
+    dbport: 3306
+dialogic:
+  pass: Dial0gic
+  user: dialogic
+invoicegen:
+  dbname: billing
+kamailio:
+  lb:
+    dbengine: DBTEXT
+    dbname: kamailio
+    dbpath: '/etc/kamailio/lb/db'
+    dbrootuser: root
+    dbropw: fwtnRgj3Jb3YdA9hU49x
+    dbrouser: kamailioro
+    dbrwpw: Xjcgr3jyhwRjjfnUhkoN
+    dbrwuser: kamailio
+    log:
+      request:
+        - R=$ru
+        - ID=$ci
+        - "UA='$ua'"
+      request_init:
+        - M=$rm
+        - R=$ru
+        - F=$fu
+        - T=$tu
+        - IP=$pr:$si:$sp
+        - ID=$ci
+        - "UA='$ua'"
+      response:
+        - ID=$ci
+        - "UA='$ua'"
+      response_init:
+        - 'S=$rs - $rr'
+        - M=$rm
+        - IP=$pr:$si:$sp
+        - ID=$ci
+        - "UA='$ua'"
+  proxy:
+    dbengine: MYSQL
+    dbname: kamailio
+    dbrootuser: root
+    dbropw: fwtnRgj3Jb3YdA9hU49x
+    dbrouser: kamailioro
+    dbrwpw: Xjcgr3jyhwRjjfnUhkoN
+    dbrwuser: kamailio
+    dlgcnt:
+      central_redis_db: 3
+      pair_redis_db: 4
+    log:
+      request:
+        - R=$ru
+        - ID=$ci
+        - "UA='$ua'"
+      request_init:
+        - M=$rm
+        - R=$ru
+        - F=$fu
+        - T=$tu
+        - 'IP=$avp(s:ip):$avp(s:port) ($si:$sp)'
+        - ID=$ci
+        - "UA='$ua'"
+      response:
+        - ID=$ci
+        - "UA='$ua'"
+      response_init:
+        - 'S=$rs - $rr'
+        - M=$rm
+        - 'IP=$avp(s:ip):$avp(s:port) ($si:$sp)'
+        - ID=$ci
+        - "UA='$ua'"
+    redis_db: 2
+    uaccryptpw: FpyVbCNPy3pL4tWxXzpa
+mediator:
+  dbpassword: uTWcFMXiY9XRFbTycYMm
+  dbuser: mediator
+  destdbname: accounting
+  provdbname: provisioning
+  srcdbname: kamailio
+  stats:
+    dbname: stats
+    period: 1
+mysql: ~
+ossbss:
+  provisioning:
+    acl:
+      -
+        allow:
+          - Voip
+          - Billing
+        pass: 9b3yU7HJ39yn3aVvdoKM
+        user: csc
+      -
+        allow:
+          - Voip
+          - Billing
+        pass: b7MaJCv7ftbTqVXACXpY
+        user: cmd
+      -
+        allow:
+          - Voip
+          - Billing
+        pass: tiphpvecEUEHuyVmit7y
+        user: proxy
+    backends:
+      available:
+        - Billing
+        - Voip
+      enabled:
+        - Billing
+        - Voip
+    billingdb:
+      name: billing
+      pass: noFcK9YNuvhiwyigNTYe
+      user: soap
+    carrierdb:
+      name: carrier
+      pass: noFcK9YNuvhiwyigNTYe
+      user: soap
+    database:
+      name: provisioning
+      pass: noFcK9YNuvhiwyigNTYe
+      user: soap
+    openserdb:
+      name: kamailio
+      pass: noFcK9YNuvhiwyigNTYe
+      user: soap
+    routing:
+      conference_domain: conference.local
+      fax2mail_domain: fax2mail.local
+      internal_domain: voip.sipwise.local
+      no_such_number: no_such_number
+      voicebox_domain: voicebox.local
+prosody:
+  dbname: prosody
+  dbpassword: z4yLCraWyjreb3vN3XUA
+  dbuser: prosody
+  redis_db: 5
+rateomat:
+  accountingdb:
+    name: accounting
+    pass: xMcjzkApLvYNos3v7nw3
+    user: rateomat
+  billingdb:
+    name: billing
+    pass: xMcjzkApLvYNos3v7nw3
+    user: rateomat
+reminder:
+  context: reminder
+  dbname: provisioning
+  dbpassword: noFcK9YNuvhiwyigNTYe
+  dbuser: soap
+  sip_peer: sip_proxy
+rsyslog:
+  dbname: syslog
+  dbpassword: wuXU3eRWkJnnsYRiYbEU
+  dbuser: rsyslog
+  rotate_days: 28
+rtpengine:
+  control_port: 2223
+  redis_db: 1
+sems:
+  dbpassword: noFcK9YNuvhiwyigNTYe
+  dbuser: soap
+  pbx:
+    redis_db: 6
+  prepaid_dbpassword: qhRJfj7KJusgtdtzHi79
+  prepaid_dbuser: sems_prepaid
+  redis_db: 0
+www_csc:
+  prov_pass: 9b3yU7HJ39yn3aVvdoKM
+  prov_user: csc

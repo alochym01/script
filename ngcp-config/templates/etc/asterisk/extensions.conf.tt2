@@ -1,0 +1,151 @@
+
+[general]
+static=yes
+writeprotect=no
+clearglobalvars=no
+autofallthrough=yes
+language=[% general.lang %]
+lang=[% general.lang %]
+
+[sip_in]
+
+[% IF asterisk.voicemail.enable == "yes" %]
+; voicemail maintenance
+exten => _abc.,1,Macro(voicemailowner_nopass,${EXTEN:3});
+exten => _bcd.,1,Macro(voicemailowner_pass,${EXTEN:3});
+exten => a,1,Macro(voicemailowner_pass,${EXT});
+
+; voicemail recording
+exten => _vmu.,1,Macro(voicemailcaller_unavail,${EXTEN:3});
+exten => _vmb.,1,Macro(voicemailcaller_busy,${EXTEN:3});
+[% END %]
+
+; fax-in
+exten => _X.,1,NoOp("Incoming fax to ${EXTEN}")
+exten => _X.,n,Set(AGAINCOUNTER=0)
+exten => _X.,n(again),Set(AGAINCOUNTER=$[${AGAINCOUNTER} + 1])
+exten => _X.,n,GotoIf($[${AGAINCOUNTER} <= 20]?call:hangup)
+exten => _X.,n(call),Dial(IAX2/iax${RAND(0,9)}/${EXTEN},20,gH)
+exten => _X.,n,GotoIf($["${DIALSTATUS}" != "ANSWER"]?again:checktime)
+exten => _X.,n(checktime),GotoIf($[${ANSWEREDTIME} < 10]?again:hangup)
+exten => _X.,n(hangup),Hangup()
+
+[fax-out]
+exten => _X.,1,Dial(SIP/sip_proxy_fax_0/${EXTEN})
+
+[reminder]
+exten => s,1,Wait(1)
+exten => s,n,Playback(this-is-yr-wakeup-call)
+exten => s,n,Wait(1)
+exten => s,n,Hangup
+
+
+[% IF asterisk.voicemail.enable == "yes" %]
+[macro-voicemailowner_nopass]
+exten => s,1,Answer
+exten => s,n,Set(TIMEOUT(digit)=5)
+exten => s,n,Set(TIMEOUT(response)=10) 
+exten => s,n,Set(__LANG=${SIP_HEADER(X-Voicemail-Language)})
+exten => s,n,Set(CHANNEL(language)=${LANG})
+exten => s,n,Wait(1)
+exten => s,n,VoicemailMain(s${ARG1})
+exten => s,n,Hangup
+
+[macro-voicemailowner_pass]
+exten => s,1,Answer
+exten => s,n,Set(TIMEOUT(digit)=5)
+exten => s,n,Set(TIMEOUT(response)=10)
+exten => s,n,Set(__LANG=${SIP_HEADER(X-Voicemail-Language)})
+exten => s,n,Set(CHANNEL(language)=${LANG})
+exten => s,n,Wait(1)
+exten => s,n,VoicemailMain(${ARG1})
+exten => s,n,Hangup
+
+
+[macro-voicemailcaller_unavail]
+exten => s,1,Answer
+exten => s,n,Set(TIMEOUT(digit)=5)
+exten => s,n,Set(TIMEOUT(response)=10) 
+exten => s,n,Set(__LANG=${SIP_HEADER(X-Voicemail-Language)})
+exten => s,n,Set(CHANNEL(language)=${LANG})
+exten => s,n,Wait(1)
+;Check if overwrite_default with custom
+[% IF asterisk.voicemail.greeting.unavail_overwrite_default == "yes" %]
+  [% IF asterisk.voicemail.greeting.unavail_overwrite_subscriber == "yes" %]
+; Always play custom greeting
+exten => s,n,Playback([% asterisk.voicemail.greeting.unavail_custom_greeting %])
+exten => s,n,VoiceMail(${ARG1},s)
+exten => s,n,Hangup
+  [% ELSE %]
+; Don't overwrite subscriber greetings but default ones
+exten => s,n,GotoIf($[${ODBC_VMGREETUNAVAIL(${ARG1})}]?subscriber:custom)
+exten => s,n(subscriber),VoiceMail(${ARG1},us)
+exten => s,n,Hangup
+exten => s,n(custom),Playback([% asterisk.voicemail.greeting.unavail_custom_greeting %])
+exten => s,n,VoiceMail(${ARG1},s)
+exten => s,n,Hangup
+  [% END %]
+[% ELSE %]
+  [% IF asterisk.voicemail.greeting.unavail_overwrite_subscriber == "yes" %]
+; Overwrite subscriber greeting but not default one
+exten => s,n,GotoIf($[${ODBC_VMGREETUNAVAIL(${ARG1})}]?custom:default)
+exten => s,n(custom),Playback([% asterisk.voicemail.greeting.unavail_custom_greeting %])
+exten => s,n,VoiceMail(${ARG1},s)
+exten => s,n,Hangup
+exten => s,n(default),VoiceMail(${ARG1},us)
+exten => s,n,Hangup
+  [% ELSE %]
+; Play default
+exten => s,n(default),VoiceMail(${ARG1},us)
+exten => s,n,Hangup
+  [% END %]
+[% END %]
+
+
+
+[macro-voicemailcaller_busy]
+exten => s,1,Answer
+exten => s,n,Set(TIMEOUT(digit)=5)
+exten => s,n,Set(TIMEOUT(response)=10) 
+exten => s,n,Set(__LANG=${SIP_HEADER(X-Voicemail-Language)})
+exten => s,n,Set(CHANNEL(language)=${LANG})
+exten => s,n,Wait(1)
+;Check if overwrite_default with custom
+[% IF asterisk.voicemail.greeting.busy_overwrite_default == "yes" %]
+  [% IF asterisk.voicemail.greeting.busy_overwrite_subscriber == "yes" %]
+; Always play custom greeting
+exten => s,n,Playback([% asterisk.voicemail.greeting.busy_custom_greeting %])
+exten => s,n,VoiceMail(${ARG1},s)
+exten => s,n,Hangup
+  [% ELSE %]
+; Don't overwrite subscriber greetings but default ones
+exten => s,n,GotoIf($[${ODBC_VMGREETBUSY(${ARG1})}]?subscriber:custom)
+exten => s,n(subscriber),VoiceMail(${ARG1},bs)
+exten => s,n,Hangup
+exten => s,n(custom),Playback([% asterisk.voicemail.greeting.busy_custom_greeting %])
+exten => s,n,VoiceMail(${ARG1},s)
+exten => s,n,Hangup
+  [% END %]
+[% ELSE %]
+  [% IF asterisk.voicemail.greeting.busy_overwrite_subscriber == "yes" %]
+; Overwrite subscriber greeting but not default one
+exten => s,n,GotoIf($[${ODBC_VMGREETBUSY(${ARG1})}]?custom:default)
+exten => s,n(custom),Playback([% asterisk.voicemail.greeting.busy_custom_greeting %])
+exten => s,n,VoiceMail(${ARG1},s)
+exten => s,n,Hangup
+exten => s,n(default),VoiceMail(${ARG1},bs)
+exten => s,n,Hangup
+  [% ELSE %]
+; Play default
+exten => s,n(default),VoiceMail(${ARG1},bs)
+exten => s,n,Hangup
+  [% END %]
+[% END %]
+
+
+
+
+
+
+
+[% END %]

@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/SGYdbzMgCjRorBssQf01gxkqI18\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/YSAcCGGutkUGj0LQh_qAns7OLKE\"",
+   "id": "DJaI1OJvHmc",
+   "snippet": {
+    "publishedAt": "2016-01-07T03:40:17.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Qantas tiếp tục là hãng hàng không an toàn nhất thế giới",
+    "description": "Website: http://xemtin.xyz\n Trang web đánh giá hàng không AirlineRatings.com vừa đưa ra danh sách các hãng an toàn nhất. Lần này, hãng Qantas tiếp tục đứng đầu trong năm thứ 3 liên tiếp.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/DJaI1OJvHmc/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/DJaI1OJvHmc/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/DJaI1OJvHmc/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "All Nippon Airways",
+     "Air New Zealand"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Qantas tiếp tục là hãng hàng không an toàn nhất thế giới",
+     "description": "Website: http://xemtin.xyz\n Trang web đánh giá hàng không AirlineRatings.com vừa đưa ra danh sách các hãng an toàn nhất. Lần này, hãng Qantas tiếp tục đứng đầu trong năm thứ 3 liên tiếp."
+    }
+   }
+  }
+ ]
+}

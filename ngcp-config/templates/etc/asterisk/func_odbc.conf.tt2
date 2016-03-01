@@ -1,0 +1,8 @@
+
+[VMGREETBUSY]
+dsn=asterisk
+read=select count(*) from voicemail_spool s, voicemail_users u where u.mailbox = '${SQL_ESC(${ARG1})}' and u.customer_id = s.mailboxuser and s.dir like '%/busy';
+
+[VMGREETUNAVAIL]
+dsn=asterisk
+read=select count(*) from voicemail_spool s, voicemail_users u where u.mailbox = '${SQL_ESC(${ARG1})}' and u.customer_id = s.mailboxuser and s.dir like '%/unavail';

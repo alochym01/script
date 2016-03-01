@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/4n6udUsuVATZNfi7nDDRgsLZFvA\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/axoco2WFZYPmHo1UqTqx_ZTmcCw\"",
+   "id": "966o1IN5gSQ",
+   "snippet": {
+    "publishedAt": "2016-01-06T07:55:04.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Phát hiện chất độc hóa học sarin tại chiến trường Syria",
+    "description": "Website: http://xemtin.xyz\n Trong báo cáo mới đây, Liên Hợp Quốc công bố đã phát hiện dấu hiệu sử dụng chất hóa học độc hại sarin tại chiến trường Syria.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/966o1IN5gSQ/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/966o1IN5gSQ/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/966o1IN5gSQ/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "Liên Hợp Quốc",
+     "chiến trường Syria",
+     "chuyen-dong-24h"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Phát hiện chất độc hóa học sarin tại chiến trường Syria",
+     "description": "Website: http://xemtin.xyz\n Trong báo cáo mới đây, Liên Hợp Quốc công bố đã phát hiện dấu hiệu sử dụng chất hóa học độc hại sarin tại chiến trường Syria."
+    }
+   }
+  }
+ ]
+}

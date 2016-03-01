@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+
+/etc/init.d/kamailio-lb restart
+sleep 3
+
+
+
+# vim: ft=sh

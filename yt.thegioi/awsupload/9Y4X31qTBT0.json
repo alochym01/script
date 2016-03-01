@@ -1,0 +1,52 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/TGV4b7ZMOw-B6bwc09KiyKsWO9c\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/hGpNcdGiKSzFqi_kgRIDi-U4KwQ\"",
+   "id": "9Y4X31qTBT0",
+   "snippet": {
+    "publishedAt": "2016-01-06T07:30:10.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Tài chính Hàn Quốc chao đảo sau thông tin Triều Tiên thử bom nhiệt hạch",
+    "description": "Website: http://xemtin.xyz\n Thị trường tài chính Hàn Quốc đã bị ảnh hưởng ngay lập tức sau thông tin CHDCND Triều Tiên thử bom nhiệt hạch.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/9Y4X31qTBT0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/9Y4X31qTBT0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/9Y4X31qTBT0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "CHDCND Triều Tiên",
+     "bom nhiệt hạch",
+     "Bom nguyên tử",
+     "Hàn Quốc",
+     "kinh-te"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Tài chính Hàn Quốc chao đảo sau thông tin Triều Tiên thử bom nhiệt hạch",
+     "description": "Website: http://xemtin.xyz\n Thị trường tài chính Hàn Quốc đã bị ảnh hưởng ngay lập tức sau thông tin CHDCND Triều Tiên thử bom nhiệt hạch."
+    }
+   }
+  }
+ ]
+}

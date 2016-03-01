@@ -1,0 +1,19 @@
+[% argv.format = 'list';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_rtp_for_host';
+   interfaces = out;
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_rtp_interfaces';
+   global_interfaces = out;
+-%]
+# GENERATED FILE - DO NOT EDIT
+rtp_interfaces:
+[% FOREACH ifc IN global_interfaces -%]
+[% IF ifc -%]
+  - [% ifc %]
+[% END -%]
+[% END %]
+rtp_interfaces_local:
+[% FOREACH ifc IN interfaces -%]
+[% IF ifc -%]
+  - [% ifc %]
+[% END -%]
+[% END %]

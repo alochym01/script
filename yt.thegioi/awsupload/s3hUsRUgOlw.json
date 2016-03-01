@@ -1,0 +1,48 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/z_MxHX4C8HYd1gKB7nr4Lpls2Fw\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/OorwJa-4kyHys-urMtJqAek86jg\"",
+   "id": "s3hUsRUgOlw",
+   "snippet": {
+    "publishedAt": "2016-01-06T12:50:07.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Vụ vỡ bể chứa chất thải chì kẽm: Toàn bộ phần nước thải rò rỉ đã được khống chế",
+    "description": "Website: http://xemtin.xyz\n Liên quan đến vụ vỡ bể chứa chất thải chì kẽm, Giám đốc Sở TNMT tỉnh Cao Bằng cho biết, đã khống chế toàn bộ phần nước thải.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/s3hUsRUgOlw/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/s3hUsRUgOlw/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/s3hUsRUgOlw/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "xa-hoi"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Vụ vỡ bể chứa chất thải chì kẽm: Toàn bộ phần nước thải rò rỉ đã được khống chế",
+     "description": "Website: http://xemtin.xyz\n Liên quan đến vụ vỡ bể chứa chất thải chì kẽm, Giám đốc Sở TNMT tỉnh Cao Bằng cho biết, đã khống chế toàn bộ phần nước thải."
+    }
+   }
+  }
+ ]
+}

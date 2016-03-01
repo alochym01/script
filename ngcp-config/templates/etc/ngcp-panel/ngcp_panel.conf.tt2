@@ -1,0 +1,150 @@
+[% 
+    argv.role='lb'; argv.type='sip_ext'; 
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; 
+    sip_ext_ips = out;
+    IF !sip_ext_ips.size;
+        PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; 
+        sip_ext_ips = out;
+    END;
+
+    argv.role='lb'; argv.type='sip_int';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; 
+    sip_int_ips = out;
+    IF !sip_int_ips.size;
+        PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips'; 
+        sip_int_ips = out;
+    END;
+
+    argv.role='proxy'; argv.type='sip_int'; 
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; 
+    sip_prx_ips = out;
+    IF !sip_prx_ips.size;
+        PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips';
+        sip_prx_ips = out;
+    END;
+
+    argv.role='db'; argv.type='ha_int'; 
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips'; 
+    db_ha_ips = out;
+    IF !db_ha_ips.size;
+        PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips';
+        db_ha_ips = out;
+    END;
+-%]    
+name NGCP::Panel
+
+<Model::DB>
+    schema_class   NGCP::Schema
+</Model::DB>
+
+<contact>
+  email [% www_admin.contactmail ? www_admin.contactmail : general.adminmail %]
+</contact>
+
+<features>
+  multidomain	[% kamailio.proxy.ignore_auth_realm == "yes" ? 0 : 1 %]
+[% IF sems.conference.enable == "yes" -%]
+  conference	[% www_admin.conference_features == "1" ? 1 : 0 %]
+[% ELSE -%]
+  conference	0
+[% END -%]
+
+</features>
+
+<appearance>
+[% IF www_admin.force_language && www_admin.force_language != "none" -%]
+  force_language [% www_admin.force_language %]
+[% END -%]
+</appearance>
+
+
+
+<fees_csv>
+  [% FOREACH feecsvelement = www_admin.fees_csv.element_order -%]
+  element_order [% feecsvelement %]
+  [% END -%]
+</fees_csv>
+
+# if uploading as admin, a column reseller_id is assumed at the beginning
+# automatically, so the csv must in addition have reseller_id as first element
+<voucher_csv>
+  element_order  code
+  element_order  amount
+  element_order  valid_until
+  element_order  customer_id
+</voucher_csv>
+
+<dialogic>
+  own_ip [% sip_ext_ips.0 %]
+  username [% dialogic.user %]
+  password [% dialogic.pass %]
+</dialogic>
+
+<sip>
+  path <sip:[% sip_int_ips.0 %]:[% kamailio.lb.port %];lr>
+  lb_ext [% sip_ext_ips.0 %]:[% kamailio.lb.port %]
+  [% FOR sbc IN kamailio.lb.external_sbc -%]
+  external_sbc [% sbc %]
+  [% END -%]
+  [% IF kamailio.lb.tls.enable == 'yes' -%]
+  tls_port	[% kamailio.lb.tls.port %]
+  [% END -%]
+</sip>
+
+<speed_dial_vsc_presets>
+  [% FOREACH speeddialvsc = www_admin.speed_dial_vsc_presets.vsc -%]
+  vsc [% speeddialvsc %]
+  [% END -%]
+</speed_dial_vsc_presets>
+
+<security>
+  failed_auth_attempts [% kamailio.lb.security.failed_auth_attempts %]
+  password_min_length	[% www_admin.security.password_min_length %]
+  password_max_length	[% www_admin.security.password_max_length %]
+  password_musthave_lowercase	[% www_admin.security.password_musthave_lowercase %]
+  password_musthave_uppercase	[% www_admin.security.password_musthave_uppercase %]
+  password_musthave_digit	[% www_admin.security.password_musthave_digit %]
+  password_musthave_specialchar	[% www_admin.security.password_musthave_specialchar %]
+  password_allow_recovery	[% www_admin.security.password_allow_recovery %]
+  password_sip_autogenerate	[% www_admin.security.password_sip_autogenerate %]
+  password_web_autogenerate	[% www_admin.security.password_web_autogenerate %]
+  password_sip_expose_subadmin	[% www_admin.security.password_sip_expose_subadmin %]
+  password_web_expose_subadmin	[% www_admin.security.password_web_expose_subadmin %]
+</security>
+
+<profile_sets>
+  reseller_edit	1
+</profile_sets>
+
+
+
+<numbermanagement>
+  auto_allow_cli  [% ossbss.provisioning.auto_allow_cli %]
+</numbermanagement>
+
+<ssl>
+  rest_api_keyfile  [% ossbss.apache.restapi.sslcertkeyfile %]
+  rest_api_certfile [% ossbss.apache.restapi.sslcertfile %]
+  server_certfile   [% ossbss.apache.sslcertfile %]
+</ssl>
+
+
+
+
+
+[% IF intercept.enabled == 'yes' -%]
+<intercept>
+[% li_hosts = sip_int_ips.merge(sip_prx_ips); li_hosts = li_hosts.unique; -%]
+[% FOR host IN li_hosts -%]
+  <agent>
+    host [% host %]
+    schema [% intercept.captagent.schema %]
+    port [% intercept.captagent.port %]
+    realm [% intercept.captagent.realm %]
+    user [% intercept.captagent.username %]
+    pass [% intercept.captagent.password %]
+    url /api/interception
+  </agent>
+[% END -%]
+</intercept>
+[% END -%]

@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/FF-9KpNNAViea4nuAI7P1HKYsxg\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/bMt3G2mXl-0rFnZUcVgaRFHTq7Q\"",
+   "id": "CNoLK66rybM",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:10:04.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Puerto Rico tiêu hủy 10.000 búp bê Barbie xuất xứ Trung Quốc",
+    "description": "Website: http://xemtin.xyz\n Khoảng 10.000 đồ chơi búp bê Barbie xuất xứ Trung Quốc vừa bị chính quyền Puerto Rico ra lệnh thu giữ và tiêu hủy.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/CNoLK66rybM/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/CNoLK66rybM/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/CNoLK66rybM/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "chuyen-dong-24h",
+     "búp bê Barbie",
+     "Trung Quốc"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Puerto Rico tiêu hủy 10.000 búp bê Barbie xuất xứ Trung Quốc",
+     "description": "Website: http://xemtin.xyz\n Khoảng 10.000 đồ chơi búp bê Barbie xuất xứ Trung Quốc vừa bị chính quyền Puerto Rico ra lệnh thu giữ và tiêu hủy."
+    }
+   }
+  }
+ ]
+}

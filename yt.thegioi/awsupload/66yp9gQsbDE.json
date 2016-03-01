@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/o0KM9JNu2Ln7MTOiVfj6pVfS5D8\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/mRB4tQ_09GF9kBD67DZJLjYlq28\"",
+   "id": "66yp9gQsbDE",
+   "snippet": {
+    "publishedAt": "2016-01-07T03:10:09.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Ô tô đồng loạt tăng giá sốc ngay đầu năm",
+    "description": "Website: http://xemtin.xyz\n Ngay từ đầu năm, ô tô đã đồng loạt tăng giá sốc, trong đó các xe dòng phổ thông tăng khoảng 20 – 30 triệu đồng/xe.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/66yp9gQsbDE/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/66yp9gQsbDE/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/66yp9gQsbDE/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "tăng giá xe",
+     "giá ô tô"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Ô tô đồng loạt tăng giá sốc ngay đầu năm",
+     "description": "Website: http://xemtin.xyz\n Ngay từ đầu năm, ô tô đã đồng loạt tăng giá sốc, trong đó các xe dòng phổ thông tăng khoảng 20 – 30 triệu đồng/xe."
+    }
+   }
+  }
+ ]
+}

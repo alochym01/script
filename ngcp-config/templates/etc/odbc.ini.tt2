@@ -1,0 +1,11 @@
+
+[asterisk]
+Description	= MySQL connection to 'kamailio' database
+Driver		= MySQL
+Database	= [% asterisk.odbc.dbname %]
+Servername	= [% database.central.dbhost %]
+Server		= [% database.central.dbhost %]
+UserName	= [% asterisk.odbc.dbuser %]
+Password	= [% asterisk.odbc.dbpassword %]
+Port		= [% database.central.dbport %]
+Option		= 4194304

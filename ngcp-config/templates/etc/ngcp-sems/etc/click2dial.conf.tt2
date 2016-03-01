@@ -1,0 +1,3 @@
+
+announce_path=/usr/lib/ngcp-sems/audio/[% general.lang %]/
+default_announce=click2dial.wav

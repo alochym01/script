@@ -1,0 +1,48 @@
+the script is use for crawl all info of playlist
+    1.  channel_playlist_id_parse.py. we will get:
+        -   get playlist ID ==> items.id
+        -   the name of playlist ==> title
+    2.  channel_playlist_item_parse.py. we will get:
+        -   videoId ==> list(items).snippet.resourceId.videoId
+    3.  yt_video_detail_parse.py. we will get:
+        -   get statistics:
+            +   list(items).statistics.viewCount
+            +   list(items).statistics.likeCount
+            +   list(items).statistics.dislikeCount
+        -   get title ==> list(items).snippet.title
+        -   get thumbnails ==> list(items).snippet.thumbnails
+        -   get publishedAt ==> list(items).snippet.publishedAt
+        -   get description ==> list(items).snippet.description
+        -   get channel_id ==> list(items).snippet.channelId
+        -   videoId belong to channel_playlist_id in step 1
+
+youtube properties:
+    1.  channel ID
+        + title
+            - https://www.googleapis.com/youtube/v3/channels?part=snippet&id=UCayhFYQuenXX0ClL23kQj5A&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU
+        + description
+            - https://www.googleapis.com/youtube/v3/channels?part=snippet&id=UCayhFYQuenXX0ClL23kQj5A&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU
+        + statistics
+            - https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCayhFYQuenXX0ClL23kQj5A&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU
+
+    2.  playlist ID
+        + get all playlist of channel
+            - https://www.googleapis.com/youtube/v3/playlists?part=snippet&maxResults=50&channelId=UCtuI-seWsvKPb8MxkqY-fDw&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU
+        +   title
+        +   description
+        +   publishedAt
+        +   thumbnail
+        +   totalResults -> get from playlist Item
+        +   playlist Item:
+            -   get the Items in the playlist ID
+            -   https://www.googleapis.com/youtube/v3/playlistItems?maxResults=50&part=snippet&playlistId=PLVMuv1pOsPoagoGwUYEJTT_KrWM2hocnO&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU
+
+    3.  video ID
+        +   https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=_9_Tj2jKKqc&key=AIzaSyB6JZxYxR9OpxIQ0wbvZD_DnJcTVt4MihU
+        +   title
+        +   id
+        +   description
+        +   publishedAt
+        +   thumbnail
+        +   like/dislike
+        +   view count

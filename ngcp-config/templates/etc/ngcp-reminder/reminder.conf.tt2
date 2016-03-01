@@ -1,0 +1,19 @@
+# Configuration file for ngcp-reminder call scripts
+
+# weekday settings (1=sun, 7=sat)
+weekdays = [% reminder.weekdays %]
+
+# callfile settings
+retries = [% reminder.retries %]
+retry_time = [% reminder.retry_time %]
+wait_time = [% reminder.wait_time %]
+context = [% reminder.context %]
+sip_peer = [% reminder.sip_peer %]
+spool = /var/spool/asterisk/outgoing
+tmpdir = /tmp
+
+# database settings
+database = [% reminder.dbname %]
+dbhost = [% database.central.dbhost %]
+dbuser= [% reminder.dbuser %]
+dbpassword = [% reminder.dbpassword %] 

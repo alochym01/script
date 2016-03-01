@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/8DfSX1v1kcD6f-gftq-j0sbNtug\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/j-VkI0stEYRNDXl2YQ4eD0ZsQs8\"",
+   "id": "1NsKDbMhD80",
+   "snippet": {
+    "publishedAt": "2016-01-07T05:10:06.000Z",
+    "channelId": "UCsqxs9MNIrRxgSIIX6AtpPw",
+    "title": "Geisha - Nét văn hóa truyền thống Nhật Bản cần lưu giữ",
+    "description": "Website: http://xemtin.xyz\n Ngày nay, nước Nhật chỉ còn rất ít người làm nghề Geisha và giới trẻ Nhật hầu như chẳng biết mấy về Geisha.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/1NsKDbMhD80/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/1NsKDbMhD80/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/1NsKDbMhD80/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "Dulich Cucku",
+    "tags": [
+     "du-lich",
+     "hoa anh đào",
+     "geisha Nhật Bản"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Geisha - Nét văn hóa truyền thống Nhật Bản cần lưu giữ",
+     "description": "Website: http://xemtin.xyz\n Ngày nay, nước Nhật chỉ còn rất ít người làm nghề Geisha và giới trẻ Nhật hầu như chẳng biết mấy về Geisha."
+    }
+   }
+  }
+ ]
+}

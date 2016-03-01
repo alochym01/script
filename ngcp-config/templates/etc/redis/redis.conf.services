@@ -1,0 +1,8 @@
+#!/bin/bash
+
+. /etc/default/ngcp-roles
+if [ "$NGCP_IS_RTP" == "yes" ] || [ "$NGCP_IS_PROXY" == "yes" ] || [ "$NGCP_IS_DB" == "yes" ]; then
+
+/etc/init.d/redis-server restart
+
+fi

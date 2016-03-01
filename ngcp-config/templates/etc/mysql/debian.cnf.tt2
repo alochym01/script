@@ -1,0 +1,12 @@
+# Automatically generated for Debian scripts. DO NOT TOUCH!
+[client]
+host     = [% database.debian.dbhost %]
+user     = [% database.debian.dbuser %]
+password = [% database.debian.dbpassword %]
+socket   = /var/run/mysqld/mysqld.sock
+[mysql_upgrade]
+host     = [% database.debian.dbhost %]
+user     = [% database.debian.dbuser %]
+password = [% database.debian.dbpassword %]
+socket   = /var/run/mysqld/mysqld.sock
+basedir  = /usr

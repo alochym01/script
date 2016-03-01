@@ -1,0 +1,24 @@
+
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='ha_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_iface'; host_ha_iface = out -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'; sip_int_ips = out -%]
+[% IF !sip_int_ips.size -%]
+[% argv.host=hostname; argv.type='sip_int'; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'; sip_int_ips = out -%]
+[% END -%]
+[% argv.host=hostname; PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_rtp_for_host'; interfaces = out -%]
+RUN_RTPENGINE=yes
+#LISTEN_UDP=[% sip_int_ips.0 %]:2222
+LISTEN_NG=[% sip_int_ips.0 %]:[% rtpengine.control_port %]
+INTERFACES="[% interfaces.join(' ') %]"
+TIMEOUT=[% rtpproxy.rtp_timeout %]
+SILENT_TIMEOUT=[% rtpproxy.rtp_timeout_onhold %]
+PIDFILE=/var/run/ngcp-rtpengine-daemon.pid
+FORK=yes
+TOS=[% qos.tos_rtp %]
+TABLE=0
+PORT_MIN=[% rtpproxy.minport %]
+PORT_MAX=[% rtpproxy.maxport %]
+B2B_URL=http://%%:[% sems.xmlrpcport %]/
+NO_FALLBACK=[% rtpproxy.allow_userspace_only == "yes" ? "no" : "yes" %]
+LOG_LEVEL=6
+

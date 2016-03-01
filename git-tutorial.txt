@@ -1,0 +1,30 @@
+git config user name for repo
+Syntax: git config user.name "flaskalobet"
+
+git config user email for repo
+Syntax: git config user.email "flask.alobet@gmail.com"
+
+git change remote url to use git push command
+Syntax: git remote set-url origin https://flaskalobet@github.com/flaskalobet/flask_learn
+
+git add a file and then commit to repo
+Syntax:
+    1.  git add hello.py
+    2.  git commit -m "edit abc"
+    3.  git push
+
+directory git config for repo
+.git/config
+
+git config proxy:
+    1.  git config --global http.proxy http://proxy:port
+    2.  git config --global https.proxy http://proxy:port
+
+use git tag to release version:
+    1.  git tag -a v1.4 -m 'my version 1.4' - create a tag of git
+        1.1 list tag: git tag
+    2.  git push origin v1.4 - push github server create tag
+        2.1 check www.github.com/abc/repo to see the release
+
+update local from remote and merge
+    1. git pull origin master

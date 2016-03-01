@@ -1,0 +1,6 @@
+# fix monit 5.9 problem
+umask 0022
+
+if [ -d "$PIDPATH" ]; then
+  chmod 0755 "$PIDPATH"
+fi

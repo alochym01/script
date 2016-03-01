@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/rYf7miCBorqGJ7OTQaUoftY1YN8\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/XNROtMyrqvAygt9jHKdK5VRpoqY\"",
+   "id": "9Y5aLpyx3o8",
+   "snippet": {
+    "publishedAt": "2016-01-06T09:00:07.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Nỗi lo tái nghèo từ cây làm giàu của nông dân miền Trung",
+    "description": "Website: http://xemtin.xyz\n Mặc dù từng là cây xóa đói giảm nghèo và giúp nông dân làm giàu, thế nhưng đến nay, cao su lại là nỗi ám ảnh vì nguy cơ tái ngèo của người trồng.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/9Y5aLpyx3o8/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/9Y5aLpyx3o8/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/9Y5aLpyx3o8/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "xóa đói giảm nghèo",
+     "mủ cao su",
+     "dân tộc thiểu số"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Nỗi lo tái nghèo từ cây làm giàu của nông dân miền Trung",
+     "description": "Website: http://xemtin.xyz\n Mặc dù từng là cây xóa đói giảm nghèo và giúp nông dân làm giàu, thế nhưng đến nay, cao su lại là nỗi ám ảnh vì nguy cơ tái ngèo của người trồng."
+    }
+   }
+  }
+ ]
+}

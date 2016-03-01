@@ -1,0 +1,2 @@
+rtpengine -p /var/run/rtpengine.pid -i eth1/118.69.135.187 -n 118.69.135.187:60000 -c 127.0.0.1:60001 -L 7
+

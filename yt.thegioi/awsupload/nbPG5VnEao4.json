@@ -1,0 +1,51 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/4m2xxD3VrWSTn9Ut4p5j9N9O5Gs\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/gSIGwuP4U2tJBcR8vVqbEjd38VE\"",
+   "id": "nbPG5VnEao4",
+   "snippet": {
+    "publishedAt": "2016-01-06T08:20:14.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "Nhiều bệnh nan y được chữa khỏi nhờ phương pháp bấm huyệt",
+    "description": "Website: http://xemtin.xyz\n Bại liệt, teo cơ, câm, điếc đều có thể được chữa khỏi nếu dùng phương pháp bấm huyệt thập thủ đạo.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/nbPG5VnEao4/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/nbPG5VnEao4/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/nbPG5VnEao4/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "doi-song",
+     "bệnh nan y",
+     "thập thủ đạo",
+     "Lê Minh"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Nhiều bệnh nan y được chữa khỏi nhờ phương pháp bấm huyệt",
+     "description": "Website: http://xemtin.xyz\n Bại liệt, teo cơ, câm, điếc đều có thể được chữa khỏi nếu dùng phương pháp bấm huyệt thập thủ đạo."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/iZI46utOg1F6IrwTfdwQU4N2R74\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"kuL0kDMAqRo3pU7O0pwlO-Lfzp4/Mfa27xDb7OKZu9F03XvE9_l_KTQ\"",
+   "id": "hpAqQDeW0h0",
+   "snippet": {
+    "publishedAt": "2016-01-07T03:25:06.000Z",
+    "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+    "title": "WB: Tăng trưởng toàn cầu đạt 2,9% năm 2016",
+    "description": "Website: http://xemtin.xyz\n Ngân hàng Thế giới đánh giá tốc độ tăng trưởng năm 2016 sẽ đạt mức khiêm tốn 2,9%, cải thiện nhẹ so với con số World Bank gọi là đáng thất vọng của năm 2015 - 2,4%.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/hpAqQDeW0h0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/hpAqQDeW0h0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/hpAqQDeW0h0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "thegioi yt",
+    "tags": [
+     "kinh-te",
+     "tăng trưởng toàn cầu",
+     "WB"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "WB: Tăng trưởng toàn cầu đạt 2,9% năm 2016",
+     "description": "Website: http://xemtin.xyz\n Ngân hàng Thế giới đánh giá tốc độ tăng trưởng năm 2016 sẽ đạt mức khiêm tốn 2,9%, cải thiện nhẹ so với con số World Bank gọi là đáng thất vọng của năm 2015 - 2,4%."
+    }
+   }
+  }
+ ]
+}

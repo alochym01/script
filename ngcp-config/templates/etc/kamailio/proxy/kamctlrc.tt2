@@ -1,0 +1,16 @@
+ETCDIR="/etc/kamailio/proxy"
+DBENGINE="[% kamailio.proxy.dbengine %]"
+DBTEXT_PATH="[% kamailio.proxy.dbpath %]"
+DBHOST="[% kamailio.proxy.dbhost %]"
+DBNAME="[% kamailio.proxy.dbname %]"
+DBRWUSER="[% kamailio.proxy.dbrwuser %]"
+DBRWPW="[% kamailio.proxy.dbrwpw %]"
+DBROUSER="[% kamailio.proxy.dbrouser %]"
+DBROPW="[% kamailio.proxy.dbropw %]"
+DBROOTUSER="[% kamailio.proxy.dbrootuser %]"
+ALIASES_TYPE="DB"
+CTLENGINE="FIFO"
+OSER_FIFO="/var/run/kamailio/kamailio.proxy.fifo"
+OSER_UNIXSOCK="/var/run/kamailio/kamailio.proxy.sock"
+VERBOSE=0
+PID_FILE=/var/run/kamailio.proxy.pid

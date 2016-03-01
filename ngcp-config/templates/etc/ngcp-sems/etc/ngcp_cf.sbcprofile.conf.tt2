@@ -1,0 +1,46 @@
+
+RURI=$r
+From=$f
+To=$t
+Call-ID=$ci
+
+outbound_proxy=$H(P-D-Uri)
+force_outbound_proxy=no
+#next_hop_ip=
+#next_hop_port=
+
+header_filter=whitelist
+header_list=P-Caller-UUID,P-First-Caller-CLIR,P-CF-Depth,P-First-Caller-UPN,P-First-Caller-NPN,P-First-Caller-UPD,P-First-Caller-NPD,P-Acc-Caller-User,P-Acc-Caller-Domain,P-Acc-State,P-From-Peer,P-First-V46-RTP,P-First-RTP,P-First-RTP-Transport,P-First-Caller-UA-Mode,P-First-Caller-UA-Replace,P-Callee-Ext-Contr-ID,P-Callee-Ext-Subs-ID,P-Callee-Account-ID,P-Preferred-Identity,P-Asserted-Identity,Diversion,Privacy,Allow,Supported,Require,RAck,RSeq,Rseq,Call-Info,History-Info,P-CF-Loop-Count,P-HIH-Cause,P-Orig-Callee-Dialed,P-First-Caller-Cloud-PBX,P-First-Caller-RTP-Interface,P-First-Caller-RTP-Interface-Source
+
+message_filter=transparent
+#message_list=
+
+enable_auth=no
+#auth for caller
+enable_aleg_auth=yes
+auth_aleg_user=$P(au)
+auth_aleg_pwd=$P(ap)
+
+
+enable_call_timer=[% sems.sbc.calltimer_enable %]
+call_timer=[% sems.sbc.calltimer_max %]
+
+
+enable_prepaid=no
+
+enable_session_timer=no
+enable_aleg_session_timer=$P(aleg_sst_enable)
+aleg_session_expires=$P(aleg_sst_expires)
+aleg_minimum_timer=$P(aleg_sst_min_timer)
+aleg_maximum_timer=$P(aleg_sst_max_timer)
+aleg_session_refresh_method=$P(aleg_sst_refresh_method)
+accept_501_reply=yes
+
+#reply_translations="606=>488 Not acceptable here"
+
+[% IF sems.sbc.sdp_filter.enable == "yes" %]
+sdp_filter=[% sems.sbc.sdp_filter.mode %]
+sdpfilter_list=[% sems.sbc.sdp_filter.codecs %]
+[% END %]
+
+
