@@ -25,6 +25,9 @@ Plugin 'powerline/powerline'
 
 Plugin 'mhinz/vim-signify'
 
+Plugin 'klen/python-mode'
+
+Plugin 'tpope/vim-surround'
 " use by pressing ctrl+y+,
 " indent by pressing '=G'
 Plugin 'mattn/emmet-vim'
@@ -65,7 +68,7 @@ filetype plugin indent on    " required
 
 " altercation/vim-colors-solarized setting
 syntax enable
-"set background=dark
+set background=light
 "let g:solarized_termcolors=256
 "let g:solarized_visibility="normal"
 colorscheme monokai
@@ -108,6 +111,15 @@ set ruler
 set number
 set incsearch
 set hlsearch
+
+"folding settings
+"Then you can toggle folding with za
+"fold everything with zM and unfold everything with zR
+"zm and zr can be used to get those folds just right
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
 
 " fileformat stuff
 " "set fileformat=unix
