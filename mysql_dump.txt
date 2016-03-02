@@ -1,0 +1,1 @@
+mysqldump -u (user name) -p -t (database name) (table 1) (table 2)...> (file name)
