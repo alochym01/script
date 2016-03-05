@@ -57,3 +57,16 @@ if len(list(set(links_temp) - set(links_from_file))):
     with open('info_net.txt', 'w') as f:
         f.write(','.join(set(links)))
 
+#begin crawler content of link
+soup = mysoup(url)
+
+article = soup.find("article")
+tags_p =[]
+img = article.find('img').get('src')
+
+for p in article.find_all('p'):
+    tags_p.append(p)
+
+#update video json file with img + data
+video['items'][0]['snippet']['content'].update({'img': img})
+video['items'][0]['snippet']['content'].update({'data': tags_p})
