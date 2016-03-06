@@ -53,11 +53,11 @@ if len(list(set(links_temp) - set(links_from_file))):
 
 #begin crawler content of link
 for url in list(set(links_temp) - set(links_from_file)):
+    print url
     soup = mysoup('http://infonet.vn/' + url)
 
     article = soup.find("article")
     tags_p =[]
-    img = article.find('img').get('src')
 
     for p in article.find_all('p'):
         print type(p)
@@ -66,10 +66,14 @@ for url in list(set(links_temp) - set(links_from_file)):
     with open('videos.json') as f:
         video = json.loads(f.read())
     #update video json file with img + data
-    video['items'][0]['snippet']['img'] = img
+    try:
+        img = article.find('img').get('src')
+        video['items'][0]['snippet']['img'] = img
+    except:
+        video['items'][0]['snippet']['img'] = ''
+
     video['items'][0]['snippet']['data'] = []
     for i in tags_p:
         video['items'][0]['snippet']['data'].append(i.string)
-    with open('/home/hadn' + url, 'w') as f:
-        f.write(json.dumps(video,indent=1))
-    #print tags_p
+    with open('/home/hadn' + url, 'wb') as f:
+        f.write(json.dumps(video,indent=1, ensure_ascii=False).encode('utf-8'))
