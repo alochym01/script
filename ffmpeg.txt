@@ -1,0 +1,32 @@
+scale image into height = 90 and the width is relative
+ ffmpeg -i ngangnhienxayresortkhongphepgiuavuonquocgia.jpeg -vf scale=-1:90 result.jpg
+
+scale image into height is relative and the width = 120
+ ffmpeg -i luu-hoang-tai-jpg-1457160278.jpg -vf scale=120:-1 tuoitre.jpg
+
+add the border of image with pad=w:h:x:y
+    - the height = 90
+    - width is not change
+    - the x = 0
+    - the y = 10 px
+ ffmpeg -i tuoitre.jpg -vf pad=0:90:0:10:black output.jpg
+ ffmpeg -i tuoitre.jpg -vf pad=0:90:(width/2):(height/2):black output.jpg -- for center x and y
+example:
+    - the origin image
+        Image
+        Format                                   : JPEG
+        Width                                    : 120 pixels
+        Height                                   : 67 pixels
+        Color space                              : YUV
+        Bit depth                                : 8 bits
+        Compression mode                         : Lossy
+        Stream size                              : 2.99 KiB (100%)
+    - the output image
+        Image
+        Format                                   : JPEG
+        Width                                    : 120 pixels
+        Height                                   : 90 pixels
+        Color space                              : YUV
+        Bit depth                                : 8 bits
+        Compression mode                         : Lossy
+        Stream size                              : 2.93 KiB (100%)
