@@ -1,11 +1,7 @@
 from bs4 import BeautifulSoup
 import urllib2
-import shlex
-import os
 import re
-import wget
 import json
-from subprocess import Popen, PIPE
 import sys
 
 def mysoup(link):
