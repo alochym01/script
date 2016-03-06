@@ -25,7 +25,7 @@ def read(filename):
     return data
 
 print sys.argv[-1]
-url = "http://infonet.vn" + sys.argv[-1]
+url = sys.argv[-1]
 
 soup = mysoup(url)
 
@@ -47,7 +47,7 @@ video['items'][0]['snippet']['img'] = img
 video['items'][0]['snippet']['data'] = []
 print tags_p
 for i in tags_p:
-    video['items'][0]['snippet']['data'].append(i.string)
+    video['items'][0]['snippet']['data'].append(unicode(i))
 print json.dumps(video, indent=1, ensure_ascii=False)
 with open('/home/hadn' + sys.argv[-1], 'wb') as f:
     f.write(json.dumps(video,indent=1, ensure_ascii=False).encode('utf-8'))
