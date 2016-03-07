@@ -1,0 +1,52 @@
+{
+ "items": [
+  {
+   "snippet": {
+    "thumbnails": {
+     "default": {
+      "url": "", 
+      "width": 120, 
+      "height": 90
+     }, 
+     "standard": {
+      "url": "", 
+      "width": 640, 
+      "height": 480
+     }
+    }, 
+    "img": "http://static.new.tuoitre.vn/tto/i/s626/2016/03/07/st-20160307-mcenglish07a-2119084-1457338150.jpg", 
+    "title": "", 
+    "url": "http://tuoitre.vn/tin/giao-duc/giao-duc-cac-nuoc/20160307/han-quoc-cam-day-tieng-anh-hai-nam-dau-cap-tieu-hoc/1063219.html", 
+    "localized": {
+     "description": "", 
+     "title": ""
+    }, 
+    "channelId": "", 
+    "publishedAt": "", 
+    "liveBroadcastContent": "none", 
+    "channelTitle": "", 
+    "categoryId": "25", 
+    "tags": [
+     "xa-hoi"
+    ], 
+    "description": "<p class=\"txt-head\">TTO - Học sinh hai năm đầu cấp tiểu học trong cả trường công và trường tư ở Hàn Quốc sẽ không được học tiếng Anh, theo lệnh của Bộ giáo dục nước này nhằm bảo vệ nguồn gốc tiếng Hàn. </p><p>Hãng tin Yonhap cho biết giới chức ngành giáo dục Hàn Quốc quan ngại cho trẻ học tiếng Anh sớm có thể sẽ làm xói mòn nguồn gốc tiếng Hàn.</p><p>Tòa Hiến pháp Hàn Quốc đã phê chuẩn lệnh cấm này hồi tuần trước và cho rằng quyết định của Bộ giáo dục Hàn Quốc là có lý do.</p><p>Lệnh cấm này cũng nhằm mục đích ngăn chặn các bậc phụ huynh đổ xô cho con học tiếng Anh ở các trường học tư nhân, gây ra tình trạng quá tải cho trường tư.</p><p>Tại Hàn Quốc các trường tiểu học công lập bắt đầu áp dụng chương trình dạy tiếng Anh vào năm 1997 nhưng chỉ dạy từ lớp 3. Còn các trường mẫu giáo và tiểu học tư thục bắt đầu dạy tiếng Anh từ những năm 1990 với cường độ cao.</p><p>Tuy nhiên, lệnh cấm này đang gây phản ứng gay gắt trong giới phụ huynh. Một số người đã đệ trình hồ sơ kiện Bộ giáo dục Hàn Quốc lên tòa Hiến pháp nước này, cho rằng lệnh cấm trên đã vi phạm quyền được học của con họ.</p><p>Những người này khẳng định rằng không có bằng chứng cho thấy học tiếng Anh nhiều sẽ gây ảnh hưởng đến khả năng học tiếng Hàn của con họ.</p><p>Doanh nhân Kim Jae Jong, 41 tuổi chi 1,2 triệu won (khoảng 997 USD) hàng tháng cho con trai học tiếng Anh đã phản ứng lệnh cấm này.</p><p>Vị phụ huynh này cho rằng hiện nay công dân Hàn Quốc đang sống trong môi trường toàn cầu hóa. Nếu không cho học sinh học tiếng Anh sớm thì làm sao có thể kết nối với thế giới bên ngoài một cách tốt hơn.</p><p> \"Nếu chính phủ muốn cấm tiếng Anh trong các trường học tư thục thì họ nên cung cấp một nền giáo dục tiếng Anh tốt hơn trong các trường công lập. Đó là trách nhiệm của họ” - ông Kim nói.</p><p>Để lách lệnh cấm này, một số trường tư đã bắt đầu tổ chức các lớp dạy tiếng Anh cho học sinh  học vài giờ trưa sau giờ học chính thức của trường.</p><p class=\"warning\">Vui lòng nhập nội dung bình luận.</p><p class=\"warning email-warning1\">Vui lòng nhập email.</p><p class=\"warning email-warning2\">Email không đúng định dạng.</p><p class=\"warning name-warning\">Vui lòng nhập Họ &amp; Tên.</p><p>Phần có gắn (*) là thông tin bắt buộc nhập.</p>"
+   }, 
+   "contentDetails": {
+    "duration": "PT4M33S", 
+    "definition": "hd", 
+    "licensedContent": false, 
+    "dimension": "2d", 
+    "caption": "false"
+   }, 
+   "kind": "youtube#video", 
+   "etag": "", 
+   "id": ""
+  }
+ ], 
+ "kind": "", 
+ "etag": "", 
+ "pageInfo": {
+  "resultsPerPage": 1, 
+  "totalResults": 1
+ }
+}
