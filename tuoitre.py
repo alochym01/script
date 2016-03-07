@@ -3,6 +3,8 @@ import urllib2
 import re
 import json
 import sys
+import shlex
+from subprocess import Popen, PIPE
 
 def mysoup(link):
     url = urllib2.Request(link, headers={ 'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:33.0) Gecko/20100101 Firefox/33.0'  })
@@ -34,44 +36,29 @@ for i in set(div.find_all('a')):
         pass
 # ==========end===========
 
-#save temp value into tem file
-save('info_net_temp.txt', set(links))
-
 #begin to compare a links value(info_net.txt) with links temp value(info_net_temp)
 links_from_file = read('info_net.txt')
 
-links_temp = read('info_net_temp.txt')
+link_new = []
+for link in set(links):
+    if link in links_from_file:
+        print link
+        break
+    link_new.append(link)
 
 #remove duplicate items
-if len(set(links_temp) - set(links_from_file)):
+if len(link_new):
     save('info_net.txt', set(links))
 
-#begin crawler content of link
-for url in list(set(links_temp) - set(links_from_file)):
-    print url
-    soup = mysoup(url)
-
-    div_detail = soup.find('div', {'class':'left-side'})
-    tags_p =[]
-
-    for p in div_detail.find_all('p'):
-        tags_p.append(p)
-    #remove unuse content
-    for i in range(5):
-        del tags_p[-1]
-
-    with open('videos.json') as f:
-        video = json.loads(f.read())
-    #update video json file with img + data
+for i in link_new:
+    print i
+    cmd = '/home/hadn/python/bin/python /home/hadn/script/tuoitre_detail.py %s' % i
+    print cmd
+    cmd = shlex.split(cmd)
+    print cmd
     try:
-        video['items'][0]['snippet']['url'] = url
-        img = div_detail.find_all('img')[-2].get('src')
-        video['items'][0]['snippet']['img'] = img
-    except:
-        video['items'][0]['snippet']['img'] = ''
-
-    video['items'][0]['snippet']['data'] = []
-    for i in tags_p:
-        video['items'][0]['snippet']['data'].append(unicode(i))
-    with open('/home/hadn/' + url.split('/')[-1], 'wb') as f:
-        f.write(json.dumps(video,indent=1, ensure_ascii=False).encode('utf-8'))
+        up = Popen(cmd, stdout=PIPE)
+        print up.communicate()
+    except Exception as e:
+        print str(e)
+        pass
