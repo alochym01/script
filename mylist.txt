@@ -1,0 +1,4 @@
+file '/home/hadn/script/tuoitre/*.jpg'
+file '/home/hadn/script/tuoitre/*//*.jpg'
+file '/home/hadn/script/tuoitre/'
+file ''
