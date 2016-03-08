@@ -1,0 +1,51 @@
+{
+ "kind": "",
+ "etag": "",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "",
+   "id": "",
+   "snippet": {
+    "url": "",
+    "publishedAt": "",
+    "channelId": "",
+    "title": "",
+    "description": "",
+    "thumbnails": {
+     "default": {
+      "url": "",
+      "width": 120,
+      "height": 90
+     },
+     "standard": {
+      "url": "",
+      "width": 640,
+      "height": 480
+     }
+    },
+    "channelTitle": "",
+    "tags": [
+     "xa-hoi"
+    ],
+    "categoryId": "25",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "",
+     "description": ""
+    }
+   },
+   "contentDetails": {
+    "duration": "PT4M33S",
+    "dimension": "2d",
+    "definition": "hd",
+    "caption": "false",
+    "licensedContent": false
+   }
+  }
+ ]
+}

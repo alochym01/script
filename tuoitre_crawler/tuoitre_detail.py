@@ -40,6 +40,9 @@ for i in range(5):
 
 current_dir = os.getcwd()
 sample_file = '%s/%s' % (current_dir, 'videos.json')
+slug = url.split('/')
+folder_path = '%s/tuoitre/%s' % (current_dir, slug[-1].split('.')[0])
+
 with open(sample_file) as f:
     video = json.loads(f.read())
 
@@ -50,15 +53,13 @@ except:
     video['items'][0]['snippet']['img'] = ''
 
 video['items'][0]['snippet']['data'] = []
+video['items'][0]['snippet']['description'] += unicode(soup.title.text)
 for i in tags_p:
     video['items'][0]['snippet']['description'] += unicode(i)
 
-slug = url.split('/')
-folder_path = '%s/tuoitre/%s' % (current_dir, slug[-1].split('.')[0])
 os.mkdir(folder_path)
 
 try:
-    os.getcwd()
     os.chdir(folder_path)
     wget.download(img)
     video['items'][0]['etag'] = slug[-2]
