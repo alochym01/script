@@ -1,0 +1,2 @@
+
+/home/hadn/script/infoNET/infonet/*/*.jpg
