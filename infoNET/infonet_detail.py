@@ -1,7 +1,12 @@
 """
     line 45: tags_p should be article.find_all('div')
-    http://infonet.vn/suc-khoe/14.info => description ->  tags_div
-    http://infonet.vn/kinh-doanh/4.info => description ->  tags_p
+    http://infonet.vn/: - description ->  tags_div
+        suc-khoe/14.info
+    http://infonet.vn/: - description ->  tags_p
+        kinh-doanh/4.info
+        giao-duc/1064.info
+        huong-nghiep/1145.info
+        quan-su/58.info
 """
 from bs4 import BeautifulSoup
 import urllib2
