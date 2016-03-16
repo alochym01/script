@@ -16,6 +16,7 @@ import sys
 import os
 from string import letters, digits
 import random
+import re
 
 
 def mysoup(link):
@@ -46,6 +47,7 @@ slug = url.split('/')
 soup = mysoup(url)
 
 article = soup.find("article")
+title = re.sub('\n|\t', '', soup.title.text.split(' | ')[0])
 tags_div = []
 
 for p in article.find_all('p'):
@@ -71,7 +73,8 @@ except Exception as e:
     print str(e)
 
 video['items'][0]['snippet']['data'] = []
-video['items'][0]['snippet']['description'] += unicode(soup.title.text)
+video['items'][0]['snippet']['description'] += title
+video['items'][0]['snippet']['title'] = title
 for i in tags_div:
     video['items'][0]['snippet']['description'] += unicode(i)
 

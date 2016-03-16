@@ -1,2 +1,8 @@
 
-/home/hadn/script/infoNET/infonet/*/*.jpg
+/home/hadn/script/infoNET/infonet/4zh1jRwopu1/dia_dao.jpg
+/home/hadn/script/infoNET/infonet/8aciwpZgtBt/infonet_tai_nan_giao_thong_anh9.jpg
+/home/hadn/script/infoNET/infonet/AqXGGW6PgQB/thiep_83.jpg
+/home/hadn/script/infoNET/infonet/CmSoHWddaDX/1321323431941.jpg
+/home/hadn/script/infoNET/infonet/he3OXvwKCGZ/83_tieng_Anh.jpg
+/home/hadn/script/infoNET/infonet/PqxhETyGQwL/11450783275.jpg
+/home/hadn/script/infoNET/infonet/xHshrfet2TU/infonet_pha_rung_son_tra_anh52.jpg

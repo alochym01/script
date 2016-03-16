@@ -1,10 +1,13 @@
 
-/home/hadn/script/tuoitre_crawler/tuoitre/1063453/3af2666a.jpg
-/home/hadn/script/tuoitre_crawler/tuoitre/1063633/trau-dien-jpg-1457405313.jpg
-/home/hadn/script/tuoitre_crawler/tuoitre/1063636/8-3-tau-ca-ngu-dan-bi-tan-cong-1-jpg-1457405780.jpg
-/home/hadn/script/tuoitre_crawler/tuoitre/1063678/cong-nhan-cong-ty-tnhh-mtv-cap-nuoc-tien-giang-thi-cong-duong-ong-dan-nuoc-ngot-tu-thi-xa-go-cong-ve-1457408412.jpg
-/home/hadn/script/tuoitre_crawler/tuoitre/1063699/8-3-tau-ca-ngu-dan-bi-tan-cong-3-jpg-1457410671.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1063441/bebe0ed7.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1063462/c700e3f9.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1063726/lien-ket-viet-1456375145-1457414047.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1063762/hoa-hong-ma-vang--ha-thanh-1457422098.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1063768/thep-1-jpg-1457422288.jpg
 /home/hadn/script/tuoitre_crawler/tuoitre/1063792/quang-cao-ben-hong-xe-buyt-1457424179.jpg
-/home/hadn/script/tuoitre_crawler/tuoitre/1063801/8-3-da-nang-vuot-rao-lap-bien-bao-han-che-toc-do-xe-ben-chay-1-jpg-1457424959.jpg
-/home/hadn/script/tuoitre_crawler/tuoitre/1063807/tham-nhung-jpg-1457426295.jpg
-/home/hadn/script/tuoitre_crawler/tuoitre/1063831/tai-xe-nam-va-tai-tram-can-1457428278.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1063822/2-xuanan-xebuytxanh-jpg-1457426942.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1063951/8xltc7js-1440213887-1457448272.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1064134/6ef39612.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1064293/chung-cu-ngo-thi-nham---viet-dung-1457496728.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1064383/tau-dich-vu-hau-can-nghe-ca-jpg-1457509845.jpg
+/home/hadn/script/tuoitre_crawler/tuoitre/1064605/cam-1457562791.jpg
