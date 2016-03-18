@@ -30,3 +30,16 @@ example:
         Bit depth                                : 8 bits
         Compression mode                         : Lossy
         Stream size                              : 2.93 KiB (100%)
+
+Cropping syntax
+In this chapter, we'll crop the input video to given dimensions.
+
+The command syntax looks like this:
+
+ffmpeg -i before.mp4 -vf "crop=w:h:x:y" after.mp4
+The crop filter accepts the following options:
+
+w: Width of the output video (out_w). It defaults to iw. This expression is evaluated only once during the filter configuration.
+h: Height of the output video (out_h). It defaults to ih. This expression is evaluated only once during the filter configuration.
+x: Horizontal position, in the input video, of the left edge of the output video. It defaults to (in_w-out_w)/2. This expression is evaluated per-frame.
+y: Vertical position, in the input video, of the top edge of the output video. It defaults to (in_h-out_h)/2. This expression is evaluated per-frame.
