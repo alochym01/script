@@ -11,6 +11,7 @@ add the border of image with pad=w:h:x:y
     - the y = 10 px
  ffmpeg -i tuoitre.jpg -vf pad=0:90:0:10:black output.jpg
  ffmpeg -i tuoitre.jpg -vf pad=0:90:(width/2):(height/2):black output.jpg -- for center x and y
+ ffmpeg -i /home/hadn/script/tuoitre_crawler/tuoitre/1063453/3af2666a.jpg -vf "pad=780:1040:(780-665)/2:(1040-771)/2:black" /home/hadn/script/tuoitre_crawler/tuoitre/1063453/3af2666a_pad_43.jpg
 example:
     - the origin image
         Image
