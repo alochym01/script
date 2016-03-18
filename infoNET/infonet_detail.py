@@ -1,7 +1,12 @@
 """
     line 45: tags_p should be article.find_all('div')
-    http://infonet.vn/suc-khoe/14.info => description ->  tags_div
-    http://infonet.vn/kinh-doanh/4.info => description ->  tags_p
+    http://infonet.vn/: - description ->  tags_div
+        suc-khoe/14.info
+    http://infonet.vn/: - description ->  tags_p
+        kinh-doanh/4.info
+        giao-duc/1064.info
+        huong-nghiep/1145.info
+        quan-su/58.info
 """
 from bs4 import BeautifulSoup
 import urllib2
@@ -11,6 +16,7 @@ import sys
 import os
 from string import letters, digits
 import random
+import re
 
 
 def mysoup(link):
@@ -41,6 +47,7 @@ slug = url.split('/')
 soup = mysoup(url)
 
 article = soup.find("article")
+title = re.sub('\n|\t', '', soup.title.text.split(' | ')[0])
 tags_div = []
 
 for p in article.find_all('p'):
@@ -66,7 +73,8 @@ except Exception as e:
     print str(e)
 
 video['items'][0]['snippet']['data'] = []
-video['items'][0]['snippet']['description'] += unicode(soup.title.text)
+video['items'][0]['snippet']['description'] += title
+video['items'][0]['snippet']['title'] = title
 for i in tags_div:
     video['items'][0]['snippet']['description'] += unicode(i)
 

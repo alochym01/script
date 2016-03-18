@@ -1,3 +1,6 @@
+" https://www.cs.swarthmore.edu/help/vim/home.html
+
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 

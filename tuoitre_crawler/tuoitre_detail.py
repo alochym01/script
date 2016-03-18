@@ -16,8 +16,7 @@ url = sys.argv[-1].split('\n')[0]
 
 soup = mysoup(url)
 
-print url
-soup = mysoup(url)
+title = soup.title.text.split(' - ')[0]
 # check if img != '':
 #   thumbnails['default']['url'] has value
 #   thumbnails['standard']['url'] has value
@@ -49,11 +48,12 @@ with open(sample_file) as f:
 try:
     video['items'][0]['snippet']['url'] = url
     video['items'][0]['snippet']['img'] = img
+    video['items'][0]['snippet']['title'] = title
 except:
     video['items'][0]['snippet']['img'] = ''
 
 video['items'][0]['snippet']['data'] = []
-video['items'][0]['snippet']['description'] += unicode(soup.title.text)
+video['items'][0]['snippet']['description'] += title
 for i in tags_p:
     video['items'][0]['snippet']['description'] += unicode(i)
 
@@ -61,8 +61,9 @@ os.mkdir(folder_path)
 
 try:
     os.chdir(folder_path)
-    wget.download(img)
     video['items'][0]['etag'] = slug[-2]
+    wget.download(img)
+    #video['items'][0]['etag'] = slug[-2]
     if img != '':
         video['items'][0]['snippet']['thumbnails']['default']['url'] = slug[-2] + '-small.jpg'
         video['items'][0]['snippet']['thumbnails']['standard']['url'] = slug[-2] + '-standard.jpg'
