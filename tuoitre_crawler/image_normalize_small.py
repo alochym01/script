@@ -79,8 +79,8 @@ with open('result.txt') as f:
         #print padding_43
         padding_43 = 'pad=%s:%s:(%d-%d)/2:(%d-%d)/2' % (padding['43']['width'], padding['43']['height'], padding['43']['width'], width, padding['43']['height'], height)
         padding_169 = 'pad=%s:%s:(%d-%d)/2:(%d-%d)/2' % (padding['169']['width'], padding['169']['height'], padding['169']['width'], width, padding['169']['height'], height)
-        cli_43 = "ffmpeg -i /home/hadn/script/tuoitre_crawler/tuoitre/1063441/bebe0ed7.jpg -vf '%s:black' /home/hadn/script/tuoitre_crawler/tuoitre/1063441/bebe0ed7_padding_%s.jpg -y" % (padding_43, 43)
-        cli_169 = "ffmpeg -i /home/hadn/script/tuoitre_crawler/tuoitre/1063441/bebe0ed7.jpg -vf '%s:black' /home/hadn/script/tuoitre_crawler/tuoitre/1063441/bebe0ed7_padding_%s.jpg -y" % (padding_169, 169)
+        cli_43 = "ffmpeg -i  %s -vf '%s:black' %s_%s.jpg -y" % (img, padding_43, img, 43)
+        cli_169 = "ffmpeg -i %s -vf '%s:black' %s_%s.jpg -y" % (img, padding_169, img, 169)
         #print cli_43
         #print cli_169
         cli_43 = shlex.split(cli_43)
