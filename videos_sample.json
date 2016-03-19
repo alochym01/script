@@ -1,0 +1,59 @@
+{
+    "kind": "youtube#videoListResponse",
+    "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/9hd88eUCUiNgN4Wf_nKYGNnVLA0\"",
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 1
+    },
+    "items": [
+    {
+        "kind": "youtube#video",
+        "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/xB1WWwFDnaLdfSnT6kTd4G5g5og\"",
+        "id": "d9e1O6VQrWQ",
+        "snippet": {
+            "publishedAt": "2016-01-05T08:20:30.000Z",
+            "channelId": "UCNsbYFxCpO3NWwMqzj28TUg",
+            "title": "Cà phê Việt có mặt trong chuỗi cửa hàng Starbucks",
+            "description": "Website: http://xemtin.xyz\n Bắt đầu từ tuần này, cà phê Việt đã có mặt tại chuỗi cửa hàng Starbucks Việt Nam.",
+            "thumbnails": {
+                "default": {
+                    "url": "https://i.ytimg.com/vi/d9e1O6VQrWQ/default.jpg",
+                    "width": 120,
+                    "height": 90
+                },
+                "medium": {
+                    "url": "https://i.ytimg.com/vi/d9e1O6VQrWQ/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                },
+                "high": {
+                    "url": "https://i.ytimg.com/vi/d9e1O6VQrWQ/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                },
+                "standard": {
+                    "url": "https://i.ytimg.com/vi/d9e1O6VQrWQ/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                },
+                "maxres": {
+                    "url": "https://i.ytimg.com/vi/d9e1O6VQrWQ/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                }
+            },
+            "channelTitle": "thegioi yt",
+            "tags": [
+                "cà phê Việt",
+            "Starbucks"
+                ],
+            "categoryId": "25",
+            "liveBroadcastContent": "none",
+            "localized": {
+                "title": "Cà phê Việt có mặt trong chuỗi cửa hàng Starbucks",
+                "description": "Website: http://xemtin.xyz\n Bắt đầu từ tuần này, cà phê Việt đã có mặt tại chuỗi cửa hàng Starbucks Việt Nam."
+            }
+        }
+    }
+    ]
+}
