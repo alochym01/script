@@ -67,8 +67,8 @@ def dimension_img(width, height, img, flag):
     # pad=width:height:x:y - the padding should be bigger than dimension(width, height) of image
     padding_43 = 'pad=%s:%s:(%d-%d)/2:(%d-%d)/2' % (padding['43']['width'], padding['43']['height'], padding['43']['width'], width, padding['43']['height'], height)
     padding_169 = 'pad=%s:%s:(%d-%d)/2:(%d-%d)/2' % (padding['169']['width'], padding['169']['height'], padding['169']['width'], width, padding['169']['height'], height)
-    cli_43 = "ffmpeg -i  %s -vf '%s:black' %s_%s.jpg -y" % (img, padding_43, img, 43)
-    cli_169 = "ffmpeg -i %s -vf '%s:black' %s_%s.jpg -y" % (img, padding_169, img, 169)
+    cli_43 = "ffmpeg -i  %s -vf '%s:black' %s_%s.jpg -y" % (img, padding_43, img[:-4], 43)
+    cli_169 = "ffmpeg -i %s -vf '%s:black' %s_%s.jpg -y" % (img, padding_169, img[:-4], 169)
     cli_43 = shlex.split(cli_43)
     cli_169 = shlex.split(cli_169)
     print cli_43
@@ -83,36 +83,9 @@ with open('result.txt') as f:
         img = line.split('\n')[0]
         # get the width of image
         width, height = getsizes(img)
-        print img
-        print width
-        print height
         if width > height:
             padding = dimension_img(width, height, img, True)
         else:
             padding = dimension_img(width, height, img, False)
         print padding
-        #print padding_43
-        #padding_43 = 'pad=%s:%s:(%d-%d)/2:(%d-%d)/2' % (padding['43']['width'], padding['43']['height'], padding['43']['width'], width, padding['43']['height'], height)
-        #padding_169 = 'pad=%s:%s:(%d-%d)/2:(%d-%d)/2' % (padding['169']['width'], padding['169']['height'], padding['169']['width'], width, padding['169']['height'], height)
-        #cli_43 = "ffmpeg -i  %s -vf '%s:black' %s_%s.jpg -y" % (img, padding_43, img, 43)
-        #cli_169 = "ffmpeg -i %s -vf '%s:black' %s_%s.jpg -y" % (img, padding_169, img, 169)
-        #cli_43 = shlex.split(cli_43)
-        #cli_169 = shlex.split(cli_169)
-        #cmd_43 = Popen(cli_43, stdout=PIPE).communicate()
-        #cmd_169 = Popen(cli_169, stdout=PIPE).communicate()
         break
-        # string remove '/' put it into a slug(list)
-        slug = line.split('/')
-        # the path of json file
-        path = '/'.join(slug[:-1])
-        filename = '%s/%s.html' % (path, slug[-2])
-        try:
-            with open(filename) as f:
-                video = json.loads(f.read())
-            # ffmpeg commandline
-            small_cmd = 'ffmpeg -y -i %s  -vf scale=120:-1 %s/%s-small.jpg' % (img, path, video['items'][0]['etag'])
-            small_cmd = shlex.split(small_cmd)
-            small = Popen(small_cmd, stdout=PIPE).communicate()
-            print small
-        except Exception as e:
-            print str(e)
