@@ -19,6 +19,7 @@ add the border of image with pad=w:h:x:y
     - the y = 10 px
  ffmpeg -i tuoitre.jpg -vf pad=0:90:0:10:black output.jpg
  ffmpeg -i tuoitre.jpg -vf pad=0:90:(width/2):(height/2):black output.jpg -- for center x and y
+ ffmpeg -i /home/hadn/script/tuoitre_crawler/tuoitre/1063453/3af2666a.jpg -vf "pad=780:1040:(780-665)/2:(1040-771)/2:black" /home/hadn/script/tuoitre_crawler/tuoitre/1063453/3af2666a_pad_43.jpg
 example:
     - the origin image
         Image
@@ -38,3 +39,16 @@ example:
         Bit depth                                : 8 bits
         Compression mode                         : Lossy
         Stream size                              : 2.93 KiB (100%)
+
+Cropping syntax
+In this chapter, we'll crop the input video to given dimensions.
+
+The command syntax looks like this:
+
+ffmpeg -i before.mp4 -vf "crop=w:h:x:y" after.mp4
+The crop filter accepts the following options:
+
+w: Width of the output video (out_w). It defaults to iw. This expression is evaluated only once during the filter configuration.
+h: Height of the output video (out_h). It defaults to ih. This expression is evaluated only once during the filter configuration.
+x: Horizontal position, in the input video, of the left edge of the output video. It defaults to (in_w-out_w)/2. This expression is evaluated per-frame.
+y: Vertical position, in the input video, of the top edge of the output video. It defaults to (in_h-out_h)/2. This expression is evaluated per-frame.
