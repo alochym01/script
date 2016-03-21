@@ -1,3 +1,11 @@
+cropping image into height = 90 and width = 120
+ ffmpeg -i input.png -vf  "crop=120:90:ih/2:iw/2" input_crop.png
+ syntax: ffmpeg -i input.png -vf  "crop=w:h:x:y" input_crop.png
+    - width = 120
+    - height = 90
+    - position horizontal - x
+    - position vertical - y
+
 scale image into height = 90 and the width is relative
  ffmpeg -i ngangnhienxayresortkhongphepgiuavuonquocgia.jpeg -vf scale=-1:90 result.jpg
 
