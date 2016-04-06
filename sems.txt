@@ -1,0 +1,316 @@
+[prev in list] [next in list] [prev in thread] [next in thread]
+
+List:       sems
+Subject:    Re: [Sems] SEMS as SBC in front of kamailio
+From:       <kai.ohnacker () cbc ! de>
+Date:       2015-05-20 10:01:46
+Message-ID: 5A4C35A70604964FBD46890CC952D954259EABFF () MANA1 ! netrtlsrv ! com
+[Download message RAW]
+
+Hello,
+
+thanks for the example and the explaining Stefan. I change the example to my setup \
+and try to make a call.
+
+If I call from external to internal network the call establish and voice is \
+transmitted. (Sometimes the connection goes down) A Call from internal to external \
+does not work. On the destination side, the incoming call (from internal to external) \
+displays no audio codec and the call finished after 5 seconds. In the SIP header the \
+CSeq shows a Bye sequence. I change the expire timers to higher and lower value, but \
+the behavior was the same.
+
+One further information from the debugging information is that the uac_auth.conf \
+can't be found in /usr/local/etc/sems/etc/. And yes, there is no uac_auth.conf file. \
+:-) Do I need a uac_client.conf file?
+
+What could be the problem of my config?
+
+Thanks for helping.
+
+Cheers, Kai
+
+-----Ursprüngliche Nachricht-----
+Von: Stefan Sayer [mailto:stefan.sayer@frafos.com]
+Gesendet: Montag, 18. Mai 2015 13:17
+An: Ohnacker, Kai [CBC]; sems@lists.iptel.org
+Betreff: Re: AW: [Sems] SEMS as SBC in front of kamailio
+
+Hello,
+
+there's indeed some misunderstandings regarding profile configuration,
+but there's also some configuration items that you seem to have
+invented (enable_reg_lookup ??). While you may have now figured it out
+by yourself, here FTR a set of configurations. You right, though, if
+you're saying that the configuration is a bit convoluted. My testing
+setup is
+
+ SEMS listening at 192.168.6.110:5060 ("external interface")
+ SEMS listening at 192.168.5.110:5080 ("internal interface")
+ registrar at 192.168.5.110:5060
+
+clients registering to username@192.168.6.110, I'm setting the RURI
+domain so that my registrar does accept it.
+
+Note that this works only with SEMS master
+(apparently-eternally-to-be-1.6, from
+https://github.com/sems-server/sems.git)
+
+sems.conf
+--------------
+interfaces=intern,extern
+
+sip_ip_intern=192.168.5.110
+sip_port_intern=5080
+media_ip_intern=192.168.5.110
+rtp_low_port_intern=10000
+rtp_high_port_intern=20000
+
+sip_ip_extern=192.168.6.110
+sip_port_extern=5060
+media_ip_extern=192.168.6.110
+rtp_low_port_extern=20000
+rtp_high_port_extern=30000
+public_ip_extern=192.168.6.110
+#  sig_sock_opts_extern=force_via_address
+#  tcp_connect_timeout_extern=1000
+#  tcp_idle_timeout_extern=900000
+
+application=sbc
+-----------------
+
+sbc.conf
+-----------------
+profiles=exin,inex,reg
+# load one regex-mapping for method, one for interface (here: received IP)
+regex_maps=method_map,interface_map
+
+# first try method (REGISTER), then map on received interface (here:
+received IP)
+active_profile=$M($m=>method_map),$M($Ri=>interface_map)
+-----------------
+
+method_map.conf
+-----------------
+REGISTER=>reg
+-----------------
+
+interface_map.conf
+-----------------
+192\.168\.5\.110=>inex
+192\.168\.6\.110=>exin
+-----------------
+
+reg.sbcprofile.conf
+-----------------
+# registration cache
+enable_reg_caching=yes
+#   register upstream every 3600 sec
+min_reg_expires=3600
+#  and make UA re-register every 60 sec
+max_ua_expires=60
+
+next_hop=192.168.5.110:5060
+
+# setting RURI here to registrar, in order to make my registrar accept it
+# if it's DNS name, the registrar should accept it without modification
+RURI=sip:192.168.5.110
+-----------------
+
+exin.sbcprofile.conf
+-----------------
+# SIP NAT handling: recommended if dealing with far end NATs
+dlg_nat_handling=yes
+
+# destination IP[:port] for outgoing requests
+next_hop=192.168.5.110:5060
+#10.99.250.26:5060
+
+## RTP relay
+# enable RTP relaying (bridging):
+enable_rtprelay=yes
+
+# setting RURI domain here to proxy (in case of domain name, not
+necessary...)
+RURI=sip:$rU@192.168.5.110
+-----------------
+
+
+inex.sbcprofile.conf
+-----------------
+enable_reg_caching=yes
+-----------------
+
+
+hth
+Stefan
+
+kai.ohnacker@cbc.de wrote on 05/12/2015 09:47 AM:
+> Hello Stefan,
+> sorry for spaming, I've forgot to include the third profile.
+>
+> Now the complete configure.
+>
+> "I try to make the setup like you said, but the SEMS server in the middle response \
+> with 501 Not Implemented if a client is trying to register.
+> My config is:
+>
+> -----sbc.conf-----
+> profiles=sst_b2b, exin, inex, reg
+> active_profile=$M($RI=>exin), $M($Rn=>inex)
+>
+> -----exin.conf-----
+> REGISTER=>reg
+>
+> # SIP NAT handling: recommended if dealing with far end NATs
+> dlg_nat_handling=yes
+>
+> # destination IP[:port] for outgoing requests
+> next_hop=10.99.250.26:5060
+>
+> ## RTP relay
+> # enable RTP relaying (bridging):
+> enable_rtprelay=yes
+>
+> -----inex.conf-----
+> enable_reg_lookup=yes
+>
+> -----reg.conf-----
+> # registration cache
+> enable_reg_caching=yes
+> #   register upstream every 3600 sec
+> min_reg_expires=3600
+> #  and make UA re-register every 60 sec
+> max_ua_expires=60
+>
+> sems.conf
+> load_plugins=wav;uac_auth;registrar_client;reg_agent;sbc;session_timer; \
+> conference;reg;exin;inex application = conference
+>
+> Perhaps I do not understand the profile syntax in the right way?"
+>
+> Cheers,
+> Kai
+>
+> -----Ursprüngliche Nachricht-----
+> Von: sems-bounces@lists.iptel.org [mailto:sems-bounces@lists.iptel.org] Im Auftrag \
+>                 von kai.ohnacker@cbc.de
+> Gesendet: Montag, 11. Mai 2015 11:27
+> An: stefan.sayer@frafos.com; sems@lists.iptel.org
+> Betreff: Re: [Sems] SEMS as SBC in front of kamailio
+>
+> Hey Stefan,
+>
+> thanks for you answer.
+> I try to make the setup like you said, but the SEMS server in the middle response \
+> with 501 Not Implemented if a client is trying to register.
+> My config is:
+>
+> -----sbc.conf-----
+> profiles=sst_b2b, exin, inex, reg
+> active_profile=$M($RI=>exin), $M($Rn=>inex)
+>
+> -----exin.conf-----
+> REGISTER=>reg
+>
+> # SIP NAT handling: recommended if dealing with far end NATs
+> dlg_nat_handling=yes
+>
+> # destination IP[:port] for outgoing requests
+> next_hop=10.99.250.26:5060
+>
+> ## RTP relay
+> # enable RTP relaying (bridging):
+> enable_rtprelay=yes
+>
+> -----inex.conf-----
+> enable_reg_lookup=yes
+>
+>
+> Perhaps I do not understand the profile syntax in the right way?
+>
+> Cheers,
+> Kai
+>
+> -----Ursprüngliche Nachricht-----
+> Von: Stefan Sayer [mailto:stefan.sayer@frafos.com]
+> Gesendet: Freitag, 8. Mai 2015 16:40
+> An: Ohnacker, Kai [CBC]; sems@lists.iptel.org
+> Betreff: Re: [Sems] SEMS as SBC in front of kamailio
+>
+> Hello Kai,
+>
+> kai.ohnacker@cbc.de wrote on 05/07/2015 03:08 PM:
+> > Hello,
+> >
+> >
+> >
+> > I'm working actually on a project with a kamailio as registrar,
+> > redirect and proxy server. For NATing I want to use SEMS and the
+> > server shall work as a SBC, which forwards all messages (REGISTER,
+> > INVITE etc.) from the external to the internal interface (SEMS work
+> > with 2 interfaces) and vice versa. I configure the external/ internal
+> > IP sockets in the sems.conf and load the required plugins. But what
+> > are the next steps? Perhaps there is somewhere a howto, which guide me
+> > through this process?
+> >
+> > The infrastructure is: Kamailio (private network) ---- Firewall/ NAT
+> > ---- SEMS (DMZ - public network) ---- Firewall ---- internet (public
+> > network)
+> >
+>
+> For INVITEs you will need two profiles, one in each direction
+> (UA->SEMS->Kamailio and Kamailio->SEMS->UA). For REGISTERs coming from
+> the UAs you will need one more profile.
+>
+> The very first Paragraph in doc/Readme.sbc.txt gives some examples for
+> selecting profiles, e.g. on regex; as key you can e.g. use source IP
+> ($si) or also local/received IP ($Ri) or also the interface ($Rf, $Rn
+> or $RI).
+>
+> For the REGISTERs, you need to activate registration caching using
+> enable_reg_caching=yes.
+>
+> For the INVITE-profile towards Kamailio, you need to activate NAT
+> handling (dlg_nat_handling, enable_rtprelay, ...), and set the next
+> hop to Kamailio.
+>
+> For the INVITE profile coming from Kamailio, you need to activate the
+> reg cache lookup, this will set the RURI/next hop from the reg cache.
+>
+> There is quite some more options that can be set in the profiles, I'd
+> recommend to have a look at Readme.sbc.txt.
+>
+> hth
+> Stefan
+>
+> >
+> >
+> >
+> >
+> > Cheers,
+> >
+> > Kai
+> >
+> >
+> >
+> > _______________________________________________
+> > Sems mailing list
+> > Sems@lists.iptel.org
+> > http://lists.iptel.org/mailman/listinfo/sems
+> >
+>
+> _______________________________________________
+> Sems mailing list
+> Sems@lists.iptel.org
+> http://lists.iptel.org/mailman/listinfo/sems
+>
+
+_______________________________________________
+Sems mailing list
+Sems@lists.iptel.org
+http://lists.iptel.org/mailman/listinfo/sems
+
+
+[prev in list] [next in list] [prev in thread] [next in thread]
+
+Configure | About | News | Add a list | Sponsored by KoreLogic
