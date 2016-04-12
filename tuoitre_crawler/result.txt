@@ -1,4 +1,5 @@
 
+/home/hadn/script/tuoitre_crawler/gai-ban-dam-vao-bar-cao-cap-o-vung-tau-bb-baaabGjDPM.jpg
 /home/hadn/script/tuoitre_crawler/tuoitre/1063462/c700e3f9.jpg
 /home/hadn/script/tuoitre_crawler/tuoitre/1063462/no-cong-cu-tang-nhu-vua-roi-la-chet-small.jpg
 /home/hadn/script/tuoitre_crawler/tuoitre/1063462/no-cong-cu-tang-nhu-vua-roi-la-chet-standard.jpg

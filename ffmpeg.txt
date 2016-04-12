@@ -1,3 +1,6 @@
+ - for image is not in 16:9 or 4:3. the image should be normalize into 16:9/4:3 first
+ - the dimension => 16/9 = 1.7777777(1.78), 4/3 = 1.333333(1.4)
+
 cropping image into height = 90 and width = 120
  ffmpeg -i input.png -vf  "crop=120:90:ih/2:iw/2" input_crop.png
  syntax: ffmpeg -i input.png -vf  "crop=w:h:x:y" input_crop.png

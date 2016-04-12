@@ -1,0 +1,4 @@
+http://kienthuc.net.vn/rss/home.rss
+http://tuoitre.vn/rss/tt-tin-moi-nhat.rss
+http://vietnamnet.vn/rss/home.rss
+http://thanhnien.vn/rss/home.rss
