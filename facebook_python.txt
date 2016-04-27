@@ -1,0 +1,18 @@
+Facebook Page ID:   1761461884068481
+#This new long-lived access token will expire on June 26th, 2016
+access-token:
+CAAKZB8aoNPK8BAEZCTWZBVURUt485NSyzZBLMmUxzrkNd4UbI7EJdGcXJgJqJDtZCj6qRTjpGH23NAlK31TZC63hWDDA5L0K7VZCDU2XU11HLX6EEaZBQvlHcMe9poDSNAEjevhquu18TcrRZAFVWBZBHAiobEjTBgamTuG94d0CkbXXO7SWW9xYOt
+CAAKZB8aoNPK8BAJSLrjhCQbLEs4dH8SxbJIcYZCjOr4zBEl0wR1PZCyf3RAcU3w00ZAPn5tz538dJ4cGb9Qiy7tmMHEHJC1bZAlXehsGLLiXgbmcA0SNDOvP2SIcS7yPVleGQUn1ZAfQPwc1ZBFSSefLpkZCZCy2j5NaDXah3NEUn2Sj1YqartFEc3SRXcypPdrIZD
+
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '992678340815422',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+cfg = {
+  "page_id" : "1761461884068481",
+  "access_token" : "CAAKZB8aoNPK8BAEZCTWZBVURUt485NSyzZBLMmUxzrkNd4UbI7EJdGcXJgJqJDtZCj6qRTjpGH23NAlK31TZC63hWDDA5L0K7VZCDU2XU11HLX6EEaZBQvlHcMe9poDSNAEjevhquu18TcrRZAFVWBZBHAiobEjTBgamTuG94d0CkbXXO7SWW9xYOt"
+ }

@@ -20,21 +20,24 @@ feed = feedparser.parse(url)
 #        'bozo_exception']
 
 for item in feed['entries']:
-    img = item.links[1].href
-    title = item.title
-    link = item.link
-    summary = item.header
-    pub = item.published
-    print 'image \t%s' % img
-    print 'title \t%s' % title
-    print 'link \t%s' % link
-    print 'summary \t%s' % summary
-    print 'published \t%s' % pub
-    sql = "insert into alobao(link, image, title, content, pub, create_at) values ('%s', '%s', '%s', '%s', '%s', '%s')" % (link,
-                                                                                                          img,
-                                                                                                          title,
-                                                                                                          summary,
-                                                                                                          pub,
-                                                                                                          str(datetime.now()))
-    cursor.execute(sql)
-    db.commit()
+    try:
+        img = item.links[1].href
+        title = item.title
+        link = item.link
+        summary = item.header
+        pub = item.published
+        print 'image \t%s' % img
+        print 'title \t%s' % title
+        print 'link \t%s' % link
+        print 'summary \t%s' % summary
+        print 'published \t%s' % pub
+        sql = "insert into alobao(link, image, title, content, pub, create_at) values ('%s', '%s', '%s', '%s', '%s', '%s')" % (link,
+                                                                                                            img,
+                                                                                                            title,
+                                                                                                            summary,
+                                                                                                            pub,
+                                                                                                            str(datetime.now()))
+        cursor.execute(sql)
+        db.commit()
+    except:
+        pass
