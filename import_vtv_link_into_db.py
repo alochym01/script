@@ -46,7 +46,17 @@ for j in videos_new:
     except Exception as e:
         print str(e)
 
-    sql = "insert into vtv(title, link, category_id, description, source, link_mp4,Ins) value('%s', '%s', '%s', '%s', '%s', '%s',%d)" % (title, temp_link, category, desc, source, link_mp4, int(datetime.datetime.now().strftime("%Y%m%d")))
+    tags = 'kinh-te'
+    s = []
+    try:
+        tags = soup.find("div",{"class":"tag"}).find_all("li")
+        for i in tags:
+            for j in i.children:
+                s.append(j.get('title'))
+        tags = ','.join(s)
+    except:
+        pass
+    sql = "insert into vtv(title, link, category_id, description, source, link_mp4,Ins, tags) value('%s', '%s', '%s', '%s', '%s', '%s',%d, '%s')" % (title, temp_link, category, desc, source, link_mp4, int(datetime.datetime.now().strftime("%Y%m%d")), tags)
     print sql
     cursor.execute(sql)
     db.commit()
