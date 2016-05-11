@@ -1,3 +1,5 @@
+http://journal.code4lib.org/articles/9856
+
  - for image is not in 16:9 or 4:3. the image should be normalize into 16:9/4:3 first
  - the dimension => 16/9 = 1.7777777(1.78), 4/3 = 1.333333(1.4)
 

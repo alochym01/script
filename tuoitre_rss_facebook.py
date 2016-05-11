@@ -10,7 +10,9 @@ import urllib
 import facebook
 import imageio
 
-url = 'http://infonet.vn/Rss/Feed.aspx'
+pattern = re.compile('src="(.*).jpg"')
+
+url = 'http://tuoitre.vn/rss/tt-tin-moi-nhat.rss'
 db = MySQLdb.connect("localhost", "root", "abc@123", "yii", use_unicode=True, charset="utf8")
 cursor = db.cursor()
 
@@ -33,12 +35,13 @@ feed = feedparser.parse(url)
 
 for item in feed['entries']:
     try:
-        img = item.links[1].href
+        img = pattern.search(item.summary).group().split('=')[1]
+        img = re.sub('"', '', img)
+        img = re.sub('/s146/', '/s626/', img)
         temp_path = '%s/%s' % (img_path, img.split('/')[-1])
         img_path_ffmpeg = '%s/%s' % (img_path_edit, img.split('/')[-1])
         # download img from website and save as temp_path
         urllib.urlretrieve(img, temp_path)
-
         im = imageio.imread(temp_path)
         img_h, img_w, img_v = im.shape
         if img_w/img_h > 1.3:
@@ -60,7 +63,6 @@ for item in feed['entries']:
         print cmd_normalize_640
         process = Popen(cmd_normalize_640, stdout=PIPE)
         process.wait()
-
         title = item.title
         # upload img to facebook
         photo = graph.put_photo(image=open(temp_path, 'rb'),  message=title)
@@ -68,7 +70,6 @@ for item in feed['entries']:
         img_temp = graph.get_object(id=photoid)
         for i in img_temp['images']:
             source, width, height = i.items()
-            #print i.items()
             print height
             if  height[-1] == 130:
                 img_link = source[-1]
@@ -76,9 +77,8 @@ for item in feed['entries']:
             if  height[-1] > 400:
                 img_big = source[-1]
                 print img_big
-
         link = item.link
-        summary = item.header
+        summary = item.summary
         pub = item.published
         sql = "insert into alobao(link, image, title, content, pub, image_big, create_at) values ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (link,
                                                                                                             img_link,
@@ -87,9 +87,10 @@ for item in feed['entries']:
                                                                                                             pub,
                                                                                                             img_big,
                                                                                                             str(datetime.now()))
-        #print sql
+        print sql
         cursor.execute(sql)
         db.commit()
     except Exception as e:
+        print link
         print str(e)
         pass
