@@ -1,0 +1,15 @@
+facebook guide
+
+1. Register Facebook developer
+    -   open http://developers.facebook.com/ -> Register Now
+    -   Follow the steps to complete
+
+2. Register new app for upload videos/photos
+    -   Create new App - choose Website
+    -   Follow the step to complete - should be select all permission for app
+
+3. open  https://developers.facebook.com/tools-and-support/ -> Graph API Explorer
+    -   Graph API Explorer -> choose the app want to use
+    -   Get Token -> choose the Page want to use
+    -   click on "!" icon to open pop up window -> choose "Open In Access Token Tool"
+    -   Choose "Extend Access Token" 
