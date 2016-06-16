@@ -1,5 +1,9 @@
+"""
+    Wanted dimension image is 4:6
+"""
+
 temp_path = '/home/hadn/test.jpg'
-temp_path = '/home/hadn/ffmpeg/test.jpg'
+temp_path_ffmpeg = '/home/hadn/ffmpeg/test.jpg'
 
 def img_normalize(temp_path, img_path_ffmpeg):
     im = imageio.imread(temp_path)
@@ -18,9 +22,11 @@ def img_normalize(temp_path, img_path_ffmpeg):
     print cmd
     process = Popen(cmd, stdout=PIPE)
     process.wait()
-    cmd_normalize_640 = '/usr/bin/ffmpeg -i %s -vf scale=400:-1 %s -y' % (img_path_ffmpeg, temp_path)
-    cmd_normalize_640 = shlex.split(cmd_normalize_640)
+    cmd_normalize = '/usr/bin/ffmpeg -i %s -vf scale=400:-1 %s -y' % (img_path_ffmpeg, temp_path)
+    cmd_normalize = shlex.split(cmd_normalize)
     print cmd_normalize_640
-    process = Popen(cmd_normalize_640, stdout=PIPE)
+    process = Popen(cmd_normalize, stdout=PIPE)
     process.wait()
     return True
+
+img_normalize(temp_path, img_path_ffmpeg)
