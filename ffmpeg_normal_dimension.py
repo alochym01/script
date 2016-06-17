@@ -24,7 +24,7 @@ def img_normalize(temp_path, img_path_ffmpeg):
     process.wait()
     cmd_normalize = '/usr/bin/ffmpeg -i %s -vf scale=400:-1 %s -y' % (img_path_ffmpeg, temp_path)
     cmd_normalize = shlex.split(cmd_normalize)
-    print cmd_normalize_640
+    print cmd_normalize
     process = Popen(cmd_normalize, stdout=PIPE)
     process.wait()
     return True
