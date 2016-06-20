@@ -1,4 +1,4 @@
-write json unicode into a file
+#write json unicode into a file
 with open(filename, 'wb') as f:
   f.write(json.dumps(data, ensure_ascii=False).encode('utf-8'))
 
