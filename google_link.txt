@@ -1,0 +1,27 @@
+https://lh3.googleusercontent.com/PV4gDi3-oPkYFZxKDz3MlPqmqqAtKzkd4pRw4WEHWt7FmuFJT1WoZpjxHc1G6CFC4ClGEgA8jcOf_xFJVggvfrFKHedlF9uwKSchWUfEV_ybC7qTUVTtbC7UwHvcd5TXMtQ8G7H4dXQtt1ZXw3GjObCm9lPytFxpOVhXoOva8HbIBgRwrRu-lLFZH15v1_DrtQkRSOjlObwhtikJqz8nGy0I6WKfTZPL3j-Wjghx-X9uIG-qM4jRq9IZZwasi8iXlFgtBXiqxzAtVmld0VfEL5xrZenXfsZSkjB1Zbws-7xjdgbwew1VcuYmGSDL8u5ksH3MyiBB6E_6YFCQ4ofZiCEM7gmE5rmG18taNdz08R_0NUGHmNc9FU80SMYNgvPtlDzzn8s6MjvFeiD6P5B8s_wFIW1KF6dFUqtVdoPaA_9ujrlmgxChDs7XT_Y1-f7Z2b_n1A3xihWxDgQ4DcoNw5RSvxCQn-pJnkboosII1G10MlEPoJfaVjp32tP9t6ZfiPkEAeeudcyyUj3_9itN7NQe1yVK7Vwif5BfFnYnnlX5oUShUfhDI0KPVf5v1-7z5C1hMTMyTgdOBMs_scsiFT38aDc4veo=m15?cpn=xZ7ke8dBfu5rhHMJ&c=WEB&cver=1.20160623
+
+
+[hadn@alobet68-1gb-sgp1-01 ~]$ wget "https://lh3.googleusercontent.com/PV4gDi3-oPkYFZxKDz3MlPqmqqAtKzkd4pRw4WEHWt7FmuFJT1WoZpjxHc1G6CFC4ClGEgA8jcOf_xFJVggvfrFKHedlF9uwKSchWUfEV_ybC7qTUVTtbC7UwHvcd5TXMtQ8G7H4dXQtt1ZXw3GjObCm9lPytFxpOVhXoOva8HbIBgRwrRu-lLFZH15v1_DrtQkRSOjlObwhtikJqz8nGy0I6WKfTZPL3j-Wjghx-X9uIG-qM4jRq9IZZwasi8iXlFgtBXiqxzAtVmld0VfEL5xrZenXfsZSkjB1Zbws-7xjdgbwew1VcuYmGSDL8u5ksH3MyiBB6E_6YFCQ4ofZiCEM7gmE5rmG18taNdz08R_0NUGHmNc9FU80SMYNgvPtlDzzn8s6MjvFeiD6P5B8s_wFIW1KF6dFUqtVdoPaA_9ujrlmgxChDs7XT_Y1-f7Z2b_n1A3xihWxDgQ4DcoNw5RSvxCQn-pJnkboosII1G10MlEPoJfaVjp32tP9t6ZfiPkEAeeudcyyUj3_9itN7NQe1yVK7Vwif5BfFnYnnlX5oUShUfhDI0KPVf5v1-7z5C1hMTMyTgdOBMs_scsiFT38aDc4veo=m15?cpn=xZ7ke8dBfu5rhHMJ&c=WEB&cver=1.20160623" -O abcmp4
+
+--2016-06-26 13:44:47--  https://lh3.googleusercontent.com/PV4gDi3-oPkYFZxKDz3MlPqmqqAtKzkd4pRw4WEHWt7FmuFJT1WoZpjxHc1G6CFC4ClGEgA8jcOf_xFJVggvfrFKHedlF9uwKSchWUfEV_ybC7qTUVTtbC7UwHvcd5TXMtQ8G7H4dXQtt1ZXw3GjObCm9lPytFxpOVhXoOva8HbIBgRwrRu-lLFZH15v1_DrtQkRSOjlObwhtikJqz8nGy0I6WKfTZPL3j-Wjghx-X9uIG-qM4jRq9IZZwasi8iXlFgtBXiqxzAtVmld0VfEL5xrZenXfsZSkjB1Zbws-7xjdgbwew1VcuYmGSDL8u5ksH3MyiBB6E_6YFCQ4ofZiCEM7gmE5rmG18taNdz08R_0NUGHmNc9FU80SMYNgvPtlDzzn8s6MjvFeiD6P5B8s_wFIW1KF6dFUqtVdoPaA_9ujrlmgxChDs7XT_Y1-f7Z2b_n1A3xihWxDgQ4DcoNw5RSvxCQn-pJnkboosII1G10MlEPoJfaVjp32tP9t6ZfiPkEAeeudcyyUj3_9itN7NQe1yVK7Vwif5BfFnYnnlX5oUShUfhDI0KPVf5v1-7z5C1hMTMyTgdOBMs_scsiFT38aDc4veo=m15?cpn=xZ7ke8dBfu5rhHMJ&c=WEB&cver=1.20160623
+Resolving lh3.googleusercontent.com... 74.125.130.132, 2404:6800:4003:c00::84
+Connecting to lh3.googleusercontent.com|74.125.130.132|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://r3---sn-npo7zn7r.googlevideo.com/videoplayback?id=ba5b8561f796cb95&itag=15&source=picasa&begin=0&requiressl=yes&mm=30&mn=sn-npo7zn7r&ms=nxu&mv=m&nh=IgpwcjAyLnNpbjAzKgkxMjcuMC4wLjE&pl=20&mime=video/mp4&lmt=1466922711627876&mt=1466923387&ip=188.166.181.14&ipbits=8&expire=1466952287&sparams=ip,ipbits,expire,id,itag,source,requiressl,mm,mn,ms,mv,nh,pl,mime,lmt&signature=0132E4A1548CA59EA3E28FED56333CA0504A0EB8.29567598236925DF9B8E1AA04D2D50FC4B0596B8&key=ck2&cpn=xZ7ke8dBfu5rhHMJ&c=WEB&cver=1.20160623 [following]
+--2016-06-26 13:44:47--  https://r3---sn-npo7zn7r.googlevideo.com/videoplayback?id=ba5b8561f796cb95&itag=15&source=picasa&begin=0&requiressl=yes&mm=30&mn=sn-npo7zn7r&ms=nxu&mv=m&nh=IgpwcjAyLnNpbjAzKgkxMjcuMC4wLjE&pl=20&mime=video/mp4&lmt=1466922711627876&mt=1466923387&ip=188.166.181.14&ipbits=8&expire=1466952287&sparams=ip,ipbits,expire,id,itag,source,requiressl,mm,mn,ms,mv,nh,pl,mime,lmt&signature=0132E4A1548CA59EA3E28FED56333CA0504A0EB8.29567598236925DF9B8E1AA04D2D50FC4B0596B8&key=ck2&cpn=xZ7ke8dBfu5rhHMJ&c=WEB&cver=1.20160623
+Resolving r3---sn-npo7zn7r.googlevideo.com... 173.194.51.201, 2404:6800:4003:d::9
+Connecting to r3---sn-npo7zn7r.googlevideo.com|173.194.51.201|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://r3---sn-a5mekn7r.googlevideo.com/videoplayback?id=ba5b8561f796cb95&itag=15&source=picasa&begin=0&requiressl=yes&pl=20&mime=video/mp4&lmt=1466922711627876&ip=188.166.181.14&ipbits=8&expire=1466952287&sparams=expire,id,ip,ipbits,itag,lmt,mime,mm,mn,ms,mv,nh,pl,requiressl,source&signature=72D05ED1D392316A165ED8EC3C3B85557288F016.53B0A40CC82400A4786FA29946D13688648FEE41&key=cms1&cpn=xZ7ke8dBfu5rhHMJ&c=WEB&cver=1.20160623&redirect_counter=1&req_id=e73d130ee628a3ee&cms_redirect=yes&mm=34&mn=sn-a5mekn7r&ms=ltu&mt=1466923381&mv=m&nh=IgpwcjAyLnNpbjAzKgkxMjcuMC4wLjE [following]
+--2016-06-26 13:44:47--  https://r3---sn-a5mekn7r.googlevideo.com/videoplayback?id=ba5b8561f796cb95&itag=15&source=picasa&begin=0&requiressl=yes&pl=20&mime=video/mp4&lmt=1466922711627876&ip=188.166.181.14&ipbits=8&expire=1466952287&sparams=expire,id,ip,ipbits,itag,lmt,mime,mm,mn,ms,mv,nh,pl,requiressl,source&signature=72D05ED1D392316A165ED8EC3C3B85557288F016.53B0A40CC82400A4786FA29946D13688648FEE41&key=cms1&cpn=xZ7ke8dBfu5rhHMJ&c=WEB&cver=1.20160623&redirect_counter=1&req_id=e73d130ee628a3ee&cms_redirect=yes&mm=34&mn=sn-a5mekn7r&ms=ltu&mt=1466923381&mv=m&nh=IgpwcjAyLnNpbjAzKgkxMjcuMC4wLjE
+Resolving r3---sn-a5mekn7r.googlevideo.com... 74.125.103.105, 2607:f8b0:4007:a::9
+Connecting to r3---sn-a5mekn7r.googlevideo.com|74.125.103.105|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 41745145 (40M) [video/mp4]
+Saving to: “abcmp4”
+
+100%[=============================================================>] 41,745,145  1.52M/s   in 16s     
+
+2016-06-26 13:45:04 (2.46 MB/s) - “abcmp4” saved [41745145/41745145]
+
+
