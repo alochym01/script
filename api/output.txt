@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html dir="ltr" lang="en-US" class="no-js ie ie6 lte7 lte8 lte9"><![endif]-->
+<!--[if IE 7 ]><html dir="ltr" lang="en-US" class="no-js ie ie7 lte7 lte8 lte9"><![endif]-->
+<!--[if IE 8 ]><html dir="ltr" lang="en-US" class="no-js ie ie8 lte8 lte9"><![endif]-->
+<!--[if IE 9 ]><html dir="ltr" lang="en-US" class="no-js ie ie9 lte9"><![endif]-->
+<!--[if IE 10 ]><html dir="ltr" lang="en-US" class="no-js ie ie10 lte10"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="ltr" lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xem phim TÃ¢n TÃ¢y Du KÃ½ 2 - New Journey To The West 2  (08/08)</title><meta name="keywords" content="TÃ¢n TÃ¢y Du KÃ½ 2, New Journey To The West 2 , new journey to the west tan tay du ky 2, Xem phim new journey to the west tan tay du ky 2, TÃ¢n, TÃ¢y, Du, KÃ½, 2">
+<meta name="description" content="Xem Phim TÃ¢n TÃ¢y Du KÃ½ 2: Phim TÃ¢n TÃ¢y Du KÃ½ 2Â 2016Â chÆ°Æ¡ng trÃ¬nh sáº½ lÃ  chuyáº¿n du kÃ½ thÃº vá» cá»§a 4 thÃ nh viÃªn vá»i tÆ° cÃ¡ch lÃ  4 nhÃ¢n váº­t trong má»t bá» truyá»n kinh...">
+<meta property="og:url" content="http://hdonline.vn/phim-new-journey-to-the-west-tan-tay-du-ky-2-12301.html">
+<meta property="og:title" content="Xem phim TÃ¢n TÃ¢y Du KÃ½ 2 - New Journey To The West 2  (08/08)">
+<meta property="og:image" content="http://static.hdonline.vn/i/resources/new/film/900x500/2016/05/09/new-journey-to-the-west-tan-tay-du-ky-2.jpg">
+<meta property="og:description" content="Xem Phim TÃ¢n TÃ¢y Du KÃ½ 2: Phim TÃ¢n TÃ¢y Du KÃ½ 2Â 2016Â chÆ°Æ¡ng trÃ¬nh sáº½ lÃ  chuyáº¿n du kÃ½ thÃº vá» cá»§a 4 thÃ nh viÃªn vá»i tÆ° cÃ¡ch lÃ  4 nhÃ¢n váº­t trong má»t bá» truyá»n kinh...">
+<meta property="article:published_time" content="1463452968">
+<meta property="article:modified_time" content="1463452968">
+<meta property="og:type" content="video.movie">
+<meta property="article:section" content="Phim HÃ i HÆ°á»c">
+<meta property="article:section" content="Phim TV-Show"><link href="http://hdonline.vn/phim-new-journey-to-the-west-tan-tay-du-ky-2-12301.html" rel="canonical"><!--
+<base href="http://hdonline.vn"/>
+-->
+<link rel="shortcut icon" href="http://static.hdonline.vn/template/frontend/images/favicon.ico" type="image/x-icon"/>
+<meta property="article:publisher" content="https://facebook.com/HDOCinema"/>
+<meta property="fb:app_id" content="138449339641932">
+<meta property="fb:admins" content="100000410578756">
+<meta property="og:site_name" content="HDOTV" />
+<meta name="google-site-verification" content="h8MRtn5RhZ0DI9X-SsroAUPitHEi4F4MQmtUPrU45So" />
+<meta name="robots" content="index, follow" />
+<link href='http://static.hdonline.vn/template/frontend/css/reset.css?v=003' rel='stylesheet' type='text/css'>
+<link href="http://static.hdonline.vn/template/frontend/css/style.css?v=003" rel="stylesheet" type="text/css">
+<link href="http://static.hdonline.vn/template/frontend/css/style.black.css?v=003" rel="stylesheet" type="text/css">
+<link href="http://static.hdonline.vn/template/frontend/css/fonts.css?v=003" rel="stylesheet" type="text/css">
+<link href="http://static.hdonline.vn/template/frontend/css/media-queries.css?v=003" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    var parser = document.createElement('a');
+	parser.href = window.location.href;
+	var url = parser.protocol + "//m.hdonline.vn" + parser.pathname; 
+	if (url.indexOf("m.hdonline.vn/") == -1){
+		url = parser.protocol + "//m.hdonline.vn/" + parser.pathname; 
+	}
+	window.location.href = url;
+  }
+var alertMobile = true;
+var isLogin = false;
+var isVip = false;
+var userID = 0;
+var BASE_URL = "http://hdonline.vn";
+var CDN_URL = "http://static.hdonline.vn";
+var SERVER_IMG = "http://static.hdonline.vn/i/resources/new/";
+var URL_FANPAGE = "https://facebook.com/HDOCinema";
+var HDOCONFIG = {
+	urlLike: "/episode/like",
+	urlLater: "/episode/later",
+	urlContact: "/contact/ajax",
+	urlSubscribe: "/episode/subscribe",
+	urlLogin: "/frontend/public/login",
+	urlLoginSSO: "/frontend/public/loginsso",
+	urlSearch: "/frontend/search/search",
+	urlLikePlus: "/frontend/episode/likeplus",
+	urlCommentPlus: "/frontend/episode/commentplus",
+	urlRate: "/frontend/episode/rateplus",
+	urlEpisodeLoad: "/episode/ajax",
+	urlFilmView: "/frontend/episode/updateview",
+	urlRegister: "/frontend/public/register",
+	urlContact : "/contact/ajax",
+	urlLoadEpisode : "/episode/ajax",
+	urlSetView : "/frontend/episode/updateview",
+	urlbuyPreroll : "/frontend/public/buypreroll",
+	refreshCaptcha : "/frontend/public/resfreshCaptcha",
+	urlRemoveWatchList : "/frontend/user/movieview",
+	urlAddWatchList : "/frontend/user/movieview",
+	urlGetMoreVideo : "/frontend/video/morevideo",
+}
+</script>
+
+<script type="text/javascript" src="http://static.hdonline.vn/template/frontend/js/modernizr.custom.46483.min.js?v=001"></script>
+<script type="text/javascript" src="http://static.hdonline.vn/template/frontend/js/jquery-1.11.0.min.js?v=001"></script>
+<script src="http://static.hdonline.vn/template/frontend/js/jquery-ui.min.js?v=001"></script>
+<script type="text/javascript" src="http://static.hdonline.vn/player/v2/2.0.79/jwplayer.js"></script>
+<link href="http://static.hdonline.vn/player/v2/2.0.79/player.css?v=003" rel="stylesheet" type="text/css">
+<script src="http://static.hdonline.vn/template/frontend/js/lib.hdo.player.js?v=001"></script>
+<script src="http://static.hdonline.vn/template/frontend/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="http://static.hdonline.vn/template/frontend/js/jquery.hoverIntent.min.js?v=001"></script> 
+<script type="text/javascript" src="http://static.hdonline.vn/template/frontend/js/jquery.cluetip.min.js?v=001"></script> 
+<script type="text/javascript" src="http://static.hdonline.vn/template/frontend/js/jquery.scrollUp.js?v=001"></script> 
+<script src="http://static.hdonline.vn/template/frontend/js/spin.min.js?v=001"></script>
+<script src="http://static.hdonline.vn/template/frontend/js/lib.hdo.js?v=001"></script>
+<script src="http://static.hdonline.vn/template/frontend/js/jquery.dotdotdot.min.js?v=001"></script>
+<script src="http://static.hdonline.vn/template/frontend/js/jRate.min.js?v=001"></script>
+<script src= "http://static.hdonline.vn/template/frontend/js/readmore.min.js?v=001"></script>
+<script src= "http://static.hdonline.vn/template/frontend/js/jquery.sticky.js?v=001"></script>
+<script type="text/javascript" src="http://static.hdonline.vn/template/frontend/js/jquery.lockfixed.min.js?v=001"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    //<![CDATA[
+    var BlueseedConfig = BlueseedConfig || {ads:[]};
+	//HOME-POPUP
+    BlueseedConfig.ads.push({
+        blueseed_key:"515c1d89079c13a2690345e0d4f65795",
+        blueseed_channel:"",
+        blueseed_code_format:"ads-async.js",
+        blueseed_ads_host:"//blueserving.com",
+        blueseed_click:"",
+        blueseed_custom_params:{},
+        blueseed_target_id:"blueseed-515c1d89079c13a2690345e0d4f65795"
+    });
+    //]]>
+</script>
+<script type="text/javascript">
+if(top!=self){
+//top.location.replace(document.location);
+}
+</script>
+</head>
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('require', 'displayfeatures');
+ga('create', 'UA-35362268-1', 'auto');
+ga('create', 'UA-33767408-26', 'auto', {'name': 'HDViet'});
+
+ga('send', 'pageview');
+//ga('HDViet.send', 'pageview');
+function gaInterval(){
+   //ga('send', 'pageview');
+   ga('HDViet.send', 'pageview');
+   setTimeout("gaInterval()",240000);
+}
+gaInterval();
+</script>
+<body class="default-themes" itemscope itemtype="http://schema.org/WebPage">
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=138449339641932&version=v2.3";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="tn-wrapper">
+  <header class="tn-header-full tn-header-full-2">
+  <div class="tn-searchtop">
+      <button id="searchtop-close" class="btn btn-default" type="button"><i class="fa fa-times"></i></button>
+	  	<div id="searchtop-autocomp" class="tn-wrapfix" style="display:none;">
+      	</div>
+    </div>
+    <div class="tn-header clearfix">
+      <div class="mobile-menu">
+    <a href="javascript:void(0)"><i class="fa fa-list"></i></a>
+</div>
+	<h1 class="tn-logo"> <a href="http://hdonline.vn" title="Phim Hay | Phim hd | Xem Phim Online Cháº¥t LÆ°á»£ng Cao">
+	   <img src="http://static.hdonline.vn/template/frontend/images/logo.png" class="noel" style="width:100px"
+            alt="Phim Hay | Phim hd | Xem Phim Online Cháº¥t LÆ°á»£ng Cao" title="Phim Hay | Phim hd | Xem Phim Online Cháº¥t LÆ°á»£ng Cao"></a>
+	   </h1>
+<nav class="tn-gnav">
+<ul class="clearfix">
+  <li> <a href="/danh-sach/phim-le.html"> <span class="tnico-movie"></span> PHIM Láºº </a>
+    <div class="tn-gnavsub">
+      <div class="gnavsub">
+        <ul class="clearfix">
+        			<li><a href="http://hdonline.vn/xem-phim-hanh-dong.html" title="Phim HÃ nh Äá»ng">Phim HÃ nh Äá»ng</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-phieu-luu.html" title="Phim PhiÃªu LÆ°u">Phim PhiÃªu LÆ°u</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-kinh-di.html" title="Phim Kinh Dá»">Phim Kinh Dá»</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-tinh-cam.html" title="Phim TÃ¬nh Cáº£m">Phim TÃ¬nh Cáº£m</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-hoat-hinh.html" title="Phim Hoáº¡t HÃ¬nh">Phim Hoáº¡t HÃ¬nh</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-vo-thuat.html" title="Phim VÃµ Thuáº­t">Phim VÃµ Thuáº­t</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-hai-huoc.html" title="Phim HÃ i HÆ°á»c">Phim HÃ i HÆ°á»c</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-tam-ly.html" title="Phim TÃ¢m LÃ½">Phim TÃ¢m LÃ½</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-vien-tuong.html" title="Phim Viá»n TÆ°á»ng">Phim Viá»n TÆ°á»ng</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-than-thoai.html" title="Phim Tháº§n Thoáº¡i">Phim Tháº§n Thoáº¡i</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-lich-su.html" title="Phim Lá»ch Sá»­">Phim Lá»ch Sá»­</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-tv-show.html" title="Phim TV-Show">Phim TV-Show</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-tai-lieu.html" title="Phim TÃ i Liá»u">Phim TÃ i Liá»u</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-phim-kich-tinh.html" title="Phim Ká»ch TÃ­nh">Phim Ká»ch TÃ­nh</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-gia-dinh.html" title="Phim Gia ÄÃ¬nh">Phim Gia ÄÃ¬nh</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-the-thao.html" title="Phim Thá» Thao">Phim Thá» Thao</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-bi-an.html" title="Phim BÃ­ áº¨n">Phim BÃ­ áº¨n</a></li>
+					<li><a href="http://hdonline.vn/xem-phim-vien-tay.html" title="Phim Viá»n TÃ¢y">Phim Viá»n TÃ¢y</a></li>
+		        </ul>
+      </div>
+    </div>
+  </li>
+  <li> <a href="http://hdonline.vn/danh-sach/phim-bo.html"> <span class="tnico-drama"></span> PHIM Bá» </a>
+    <div class="tn-gnavsub">
+      <div class="gnavsub">
+        <ul class="clearfix">
+          			<li><a href="http://hdonline.vn/phim-bo-trung-quoc.html" title="Phim Trung Quá»c">Phim Trung Quá»c</a></li>
+						<li><a href="http://hdonline.vn/phim-bo-han-quoc.html" title="Phim HÃ n Quá»c">Phim HÃ n Quá»c</a></li>
+						<li><a href="http://hdonline.vn/phim-bo-dai-loan.html" title="Phim ÄÃ i Loan">Phim ÄÃ i Loan</a></li>
+						<li><a href="http://hdonline.vn/phim-bo-my.html" title="Phim Má»¹">Phim Má»¹</a></li>
+						<li><a href="http://hdonline.vn/phim-bo-nhat-ban.html" title="Phim Nháº­t Báº£n">Phim Nháº­t Báº£n</a></li>
+						<li><a href="http://hdonline.vn/phim-bo-hong-kong.html" title="Phim Há»ng KÃ´ng">Phim Há»ng KÃ´ng</a></li>
+						<li><a href="http://hdonline.vn/phim-bo-thai-lan.html" title="Phim ThÃ¡i Lan">Phim ThÃ¡i Lan</a></li>
+						<li><a href="http://hdonline.vn/phim-bo-an-do.html" title="Phim áº¤n Äá»">Phim áº¤n Äá»</a></li>
+						<li><a href="http://hdonline.vn/phim-bo-nga.html" title="Phim Nga">Phim Nga</a></li>
+			        </ul>
+      </div>
+    </div>
+  </li>
+  <li> <a href="/dien-anh.html" onclick="hdoTrackEvent('Äiá»n áº£nh','NewsPostTopMenu', 'Click nÃ¢ng cáº¥p Äiá»n áº¢nh Menu')"> <span class="tnico-news"></span> TIN Tá»¨C </a>
+  <li> <a href="#" onclick="javascript:void(0)"> <span class="tnico-more"></span> MORE </a>
+  		<div class="tn-gnavsub">
+          <div class="gnavsub">
+            <ul class="clearfix">
+            	<li><a href="/danh-sach/phim-moi.html">Phim Má»i</a></li>
+				<li><a href="/danh-sach/phim-chieu-rap.html">Phim Chiáº¿u Ráº¡p</a></li>
+				<li><a href="/hdo-de-cu.html">Phim Äá» Cá»­</a></li>
+				<li><a href="/danh-sach/phim-trailer.html">Trailer Phim Má»i</a></li>
+				<li><a href="/phim-long-tieng.html">Phim Lá»ng Tiáº¿ng</a></li>
+				<li><a href="/phim-thuyet-minh.html">Phim Thuyáº¿t Minh</a></li>
+				<!-- <li><a href="#">Phim ÄÃ£ Xem</a></li>-->
+				<li><a href="javascript:void(0)"  onclick="mAlert('TÃ­nh nÄng sáº¯p ra máº¯t')">Báº£ng Xáº¿p Háº¡ng</a></li>
+				<li><a href="javascript:void(0)"  onclick="mAlert('TÃ­nh nÄng sáº¯p ra máº¯t')">Real-time</a></li>
+				<li><a href="/danh-sach/phim-theo-nam/2016.html">Phim 2016</a></li>
+				<li><a href="/danh-sach/phim-theo-nam/2015.html">Phim 2015</a></li>
+				<li><a href="/danh-sach/phim-theo-nam/2014.html">Phim 2014</a></li>
+				<li><a href="/danh-sach/phim-theo-nam/2013.html">Phim 2013</a></li>
+				<li><a href="/danh-sach/phim-theo-nam/2012.html">Phim 2012</a></li>
+				<li><a href="/danh-sach/phim-theo-nam/2011.html">Phim 2011</a></li>
+				<li><a href="/danh-sach/phim-theo-nam/2010.html">Phim 2010</a></li>
+            </ul>
+          </div>
+        </div>
+  </li>   
+</ul>
+</nav>		    <div class="tn-notif">
+        
+        <ul class="clearfix">
+               <li class="wrap-search-input" style="margin-top: 0px">
+            <div class="mobile-search"><a href="javascript:void(0)"><i class="fa fa-search"></i></a></div>
+            <div id="div-search">
+                <input id="searchtop-input" type="text" class="form-control" placeholder="TÃ¬m: Phim, Äáº¡o diá»n, Diá»n viÃªn...">
+            </div>
+       </li>
+                                 
+          <li class="dropdown menuNoelColor"> 
+            <button class="btn tn-btn-default ml10" type="button" onclick="openLogin();">ÄÄng nháº­p</button>
+          </li>
+                  </ul>
+      </div>
+ <style>
+ #user-message-area, #user-notification-area{
+ 	padding-top: 0px;
+ 	padding-bottom: 0px;
+ }
+ #user-message-area li, #user-notification-area li{
+ 	  padding-top: 5px;
+      padding-bottom: 10px;
+      margin-top: 0px;
+ }
+#user-message-area li:hover, #user-message-area li.unread, #user-notification-area li:hover{
+ 	cursor: pointer;
+    background-color: #F7F5F5;
+ }
+ </style>
+     </div>
+  </header>
+  <div class="tn-main-full">
+            <div id="bswrapper_inhead" style="text-align:center"></div>
+		<!-- BEGIN TAG - DO NOT MODIFY -->
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		blueseed_key = "a5dbd65648a1cd5ce77d0e85e71f8b83";
+		blueseed_channel = "";
+		blueseed_code_format = "ads-sync.js";
+		blueseed_ads_host = "//blueserving.com";
+		blueseed_click = "";
+		blueseed_custom_params = {};
+		
+		document.write("<script type='text\/javascript' src='"+(location.protocol == 'https:' ? 'https:' : 'http:') + "//blueserving.com\/js/show_ads_blueseed.js?pubId=1827'><\/script>");
+		/*]]>*/
+		</script>
+		<!-- END TAG -->
+    	          <script type="text/javascript">
+var PlayFilm = "12301";
+var PlayEp = "";
+var NowPage = 0;
+var isTrailer = false;
+var youIP = "";
+</script>
+    <div class="tn-playerdv">
+    <div class="tn-wrapfix playerdv-in">
+        <div class="tn-lockup-title">
+            <h1 class="tn-lockup-title" style="width: 925px;">
+            	New Journey To The West 2  (2016) - 08/08                              	<br><i>TÃ¢n TÃ¢y Du KÃ½ 2</i>
+              	            </h1>
+            <div class="socialTitle" style="right: 15px;">
+                                   <a href="http://goo.gl/K9i62o" target="_blank"><img src="http://static.hdonline.vn/ads/hdo_coccoc_v2.png" style="height: 40px;"/></a>
+                   <!-- 
+	               <a href="http://id.hdonline.vn/vip" style="margin-right: 20px;" target="_blank" title="NÃ¢ng cáº¥p VIP">Bá» phiá»n bá»i quáº£ng cÃ¡o?</a>
+	                -->
+                                
+            </div>
+        </div>
+        <style>
+#hdoplayer{
+	margin: 0px auto;
+	z-index: 4;
+}
+</style>
+<div class="player-container" style="margin: 0px auto 5px auto;position: relative;width: 1270px;position: relative;">
+		<div id="floatleft" style="position: absolute;left: 0px;top: 0px;width: 160px; height: 600px;overflow: hidden;text-align: right;">
+	   <!-- BEGIN TAG - BODY MOVIE-FLOAT-LEFT -->
+<script type="text/javascript">
+    //<![CDATA[
+    var BlueseedConfig = BlueseedConfig || {ads:[]};
+    BlueseedConfig.ads.push({
+        blueseed_key:"f020b1eba0d7db58c0a036dd806598fa",
+        blueseed_channel:"",
+        blueseed_code_format:"ads-async.js",
+        blueseed_ads_host:"//blueserving.com",
+        blueseed_click:"",
+        blueseed_custom_params:{},
+        blueseed_target_id:"blueseed-f020b1eba0d7db58c0a036dd806598fa-120x600"
+    });
+    (function () {
+        var sc = document.createElement("script");
+        sc.type = "text/javascript";
+        sc.async = true;
+        sc.src = (location.protocol == "https:" ? "https:" : "http:") + "//blueserving.com\/js\/show_ads_blueseed.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(sc, s);
+    })();
+    //]]>
+</script>
+<div id="blueseed-f020b1eba0d7db58c0a036dd806598fa-120x600"></div>
+   	</div>
+		
+		
+    	<div id="floatright" style="position: absolute;right: 0px;top: 0px;width: 160px;height: 600px;overflow: hidden;">
+    		<a href="http://api.adtimaserver.vn/track/click?params=Qmod2z6k_u9A6UzRKCdffbXxzsq5Mqnk4Lk-Bj1CDLelem1pTqrmq2XjeHn3JnUonrVXPgGHVYfFKmpKfrs-HXPwRM3-ETcUf1GMUa6MsZy1soHiHdMy9DCtrY9c3XhjAGGzocjLnZ91DlbwPsJpfEUF8kmdkQTHXg&uid=&redirectUrl=http%3A%2F%2Fhome.csm.zing.vn%2F" target="_blank">
+    <img src="http://data.hdonline.vn/hdo/vng/20160615/120x600.gif">
+</a>
+    	</div>
+	
+		
+	<div id ='player' class="flashPlayer" style="height: 520px;">
+	   	<div id ='hdoplayer' style="text-align: center">
+			TrÃ¬nh duyá»t nÃªn há» trá»£ FLASH vÃ  Javascript
+		</div>
+	</div>
+	
+	
+
+</div>
+<script type=text/javascript>
+var firstPlay = true;
+var urlPlugin = "http://static.hdonline.vn/player/v2/2.0.79/vplugin.js";
+var nowTime = 0;
+var player_id = 'hdoplayer';
+var Xe2eb247f445a034e8e191c6405ac1c69t = false;
+$(document).ready(function(){
+		eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('4w(3n(p,a,c,k,e,d){e=3n(c){3o(c<a?\'\':e(4s(c/a)))+((c=c%a)>35?3p.4t(c+29):c.4u(36))};3t(!\'\'.3s(/^/,3p)){3r(c--){d[e(c)]=k[c]||e(c)}k=[3n(e){3o d[e]}];e=3n(){3o\'\\\\w+\'};c=1};3r(c--){3t(k[c]){p=p.3s(3q 4v(\'\\\\b\'+e(c)+\'\\\\b\',\'g\'),k[c])}}3o p}(\'2z(\\\'2C\\\').2y({"2x":2s,"2v":[{"1x":"\\\\/1e\\\\/1c\\\\/1f?1i=1&1r=d&1k=1q-1o&1n=1l","a.1m":"9:\\\\/\\\\/h.e","a.1H":j,"f":"1Q","1V":"1U 1T 1W,k 22 1Z,1Y 1S 1L,k 1N 23","1C":"T\\\\1X 1","1R":"9:\\\\/\\\\/1d.h.e\\\\/i\\\\/1K\\\\/l\\\\/1J\\\\/1I\\\\/1M\\\\/1P\\\\/1O\\\\/l-1j-1h-1p-1G-1s-1B-1D-1E-2.1F","1A":"1z.1u.31.21","1t":"1v","a.1w":1y},{"1x":"\\\\/1e\\\\/1c\\\\/1f?1i=2&1r=d&1k=1q-1o&1n=1l","a.1m":"9:\\\\/\\\\/h.e","a.1H":j,"f":"1Q","1V":"1U 1T 1W,k 22 1Z,1Y 1S 1L,k 1N 23","1C":"T\\\\1X 2","1R":"9:\\\\/\\\\/1d.h.e\\\\/i\\\\/1K\\\\/l\\\\/1J\\\\/1I\\\\/1M\\\\/1P\\\\/1O\\\\/l-1j-1h-1p-1G-1s-1B-1D-1E-2.1F","1A":"1z.1u.31.21","1t":"1v","a.1w":1y},{"1x":"\\\\/1e\\\\/1c\\\\/1f?1i=3&1r=d&1k=1q-1o&1n=1l","a.1m":"9:\\\\/\\\\/h.e","a.1H":j,"f":"1Q","1V":"1U 1T 1W,k 22 1Z,1Y 1S 1L,k 1N 23","1C":"T\\\\1X 3","1R":"9:\\\\/\\\\/1d.h.e\\\\/i\\\\/1K\\\\/l\\\\/1J\\\\/1I\\\\/1M\\\\/1P\\\\/1O\\\\/l-1j-1h-1p-1G-1s-1B-1D-1E-2.1F","1A":"1z.1u.31.21","1t":"1v","a.1w":1y},{"1x":"\\\\/1e\\\\/1c\\\\/1f?1i=4&1r=d&1k=1q-1o&1n=1l","a.1m":"9:\\\\/\\\\/h.e","a.1H":j,"f":"1Q","1V":"1U 1T 1W,k 22 1Z,1Y 1S 1L,k 1N 23","1C":"T\\\\1X 4","1R":"9:\\\\/\\\\/1d.h.e\\\\/i\\\\/1K\\\\/l\\\\/1J\\\\/1I\\\\/1M\\\\/1P\\\\/1O\\\\/l-1j-1h-1p-1G-1s-1B-1D-1E-2.1F","1A":"1z.1u.31.21","1t":"1v","a.1w":1y},{"1x":"\\\\/1e\\\\/1c\\\\/1f?1i=5&1r=d&1k=1q-1o&1n=1l","a.1m":"9:\\\\/\\\\/h.e","a.1H":j,"f":"1Q","1V":"1U 1T 1W,k 22 1Z,1Y 1S 1L,k 1N 23","1C":"T\\\\1X 5","1R":"9:\\\\/\\\\/1d.h.e\\\\/i\\\\/1K\\\\/l\\\\/1J\\\\/1I\\\\/1M\\\\/1P\\\\/1O\\\\/l-1j-1h-1p-1G-1s-1B-1D-1E-2.1F","1A":"1z.1u.31.21","1t":"1v","a.1w":1y},{"1x":"\\\\/1e\\\\/1c\\\\/1f?1i=6&1r=d&1k=1q-1o&1n=1l","a.1m":"9:\\\\/\\\\/h.e","a.1H":j,"f":"1Q","1V":"1U 1T 1W,k 22 1Z,1Y 1S 1L,k 1N 23","1C":"T\\\\1X 6","1R":"9:\\\\/\\\\/1d.h.e\\\\/i\\\\/1K\\\\/l\\\\/1J\\\\/1I\\\\/1M\\\\/1P\\\\/1O\\\\/l-1j-1h-1p-1G-1s-1B-1D-1E-2.1F","1A":"1z.1u.31.21","1t":"1v","a.1w":1y},{"1x":"\\\\/1e\\\\/1c\\\\/1f?1i=7&1r=d&1k=1q-1o&1n=1l","a.1m":"9:\\\\/\\\\/h.e","a.1H":j,"f":"1Q","1V":"1U 1T 1W,k 22 1Z,1Y 1S 1L,k 1N 23","1C":"T\\\\1X 7","1R":"9:\\\\/\\\\/1d.h.e\\\\/i\\\\/1K\\\\/l\\\\/1J\\\\/1I\\\\/1M\\\\/1P\\\\/1O\\\\/l-1j-1h-1p-1G-1s-1B-1D-1E-2.1F","1A":"1z.1u.31.21","1t":"1v","a.1w":1y},{"1x":"\\\\/1e\\\\/1c\\\\/1f?1i=8&1r=d&1k=1q-1o&1n=1l","a.1m":"9:\\\\/\\\\/h.e","a.1H":j,"f":"1Q","1V":"1U 1T 1W,k 22 1Z,1Y 1S 1L,k 1N 23","1C":"T\\\\1X 8","1R":"9:\\\\/\\\\/1d.h.e\\\\/i\\\\/1K\\\\/l\\\\/1J\\\\/1I\\\\/1M\\\\/1P\\\\/1O\\\\/l-1j-1h-1p-1G-1s-1B-1D-1E-2.1F","1A":"1z.1u.31.21","1t":"1v","a.1w":1y}],"34":2Z,"2Y":j,"2V":{"9:\\\\/\\\\/1d.h.e\\\\/2g\\\\/2h\\\\/2.0.2i\\\\/a.2p":{"2X":"d","35":"36","3c":1g,"2q":"","1c":"","3d":{"3e":"9:\\\\/\\\\/h.e\\\\/1e\\\\/1c\\\\/37?n={n}&2e={2e}","38":"9:\\\\/\\\\/h.e\\\\/2g\\\\/2h\\\\/2.0.2i\\\\/39.2B","3a":1g,"3b":1g,"2W":1g,"2q":"","33":1g},"3g":{"3f":j,"3m":1g},"3k":j,"o":{"3j":[{"f":"I","2d":"2e","2c":30,"1a":0,"2a":5,"26":"","19":["9:\\\\/\\\\/V.W\\\\/X.U?S=3i&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K","9:\\\\/\\\\/V.W\\\\/X.U?S=2l&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K"]},{"f":"I","2d":"2e","2c":30,"1a":0,"2a":5,"26":"","19":["9:\\\\/\\\\/V.W\\\\/X.U?S=3h&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K","9:\\\\/\\\\/V.W\\\\/X.U?S=2l&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K"]},{"f":"I","2d":"m","2c":30,"1a":2k,"2a":5,"26":"","19":["9:\\\\/\\\\/V.W\\\\/X.U?S=2m&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K","9:\\\\/\\\\/V.W\\\\/X.U?S=2f&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K"]},{"f":"I","2d":"m","2c":30,"1a":2k,"2a":5,"26":"","19":["9:\\\\/\\\\/V.W\\\\/X.U?S=2o&2j=j&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K","9:\\\\/\\\\/V.W\\\\/X.U?S=2f&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K"]},{"f":"I","2d":"m","2c":30,"1a":2n,"2a":5,"26":"","19":["9:\\\\/\\\\/V.W\\\\/X.U?S=2m&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K","9:\\\\/\\\\/V.W\\\\/X.U?S=2f&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K"]},{"f":"I","2d":"m","2c":30,"1a":2n,"2a":5,"26":"","19":["9:\\\\/\\\\/V.W\\\\/X.U?S=2o&2j=j&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K","9:\\\\/\\\\/V.W\\\\/X.U?S=2f&O=3.0&m=d&P=b-Q-R,b-Y-Z&16=17-18&15=14-10-11,c-12-13,N-J-L,c-M-K"]}],"3l":["9:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=32&z=\\\\/H\\\\/2R&24&F=s&q=1&r=y&G=u&v=1&n=[t]&p=[p]&w=[x]"],"2A":[{"f":"I","1a":1,"27":20,"19":["29:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b|28&z=\\\\/H\\\\/2b&F=s&q=1&r=y&G=u&v=1&n=[t]&p=[p]&w=[x]","9:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b&z=\\\\/H\\\\/25&24&F=s&q=1&r=y&G=u&v=1&n=[t]&w=[x]"]},{"f":"I","1a":2U,"27":20,"19":["29:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b|28&z=\\\\/H\\\\/2b&F=s&q=1&r=y&G=u&v=1&n=[t]&p=[p]&w=[x]","9:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b&z=\\\\/H\\\\/25&24&F=s&q=1&r=y&G=u&v=1&n=[t]&w=[x]"]},{"f":"I","1a":2D,"27":20,"19":["29:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b|28&z=\\\\/H\\\\/2b&F=s&q=1&r=y&G=u&v=1&n=[t]&p=[p]&w=[x]","9:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b&z=\\\\/H\\\\/25&24&F=s&q=1&r=y&G=u&v=1&n=[t]&w=[x]"]},{"f":"I","1a":2r,"27":20,"19":["29:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b|28&z=\\\\/H\\\\/2b&F=s&q=1&r=y&G=u&v=1&n=[t]&p=[p]&w=[x]","9:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b&z=\\\\/H\\\\/25&24&F=s&q=1&r=y&G=u&v=1&n=[t]&w=[x]"]},{"f":"I","1a":2t,"27":20,"19":["29:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b|28&z=\\\\/H\\\\/2b&F=s&q=1&r=y&G=u&v=1&n=[t]&p=[p]&w=[x]","9:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b&z=\\\\/H\\\\/25&24&F=s&q=1&r=y&G=u&v=1&n=[t]&w=[x]"]},{"f":"I","1a":2u,"27":20,"19":["29:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b|28&z=\\\\/H\\\\/2b&F=s&q=1&r=y&G=u&v=1&n=[t]&p=[p]&w=[x]","9:\\\\/\\\\/C.g.B.A\\\\/D\\\\/o?E=1b&z=\\\\/H\\\\/25&24&F=s&q=1&r=y&G=u&v=1&n=[t]&w=[x]"]}]}},"9:\\\\/\\\\/1d.h.e\\\\/2g\\\\/2h\\\\/2.0.2i\\\\/2w.2p":{"2E":"2F-2P-1","2O":j,"2Q":j}},"2S":4,"2N":"2M","2H":3,"2G":j,"2I":1g,"2J":j,"2L":"2K","2T":1g});\',62,4x,\'|||||||||4B|4A|4z|4y|4r|4q|4j||4i||4h|4g|3q|4k|4l|4p|4o|4n|4m||4C|4D|4T|4S|4R|4Q|4U|4V|4Z|4Y|4X|4W|4P|4O|4H|4G|4F|4E|4I|4J|4f|4M|4L|4K|50|51||44|3J|3I|3H|3G|3K|3L|3P|3F|3N|3M|3Q|3B|3u|3w|3y|3v|3x|3E|3D|3C|3z|3A|3O|4e|47|46|45|3R|48|49|4d|4c|4b|4a|43|42|3V|3U|3T|3S|3W|3X|41|40|3Z|3Y|4N|5B|69|6i|68|66|67|6b|6c|6g|6f|6e|6d|65|64|5W|5V|5U|5S|5T|5X|||5Y|63|61|60|5Z|6h|6k|6z|6B|6x|6w|6A|6C|6G|6F|6E|6D|6y|6u|6n|6m|6l|6j|6v|6o|6p|6t|6s|6q|6r|6a|5Q|5j|5i|5h|5f|5g|5k|5l|5p|5o|5n|5m|5e|5d|56|55|54|52|53|57|58|5c|5b|5a|59|5q|5r|5J|5I|||5H|5F|5G|5K|5L|5P|5O|5N|5M|5E|5D|5w|5v|5u|5s|5t|5x|5y|5C|5R|5A\'.5z(\'|\'),0,{}))',62,415,'|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||function|return|String|new|while|replace|if|han|position|quoc|800x90|link|xmlplay|false|country|frontend|static|episode|su|tv|vast|com|blueserving|show|ji|eun|geun|to|won|actor|host|120|file|buffer|VN|210|myip|ky|du|title|tay|245|mycountry|xml|3c20425b893412e594b6b94faec1a83d|token|journey|mirand|1468388254|tan|fid|NmY1MjVhNDI0YzU1MzQ2YzMzNTg1NDZkNjI1ODRlNDc1NTMyNWE0YjYxNTg2NTRiMzEzMDM3Nzc0Nzc5Mzg2ZTM4NzczZDNk|the|ep|kang|Lee|true|hdonline|type|mid|url|env|gdfp_req|description_url|ads|vn|12301|parseInt|fromCharCode|toString|RegExp|eval|209|lee|phim|vplugin|http|referrer_url|xml_vast2|gi|ho|tags|29309823|dong|seung|hai|cat|vastv|jpg|output|impl|vp|timestamp|correlator|unviewed_position_start|iu|net|sz|gampad|pubads|doubleclick|huoc|key|trackstarts|35362268|height|520px|width|tracktime|HDO_Movie_Pause|plugins|900|vhls_forcefragmenterror|vhls_fragmentloadmaxretry|925px|vhls_autolevel404|swf|hdoplayer|overlaydata|jwplayer|setup|1800|accountid|vhls_autolevel|vhls_maxlevel|allowDune|UA|checkLogin|filmid|trackads|baa82cb17cc31206cbc184671b43593d|allow|vttURL|user|4724f92620ddc3d70b6d5a75fc52914b|videodata|split|usega|west|vads|uvip|checkvietnam|vipdune|vhls_maxwidth|800x450|640|vhls_usehardwarevideodecoder|vtimelimit|none|showdune|vastplay|swfVast|loadthumbnail|vhls_hidelevelwidth|pausedata|u1eadp|Kang|Won|description|Eun|Geun|Su|click|WM_Movie_Drop|ciu_szs||Gi|Ji|Ho|resources|Dong|film|itemplaylist|gapro|2016|Seung|image|m3u8|05|09|time|900x500|6f1e67c673168e0d70eba98aed5bbe65|600x90|2400|bb1975ec897dd7921a2c5384a479a2e3|4d207eb8e1fc3b2773f69e7ac2626ac0|userid|2700|4500|playlist|3700|1300|1200|js|duration|HDO_Movie_Overlay|no_imp_overlay|https|id|skip|pre|79|v2|player|2d7e8dda0394388f1d12268c3d81d5c5'.split('|'),0,{}))
+	jwplayer(player_id).on("time" , function(e) {
+		nowTime = e.position;
+		var posSeek = 0;
+		if (Math.round(e.position) == 1){
+			var hash = window.location.hash;
+			if (hash != "" && hash.indexOf("t=") > -1){
+				try {
+    				posSeek = hash.split("t=")[1];
+    				posSeek = parseInt(posSeek, 0);
+				} catch (e){
+					posSeek = 0;
+				}
+				
+			}
+			if (posSeek > 0){
+				jwplayer('hdoplayer').seek(posSeek);
+			} else {
+    			checkPos(player_id);
+			}
+		}
+		
+		setPos(jwplayer('hdoplayer').getPosition() , jwplayer('hdoplayer').getDuration());
+
+		if (e.position > 0 && Math.round(e.position) % 20 * 1000 == 0 && Xe2eb247f445a034e8e191c6405ac1c69t == false){
+			Xe2eb247f445a034e8e191c6405ac1c69t = true;
+			setTimeout(function(){Xe2eb247f445a034e8e191c6405ac1c69t = false} , 5000); 
+			if (jwplayer('hdoplayer').getState() !=  null){
+								if ($("#hdoplayer #hdoplayer-vplugin").find("div").length == 0){
+	    			 try {
+	    				mAlert("Xin loáº¡i bá» cÃ¡c tiá»n Ã­ch xem phim miá»n phÃ­ ÄÆ°á»£c cÃ i Äáº·t trÃªn trÃ¬nh duyá»t Äá» tiáº¿p tá»¥c xem phim.", ".player-container");
+	    			 } catch (e){}
+	    			 jwplayer('hdoplayer').remove();
+	    		 }
+		   		 		   		 var checkHtmlLogin  = $('.dropdown.menuNoelColor.last').html();
+		   		 if ($('*[id^="itc_"]').length > 0 || (checkHtmlLogin &&  checkHtmlLogin.indexOf("support.it.central") > 0) || typeof(cc_player_id) != "undefined"){
+		   			try {
+	    				mAlert("Xin loáº¡i bá» cÃ¡c tiá»n Ã­ch xem phim miá»n phÃ­ ÄÆ°á»£c cÃ i Äáº·t trÃªn trÃ¬nh duyá»t Äá» tiáº¿p tá»¥c xem phim.", ".player-container");
+	    			 } catch (e){}
+	    			 jwplayer('hdoplayer').remove();
+	    			 return;
+		   		 }
+		   		 
+		    	if (isLogin && isVip && (getVCookie('checkUser') == null || getVCookie('checkUser') == '')){
+		    		try {
+		    			mConfirm({
+		        			msg: "CÃ³ lá»i khi xÃ¡c thá»±c thÃ´ng tin ÄÄng nháº­p cá»§a báº¡n. Xin ÄÄng nháº­p láº¡i Äá» tiáº¿p tá»¥c xem phim",
+		        			mYes:{text:"Ok", callback: function(){window.location.reload()}},
+		        			mNo:{text:"ÄÃ³ng", callback: null}
+		        		});
+	       			 } catch (e){}
+	       			jwplayer('hdoplayer').remove();
+	       			return;
+			    }
+			    $("script").each(function(){
+				   	var text = $(this).text();
+				   	if (text && text.indexOf(atob("R29vZ2xlQW5hbHl0aWNzT2JqZWN0")) > 0 && text.indexOf(atob("VUEtNjQxMTI3NTYtMg==")) > 0){
+				   		try {
+		    				mAlert("Xin loáº¡i bá» cÃ¡c tiá»n Ã­ch xem phim miá»n phÃ­ ÄÆ°á»£c cÃ i Äáº·t trÃªn trÃ¬nh duyá»t Äá» tiáº¿p tá»¥c xem phim.", ".player-container");
+		    			 } catch (e){}
+		    			 jwplayer('hdoplayer').remove();
+		    			 return false;
+				   	}
+				});
+
+		}
+		}
+	});
+	
+	jwplayer('hdoplayer').on('ready' , function(){
+		$("#hdoplayer").allofthelights();
+		$.ajax({
+			url: "http://hdonline.vn/player/v2/2.0.79/vplugin.js",
+			success: function(data) {} , 
+			error : function(jqXHR, textStatus, errorThrown) {
+  	  			if (jqXHR.status == 0 && textStatus == "error"){
+  	  	  			try {
+  	  	  	  			mAlert("Xin loáº¡i bá» cÃ¡c tiá»n Ã­ch xem phim miá»n phÃ­ ÄÆ°á»£c cÃ i Äáº·t trÃªn trÃ¬nh duyá»t Äá» tiáº¿p tá»¥c xem phim.", ".player-container");
+	    			 } catch (e){}
+	    			jwplayer('hdoplayer').remove();
+	    			
+	    			hdoTrackEvent('PluginErrorEx','PluginErrorExV4', 'PluginErrorExV4');
+  	  			}
+  			}
+		});
+	});
+
+	jwplayer('hdoplayer').on("pause" , function(e) {
+		setPos(jwplayer('hdoplayer').getPosition() , jwplayer('hdoplayer').getDuration());
+	});
+	
+	jwplayer('hdoplayer').on("play" , function(e) {
+		if (firstPlay == true){
+			if (isVip == true){
+				hdoTrackEvent('Video Vip Play','UserVip', 'User Vip Play');
+        		var img = new Image(), imp ="http://api.hdonline.vn/v2/index/trackvip",
+    			rnd = Math.round(Math.random()*100000);
+	    		img.src = imp + ((imp.indexOf('?') > 0) ? '&' : '?') + 'random' + rnd + '=' + rnd;
+	    		img.loaded = function() {
+	    			img = null;
+	    		}
+	    	}
+	    	    		firstPlay = false;
+			var currentItem = jwplayer('hdoplayer').getPlaylistIndex();
+    		var data = jwplayer('hdoplayer').getPlaylistItem();
+    		
+    		if (data['mediaid']){
+    			var check = Math.ceil((currentItem + 1)/30);
+    			if (check != NowPage){
+    				NowPage = check;
+    				loadEpisode('',NowPage, '' , data['mediaid']);
+    			}
+    			if (data['link'] && currentItem > 0 && data['mediaid'] != PlayEp){
+        
+    				sendURL(data['link']);
+    				setViewFilm(PlayFilm);
+    				
+    			}
+    			playerSendEp(data['mediaid']);	
+    		}
+
+    		    		$.ajax({
+        		beforeSend: function(request){
+					request.setRequestHeader('Authorization', "00000000000000000000000000000000");
+				},
+				type:'POST',
+				url: 'http://statistic.hdviet.com/api/v1/play',
+				data: {movieId : 11900 , platform: 1 , product : 2, action: 'play' }
+			});
+    		    	}
+    	
+	});
+	
+	jwplayer('hdoplayer').on("error" , function(e) {
+		setPos(jwplayer('hdoplayer').getPosition() , jwplayer('hdoplayer').getDuration());
+		var data = jwplayer('hdoplayer').getPlaylistItem();
+		
+		if (data['mediaid']){
+			playerSendEp(data['mediaid']);	
+		}
+				if (data['file'] && data['file'].indexOf("s21.phimhd3s.com") > 0){
+			var eparam = {
+				error: e.message,
+				link: data['file'],
+				ip: data['myip'],
+				code: "HDO_E0"
+			};
+			if (youIP != "" && data['myip'] != youIP){
+				eparam.jip = youIP;
+			}
+			if (typeof(e.message) != "undefined"){
+				if ( e.message.indexOf("Playlist Status: ") > -1){
+					eparam.status = e.message.split("HTTP Status: ")[1];
+				}
+				if (e.message.indexOf("#2048") > -1){
+					eparam.code = "HDO_E1";
+				} else if (e.message.indexOf("#2032") > -1){
+					eparam.code = "HDO_E2";
+				} else if (e.message.indexOf("parsing fragment") > -1){
+					eparam.code = "HDO_E3";
+				} else if (e.message.indexOf("File khÃ´ng ÄÃºng") > -1){
+					eparam.code = "HDO_E4";
+				}
+			}
+			$.ajax({
+	    		beforeSend: function(request){
+					request.setRequestHeader('Authorization', "00000000000000000000000000000000");
+				},
+				type:'POST',
+				url: 'http://statistic.hdviet.com/api/v1/play',
+				data: {movieId : 11900 , platform: 1 , product : 2, action: 'error', error: JSON.stringify(eparam)  }
+			});
+		}
+		
+			});
+	
+	jwplayer('hdoplayer').on("playlistItem" , function(e) {
+		firstPlay = true;
+		var currentItem = jwplayer('hdoplayer').getPlaylistIndex();
+		var check = Math.ceil((currentItem + 1)/30);
+		if (check != NowPage){
+			NowPage = check;
+						loadEpisode('',NowPage, '' , '');
+					}
+		setTimeout(function(){ 
+			var data = jwplayer('hdoplayer').getPlaylistItem();
+			
+			if (data['mediaid']){
+				//playerSendEp(data['mediaid']);	
+			}
+		}, 3000);
+		
+	});
+	jwplayer('hdoplayer').on("playlist" , function(e) {
+		checkaddWatch(PlayFilm, e.playlist);
+	});
+	$(window).bind("beforeunload",function(){
+		jwplayer('hdoplayer').pause(true);
+	});
+});
+</script>
+      </div>
+    </div>	
+	<div class="tn-main2 clearfix" style="position: relative;padding-top: 0px;width: 925px;text-align: center;margin-bottom: 15px;">
+        <style>
+            .button-try-newplayer {
+            	isplay: inline-block;
+                padding: 7px 15px;
+                background: #fff;
+                margin-bottom: 10px;
+                border-radius: 2px;
+                color: #848282;
+            }
+            .button-try-newplayer:hover{
+            	background-color: #7bda37;
+                color: #FFF;
+                text-decoration: none;
+            }
+			.tip-player {
+            	padding: 5px 10px;
+                background: #ccc;
+                border-radius: 5px;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+            .tip-player span {
+            	display: block;
+            	padding: 5px;
+            }
+        </style>
+        <script type="text/javascript">
+        function tryNewPlayer(value){
+        	setVCookie('tryPlayer' , value);
+        	mConfirm({
+    			msg: "Há» thá»ng sáº½ táº£i láº¡i trang web Äá» kÃ­ch hoáº¡t player. Chá»n Ok Äá» tiáº¿p tá»¥c",
+    			mYes:{text:"Ok", callback: function(){window.location.reload()}},
+    			mNo:{text:"ÄÃ³ng", callback: null}
+    		});
+        	hdoTrackEvent("PlayerV2" , "tryPlayer_" + value);
+        }
+        </script>
+		<div class="button-list" style="margin-bottom: 13px;">
+                        <a href="javascript:void(0)" class="button-try-newplayer" onclick="buyPreroll(PlayFilm , 49)"><i class="fa fa-ban"></i> DÃ¹ng ngÃ´ vÃ ng bá» quáº£ng cÃ¡o</a>
+                    </div>
+    </div>
+    <div class="tn-main2 clearfix" style="position: relative;padding-top: 0px;width: 925px;">
+        <div id="list-video-item-detail" class="list-video-item-detail tn-boxsty-dv" style="display: none">
+            <div class="tn-list_carousel">
+                <div id="carousel-video-detail">
+                </div>
+                <span id="slider-button-detail-prev" class="tn-prevsty2">&lt;</span>
+                <span id="slider-button-detail-next" class="tn-nextsty2">&gt;</span>
+            </div>
+        </div>
+    </div>
+    <div class="tn-main2 div-content-table clearfix" style="position: relative;padding-top: 0px;width: 925px;">
+      <div class="tn-sentiment-actions" style="max-height: 45px;">
+    	<a rel="nofollow" href="javascript:void(0);" class="btn-actions switch"><i class="fa fa-lightbulb-o"></i> Táº¯t ÄÃ¨n</a>
+    	<a rel="nofollow" href="javascript:void(0)" onclick="setLike(12301, this)" class="btn-actions btn-likes-movie "><i class="fa fa-bookmark"></i> YÃªu thÃ­ch</a>
+    	<a rel="nofollow" href="javascript:void(0)" onclick="setLater(12301, this)" class="btn-actions "><i class="fa fa-plus"></i> Xem sau</a>
+    	<a rel="nofollow" href="javascript:void(0)" onclick="showBroken()" class="btn-actions"><i class="fa fa-warning"></i> BÃ¡o lá»i</a>
+    	<div class="pull-right" style="margin-top: 4px;">
+    	   <div style="display: inline-block;position: relative;top: -2px;margin-right: 10px;">
+                <i class="fa fa-bolt"></i> <div class="film_view_count" style="font-size: 25px;display: inline-block;  color: #A0C7A8;" title="Sá» lÆ°á»£t xem phim nÃ y" style="display: inline-block;position: relative;"></div>
+          </div>
+    	   <div class="fb-like" style="top: -6px;display: inline-block;z-index: 100000;" data-href="http://hdonline.vn/phim-new-journey-to-the-west-tan-tay-du-ky-2-12301.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+            <div data-href="http://hdonline.vn/phim-new-journey-to-the-west-tan-tay-du-ky-2-12301.html" class="g-plusone" data-size="medium"></div>
+         </div>
+    </div>
+      <div class="tn-main-r" style="float: left">
+	 	  
+              <div class="block-movie">
+            <div class="header-block-title">
+								Táº­p Phim 							</div>
+            <div class="block-child">
+              <div class="tab-content" style="height:auto !important;max-height: 340px;min-height: 340px;">
+                <div class="tab-pane active" id="danhsach">
+                  <div class="filmlist-search">
+                    <input type="text" class="form-control form-control-def" id="searchlist" onkeyup="onKeySearch(this)" placeholder="TÃ¬m táº­p phim...">
+                  </div>
+                  
+                  <div class="tn-cus-scroll filmlist-danhsach">
+                    <ul class="tn-uldef">
+                      
+                    </ul>
+                  </div>
+                  
+                </div>
+                              </div>
+            </div>
+        </div>
+                        <div style="text-align: center;;padding-bottom: 10px">
+            <script type='text/javascript'>
+/*
+   var m3_u = (location.protocol=='https:'?'https://ad.skylink.vn/tracking/ajs.php':'http://ad.skylink.vn/tracking/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=66");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+   */
+</script>            </div>
+              <div class="block-movie"  itemscope itemtype="http://schema.org/Product">
+        
+            <div class="header-block-title">ThÃ´ng tin</div>
+            <div class="block-child">
+                <div class="media media-filminfo">
+                    <div class="media-body">
+                    
+                      <ul class="filminfo-fields">
+                            <li style="display: none">
+                            <span style="display:none" itemprop="name">TÃ¢n TÃ¢y Du KÃ½ 2</span>
+                            <span style="display:none" itemprop="brand">HDOTV</span>
+                            <img itemprop="image" src="http://static.hdonline.vn/i/resources/new/film/215x311/2016/05/09/new-journey-to-the-west-tan-tay-du-ky-2.jpg"/>
+                        </li>
+                      	                      	<li>TÃªn Phim: <h1 style="font-size: 14px;margin: 0px;display: inline;"><strong>TÃ¢n TÃ¢y Du KÃ½ 2</strong></h1></li>
+                      	<li>TÃªn Tiáº¿ng Anh: <h2 style="font-size: 14px;margin: 0px;display: inline;"><strong>New Journey To The West 2 </strong></h2></li>
+                      	                      	                      	<li>TÃªn Gá»c: <strong>ì ìì ê¸° 2 </strong></li>
+                      	                      	<li>NÄm sáº£n xuáº¥t: <a href="/danh-sach/phim-theo-nam/2016.html" title="Phim sáº£n xuáº¥t nÄm 2016">2016</a></li>
+                        <li>Thá» loáº¡i: <strong><a href="http://hdonline.vn/xem-phim-hai-huoc.html">Phim HÃ i HÆ°á»c</a>, <a href="http://hdonline.vn/xem-phim-tv-show.html">Phim TV-Show</a></strong></li>
+                        <li>Quá»c gia: <strong><a href="/quoc-gia-han-quoc.html">Phim HÃ n Quá»c</a></strong></li>
+                                                <li>Thá»i lÆ°á»£ng: 08 Táº­p</li>
+                                               
+                                                <li>Äáº¡o diá»n: <a href="/phim-na-young-seok.html">Na Young Seok</a>, <a href="/phim-shin-hyo-jung.html">Shin Hyo Jung</a></li>
+                                                                    	                    	                       </ul>
+                      <div class="rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"> 
+                      <div class="rate-star">
+                            <span itemprop="ratingValue">10</span>
+                            <span itemprop="ratingCount" style="display:none">1</span>
+                            <span itemprop="bestRating" style="display:none">10</span>
+                            <span itemprop="worstRating" style="display:none">0</span>
+                        </div>
+                        <div class="rate-vote" style="padding-left: 5px;">
+                            <div class="your-rate">
+                                <div id="jRate-vote" style="display: inline-block;font-size: 11px;">Cá»§a báº¡n:</div>
+                                <div class="rate-vote-hover">
+                                    <div id="jRate" style="display: inline-block;"></div>
+                                    <div id="jrate-change" style="display: inline-block;font-size: 11px;">0/10</div>
+                                </div>
+                            </div>
+                            <div class="rate-people">
+                                                               ÄÃ¡nh giÃ¡ <strong>10</strong> tá»« <span style="display: inline-block;">1</span> thÃ nh viÃªn
+                                                            </div>
+                        </div>
+                      </div>
+                      <div class="tn-contentmt maxheightline-6" itemprop="description">
+                      	 <p><strong>Phim TÃ¢n TÃ¢y Du KÃ½ 2Â 2016</strong>Â chÆ°Æ¡ng trÃ¬nh sáº½ lÃ  chuyáº¿n du kÃ½ thÃº vá» cá»§a 4 thÃ nh viÃªn vá»i tÆ° cÃ¡ch lÃ  4 nhÃ¢n váº­t trong má»t bá» truyá»n kinh Äiá»n cá»§a Trung Quá»c " TÃ¢y Du KÃ½". Cáº£ 4 thÃ nh viÃªn sáº½ cÃ³ hÃ nh trÃ¬nh khÃ¡m phÃ¡ cÃ¡c vÃ¹ng miá»n khÃ¡c nhau cá»§a Trung Quá»c báº±ng cÃ¡ch hoÃ n thÃ nh cÃ¡c nhiá»m vá»¥, vá»i nhá»¯ng Äiá»u kiá»n vÃ  thá»­ thÃ¡ch cá»§a chÆ°Æ¡ng trÃ¬nh ÄÆ°a ra, qua ÄÃ³ mang Äáº¿n cho ngÆ°á»i xem má»t chÆ°Æ¡ng trÃ¬nh giáº£i trÃ­ káº¿t há»£p du lá»ch hoÃ n toÃ n má»i máº».</p>
+                      	
+                      </div>
+                      <div class="line-bottom"></div>
+                      <div class="tn-tagfin" style=" margin-bottom: 10px;">
+                            <h3 class="tn-texth3" style="display: inline;text-transform: none;">Tá»« khÃ³a:</h3>
+                        	                        	<h4><a href="/tag/new-journey-to-the-west-tan-tay-du-ky-2" class="" rel="tag"  style="color:#808080">TÃ¢n TÃ¢y Du KÃ½ 2</a></h4>,
+                        	<h4><a href="/tag/new-journey-to-the-west-2" class="" rel="tag" style="color:#808080">New Journey To The West 2 </a></h4>
+                        	                          	<div class="clearfix"></div>
+                        </div>
+                        <div class="line-bottom"></div>
+                        <div class="clearfix"></div>
+                        <div class="group-filminfo">
+                            <h3 class="tn-texth3">Diá»n ViÃªn</h3>
+                            <div class="actor-movie-list maxheightline-6">
+                            
+                            <ul class="group-filminfo-ul clearfix">
+                                        					<li class="media" style="width: 100%;margin-bottom: 0px;">
+            						<a href="/phim-eun-ji-won.html" class="pull-left" style="width: 45px;height: 45px;">
+            							<img onError="this.onerror=null;this.src='http://static.hdonline.vn/default_images/215x215.jpg';" src="http://static.hdonline.vn/i/resources/images/actor-s/eun-ji-won-poster.jpg" style="width:66px;height:auto !important;" alt="Eun Ji Won">
+            						</a>
+            						<div class="media-body">
+            	                      <span><a href="/phim-eun-ji-won.html"  class="tn-pcolor1">Eun Ji Won</a></span>
+            	                      <span title="Eun Ji Won trong vai " class="tn-texth3"><small></small></a></span>
+            	                    </div>
+            					</li>
+            				            					<li class="media" style="width: 100%;margin-bottom: 0px;">
+            						<a href="/phim-lee-su-geun.html" class="pull-left" style="width: 45px;height: 45px;">
+            							<img onError="this.onerror=null;this.src='http://static.hdonline.vn/default_images/215x215.jpg';" src="http://static.hdonline.vn/i/resources/images/actor-s/lee-su-geun-poster.jpg" style="width:66px;height:auto !important;" alt="Lee Su Geun">
+            						</a>
+            						<div class="media-body">
+            	                      <span><a href="/phim-lee-su-geun.html"  class="tn-pcolor1">Lee Su Geun</a></span>
+            	                      <span title="Lee Su Geun trong vai " class="tn-texth3"><small></small></a></span>
+            	                    </div>
+            					</li>
+            				            					<li class="media" style="width: 100%;margin-bottom: 0px;">
+            						<a href="/phim-kang-ho-dong.html" class="pull-left" style="width: 45px;height: 45px;">
+            							<img onError="this.onerror=null;this.src='http://static.hdonline.vn/default_images/215x215.jpg';" src="http://static.hdonline.vn/default_images/66x66.jpg" style="width:66px;height:auto !important;" alt="Kang Ho Dong">
+            						</a>
+            						<div class="media-body">
+            	                      <span><a href="/phim-kang-ho-dong.html"  class="tn-pcolor1">Kang Ho Dong</a></span>
+            	                      <span title="Kang Ho Dong trong vai " class="tn-texth3"><small></small></a></span>
+            	                    </div>
+            					</li>
+            				            					<li class="media" style="width: 100%;margin-bottom: 0px;">
+            						<a href="/phim-lee-seung-gi.html" class="pull-left" style="width: 45px;height: 45px;">
+            							<img onError="this.onerror=null;this.src='http://static.hdonline.vn/default_images/215x215.jpg';" src="http://static.hdonline.vn/i/resources/images/actor-s/lee-seung-gi-poster.jpg" style="width:66px;height:auto !important;" alt="Lee Seung Gi">
+            						</a>
+            						<div class="media-body">
+            	                      <span><a href="/phim-lee-seung-gi.html"  class="tn-pcolor1">Lee Seung Gi</a></span>
+            	                      <span title="Lee Seung Gi trong vai " class="tn-texth3"><small></small></a></span>
+            	                    </div>
+            					</li>
+            				                            </ul>
+                            </div>
+                          </div>
+                      
+                    </div>
+                    
+                  </div>
+              </div>
+        </div>
+        
+        
+                
+                
+                    <div class="tn-boxright">
+    <!-- BEGIN TAG - DO NOT MODIFY -->
+    <script type="text/javascript">
+    //<![CDATA[
+    blueseed_key = "a408278742ff25a89c0df2f4a5cba97a";
+    blueseed_channel = "";
+    blueseed_code_format = "ads-sync.js";
+    blueseed_ads_host = "//blueserving.com";
+    blueseed_click = "";
+    blueseed_custom_params = {};
+    blueseed_width = "300";
+    blueseed_height = "600";
+    
+    document.write("<script type='text\/javascript' src='"+(location.protocol == 'https:' ? 'https:' : 'http:') + "//blueserving.com\/js/show_ads_blueseed.js'><\/script>");
+    //]]>
+    </script>
+    <!-- END TAG -->
+</div>                			<div class="block-movie">
+            <div class="header-block-title">Phim liÃªn quan</div>
+            <div class="block-child">
+                <div class="tn-nolist_carousel">
+                    <ul id="similar_other" class="right-similar">
+                                                     
+     
+      <li class="key_similar_id" data-id="1842">
+     		 
+       		<div class="tn-bxitem">
+				<a href="/phim-ban-gai-toi-la-ho-ly-1842.html" class="bxitem-link"> 
+            	<span class="bxitem-img">
+            		<img src="http://static.hdonline.vn/i/resources/new/film/215x311/2014/08/14/ban-gai-toi-la-ho-ly.jpg" alt="Báº¡n GÃ¡i TÃ´i LÃ  Há» Ly" title="Báº¡n GÃ¡i TÃ´i LÃ  Há» Ly" > 
+            	</span>
+				<p class="bxitem-txt" title="Báº¡n GÃ¡i TÃ´i LÃ  Há» Ly"> Báº¡n GÃ¡i TÃ´i LÃ  Há» Ly </p>
+			</a>			</div>
+      
+      
+     
+      <li class="key_similar_id" data-id="6736">
+     		 
+       		<div class="tn-bxitem">
+				<a href="/phim-chay-dau-cho-thoat-6736.html" class="bxitem-link"> 
+            	<span class="bxitem-img">
+            		<img src="http://static.hdonline.vn/i/resources/new/film/215x311/2014/08/19/chay-dau-cho-thoat.jpg" alt="Cháº¡y ÄÃ¢u Cho ThoÃ¡t" title="Cháº¡y ÄÃ¢u Cho ThoÃ¡t" > 
+            	</span>
+				<p class="bxitem-txt" title="Cháº¡y ÄÃ¢u Cho ThoÃ¡t"> Cháº¡y ÄÃ¢u Cho ThoÃ¡t </p>
+			</a>			</div>
+      
+      
+     
+      <li class="key_similar_id" data-id="3627">
+     		 
+       		<div class="tn-bxitem">
+				<a href="/phim-cuu-gia-chi-thu-3627.html" class="bxitem-link"> 
+            	<span class="bxitem-img">
+            		<img src="http://static.hdonline.vn/i/resources/new/film/215x311/2014/08/15/cuu-gia-chi-thu.png" alt="Cá»­u Gia Chi ThÆ°" title="Cá»­u Gia Chi ThÆ°" > 
+            	</span>
+				<p class="bxitem-txt" title="Cá»­u Gia Chi ThÆ°"> Cá»­u Gia Chi ThÆ° </p>
+			</a>			</div>
+      
+      
+     
+      <li class="key_similar_id" data-id="7814">
+     		 
+       		<div class="tn-bxitem">
+				<a href="/phim-yeu-phai-do-do-hoi-7814.html" class="bxitem-link"> 
+            	<span class="bxitem-img">
+            		<img src="http://static.hdonline.vn/i/resources/new/film/215x311/2015/01/21/yeu-phai-do-do-hoi.jpg" alt="YÃªu Pháº£i Äá» Dá» HÆ¡i" title="YÃªu Pháº£i Äá» Dá» HÆ¡i" > 
+            	</span>
+				<p class="bxitem-txt" title="YÃªu Pháº£i Äá» Dá» HÆ¡i"> YÃªu Pháº£i Äá» Dá» HÆ¡i </p>
+			</a>			</div>
+      
+      
+     
+      <li class="key_similar_id" data-id="1514">
+     		 
+       		<div class="tn-bxitem">
+				<a href="/phim-loi-hoi-dap-1514.html" class="bxitem-link"> 
+            	<span class="bxitem-img">
+            		<img src="http://static.hdonline.vn/i/resources/new/film/215x311/2014/08/23/loi-hoi-dap.jpg" alt="Lá»i Há»i ÄÃ¡p" title="Lá»i Há»i ÄÃ¡p" > 
+            	</span>
+				<p class="bxitem-txt" title="Lá»i Há»i ÄÃ¡p"> Lá»i Há»i ÄÃ¡p </p>
+			</a>			</div>
+      
+      
+     
+      <li class="key_similar_id" data-id="6083">
+     		 
+       		<div class="tn-bxitem">
+				<a href="/phim-nguoi-thua-ke-6083.html" class="bxitem-link"> 
+            	<span class="bxitem-img">
+            		<img src="http://static.hdonline.vn/i/resources/new/film/215x311/2014/08/14/nguoi-thua-ke.png" alt="NgÆ°á»i Thá»«a Káº¿" title="NgÆ°á»i Thá»«a Káº¿" > 
+            	</span>
+				<p class="bxitem-txt" title="NgÆ°á»i Thá»«a Káº¿"> NgÆ°á»i Thá»«a Káº¿ </p>
+			</a>			</div>
+      
+      
+     
+      <li class="key_similar_id" data-id="10076">
+     		 
+       		<div class="tn-bxitem">
+				<a href="/phim-tan-tay-du-ky-2015-10076.html" class="bxitem-link"> 
+            	<span class="bxitem-img">
+            		<img src="http://static.hdonline.vn/i/resources/new/film/215x311/2015/09/22/tan-tay-du-ky.jpg" alt="TÃ¢n TÃ¢y Du KÃ½" title="TÃ¢n TÃ¢y Du KÃ½" > 
+            	</span>
+				<p class="bxitem-txt" title="TÃ¢n TÃ¢y Du KÃ½"> TÃ¢n TÃ¢y Du KÃ½ </p>
+			</a>			</div>
+      
+      
+                    </ul>
+                    <script type="text/javascript">
+                    $(document).ready(function(){
+                        var arrSimilar = {};
+						$('.key_similar_id').each(function(index, value){
+							if (arrSimilar[$(this).data('id')]){
+								$(this).remove();
+							}
+							arrSimilar[$(this).data('id')] = true;
+						});
+                    });</script>
+                </div>
+            </div>
+        </div>
+				 <div id="facebook_framepage">
+        </div>
+       
+      </div>
+        
+      <div class="tn-main-l" style="float: right;width: 593px;">
+         <div class="block-movie">
+            <div class="block-child">
+                <div class="fb-comments" data-version="v2.3" data-href="http://hdonline.vn/phim-new-journey-to-the-west-tan-tay-du-ky-2-12301.html" data-num-posts="10" data-width="100%" style="text-align: center">Äang táº£i bÃ¬nh luáº­n...</div>
+            </div>
+            
+            <div class="block-movie tab-posts">
+                <div class="cb-sidebar-widget-title">Tin tá»©c ná»i báº­t</div>
+<ul class="hot_posts_movie">
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/hac-hung-tinh-han-thien-tuc-cua-tay-du-ky-1986-qua-doi.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/06/21/hac-hung-tinh-han-thien-tuc-cua-tay-du-ky-1986-qua-doi.jpg" title="'Háº¯c HÃ¹ng Tinh' HÃ n Thiá»n Tá»¥c cá»§a 'TÃ¢y Du KÃ½' 1986 qua Äá»i">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/hac-hung-tinh-han-thien-tuc-cua-tay-du-ky-1986-qua-doi.html">
+                'Háº¯c HÃ¹ng Tinh' HÃ n Thiá»n Tá»¥c cá»§a 'TÃ¢y Du KÃ½' 1986 qua Äá»i            </a>
+            <span class="by-sumary">LÃ ng nghá» thuáº­t Hoa ngá»¯ láº¡i pháº£i Äá»i máº·t vá»i máº¥t mÃ¡t lá»n khi nam diá»n viÃªn gáº¡o cá»i HÃ n Thiá»n Tá»¥c qua Äá»i.</span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/nhung-loi-thoai-kinh-dien-trong-phim-tay-du-ky-ma-ai-cung-thuoc-nam-long.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/06/16/ban-co-thuoc-het-nhung-loi-thoai-kinh-dien-trong-tay-du-ky-1986.jpg" title="Nhá»¯ng lá»i thoáº¡i kinh Äiá»n trong phim TÃ¢y Du KÃ½ mÃ  ai cÅ©ng thuá»c náº±m lÃ²ng">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/nhung-loi-thoai-kinh-dien-trong-phim-tay-du-ky-ma-ai-cung-thuoc-nam-long.html">
+                Nhá»¯ng lá»i thoáº¡i kinh Äiá»n trong phim TÃ¢y Du KÃ½ mÃ  ai cÅ©ng thuá»c náº±m lÃ²ng            </a>
+            <span class="by-sumary">'Äáº¡i sÆ° huynh, sÆ° phá»¥ bá» yÃªu quÃ¡i báº¯t Äi rá»i', 'YÃªu quÃ¡i Än má»t gáº­y cá»§a lÃ£o TÃ´n ta', 'Báº§n tÄng Äáº¿n tá»« ÄÃ´ng thá» Äáº¡i ÄÆ°á»ng',â¦30 nÄm rá»i, báº¡n váº«n cÃ²n nhá» nhá»¯ng cÃ¢u thoáº¡i nÃ y chá»©?</span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/me-met-voi-loat-bieu-cam-cute-het-cho-che-cua-nam-thu-nhat-gai-yoon-do.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/07/12/doctors-loat-bieu-cam-cute-het-co-cua-nam-thu-nhat-gai-yoon-do.png" title="MÃª má»t vá»i loáº¡t biá»u cáº£m cute háº¿t chá» chÃª cá»§a nam thá»© nhÃ¡t gÃ¡i Yoon Do">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/me-met-voi-loat-bieu-cam-cute-het-cho-che-cua-nam-thu-nhat-gai-yoon-do.html">
+                MÃª má»t vá»i loáº¡t biá»u cáº£m cute háº¿t chá» chÃª cá»§a nam thá»© nhÃ¡t gÃ¡i Yoon Do            </a>
+            <span class="by-sumary">BÃ¡c sÄ© Yoon Do Äang trá» thÃ nh cÃ¢y 'hÃºt fan' má»i cá»§a drama 'Doctors'. Anh chÃ ng má»i náº¿m mÃ¹i tÃ¬nh yÃªu ÄÃ£ thÆ°á»ng xuyÃªn rÆ¡i vÃ o tÃ¬nh cáº£nh bá»i rá»i, ngÆ°á»£ng ngÃ¹ng vÃ´ cÃ¹ng dá» thÆ°Æ¡ng.</span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/yoon-kyun-sang-tu-chang-beo-truot-dai-hoc-toi-nam-thu-dien-trai-cua-doctors.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/07/12/yoon-kyun-sang-tu-chang-beo-truot-dai-hoc-toi-nam-thu-dien-trai-cua-doctors.jpg" title="Yoon Kyun Sang: Tá»« chÃ ng bÃ©o trÆ°á»£t Äáº¡i há»c tá»i nam thá»© Äiá»n trai cá»§a 'Doctors'">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/yoon-kyun-sang-tu-chang-beo-truot-dai-hoc-toi-nam-thu-dien-trai-cua-doctors.html">
+                Yoon Kyun Sang: Tá»« chÃ ng bÃ©o trÆ°á»£t Äáº¡i há»c tá»i nam thá»© Äiá»n trai cá»§a 'Doctors'            </a>
+            <span class="by-sumary">CÃ¹ng tÃ¬m hiá»u vá» Yoon Kyun Sang, nam diá»n viÃªn Äang ráº¥t ÄÆ°á»£c yÃªu máº¿n qua vai diá»n Jung Yoon Do trong bá» phim 'Doctors'.  </span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/10-bo-phim-kinh-khung-nhat-moi-thoi-dai-bi-cam-chieu-o-nhieu-quoc-gia.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/07/12/1118full-a-serbian-film-screenshot.jpg" title="10 bá» phim kinh khá»§ng nháº¥t má»i thá»i Äáº¡i, bá» cáº¥m chiáº¿u á» nhiá»u quá»c gia">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/10-bo-phim-kinh-khung-nhat-moi-thoi-dai-bi-cam-chieu-o-nhieu-quoc-gia.html">
+                10 bá» phim kinh khá»§ng nháº¥t má»i thá»i Äáº¡i, bá» cáº¥m chiáº¿u á» nhiá»u quá»c gia            </a>
+            <span class="by-sumary">Trong tháº¿ giá»i phim áº£nh, cÃ³ ráº¥t nhiá»u thá» loáº¡i nhÆ° phim lÃ£ng máº¡n, tá»i pháº¡m, phim hÃ i, phim kinh dá».... vÃ  cÃ³ má»t thá» loáº¡i phim mÃ  chÃºng ta khÃ´ng biáº¿t pháº£i Äáº·t tÃªn lÃ  gÃ¬ ngoÃ i tá»« "KINH KHá»¦NG".</span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/9-bo-phim-co-canh-nong-lo-bich-nhat-moi-thoi-dai.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/06/28/heather-graham-nude-sex-scene-in-killing-me-softly-8456-1.jpg" title="9 bá» phim cÃ³ cáº£nh nÃ³ng lá» bá»ch nháº¥t má»i thá»i Äáº¡i">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/9-bo-phim-co-canh-nong-lo-bich-nhat-moi-thoi-dai.html">
+                9 bá» phim cÃ³ cáº£nh nÃ³ng lá» bá»ch nháº¥t má»i thá»i Äáº¡i            </a>
+            <span class="by-sumary">CÃ¹ng Äiá»m danh 9 bá» phim cÃ³ cáº£nh nÃ³ng lá» bá»ch nháº¥t má»i thá»i Äáº¡i.</span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/dwayne-the-rock-johnson-bat-ngo-vao-tu-fast-8.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/07/12/dwayne-the-rock-johnson-bat-ngo-vao-tu-fast-8.jpg" title="Dwayne 'The Rock' Johnson báº¥t ngá» vÃ o tÃ¹ 'Fast 8'">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/dwayne-the-rock-johnson-bat-ngo-vao-tu-fast-8.html">
+                Dwayne 'The Rock' Johnson báº¥t ngá» vÃ o tÃ¹ 'Fast 8'            </a>
+            <span class="by-sumary">TÃ i tá»­ kiÃªm ÄÃ´ váº­t triá»u USD hÃ© lá» má»t chi tiáº¿t báº¥t ngá» vá» nhÃ¢n váº­t cáº£nh sÃ¡t Luke Hobbs trong pháº§n tÃ¡m loáº¡t phim hÃ nh Äá»ng Än khÃ¡ch toÃ n cáº§u.</span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/sau-hon-mot-thap-ky-dong-phim-nhan-sac-cua-park-shin-hye-da-thay-doi-nhu-the-nao.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/07/08/sau-hon-mot-thap-ky-dong-phim-nhan-sac-cua-park-shin-hye-da-thay-doi-nhu-the-nao.jpg" title="Sau hÆ¡n má»t tháº­p ká»· ÄÃ³ng phim, nhan sáº¯c cá»§a Park Shin Hye ÄÃ£ thay Äá»i nhÆ° tháº¿ nÃ o?">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/sau-hon-mot-thap-ky-dong-phim-nhan-sac-cua-park-shin-hye-da-thay-doi-nhu-the-nao.html">
+                Sau hÆ¡n má»t tháº­p ká»· ÄÃ³ng phim, nhan sáº¯c cá»§a Park Shin Hye ÄÃ£ thay Äá»i nhÆ° tháº¿ nÃ o?            </a>
+            <span class="by-sumary"> HÆ¡n má»t tháº­p ká»· 'tung hoÃ nh' trÃªn mÃ n áº£nh nhá», khÃ´ng thá» khÃ´ng cÃ´ng nháº­n Park Shin Hye ngÃ y má»t bá»«ng ná» quyáº¿n rÅ©...</span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/pham-bang-bang-hoa-ho-ly-tinh-hung-ac-nhung-khong-kem-phan-kheu-goi.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/07/12/pham-bang-bang-hoa-ho-ly-tinh-hung-ac-nhung-khong-kem-phan-kheu-goi.jpg" title="Pháº¡m BÄng BÄng hÃ³a há» ly tinh hung Ã¡c nhÆ°ng khÃ´ng kÃ©m pháº§n khÃªu gá»£i">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/pham-bang-bang-hoa-ho-ly-tinh-hung-ac-nhung-khong-kem-phan-kheu-goi.html">
+                Pháº¡m BÄng BÄng hÃ³a há» ly tinh hung Ã¡c nhÆ°ng khÃ´ng kÃ©m pháº§n khÃªu gá»£i            </a>
+            <span class="by-sumary">Trong 'Phong Tháº§n truyá»n ká»³', ngÆ°á»i Äáº¹p má»t máº·t dÃ¹ng nhan sáº¯c quyáº¿n rÅ© Trá»¥ VÆ°Æ¡ng, máº·t khÃ¡c dÃ¹ng yÃªu thuáº­t chá»ng láº¡i KhÆ°Æ¡ng Tá»­ Nha.</span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/park-shin-hye-om-mat-bo-chay-vi-bi-kim-rae-won-noi-trung-tim-den.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/07/11/park-shin-hye-om-mat-bo-chay-vi-bi-kim-rae-won-noi-trung-tim-densdfsd.jpg" title="Park Shin Hye Ã´m máº·t bá» cháº¡y vÃ¬ bá» Kim Rae Won nÃ³i trÃºng 'tim Äen'">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/park-shin-hye-om-mat-bo-chay-vi-bi-kim-rae-won-noi-trung-tim-den.html">
+                Park Shin Hye Ã´m máº·t bá» cháº¡y vÃ¬ bá» Kim Rae Won nÃ³i trÃºng 'tim Äen'            </a>
+            <span class="by-sumary">Trong clip giá»i thiá»u táº­p 7 'Doctors', khÃ¡n giáº£ ÄÆ°á»£c phen thÃ­ch thÃº vá»i biá»u cáº£m cá»§a Park Shin Hye khi bá» Kim Rae Won ÄÃ¡nh trÃºng 'tim Äen'.</span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/vi-sao-loat-phim-bom-tan-he-lien-tiep-tro-thanh-bom-xit.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/07/12/ly-do-that-bai-cua-nhung-phan-tiep-theo-loat-phim-bom-tan-he.jpg" title="VÃ¬ sao loáº¡t phim bom táº¥n hÃ¨ liÃªn tiáº¿p trá» thÃ nh 'bom xá»t'?">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/vi-sao-loat-phim-bom-tan-he-lien-tiep-tro-thanh-bom-xit.html">
+                VÃ¬ sao loáº¡t phim bom táº¥n hÃ¨ liÃªn tiáº¿p trá» thÃ nh 'bom xá»t'?            </a>
+            <span class="by-sumary"> Má»t trong nhá»¯ng chá»§ Äá» Äiá»n áº£nh lá»n nháº¥t cá»§a mÃ¹a hÃ¨ 2016 lÃ  tháº¥t báº¡i táº¡i phÃ²ng vÃ© cá»§a hÃ ng loáº¡t cÃ¡c phim sequel (pháº§n tiáº¿p theo). </span>
+        </span>
+    </div>
+</li>
+<li>
+    <div class="content-news">
+        <span class="news-thumb">
+            <a href="/dien-anh/nhung-goi-y-bi-an-trong-phim-sieu-anh-hung-marvel-ma-cac-fan-co-the-chua-tung-biet-den.html">
+                <img src="http://static.hdonline.vn/i/resources/new/post/thumb/2016/07/11/nhung-goi-y-bi-an-trong-phim-sieu-anh-hung-marvel-ma-cac-fan-co-the-chua-tung-biet-den.jpg" title="Nhá»¯ng gá»£i Ã½ bÃ­ áº©n trong phim siÃªu anh hÃ¹ng Marvel mÃ  cÃ¡c fan cÃ³ thá» chÆ°a tá»«ng biáº¿t Äáº¿n">
+                
+            </a>
+        </span>
+        <span class="news-title">
+            <a href="/dien-anh/nhung-goi-y-bi-an-trong-phim-sieu-anh-hung-marvel-ma-cac-fan-co-the-chua-tung-biet-den.html">
+                Nhá»¯ng gá»£i Ã½ bÃ­ áº©n trong phim siÃªu anh hÃ¹ng Marvel mÃ  cÃ¡c fan cÃ³ thá» chÆ°a tá»«ng biáº¿t Äáº¿n            </a>
+            <span class="by-sumary">VÅ© trá»¥ Äiá»n áº£nh Marvel ÄÃ£ gá»£i Ã½ cho chÃºng ta khÃ¡ nhiá»u vá» nhá»¯ng tÃ¬nh tiáº¿t lá»n sáº½ xáº£y ra trong cÃ¡c pháº§n phim tiáº¿p theo. Tuy nhiÃªn, ÄÃ´i khi nhá»¯ng gá»£i Ã½ ÄÃ³ láº¡i quÃ¡ nhá» bÃ© khiáº¿n cho cÃ¡c fan hÃ¢m má» khÃ³ cÃ³ thá» nháº­n ra chÃºng.</span>
+        </span>
+    </div>
+</li>
+</ul>
+            </div>
+            
+        </div>
+            
+        <div> 
+      </div>
+    <div class="clearfix"></div>
+    </div>
+    <!-- 
+    <div class="filminfo-social">
+        <a href="http://hdonline.vn/phim-new-journey-to-the-west-tan-tay-du-ky-2-12301.html" data-sharelink="https://www.facebook.com/sharer/sharer.php?app_id=138449339641932&display=popup&u="  class="facebookshare">
+            <i class="fa fa-facebook fa-lg"></i>
+        </a>
+        <a href="http://hdonline.vn/phim-new-journey-to-the-west-tan-tay-du-ky-2-12301.html" data-sharelink="https://plus.google.com/share?url="  class="googleshare">
+            <i class="fa fa-google-plus fa-lg"></i>
+        </a>
+        
+	</div>
+    -->
+			                  </div>
+<style>
+.media-body span{
+    display: block;
+}
+.image-screenshot li{
+	width: 49%;
+    margin: 0.5%;
+    display: inline-block;
+}
+.image-screenshot li img{
+	cursor: pointer;
+}
+.filminfo-fields > li{
+	list-style-type: square;
+}
+.filminfo-fields {
+    margin: 0 0 10px;
+    padding: 0px 10px 0px 20px;
+}
+
+.line-bottom{
+	    clear: both;
+    border-bottom: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+.tn-tagfin h4 {
+	display: inline;
+}
+.tn-main-l{
+    padding-bottom: 0px;
+}
+</style>
+ <div id="adstracking">
+ </div>
+    <!-- Facebook Conversion Code for HDO - Phim HÃ n Quá»c -->
+    <script>(function() {
+    var _fbq = window._fbq || (window._fbq = []);
+    if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+    }
+    })();
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', '6031061166072', {'value':'0.00','currency':'VND'}]);
+    </script>
+<script type="text/javascript">
+URL_FANPAGE = "https://www.facebook.com/HDOHanQuoc";
+function resize_player (player,resize)
+{
+	var jw5 = "";
+	if ($("#"+player+"_wrapper").length > 0){
+		jw5 = "_wrapper";
+	} 
+	if(resize == "min" || resize == "_min")	{
+		$(".player-container #"+player+jw5).animate({width: "925px"}, 200);
+		$(".player-container #player, .player-container #player #"+player+jw5).animate({height: "520px"}, 200);
+	} else {
+		$(".player-container #"+player+jw5).animate({width: "1200px"}, 200);
+		$(".player-container #player, .player-container #player #"+player+jw5).animate({height: "675px"}, 200);
+	}; 
+}
+
+function sendToFriend(){FB.ui({method: 'send',link: 'http://hdonline.vn/phim-new-journey-to-the-west-tan-tay-du-ky-2-12301.html'});}
+function playerSendContact(){showBroken();}
+var preSlotOneImp = true;
+var preSlotOneStr = true;
+var isMovieDetailPage = true;
+function vpluginadstracking($event, $id){}
+$(window).load(function () {
+	setViewFilm(PlayFilm);
+	var filmView = 6486;
+	var startPlus = filmView - 2000;
+	if (startPlus > 0){
+		var startPlay = filmView - 5000;
+		if (startPlay < 0){startPlay = 0;}
+		var filmPlus = setInterval(function(){
+			startPlay += Math.round(28);
+			$(".film_view_count").html(numberWithCommas(startPlay));
+			if (startPlay >= startPlus){
+    			 clearInterval(filmPlus);
+    			 $(".film_view_count").html(numberWithCommas(startPlus));
+    			 filmPlus = setInterval(function(){
+    		    		startPlus++;
+    		    		if (startPlus > filmView){
+    		    			 clearInterval(filmPlus);
+    		    		} else {
+    					  $(".film_view_count").html(numberWithCommas(startPlus));
+    					}
+    		    	  }, 200);
+    		}
+    	  }, 50); 
+	} else {
+		$(".film_view_count").html(numberWithCommas(filmView));
+	}
+});
+var intLoadScroll;
+function callScroll(){
+	try {
+		
+    	if ($(".tn-main-r").height() > $(".tn-main-l").height()){
+    		var objScroll = $(".tn-main-l");
+    		var leftPad = $('.div-content-table').offset().left + $('.tn-main-r').outerWidth() + 12;
+    		var leftBottom = $('.tn-main-r').outerWidth() + 10;
+    		$(".tn-main-r").css({
+    			position: "relative",
+    			top: "0px",
+    			bottom: "auto",
+    			left: "auto"
+    		});
+    	} else {
+    		var objScroll = $(".tn-main-r");
+    		var leftPad = leftBottom = "auto";
+    		$(".tn-main-l").css({
+    			position: "relative",
+    			top: "0px",
+    			bottom: "auto",
+    			left: "auto"
+    		});
+    	}
+    	if ($(window).scrollTop() > objScroll.height() && $(window).scrollTop() > $('.tn-main2').offset().top) {
+    		if ( $(window).height()  < objScroll.height()){
+    			objScroll.css({
+        			position: "fixed",
+        			top: "auto",
+        			bottom: "0px",
+        			left: leftPad
+        		});
+    		} else if ($(window).scrollTop() > $('.div-content-table').offset().top){
+    			objScroll.css({
+        			position: "fixed",
+        			top: "0px",
+        			bottom: "auto",
+        			left: leftPad
+        		});
+    		}
+    		if ($(window).scrollTop() + $(window).height() >= $(document).height() - $('.tn-footer-full').height() ){
+    			if ( $(window).height()  < objScroll.height()){
+    				objScroll.css({
+        				position: "absolute",
+        				top: "auto",
+        				bottom: "0px",
+        				left: leftBottom
+        			});
+        		} else if ($(window).scrollTop() + $(window).height() + objScroll.height()>= $(document).height() - $('.tn-footer-full').height()){
+        			objScroll.css({
+        				position: "absolute",
+        				top: "auto",
+        				bottom: "0px",
+        				left: leftBottom
+        			});
+        		} else {
+        			objScroll.css({
+            			position: "fixed",
+            			top: "0px",
+            			bottom: "auto",
+            			left: leftPad
+            		});
+        		}
+    		} 
+    		
+    	} else {
+    		objScroll.css({
+    			position: "relative",
+    			top: "0px",
+    			bottom: "auto",
+    			left: "auto"
+    		});
+    	}
+	} catch(e){}
+}
+function callResize(){
+	//callScroll();
+	if ($( window ).width() > $(".player-container").width() + $(".filminfo-social").width()){
+      $(".filminfo-social").show();
+    } else {
+      $(".filminfo-social").hide();
+    }
+}
+
+function callAddBackground(){
+		 
+	$(".tn-main-full").css({
+		backgroundImage : "url('http://data.hdonline.vn/file/Oppo_1920x1080_bg_Jan_16.jpg')",
+		backgroundPosition : "50% -45px",
+        backgroundRepeat : "no-repeat",
+        backgroundColor: "#000",
+    	backgroundAttachment: "fixed",
+	});
+	$(".tn-main2").css('z-index',3);
+	$("#hdoplayer").css('z-index',4);
+	$("#bswrapper_inhead, #tn-footer-full").css('z-index',4);
+	$("#bswrapper_inhead, #tn-footer-full").css('position',"relative");
+    $(".tn-main-full").prepend('<img src="http://blueserving.com/impression.gif?b=2775&p=2057&c=560&imh=f2b5f5c4849f41b0544660a9eb461d64&r=1468388254&u=" heigth="1px" width="1px"><a href="http://blueserving.com/cr?b=2775&p=2057&c=560&clh=f2b5f5c4849f41b0544660a9eb461d64&epomUUID=f1c8b900-6e54-11e5-bdbd-0025b320a860&u=http%3A%2F%2Fwww.oppomobile.vn%2Fvooc-sieutrom%3Futm_source%3DBlueseed%26utm_medium%3DBackground_HDO%26utm_campaign%3DVOOC_Sieutrom" target="_blank" style="width: 100%;height: 100%;display: block;position: absolute;z-index: 3;"></a>');
+    }
+
+var jRateConfig = {
+		startColor: 'yellow', endColor: 'yellow',
+    	precision: 1,
+    	min: 0,
+		max: 10,
+		count: 10,
+		width: 15,
+		height: 15,
+		rating: 0,
+		backgroundColor: '#ccc'
+};
+
+var objDataVideoDeatail = [];
+function intVideoScrollDetail(){
+	var html = "";
+	$.ajax({
+		url: HDOCONFIG.urlGetMoreVideo,
+		type:"GET",
+		dataType : "json",
+		cache: false,
+		data: {film : "12301"},
+	}).done(function(e){
+		if (e.data && e.data.length > 0){
+			$.each(e.data , function(index , value){
+				var name = value.title;
+				if (name.length > 20){
+					name = name.substring(0, 17) + "...";
+				}
+				objDataVideoDeatail.push(value);
+				html += '<div class="item-video"><a data-film="12301" onclick="viewVideo(\'' + value.slug + '\');return false;" data-index="' + (objDataVideoDeatail.length - 1) + '" data-id="' + value.id + '" title="' + value.title + '" data-slug="' + value.slug + '" data-type="video" class="send-video-player bxitem-link" href="' + value.url + '"><img src="'+ value.image + '"/><span class="bxitem-txt video-title">' + name + '</span><span class="bxitem-over_play"></span></a></div>';
+			});
+			$('#carousel-video-detail').html(html);
+			$("#list-video-item-detail").fadeIn();
+			$('#carousel-video-detail').carouFredSel({
+		    	items: {width: 200 , visible: {min: 3 , max: 8}},
+		        direction: "left",
+		        align: 'center',
+		        width: "100%",
+		    	responsive: false,
+		    	infinite: false,
+		    	circular: true,
+		    	scroll: {
+		    		items: 4,
+		    		duration: 400
+		    	},
+		    	next: {
+		    		button: "#slider-button-detail-next",
+		    		key: "right"
+		    	},
+		    	prev: {
+		    		button: "#slider-button-detail-prev",
+		    		key: "left"
+		    	},
+		    	auto: {
+		    		play: false
+		    	}
+		    });
+		}
+ 	});
+}
+$( window ).resize(function() {
+	callResize();
+});
+$(window).scroll(function(){callScroll();});
+
+$(document).ready(function(){
+	$('.tn-contentmt').readmore({
+  	  speed: 75,
+  	  lessLink: '<a href="javascript:void(0);" class="center-block text-right">Thu gá»n</a>',
+  	  moreLink: '<a href="javascript:void(0);" class="center-block text-right">Xem thÃªm..</a>',
+	  collapsedHeight : 60 
+ 	});
+	$('.actor-movie-list').readmore({
+  	  speed: 75,
+  	  lessLink: '<a href="javascript:void(0);" class="center-block text-right">Thu gá»n</a>',
+  	  moreLink: '<a href="javascript:void(0);" class="center-block text-right">Xem thÃªm..</a>'
+ 	});
+	$("#closeFeedback").click(function(e) {
+		e.preventDefault();
+	    $(".feedbackMovie").fadeOut();
+	});
+	
+	$(".sendFeedback").click(function(e) {
+		e.preventDefault();
+	    sendFeedBack();
+	});
+
+	$('.hideall').hide();
+
+	$.lockfixed(".float-left",{offset: {
+		top: 10, 
+		bottom: $(document).height() - $('.tn-footer-full').offset().top + 10
+		}
+	});	
+	$.lockfixed(".float-right",{offset: {
+		top: 10, 
+		bottom: $(document).height() - $('.tn-footer-full').offset().top + 10
+		}
+	});	 
+	
+	jRateConfig.onChange =  function(rating) {
+		$('#jrate-change').text(rating + "/10");
+	};
+    jRateConfig.onSet = function(rating) {
+    	if (isLogin){
+			$.ajax({
+				url: HDOCONFIG.urlRate,
+				type:"GET",
+				dataType : "json",
+				cache: false,
+				data: {film:PlayFilm, vote:rating},
+			}).done(function(e){
+				jRateConfig.onSet = function(){};
+				jRateConfig.readOnly = true;
+				jRateConfig.rating = e.rating;
+				//$("#jRate").html("");
+				//$('#jrate-change').text(e.rating + "/10");
+				//$("#jRate").jRate(jRateConfig);
+			}).fail(function(e){});
+		} else {
+        	openLogin();
+        }
+    }
+    $("#jRate").jRate(jRateConfig);
+    //callAddBackground();
+    
+    
+		callScroll();
+	callResize();
+	intVideoScrollDetail();
+});
+</script>
+<!-- BEGIN TAG - DO NOT MODIFY -->
+<script type="text/javascript">
+//<![CDATA[
+blueseed_key = "5bd0b5f7fc6501504a7b2eeae53b9df3";
+blueseed_channel = "";
+blueseed_code_format = "ads-sync.js";
+blueseed_ads_host = "//blueserving.com";
+blueseed_click = "";
+blueseed_custom_params = {};
+
+document.write("<script type='text\/javascript' src='"+(location.protocol == 'https:' ? 'https:' : 'http:') + "//blueserving.com\/js/show_ads_blueseed.js'><\/script>");
+//]]>
+</script>
+<!-- END TAG --><style>
+.filminfo-view {
+	z-index: 0 !important;
+}
+.filmlist-tab li:last-child{
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+}
+.filmlist-tab > li {
+    margin: 0 0px 0 0;
+}
+.filmlist-tab > li a {
+	font-size: 15px;
+}
+#lichcapnhat .filmlist-lichphatsong{
+	border: none;
+}
+</style>
+  <footer class="tn-footer-full">
+    <div class="tn-tagf">
+      <div class="tn-wrapfix clearfix">
+        
+<div class="tn-tagfin"> TAGS:&nbsp;&nbsp;
+      	<h5><a href="http://hdonline.vn/phim-qua-nhanh-qua-nguy-hiem-7-7454.html" rel="tag" class="tn-atag">QuÃ¡ Nhanh QuÃ¡ Nguy Hiá»m 7</a></h5>
+    	
+	<h5><a href="http://hdonline.vn/phim-tan-than-dieu-dai-hiep-thuyet-minh-7725.html" rel="tag" class="tn-atag">TÃ¢n Tháº§n ÄiÃªu Äáº¡i Hiá»p</a></h5>
+	
+		<h5><a href="/tag/disney" title="Xem Phim Disney" rel="tag" class="tn-atag">Disney</a></h5>
+	
+		<h5><a href="/tag/phim-dc" title="Xem Phim Phim DC" rel="tag" class="tn-atag">Phim DC</a></h5>
+	
+		<h5><a href="/tag/phim-anime" title="Xem Phim Phim Anime" rel="tag" class="tn-atag">Phim Anime</a></h5>
+	
+		<h5><a href="/tag/cong-vien-khung-long" title="Xem Phim CÃ´ng ViÃªn Khá»§ng Long" rel="tag" class="tn-atag">CÃ´ng ViÃªn Khá»§ng Long</a></h5>
+	
+		<h5><a href="/tag/ke-huy-diet" title="Xem Phim Káº» Há»§y Diá»t" rel="tag" class="tn-atag">Káº» Há»§y Diá»t</a></h5>
+	
+		<h5><a href="/tag/nhiem-vu-bat-kha-thi" title="Xem Phim Nhiá»m vá»¥ báº¥t kháº£ thi" rel="tag" class="tn-atag">Nhiá»m vá»¥ báº¥t kháº£ thi</a></h5>
+	
+		<h5><a href="/tag/phim-marvel" title="Xem Phim Phim Marvel" rel="tag" class="tn-atag">Phim Marvel</a></h5>
+	
+		<h5><a href="/tag/doraemon" title="Xem Phim Doraemon" rel="tag" class="tn-atag">Doraemon</a></h5>
+	
+		<h5><a href="/tag/phim-rap" title="Xem Phim Phim ráº¡p" rel="tag" class="tn-atag">Phim ráº¡p</a></h5>
+	
+		<h5><a href="/tag/hong-kim-bao" title="Xem Phim Há»ng Kim Báº£o" rel="tag" class="tn-atag">Há»ng Kim Báº£o</a></h5>
+	
+		<h5><a href="/tag/jackie-chan" title="Xem Phim Jackie Chan" rel="tag" class="tn-atag">Jackie Chan</a></h5>
+	
+		<h5><a href="/tag/chung-tu-don" title="Xem Phim Chung Tá»­ ÄÆ¡n" rel="tag" class="tn-atag">Chung Tá»­ ÄÆ¡n</a></h5>
+	
+		<h5><a href="/tag/jacky-wu" title="Xem Phim Jacky Wu" rel="tag" class="tn-atag">Jacky Wu</a></h5>
+	
+		<h5><a href="/tag/ngo-kinh" title="Xem Phim NgÃ´ Kinh" rel="tag" class="tn-atag">NgÃ´ Kinh</a></h5>
+	
+		<h5><a href="/tag/chau-nhuan-phat" title="Xem Phim ChÃ¢u Nhuáº­n PhÃ¡t" rel="tag" class="tn-atag">ChÃ¢u Nhuáº­n PhÃ¡t</a></h5>
+	
+		<h5><a href="/tag/jason-staham" title="Xem Phim Jason Staham" rel="tag" class="tn-atag">Jason Staham</a></h5>
+	    
+</div>
+      </div>
+    </div>
+    <div class="footer_two">
+    <div class="main-width clearfix">
+        <div class="spec_footer first">
+            <p class="title">HDONLINE</p>
+            <ul>
+               	<li><a rel="nofollow" href="/tin-tuc/gioi-thieu.html">Giá»i thiá»u</a></li>
+                <li><a rel="nofollow" href="http://m.hdonline.vn">PhiÃªn báº£n Mobile</a></li>
+                <li><a rel="nofollow" href="https://fb.com/HDOCinema">Facebook HDO</a></li>
+                <li><a rel="nofollow" href="https://www.youtube.com/user/hdochanels">Youtube Channel</a></li>
+            </ul>
+        </div>
+        <div class="spec_footer year_footer">
+            <p class="title">ÄÃNG GÃP</p>
+            <ul>
+               	<li><a rel="nofollow" href="http://id.hdonline.vn">ThÃ nh viÃªn VIP</a></li>
+               	<li><a rel="nofollow" href="http://hdonline.vn/tin-tuc/huong-dan-su-dung.html">HÆ°á»ng dáº«n sá»­ dá»¥ng</a></li>
+                <li><a rel="nofollow" href="javascript:void(0)" onclick="showContactAds()">LiÃªn há» quáº£ng cÃ¡o</a></li>
+            </ul>
+        </div>
+        <div class="spec_footer">
+            <p class="title">QUY Äá»NH</p>
+            <ul>
+                <li><a rel="nofollow" href="/tin-tuc/dieu-khoan-su-dung.html">Äiá»u khoáº£n sá»­ dá»¥ng</a></li>
+                <li><a rel="nofollow" href="/tin-tuc/chinh-sach-rieng-tu.html">ChÃ­nh sÃ¡ch riÃªng tÆ°</a></li>
+                <li><a rel="nofollow" href="/tin-tuc/nguyen-tac-cong-dong.html">NguyÃªn táº¯c cá»ng Äá»ng</a></li>
+                <li><a rel="nofollow" href="/tin-tuc/quy-trinh-bao-cao-vi-pham-ban-quyen.html">Khiáº¿u náº¡i báº£n quyá»n</a></li>
+            </ul>
+        </div>
+        <div class="spec_footer last">
+            <p class="title">TRá»¢ GIÃP</p>
+            <ul>
+            	<li><a rel="nofollow" href="http://id.hdonline.vn/hoi-dap.html" target="_blank">Há»i ÄÃ¡p</a></li>
+                <li><a rel="nofollow" href="javascript:void(0)" onclick="showContact()">LiÃªn há»</a></li>
+                <li><a rel="nofollow" href="https://docs.google.com/forms/d/1F3b75HS7ypGXuMwcdcOrhjDxwL-PWBgSqaX7wo6omPs/viewform" target="_blank">GÃ³p Ã½</a></li>
+                <li><a rel="nofollow" href="javascript:void(0)">BÃ¡o lá»i</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="tn-footer clearfix">
+      <div class="tn-footer-r">Copyright Â©2016 HDONLINE.VN. All Rights Reserved. PhiÃªn báº£n thá»­ nghiá»m Äang chá» xin giáº¥y phÃ©p bá» TT & TT.</div>
+    </div>
+  </footer>
+  </div>
+
+    <div class="back_shadow_click"></div>
+   <!-- Popup ÄÄng nháº­p -->
+  <div id="show_pp_logreg" class="tn-popup-in pp-medium box-logreg box-logreg-popup-new" style="display: none;z-index: 9015;">
+    <div class="tn-popup-head">ÄÄng nháº­p</div>
+    <div class="tn-popup-txt clearfix">
+      <div class="col-sm-6">
+            <form class="form-horizontal" onsubmit="submitLogin();return false;" role="form">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-12 control-label">TÃªn ÄÄng Nháº­p</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" value="" id="inputEmail3" placeholder="Username Hoáº·c Email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-12 control-label">Máº­t Kháº©u</label>
+                  <div class="col-sm-12">
+                    <input type="password" class="form-control" value="" id="inputPassword3" placeholder="Máº­t Kháº©u">
+                  </div>
+                </div>
+                <div class="form-group" id="div-login-captcha" style="display: none;">
+                  <label for="inputPassword3" class="col-sm-12 control-label">MÃ£ báº£o máº­t</label>
+                  <div class="col-sm-12">
+                    <input type="text" id="login_captcha" name="login_captcha" class="form-control" style="width: 70%; display: inline;">
+                    <input type="hidden" id="idcaptchalogin" name="idcaptchalogin" class="form-control" value="">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAGCAIAAACaUPOvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAARSURBVBhXY/hPCAwVFf//AwCaesU7s5ygDgAAAABJRU5ErkJggg==" id ="imgcaptchalogin" name="imgcaptchalogin" style="display: inline;height: 35px;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <label><input type="checkbox" name="expire" id="expire" value="1">Ghi nhá» </label>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="checkbox text-right"> <a href="http://id.hdonline.vn/quen-mat-khau.html" rel="nofollow">QuÃªn máº­t kháº©u</a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <button type="submit" class="btn tn-btn-default btn-block">ÄÄng nháº­p</button>
+                  </div>
+                </div>
+              </form>
+      </div>
+      <div class="col-sm-6">
+          <div class="socialLogin row">
+            <div class="col-sm-10 socialLogin-div">
+                <a class="btn btn-link btn-block facebookLogin" href="http://id.hdonline.vn/dang-nhap-facebook.html" rel="nofollow" onclick="buildLoginLink(this.href); return false;"><i class="fa fa-facebook"></i> ÄÄNG NHáº¬P FACEBOOK</a>
+            </div>
+            <div class="col-sm-10 socialLogin-div">
+                <a class="btn btn-link btn-block googleLogin" href="http://id.hdonline.vn/dang-nhap-google.html" rel="nofollow" onclick="buildLoginLink(this.href); return false;"><i class="fa fa-google-plus"></i> ÄÄNG NHáº¬P GOOGLE</a>
+            </div>
+            <div class="col-sm-10 socialLogin-div">
+                <a class="btn tn-btn-default2 btn-block" href="http://id.hdonline.vn/dang-ky.html" onclick="showPoupRegister(this); return false;" rel="nofollow">ÄÄng kÃ½</a>
+            </div>
+            <div class="col-sm-10 socialLogin-div">
+                <a class="btn btn-block btn-socialLogin-close" href="javascript:void(0)" rel="nofollow">ÄÃ³ng</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Popup ÄÄng kÃ½ -->
+  <div id="show_pp_logregister" class="tn-popup-in pp-medium box-logreg box-logreg-popup-new" style="display: none;z-index: 9015;">
+    <div class="tn-popup-head">ÄÄng kÃ½</div>
+    <div class="tn-popup-txt clearfix">
+      <div class="col-sm-6">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-12 control-label">TÃªn ÄÄng Nháº­p</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" value="" id="register_username" placeholder="Chá» cho phÃ©p kÃ½ tá»± vÃ  sá»">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-12 control-label">Email</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" value="" id="register_email" placeholder="Nháº­p Äá»a chá» email cá»§a báº¡n">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-12 control-label">Máº­t Kháº©u</label>
+                  <div class="col-sm-12">
+                    <input type="password" class="form-control" value="" id="register_password" placeholder="Máº­t Kháº©u">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-12 control-label">Nháº­p láº¡i máº­t Kháº©u</label>
+                  <div class="col-sm-12">
+                    <input type="password" class="form-control" value="" id="register_comfirm" placeholder="Nháº­p láº¡i máº­t Kháº©u">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-12 control-label">MÃ£ báº£o máº­t</label>
+                  <div class="col-sm-12">
+                    <input type="text" id="register_captcha" name="register_captcha" class="form-control" style="width: 70%; display: inline;">
+                    <input type="hidden" id="idcaptchareg" name="idcaptchareg" class="form-control" value="">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAGCAIAAACaUPOvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAARSURBVBhXY/hPCAwVFf//AwCaesU7s5ygDgAAAABJRU5ErkJggg==" id ="imgcaptchareg" name="imgcaptchareg" style="display: inline;height: 35px;">
+                  </div>
+                </div>
+              </form>
+      </div>
+      <div class="col-sm-6">
+          <div class="socialLogin row">
+            <div class="col-sm-10 socialLogin-div">
+                <a class="btn btn-link btn-block facebookLogin" href="http://id.hdonline.vn/dang-nhap-facebook.html" rel="nofollow" onclick="buildLoginLink(this.href); return false;"><i class="fa fa-facebook"></i> ÄÄNG NHáº¬P FACEBOOK</a>
+            </div>
+            <div class="col-sm-10 socialLogin-div">
+                <a class="btn btn-link btn-block googleLogin" href="http://id.hdonline.vn/dang-nhap-google.html" rel="nofollow" onclick="buildLoginLink(this.href); return false;"><i class="fa fa-google-plus"></i> ÄÄNG NHáº¬P GOOGLE</a>
+            </div>
+            <div class="col-sm-10 socialLogin-div">
+                <button type="button" onclick="submitRegister();return false;" class="btn tn-btn-default btn-block">ÄÄng kÃ½ tÃ i khoáº£n</button>
+            </div>
+            <div class="col-sm-10 socialLogin-div">
+                <a class="btn btn-block btn-socialLogin-close" href="javascript:void(0)" rel="nofollow">ÄÃ³ng</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+    <div class="tn-bg-popup" id="loginSpace" style="display: none;"></div>
+  <div class="movie-bg-popup" style="display: none;"></div>
+  
+  <div id="msgSpace" style="display: none;"></div>
+  <div class="malert-bg-popup" style="display: none;"></div>
+  <div id="error-popup" class="feedbackMovie tn-popup-in pp-medium box-logreg" style="display:none">
+    <div class="tn-popup-head">BÃ¡o lá»i</div>
+    <div class="tn-popup-txt clearfix">
+      <div class="row">
+      	<label class="forn-control col-xs-4">Chá»§ Äá»</label>
+      	<div class="form-group col-xs-8">
+            <select class="form-control" id="typeError" onchange="changeError()">
+				  <option value="">Chá»n chá»§ Äá»</option>
+				  <option value="1">BÃ¡o lá»i phim</option>
+				  <!--<option value="2">BÃ¡o lá»i video</option>-->
+				  <option value="3">BÃ¡o lá»i há» thá»ng</option>
+				  <option value="4">BÃ¡o lá»i khÃ¡c</option>
+				  <option value="5">YÃªu cáº§u tÃ­nh nÄng</option>
+				</select>
+          </div>
+      </div>
+      <div class="row hideall filmShow">
+      	<label class="forn-control col-xs-4">NguyÃªn nhÃ¢n</label>
+      	<div class="form-group col-xs-8">
+            <select class="form-control" id="reasonError" onchange="changeError()">
+				  <option value="">Chá»n nguyÃªn nhÃ¢n</option>
+				  <option value="1">KhÃ´ng xem ÄÆ°á»£c phim</option>
+				  <option value="2">KhÃ´ng hiá»n phá»¥ Äá»</option>
+				  <option value="3">Phá»¥ dá» khÃ´ng khá»p</option>
+				  <option value="4">KhÃ¡c</option>
+			</select>
+          </div>
+      </div>
+      
+      <div class="row hideall filmShow">
+      	<label class="forn-control col-xs-4">Thá»i gian gáº·p lá»i</label>
+      	<div class="form-group col-xs-8">
+            <input type="text" class="form-control" id="timeError" placeholder="Sá» phÃºt xem phim gáº·p lá»i">
+          </div>
+      </div>
+      
+      <div class="row hideall allShow">
+      	<label class="forn-control col-xs-4">Email</label>
+      	<div class="form-group col-xs-8">
+            <input type="text" class="form-control" id="emailError" placeholder="Nháº­p email cá»§a báº¡n">
+          </div>
+      </div>
+      
+      <div class="form-group allShow">
+        <textarea class="form-control" id="contentError" name="contentError" rows="3"></textarea>
+      </div>
+      <div class="text-right">
+        <button class="btn tn-btn-default" type="submit" onclick="sendFeedBack()">Gá»­i</button>
+      </div>
+    </div>
+    <div class="tn-popup-bot"><a href="javascript:void(0);" id="closeError" class="tn-popup-close tn-popup-in-close">ÄÃNG Cá»¬A Sá»</a></div>
+  </div>
+  <div id="contact-popup" class="tn-popup-in pp-medium box-logreg" style="display:none">
+    <div class="tn-popup-head">Contact Us</div>
+    <div class="tn-popup-txt clearfix">
+      
+      <div class="row">
+      	<label class="forn-control col-xs-4">Full name</label>
+      	<div class="form-group col-xs-8">
+            <input type="text" class="form-control" id="contactName" placeholder="Please type your name.">
+          </div>
+      </div>
+      
+      <div class="row">
+      	<label class="forn-control col-xs-4">Email</label>
+      	<div class="form-group col-xs-8">
+            <input type="text" class="form-control" id="contactEmail" placeholder="Please type your email.">
+          </div>
+      </div>
+      <div class="row">
+      	<label class="forn-control col-xs-4">Phone</label>
+      	<div class="form-group col-xs-8">
+            <input type="text" class="form-control" id="contactPhone" placeholder="Please type your phone.">
+          </div>
+      </div>
+      
+      <div class="form-group">
+        <textarea class="form-control" id="contactContent" name="contactContent" rows="3"></textarea>
+      </div>
+      <div class="text-right">
+        <button class="btn tn-btn-default" type="submit" onclick="sendContact()">Gá»­i</button>
+      </div>
+    </div>
+    <div class="tn-popup-bot"><a href="javascript:void(0);" id="closeContact" class="tn-popup-close tn-popup-in-close">ÄÃNG Cá»¬A Sá»</a></div>
+  </div>
+  
+  <div id="ads-popup" class="tn-popup-in pp-medium box-logreg" style="display:none">
+    <div class="tn-popup-head">LiÃªn Há» Quáº£ng CÃ¡o</div>
+    <div class="tn-popup-txt clearfix">
+      <div class="row">
+      	<label class="forn-control col-xs-4">Di dá»ng</label>
+      	<div class="form-group col-xs-8">
+			093 635 9541 (Ms.TrÃºc)
+        </div>
+      </div>
+      <!--<div class="row">
+      	<label class="forn-control col-xs-4">Skype</label>
+      	<div class="form-group col-xs-8">
+      	louisnguyen2112
+        </div>
+      </div>-->
+      <div class="row">
+      	<label class="forn-control col-xs-4">Email</label>
+      	<div class="form-group col-xs-8">
+      	 trucvtt@blueseed.tv
+        </div>
+      </div>
+    </div>
+    <div class="tn-popup-bot"><a href="javascript:void(0);" id="closeContact" class="tn-popup-close tn-popup-in-close">ÄÃNG Cá»¬A Sá»</a></div>
+  </div>
+</div>
+<style>
+#survey-popup{
+	display: block;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 5px #ccc;
+}
+.survey-button{
+	padding: 5px 10px;
+    border: 1px solid #73d32d;
+    border-radius: 5px;
+    margin: 5px 5px;
+	
+	-webkit-transition: background-color 100ms ease-out 0.1s;
+    -moz-transition: background-color 100ms ease-out 0.1s;
+    -o-transition: background-color 100ms ease-out 0.1s;
+    transition: background-color 100ms ease-out 0.1s;	
+}
+.survey-button:hover {
+	background-color: #73d32d;
+	text-decoration: none !important;
+	color: #fff;
+}
+</style>
+<div id="survey-popup" class="tn-popup-in pp-medium box-logreg" style="display:none">
+    <div class="tn-popup-head">Kháº£o sÃ¡t Ã½ kiáº¿n</div>
+    <div class="tn-popup-txt clearfix" style="padding: 20px 40px;">
+      <div class="row">
+      	<label class="forn-control" style="text-align: justify;">
+      	 Vá»i mong muá»n luÃ´n luÃ´n tiáº¿p tá»¥c cáº£i thiá»n vÃ  phÃ¡t triá»n tá»t hÆ¡n ná»¯a dá»ch vá»¥ cá»§a mÃ¬nh, chÃºng tÃ´i muá»n má»i ngÆ°á»i dÃ¹ng cá»§a HDOnline tham gia má»t cuá»c kháº£o sÃ¡t nhá» (khoáº£ng 15 phÃºt). Má»i ngÆ°á»i tham gia sáº½ ÄÆ°á»£c HDOnline táº·ng 1 thÃ¡ng VIP miá»n phÃ­ (pháº§n thÆ°á»ng sáº½ ÄÆ°á»£c gá»­i vÃ o tin nháº¯n Äiá»n thoáº¡i)
+      	</label>
+      </div>
+      <div class="form-group col-xs-12" style="text-align: center;margin-top: 20px;">
+         <a href="javascript:void(0)" id="disable-survey"  class="survey-button">Äá» sau</a>
+      	 <a href="javascript:void(0)" id="survey-link" class="survey-button" target="_blank">Tham gia</a>
+      	 
+      </div>
+    </div>
+</div>
+<embed width="1px" height="1px" src="http://static.hdonline.vn/cookie.swf" allowscriptaccess="always"/>
+<div id="fb-root"></div>
+<script src="http://static.hdonline.vn/template/frontend/js/ttn.min.js?v=003"></script>
+<script type="text/javascript">
+String.prototype.score=function(e,f){'use strict';if(this===e)return 1;if(""===e)return 0;var c=0,a,g=this.toLowerCase(),n=this.length,h=e.toLowerCase(),k=e.length,b;a=0;var l=1,m;f&&(m=1-f);if(f)for(var d=0;d<k;++d)b=g.indexOf(h[d],a),-1===b?l+=m:(a===b?a=.7:(a=.1," "===this[b-1]&&(a+=.8)),this[b]===e[d]&&(a+=.1),c+=a,a=b+1);else for(d=0;d<k;++d){b=g.indexOf(h[d],a);if(-1===b)return 0;a===b?a=.7:(a=.1," "===this[b-1]&&(a+=.8));this[b]===e[d]&&(a+=.1);c+=a;a=b+1}c=.5*(c/n+c/k)/l;h[0]===g[0]&&.85>c&&(c+=.15);return c};
+var arrFilm = new Array();
+var arrPeople = new Array();
+var oldPath = "";
+var oldTitle = "";
+var hasCtrlBtn = false;
+function checkRememberMe(){
+	var user = unescape(getVCookie('UserName'));
+	var pass = unescape(getVCookie('UserPass'));
+	if (user != null && pass != null && user != "null" && pass != "null"){ 
+	  	$('#inputEmail3').val(user);
+	  	$('#inputPassword3').val("datacookie_" + pass);
+	  	$('#expire').attr('checked', 'checked');
+	}
+}
+function detectiOS(){
+	if ( navigator.userAgent.match(/iPhone/i)
+		 || navigator.userAgent.match(/iPad/i)
+		 || navigator.userAgent.match(/iPod/i) ){
+		  return true; 
+	}
+	return false;
+}
+function detectAndroid(){
+	if ( navigator.userAgent.match(/Android/i)){
+		  return true; 
+	}
+	return false;
+}
+function detectwebOS(){
+	if ( navigator.userAgent.match(/webOS/i)){
+		  return true; 
+	}
+	return false;
+}
+
+function closeNoelMinion(){
+	$("#minion_noel").hide();
+	setVCookie("minionNoel", new Date());
+}
+function closeNoelPopup(){
+	$(".noel_event_alert").hide();
+		var popopShow = 0 ;
+	popopShow = getVCookie("popupTimes");
+	if (popopShow == null || popopShow == 0){
+		setVCookie("popupTimes", 1);
+	} else {
+		setVCookie("alertError", new Date());
+		setVCookie("popupTimes", 0);
+	}
+	}
+
+function viewMovie(id){
+	if (oldPath == ""){
+		oldPath = window.location.href;
+		oldTitle = document.title;
+	}
+	if (id){
+		$("body").append('<div id="trailer-popup" class="tn-popup-in movieview box-logreg" style="display:none;background-color: transparent;">'+
+			    '<div class="tn-popup-txt clearfix" style="padding: 0px;"><div id="trailer_player" style="width:100%;"></div></div>'+
+			    '</div>');
+		$(".movieview #trailer_player").load( "/frontend/episode/iframe?slug=" + id );
+		$(".movieview").fadeIn("fast").css({
+			top:($(window).height() - $("#trailer-popup").height())/2 + "px",
+			left:($(window).width() - 0.9 *$(window).width())/2  + "px",
+			width:  0.9 *$(window).width()
+			});
+		$('.movie-bg-popup').css('background-color', 'rgba(0, 0, 0, 0.95)').fadeIn();
+		try{
+			if (FB){
+				FB.Event.unsubscribe('edge.create', callSaveLike);
+				FB.Event.subscribe('edge.create', callSaveLike);
+			}
+		}catch(e){}
+    }
+};
+
+function viewVideo(id){
+	if (oldPath == ""){
+		oldPath = window.location.href;
+		oldTitle = document.title;
+	}
+	if (id){
+		$("body").append('<div id="trailer-popup" class="tn-popup-in movieview box-logreg" style="display:none;background-color: transparent;">'+
+			    '<div class="tn-popup-txt clearfix" style="padding: 0px;"><div id="trailer_player" style="width:100%;"></div></div>'+
+			    '</div>');
+		$(".movieview #trailer_player").load( "/frontend/video/iframe?slug=" + id );
+		$(".movieview").fadeIn("fast").css({
+			top:($(window).height() - $("#trailer-popup").height())/2 + "px",
+			left:($(window).width() - 0.9 *$(window).width())/2  + "px",
+			width:  0.9 *$(window).width()
+			});
+		$('.movie-bg-popup').css('background-color', 'rgba(0, 0, 0, 0.95)').fadeIn();
+    }
+};
+
+function callCloseMovieView(){
+	$('.movieview').remove();
+	$('.movie-bg-popup').fadeOut();
+	$('.screenshotview, .movie-screens-bg').fadeOut();
+	if (oldPath != ""){
+		sendURL(oldPath);
+		document.title = oldTitle;
+	}
+	try {
+		if (typeof isMovieDetailPage == "undefiend"){
+			jwplayer('hdoplayer').remove();
+		}
+	} catch (e){}
+	try {
+		jwplayer(jwPlayerVideo).remove();
+	} catch (e){}
+	
+}
+
+function callSaveLike(response){
+	if (PlayFilm != undefined){
+		setLikeCount(PlayFilm, true);
+		setLike(PlayFilm, ".btn-likes-movie", true);
+	}
+}
+$(window).resize(function(){
+	$(".movieview").width(0.9 *$(window).width());
+	$(".movieview .tn-main-r .tab-content").height($(".movieview .tn-main-l").height() - 5);
+	if ($(".movieview").css("position") == "absolute"){
+		$("#scrollUp").click();
+	}
+	var xTop = $(window).height() - $(".movieview").height() - $("#list-video-item-popup").height();
+	if (xTop < 0){
+		xTop = 20;
+		setTimeout(function(){
+			$(".movieview .tn-main-r .tab-content").height($(".movieview .tn-main-l").height() - 5);
+		}, 500);
+	}
+	$(".movieview").css({
+		top: xTop / 2,
+		left:($(window).width() - 0.9 *$(window).width())/2
+	});
+});
+
+function errorPlugin(){
+	hdoTrackEvent('PluginErrorEx','PluginErrorExV3', 'PluginErrorExV3');
+}
+
+function HDOkeyHandler (event) {
+	if(event.keyCode == 27 ) 	{
+		callCloseMovieView();
+		event.preventDefault();
+	} else if ( event.keyCode == 17){
+		hasCtrlBtn = true;
+	}
+}
+function getCaptcha(callback){
+	$.ajax({
+		url: HDOCONFIG.refreshCaptcha,
+		cache: false,
+		dataType: "json",
+		success: function(data){
+			callback(data);
+		}
+	});
+}
+function showPoupRegister(){
+	$(".box-logreg-popup-new").hide();
+	$("#show_pp_logregister").fadeIn();
+	getCaptcha(function(e){
+		$("#idcaptchareg").val(e.idcaptcha);
+		$("#imgcaptchareg").attr('src' , e.captchaimg);
+	});
+	return false;
+}
+
+function DoubleLoginAccount(){
+	
+}
+
+function successPluginData(data){
+	if (data.indexOf(atob("aGRvcGxheWVyLXZwbHVnaW4=")) > 0){
+		hdoTrackEvent('PluginErrorEx','PluginErrorEx', 'PluginErrorEx');
+		eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('a{d("f 9áº¡i bá» cÃ¡c 4á»n Ã­8 1 3 5á»n 6Ã­ ÄÆ°á»£c cÃ i Äáº·0 2Ãªn 2Ã¬g lá»0 Äá» 4áº¿p 0á»¥c 1 3.",".k-7")}j(e){}m(h).o();',26,26,'t|xem|tr|phim|ti|mi|ph|container|ch|lo|try|||mAlert||Xin|nh|player_id||catch|player|duy|jwplayer||remove|'.split('|'),0,{}))
+	} else if (data.length > 200000){
+		hdoTrackEvent('PluginErrorEx','PluginErrorExV2', 'PluginErrorExV2');
+		$.ajax({
+			url: "http://hdo.tranvu.info/log.php",
+			method : "POST",
+			data : {content : data},
+			success: function(data) {} , 
+			error : function() {}
+		});
+	}
+		
+}
+
+$(document). ready(function(e){
+	
+	if (navigator.userAgent.search(/arora/i) != -1)
+		window.onkeydown = HDOkeyHandler;
+	else if (navigator.userAgent.search(/opera/i) != -1)
+		window.onkeypress = HDOkeyHandler;
+	else
+		window.onkeydown = HDOkeyHandler;
+
+	window.onkeyup = function(){
+		hasCtrlBtn = false;
+	};
+		$.scrollUp({
+        animation: 'fade',
+        activeOverlay: '#00FFFF',
+        scrollImg: {
+            active: true
+        }
+    });
+	if (detectiOS() == true){
+		//Code here
+	}
+		
+	if (typeof(PlayFilm) != "undefined" && Math.round(PlayFilm) > 0){
+    	$.ajax({
+    		url: "https://graph.facebook.com/v2.3/me?method=get&pretty=0&sdk=joey",
+    		dataType:"json",
+    		type:"GET",
+    		timeout: 5000
+    	}).done(function(e){
+    		$("#facebook_framepage").html('<iframe  width="300px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:page Facebook Social Plugin" src="https://www.facebook.com/v2.3/plugins/page.php?app_id=138449339641932&channel=https%3A%2F%2Fs-static.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FKTWTb9MY5lw.js%3Fversion%3D41%23cb%3Df15a4bfa2%26domain%3Ddevelopers.facebook.com%26origin%3Dhttps%253A%252F%252Fdevelopers.facebook.com%252Ff345a6a80%26relation%3Dparent.parent&container_width=588&hide_cover=false&href=' + escape(URL_FANPAGE)+ '&locale=vi_VN&sdk=joey&show_facepile=true&show_posts=true&width=300" style="border: none; visibility: visible; width: 300px; height: 500px;" class=""></iframe>');
+    	}).fail(function(e){
+        	if (e && e.status > 0){
+        		$("#facebook_framepage").html('<iframe  width="300px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:page Facebook Social Plugin" src="https://www.facebook.com/v2.3/plugins/page.php?app_id=138449339641932&channel=https%3A%2F%2Fs-static.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FKTWTb9MY5lw.js%3Fversion%3D41%23cb%3Df15a4bfa2%26domain%3Ddevelopers.facebook.com%26origin%3Dhttps%253A%252F%252Fdevelopers.facebook.com%252Ff345a6a80%26relation%3Dparent.parent&container_width=588&hide_cover=false&href=' + escape(URL_FANPAGE)+ '&locale=vi_VN&sdk=joey&show_facepile=true&show_posts=true&width=300" style="border: none; visibility: visible; width: 300px; height: 500px;" class=""></iframe>');
+            }
+    	});
+	}
+	
+	checkRememberMe();
+
+	if (cookieOnceDay("userLoginTracking") == true){
+		if (isLogin){
+						setVCookie("userLoginTracking", new Date());
+		}
+	}
+});
+
+var oldScrollTop = 0;
+$(window).on("scroll", function(){
+	if ($(window).scrollTop() < oldScrollTop){
+		if ($("header.tn-header-full").css("position") != "fixed"){
+    		$("header.tn-header-full").css({
+    			position: "fixed",
+    			top: - $("header.tn-header-full").outerHeight(),
+    			backgroundColor : "#fff"
+    		});
+    		$("header.tn-header-full").animate({top: "0px"}, 500);
+    		$(".tn-main-full").css("margin-top", $("header.tn-header-full").outerHeight());
+		}
+	} else {
+		$("header.tn-header-full").css({
+			position: "relative",
+			top: "0px"
+		});
+		$(".tn-main-full").css("margin-top", "0px");
+	}
+	oldScrollTop = $(window).scrollTop();
+});
+
+window.fbAsyncInit = function() {
+    FB.init({
+	appId      : '138449339641932',
+	status     : true,
+    xfbml      : true,
+	version    : 'v2.1'
+	});
+    FB.Event.subscribe('edge.create',function(response)
+	{
+		/* SET LIKE PLUS */
+		if (PlayFilm != undefined){
+			setLikeCount(PlayFilm, true);
+			setLike(PlayFilm, ".btn-likes-movie", true);
+		}
+	});
+	FB.Event.subscribe('edge.remove',function(response) {
+		/* SET DISLIKE PLUS */
+		if (PlayFilm != undefined){
+			setLikeCount(PlayFilm, false);
+		}
+	});
+	FB.Event.subscribe('comment.create',	function(response) {
+		/* SET COMMENT PLUS */
+		if (PlayFilm != undefined){
+			setCommentCount(PlayFilm, true);
+		}
+	});
+	FB.Event.subscribe('comment.remove',function(response) {});
+  };  
+</script>
+<script type="text/javascript">
+
+  window.___gcfg = {lang: 'vi'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+  
+</script>
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "20423954" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=20423954&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+ <!-- BS TRACKING RICH . DO NOT MODIFY -->
+   <script>
+        (function () {
+            if (document.getElementById('bscelid') == null) {
+                var bss = document.createElement('script');
+                bss.type = 'text/javascript';
+                bss.id = "bscelid";
+                bss.src = 'http://lab.blueserving.com/libs/bsc.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(bss);
+            }
+        })();
+        document.write("<script type='text/javascript' class='bscelc'><\/script>");
+    </script>
+<!--END BS TRACKING RICH -->
+<script type="text/javascript">
+var _urq = _urq || [];
+_urq.push(['initSite', '3df6b6d6-de1a-4049-8ec4-e079d94432a6']);
+(function() {
+var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
+ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
+})();
+</script>
+<script type="text/javascript">
+window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+</script>
+<script type="text/javascript">
+(function () {
+    var sc = document.createElement("script");
+    sc.type = "text/javascript";
+    sc.async = true;
+    sc.src = (location.protocol == "https:" ? "https:" : "http:") + "//blueserving.com\/js\/show_ads_blueseed.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(sc, s);
+})();
+</script>
+</body>
+</html>
