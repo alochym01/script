@@ -1,0 +1,29 @@
+{
+ "mediaid": "101340",
+ "audiodub": false,
+ "buffer": 120,
+ "image": "http://s5.phimhd3s.com/9cdc6f579664d2d4d727f16b683d47d2/phimbo/anime/Thai_At_Tien_Ma_Luc_2016/Thai_At_Tien_Ma_Luc_2016_720p_H_E001/thumb/ep.jpg",
+ "level": [
+  {
+   "file": "https://redirector.googlevideo.com/videoplayback?requiressl=yes&id=10097234bd4c3727&itag=18&source=webdrive&ttl=transient&app=explorer&ip=2001:19f0:6000:91e6:5400:ff:fe25:bad&ipbits=32&expire=1468481570&sparams=requiressl%2Cid%2Citag%2Csource%2Cttl%2Cip%2Cipbits%2Cexpire&signature=9F62D882D564FA244C71AC650176C6F543B7FC7A.366E03FA35801F2503394AB396C3DAE2D1A7D5D5&key=ck2&mm=31&mn=sn-a5meknes&ms=au&mt=1468466957&mv=m&nh=IgpwcjAyLmxheDAyKgkxMjcuMC4wLjE&pl=38",
+   "label": "360p"
+  },
+  {
+   "file": "https://redirector.googlevideo.com/videoplayback?requiressl=yes&id=10097234bd4c3727&itag=59&source=webdrive&ttl=transient&app=explorer&ip=2001:19f0:6000:91e6:5400:ff:fe25:bad&ipbits=32&expire=1468481570&sparams=requiressl%2Cid%2Citag%2Csource%2Cttl%2Cip%2Cipbits%2Cexpire&signature=56820915828C7149854653BCA2D98D010A3D1622.718731D25FAABA702421C5A2954056EFC3B1E898&key=ck2&mm=31&mn=sn-a5meknes&ms=au&mt=1468466957&mv=m&nh=IgpwcjAyLmxheDAyKgkxMjcuMC4wLjE&pl=38",
+   "label": "480p"
+  },
+  {
+   "file": "https://redirector.googlevideo.com/videoplayback?requiressl=yes&id=10097234bd4c3727&itag=22&source=webdrive&ttl=transient&app=explorer&ip=2001:19f0:6000:91e6:5400:ff:fe25:bad&ipbits=32&expire=1468481570&sparams=requiressl%2Cid%2Citag%2Csource%2Cttl%2Cip%2Cipbits%2Cexpire&signature=6E1C0566BACDC55074F812609CEE59CD2A2DA155.AF61F262122A884B3843ED3D206BEAD7DA7FFD1C&key=ck2&mm=31&mn=sn-a5meknes&ms=au&mt=1468466957&mv=m&nh=IgpwcjAyLmxheDAyKgkxMjcuMC4wLjE&pl=38",
+   "label": "720p"
+  }
+ ],
+ "myip": "210.245.31.21",
+ "preduration": "",
+ "host": "http://hdonline.vn",
+ "link": "/phim-thai-at-tien-ma-luc-12353.html",
+ "file": "https://redirector.googlevideo.com/videoplayback?requiressl=yes&id=10097234bd4c3727&itag=18&source=webdrive&ttl=transient&app=explorer&ip=2001:19f0:6000:91e6:5400:ff:fe25:bad&ipbits=32&expire=1468481570&sparams=requiressl%2Cid%2Citag%2Csource%2Cttl%2Cip%2Cipbits%2Cexpire&signature=9F62D882D564FA244C71AC650176C6F543B7FC7A.366E03FA35801F2503394AB396C3DAE2D1A7D5D5&key=ck2&mm=31&mn=sn-a5meknes&ms=au&mt=1468466957&mv=m&nh=IgpwcjAyLmxheDAyKgkxMjcuMC4wLjE&pl=38",
+ "provider": "google",
+ "prelink": "http://static.hdonline.vn/i/updateVIP.jpg?s={s}",
+ "subtitle": [],
+ "mycountry": "VN"
+}

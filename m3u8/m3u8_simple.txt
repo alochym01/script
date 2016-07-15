@@ -1,0 +1,16 @@
+{
+ "mediaid": "101380",
+ "audiodub": false,
+ "buffer": 120,
+ "image": "http://s6.phimhd3s.com/c3d1710cea2a11aa72b5129365addbe1/phimle/2016/05/The_Supernatural_Events_On_Campus_2013_SD_H/thumb/ep.jpg",
+ "level": [],
+ "myip": "210.245.31.16",
+ "preduration": "",
+ "host": "http://hdonline.vn",
+ "link": "/phim-the-supernatural-events-on-campus-12356.html",
+ "file": "http://s6.phimhd3s.com/c3d1710cea2a11aa72b5129365addbe1/phimle/2016/05/The_Supernatural_Events_On_Campus_2013_SD_H/playlist.m3u8",
+ "provider": "http://hdonline.vn/player/hls-2.1001.swf",
+ "prelink": "http://static.hdonline.vn/i/updateVIP.jpg?s={s}",
+ "subtitle": [],
+ "mycountry": "VN"
+}
